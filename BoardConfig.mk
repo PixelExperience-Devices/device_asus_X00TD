@@ -150,6 +150,10 @@ BOARD_USES_QCOM_HARDWARE := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
+# Releasetools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_asus
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
+
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
 

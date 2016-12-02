@@ -363,6 +363,10 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
+# Recovery
+PRODUCT_PACKAGES += \
+    librecovery_updater_asus
+
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
