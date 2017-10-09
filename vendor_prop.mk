@@ -212,6 +212,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Skip Validate Disable
 PRODUCT_PROPERTY_OVERRIDES += \
+	sdm.debug.disable_skip_validate=1 \
 	vendor.display.disable_skip_validate=1
 
 # Shutdown
