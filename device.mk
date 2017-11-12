@@ -343,6 +343,7 @@ PRODUCT_PACKAGES += \
     init.msm.usb.configfs.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
+    init.safailnet.rc \
     init.target.rc \
     ueventd.qcom.rc
 
