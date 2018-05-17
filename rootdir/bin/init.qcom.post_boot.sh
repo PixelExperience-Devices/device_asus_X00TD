@@ -2752,9 +2752,6 @@ case "$target" in
             # Set Memory parameters
             configure_memory_parameters
 
-            # enable LPM
-            echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
-
             # Start cdsprpcd only for sdm660 and disable for sdm630
             start vendor.cdsprpcd
 
@@ -2872,8 +2869,6 @@ case "$target" in
             echo N > /sys/module/lpm_levels/system/pwr/cpu7/ret/idle_enabled
             echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-dynret/idle_enabled
             echo N > /sys/module/lpm_levels/system/perf/perf-l2-dynret/idle_enabled
-            # enable LPM
-            echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 
             # re-enable thermal and BCL hotplug
             echo 1 > /sys/module/msm_thermal/core_control/enabled
