@@ -1,0 +1,24 @@
+on boot
+    chown system system /sys/class/leds/green/brightness
+
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/green/duty_pcts
+    chown system system /sys/class/leds/green/pause_hi
+    chown system system /sys/class/leds/green/pause_lo
+    chown system system /sys/class/leds/green/ramp_step_ms
+    chown system system /sys/class/leds/green/start_idx
+
+    chmod 660 /sys/class/leds/green/blink
+    chmod 660 /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/green/pause_hi
+    chmod 660 /sys/class/leds/green/pause_lo
+    chmod 660 /sys/class/leds/green/ramp_step_ms
+    chmod 660 /sys/class/leds/green/start_idx
+
+service vendor.light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.X00T
+    interface android.hardware.light@2.0::ILight default
+    class hal
+    user system
+    group system
+    # shutting off lights while powering-off
+    shutdown critical
