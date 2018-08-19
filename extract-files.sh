@@ -59,4 +59,8 @@ setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false "$CLEAN_VENDOR"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 
+# Load vndk-28 libui for libmot_gpu_mapper
+MOT_GPU_MAPPER="$BLOB_ROOT"/vendor/lib/libmot_gpu_mapper.so
+patchelf --add-needed libui-v28.so "$MOT_GPU_MAPPER"
+
 . "$MY_DIR"/setup-makefiles.sh
