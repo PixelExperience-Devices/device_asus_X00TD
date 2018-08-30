@@ -475,4 +475,7 @@
     <!-- Disable AOD by default -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
+    <!-- Whether device ignores the RSSNR signal implementation -->
+    <bool name="config_ignoreRssnrSignalLevel">true</bool>
+
  </resources>
