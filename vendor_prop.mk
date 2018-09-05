@@ -114,7 +114,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_hwc_vds=1 \
-    debug.sf.early_phase_offset_ns=5000000 \
     debug.sf.hw=1 \
     debug.sf.latch_unsignaled=1 \
     debug.hwui.use_buffer_age=false \
@@ -130,6 +129,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.perf_hint_window=50 \
     vendor.gralloc.disable_ubwc=0 \
     vendor.gralloc.enable_fb_ubwc=1
+
+# Early phase offset configuration for SurfaceFlinger
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.early_phase_offset_ns=500000 \
+    debug.sf.early_app_phase_offset_ns=500000 \
+    debug.sf.early_gl_phase_offset_ns=3000000 \
+    debug.sf.early_gl_app_phase_offset_ns=15000000
 
 # LED
 PRODUCT_PROPERTY_OVERRIDES += \
