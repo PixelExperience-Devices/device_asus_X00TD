@@ -88,7 +88,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.fm.a2dp.conc.disabled=false
+    vendor.fm.a2dp.conc.disabled=false \
+    vendor.bluetooth.soc=cherokee
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \
