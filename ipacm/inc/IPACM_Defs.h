@@ -122,6 +122,7 @@ extern "C"
 #define IPA_MAX_NUM_ETH_CLIENTS  15
 #define IPA_MAX_NUM_AMPDU_RULE  15
 #define IPA_MAC_ADDR_SIZE  6
+#define IPA_MAX_NUM_SW_PDNS 15
 
 /*===========================================================================
 										 GLOBAL DEFINITIONS AND DECLARATIONS
@@ -186,7 +187,8 @@ typedef enum
 	IPA_ETH_BRIDGE_CLIENT_ADD,                /* ipacm_event_eth_bridge */
 	IPA_ETH_BRIDGE_CLIENT_DEL,                /* ipacm_event_eth_bridge*/
 	IPA_ETH_BRIDGE_WLAN_SCC_MCC_SWITCH,       /* ipacm_event_eth_bridge*/
-	IPA_SSR_NOTICE,						      /* NULL*/
+	IPA_SSR_NOTICE,                           /* NULL*/
+	IPA_COALESCE_NOTICE,                      /* NULL*/
 #ifdef FEATURE_L2TP
 	IPA_ADD_VLAN_IFACE,                       /* ipa_ioc_vlan_iface_info */
 	IPA_DEL_VLAN_IFACE,                       /* ipa_ioc_vlan_iface_info */
