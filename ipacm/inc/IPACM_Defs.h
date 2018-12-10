@@ -352,31 +352,34 @@ typedef struct
 	struct ipa_wlan_hdr_attrib_val attribs[0];
 } ipacm_event_data_wlan_ex;
 
+typedef enum
+{
+	Q6_WAN = 0,
+	WLAN_WAN,
+	ECM_WAN,
+	Q6_MHI_WAN
+} ipacm_wan_iface_type;
+
 typedef struct _ipacm_event_iface_up
 {
+	ipacm_wan_iface_type backhaul_type;
 	char ifname[IPA_IFACE_NAME_LEN];
 	uint32_t ipv4_addr;
 	uint32_t addr_mask;
 	uint32_t ipv6_prefix[2];
-	bool is_sta;
 	uint8_t xlat_mux_id;
 	uint8_t mux_id;
 }ipacm_event_iface_up;
 
 typedef struct _ipacm_event_iface_up_tether
 {
+	ipacm_wan_iface_type backhaul_type;
 	uint32_t if_index_tether;
 	uint32_t ipv6_prefix[2];
 	bool is_sta;
 	uint8_t xlat_mux_id;
 }ipacm_event_iface_up_tehter;
 
-typedef enum
-{
-	Q6_WAN = 0,
-	WLAN_WAN,
-	ECM_WAN
-} ipacm_wan_iface_type;
 
 typedef struct _ipacm_ifacemgr_data
 {

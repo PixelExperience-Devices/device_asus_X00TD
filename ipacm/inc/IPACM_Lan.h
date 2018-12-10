@@ -49,6 +49,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "IPACM_Filtering.h"
 #include "IPACM_Config.h"
 #include "IPACM_Conntrack_NATApp.h"
+#include "IPACM_Wan.h"
 
 #define IPA_WAN_DEFAULT_FILTER_RULE_HANDLES  1
 #define IPA_PRIV_SUBNET_FILTER_RULE_HANDLES  3
@@ -94,6 +95,8 @@ typedef struct _ipa_eth_client
 	int ipv6_set;
 	bool ipv4_header_set;
 	bool ipv6_header_set;
+	/* used for pcie-modem */
+	uint32_t v6_rt_rule_id[IPV6_NUM_ADDR];
 	eth_client_rt_hdl eth_rt_hdl[0]; /* depends on number of tx properties */
 }ipa_eth_client;
 
@@ -121,10 +124,10 @@ public:
 	virtual int handle_wan_up_ex(ipacm_ext_prop* ext_prop, ipa_ip_type iptype, uint8_t xlat_mux_id);
 
 	/* delete filter rule for wan_down event*/
-	virtual int handle_wan_down(bool is_sta_mode);
+	virtual int handle_wan_down(ipacm_wan_iface_type backhaul_mode);
 
 	/* delete filter rule for wan_down event*/
-	virtual int handle_wan_down_v6(bool is_sta_mode);
+	virtual int handle_wan_down_v6(ipacm_wan_iface_type backhaul_mode);
 
 	/* configure private subnet filter rules*/
 	virtual int handle_private_subnet(ipa_ip_type iptype);
@@ -393,6 +396,18 @@ private:
 				{
 					for(num_v6 =0;num_v6 < get_client_memptr(eth_client, clt_indx)->route_rule_set_v6;num_v6++)
 					{
+						/* send client-v6 delete to pcie modem only with global ipv6 with tx_index = 0 one time*/
+						if(is_global_ipv6_addr(get_client_memptr(eth_client, clt_indx)->v6_addr[num_v6]) && (IPACM_Wan::backhaul_mode == Q6_MHI_WAN) && (tx_index == 0)
+							&& (get_client_memptr(eth_client, clt_indx)->v6_rt_rule_id[num_v6] > 0))
+						{
+							IPACMDBG_H("Delete client index %d ipv6 RT-rules for %d-st ipv6 for rule-id:%d\n", clt_indx,num_v6,
+								get_client_memptr(eth_client, clt_indx)->v6_rt_rule_id[num_v6]);
+							if (del_connection(clt_indx, num_v6))
+							{
+								IPACMERR("PCIE filter rule deletion failed! (%d-client) %d v6-entry\n",clt_indx, num_v6);
+							}
+						}
+
 						IPACMDBG_H("Delete client index %d ipv6 RT-rules for %d-st ipv6 for tx:%d\n", clt_indx,num_v6,tx_index);
 						rt_hdl = get_client_memptr(eth_client, clt_indx)->eth_rt_hdl[tx_index].eth_rt_rule_hdl_v6[num_v6];
 						if(m_routing.DeleteRoutingHdl(rt_hdl, IPA_IP_v6) == false)
@@ -445,6 +460,10 @@ private:
 
 	/*handle reset usb-client rt-rules */
 	int handle_lan_client_reset_rt(ipa_ip_type iptype);
+
+	/* for pcie modem */
+	virtual int add_connection(int client_index, int v6_num);
+	virtual int del_connection(int client_index, int v6_num);
 };
 
 #endif /* IPACM_LAN_H */
