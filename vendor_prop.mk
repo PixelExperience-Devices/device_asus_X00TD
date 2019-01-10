@@ -80,6 +80,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.bt.aac_frm_ctl.enabled=true
 
+# Enable headset calibration
+PRODUCT_PROPERTY_OVERRIDES += \
+    audio.volume.headset.gain.depcal=true
+
+# Enable dualmic fluence for voice communication
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.fluence.voicecomm=true
+
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.hw.fm.init=0 \
