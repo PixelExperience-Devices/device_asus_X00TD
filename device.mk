@@ -128,7 +128,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     libxml2 \
-    Snap
+    GoogleCamera
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
