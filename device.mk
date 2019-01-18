@@ -224,6 +224,21 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
+    vendor.nxp.hardware.nfc@1.0-impl \
+    vendor.nxp.hardware.nfc@1.0-service
+
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    com.nxp.nfc.nq \
+    com.nxp.nfc.nq.xml \
+    libnqnfc-nci \
+    libnqp61-jcop-kit \
+    nfc_nci.nqx.default \
+    NQNfcNci \
+    Tag
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
