@@ -92,7 +92,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.latch_unsignaled=0 \
     debug.hwui.use_buffer_age=false \
     ro.opengles.version=196610 \
-    ro.sf.lcd_density=420 \
     vendor.display.disable_partial_split=1 \
     vendor.display.disable_rotator_downscale=1 \
     vendor.display.perf_hint_window=50
