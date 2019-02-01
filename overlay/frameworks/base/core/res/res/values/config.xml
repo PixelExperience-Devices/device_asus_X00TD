@@ -411,6 +411,8 @@
         <item>"/system/priv-app/SystemUI/oat/arm64/SystemUI.vdex"</item>
         <item>"/system/priv-app/SystemUI/oat/arm64/SystemUI.odex"</item>
         <item>"/system/lib64/libsurfaceflinger.so"</item>
+        <item>"/system/framework/arm64/boot-QPerformance.oat"</item>
+        <item>"/system/framework/arm64/boot-UxPerformance.oat"</item>
     </string-array>
 
     <!-- Keep chosen default camera app pinned in memory for faster launching -->
