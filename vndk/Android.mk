@@ -5,6 +5,7 @@ ifndef BOARD_VNDK_VERSION
 VNDK_SP_LIBRARIES := \
     libdexfile \
     libartbase \
+    libartpalette \
     libziparchive
 
 install_in_hw_dir := \
