@@ -1087,7 +1087,7 @@ vendor/lib/libOmxG711Dec.so|bda54f6997e6d4c81625c7f466d881d7e1ca32d3
 vendor/lib/libOmxVideoDSMode.so|4fb16dcdf16af547854ac03cef4399a164b8a142
 vendor/lib/libOmxWmaDec.so|ebe4aea5ce3851157b32f4a8b67d61584efe1a17
 vendor/lib/libdsd2pcm.so|5c74d35900ae66f59cf1e09a6a0ffb31d8a3a66d
--vendor/lib/libgpustats.so|138dce3b7ac0c5c080acb122f2dfd1a70037d9aa
+vendor/lib/libgpustats.so|138dce3b7ac0c5c080acb122f2dfd1a70037d9aa
 vendor/lib/libmm-color-convertor.so|4a4f408dd749f5a1bfdc0dc8d59762e451b93cb7
 vendor/lib/libmmsw_detail_enhancement.so|903ce4b95faafc2ec88f271121d04a374ceae550
 vendor/lib/libmmsw_math.so|a9888704dff725608102ba0f13ff516308f572f2
@@ -1096,7 +1096,7 @@ vendor/lib/libmmsw_platform.so|96c1777d46a35859ce6c517b5b821b2efd7839be
 vendor/lib/libvpphvx.so|7937bbf848ea2970ce61d4e5c75f31d7a27b867c
 vendor/lib/libvpplibrary.so|5324cc69a9f4696bccdfa23a7e164f76e52ed926
 vendor/lib/libvqzip.so|c1c4f35456ff34b4baba373f18ed034a7d1e2721
--vendor/lib64/libgpustats.so|429e9048389f9062702649e083ec53386966f93f
+vendor/lib64/libgpustats.so|429e9048389f9062702649e083ec53386966f93f
 
 # NFC
 -vendor/app/SmartcardService/SmartcardService.apk
