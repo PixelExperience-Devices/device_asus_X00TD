@@ -1157,3 +1157,6 @@ service vendor.wifilearner /vendor/bin/wifilearner
     user wifi
     group wifi
     oneshot
+
+on property:init.svc.vendor.ipacm-diag=running
+    stop vendor.ipacm-diag
