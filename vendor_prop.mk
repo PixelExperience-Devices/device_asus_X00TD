@@ -95,6 +95,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.sf.hw=1 \
 	debug.sf.latch_unsignaled=1 \
 	vendor.gralloc.enable_fb_ubwc=1 \
+	vendor.gralloc.disable_ubwc=0 \
 	debug.hwui.use_buffer_age=false \
 	dev.pm.dyn_samplingrate=1 \
 	persist.demo.hdmirotationlock=false \
