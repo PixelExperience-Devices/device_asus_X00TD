@@ -4,3 +4,6 @@ persist.vendor.runin.fp            u:object_r:cdfinger_prop:s0
 
 # Audio
 use.audio.eu.parameters            u:object_r:hal_audio_prop:s0
+
+# Camera
+persist.camera.debug.logfile       u:object_r:camera_prop:s0
