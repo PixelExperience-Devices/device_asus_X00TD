@@ -57,6 +57,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     #persist.vendor.camera.is_type=4 \
     #vendor.camera.hal1.packagelist=com.whatsapp,com.instagram.android
 
+# Codec2 switch
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.media.codec2=2
+
 # Dalvik overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m \
