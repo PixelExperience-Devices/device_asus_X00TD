@@ -57,6 +57,7 @@ on property:sys.boot_completed=1
 
 on property:sys.nvram.btmac=*
     start vendor-btmac-sh
+    restart vendor.bluetooth-1-0-qti
 
 on property:sys.nvram.wifimac=*
     setprop ro.wifimac ${sys.nvram.wifimac}
