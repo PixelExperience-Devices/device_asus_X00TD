@@ -527,3 +527,6 @@ on property:sys.boot_completed=1
     write /sys/class/gpio/gpio12/value 0
     write /sys/class/gpio/unexport 12
 # Huaqin add for ZQL1820-84 by liunianliang at 2018/07/16 end
+
+# default country code
+setprop ro.boot.wificountrycode 00
