@@ -251,9 +251,6 @@ VENDOR_SECURITY_PATCH := 2019-03-01
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
-# Use Snapdragon LLVM, if available
-TARGET_USE_SDCLANG := true
-
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit_X00T
 TARGET_RECOVERY_DEVICE_MODULES := libinit_X00T
