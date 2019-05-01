@@ -1033,10 +1033,10 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
-service charger /charger
+service charger /system/bin/charger
     class charger
     group system graphics
-    seclabel u:r:healthd:s0
+    seclabel u:r:charger:s0
 
 service vendor.ssr_diag /system/vendor/bin/ssr_diag
     class late_start
@@ -1060,7 +1060,7 @@ service charger_monitor /system/bin/charger_monitor
     group root
     disabled
 
-service qbcharger /charger -m 1
+service qbcharger /system/bin/charger -m 1
     disabled
     oneshot
 
