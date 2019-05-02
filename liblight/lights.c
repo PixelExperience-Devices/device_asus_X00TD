@@ -350,8 +350,11 @@ set_speaker_light_locked(struct light_device_t* dev,
         free(duty);
 
         // start the party
-        write_int(RED_BLINK_FILE, 1);
-        write_int(GREEN_BLINK_FILE, 1);
+        if (state == &g_notification) {
+            write_int(GREEN_BLINK_FILE, 1);
+        } else {
+            write_int(RED_BLINK_FILE, 1);
+        }
 
     } else {
         if (red == 0 && green == 0) {
