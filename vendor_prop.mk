@@ -149,6 +149,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.calls.on.ims=1 \
+    persist.radio.aosp_usr_pref_sel=true \
     persist.radio.multisim.config=dsds \
     persist.sys.fflag.override.settings_network_and_internet_v2=true \
     persist.vendor.radio.sib16_support=1 \
