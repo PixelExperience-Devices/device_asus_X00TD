@@ -58,32 +58,17 @@ char const*const LCD_FILE
 char const*const LCD_MAX_BRIGHTNESS_FILE
         = "/sys/class/leds/lcd-backlight/max_brightness";
 
-char const*const RED_DUTY_PCTS_FILE
-        = "/sys/class/leds/red/duty_pcts";
-
 char const*const GREEN_DUTY_PCTS_FILE
         = "/sys/class/leds/green/duty_pcts";
-
-char const*const RED_START_IDX_FILE
-        = "/sys/class/leds/red/start_idx";
 
 char const*const GREEN_START_IDX_FILE
         = "/sys/class/leds/green/start_idx";
 
-char const*const RED_PAUSE_LO_FILE
-        = "/sys/class/leds/red/pause_lo";
-
 char const*const GREEN_PAUSE_LO_FILE
         = "/sys/class/leds/green/pause_lo";
 
-char const*const RED_PAUSE_HI_FILE
-        = "/sys/class/leds/red/pause_hi";
-
 char const*const GREEN_PAUSE_HI_FILE
         = "/sys/class/leds/green/pause_hi";
-
-char const*const RED_RAMP_STEP_MS_FILE
-        = "/sys/class/leds/red/ramp_step_ms";
 
 char const*const GREEN_RAMP_STEP_MS_FILE
         = "/sys/class/leds/green/ramp_step_ms";
@@ -327,33 +312,22 @@ set_speaker_light_locked(struct light_device_t* dev,
             pauseHi = 0;
         }
 
-        // red
-        write_int(RED_START_IDX_FILE, 0);
-        duty = get_scaled_duty_pcts(red);    
-        write_str(RED_DUTY_PCTS_FILE, duty);
-        write_int(RED_PAUSE_LO_FILE, offMS);
-        // The led driver is configured to ramp up then ramp
-        // down the lut. This effectively doubles the ramp duration.
-        write_int(RED_PAUSE_HI_FILE, pauseHi);
-        write_int(RED_RAMP_STEP_MS_FILE, stepDuration);
-        free(duty);
-
-        // green
-        write_int(GREEN_START_IDX_FILE, RAMP_SIZE);
-        duty = get_scaled_duty_pcts(green);
-        write_str(GREEN_DUTY_PCTS_FILE, duty);
-        write_int(GREEN_PAUSE_LO_FILE, offMS);
-        // The led driver is configured to ramp up then ramp
-        // down the lut. This effectively doubles the ramp duration.
-        write_int(GREEN_PAUSE_HI_FILE, pauseHi);
-        write_int(GREEN_RAMP_STEP_MS_FILE, stepDuration);
-        free(duty);
-
         // start the party
-        if (state == &g_notification) {
-            write_int(GREEN_BLINK_FILE, 1);
-        } else {
+        if (state == &g_battery) {
             write_int(RED_BLINK_FILE, 1);
+        } else {
+            // green
+            write_int(GREEN_START_IDX_FILE, 0);
+            duty = get_scaled_duty_pcts(green);
+            write_str(GREEN_DUTY_PCTS_FILE, duty);
+            write_int(GREEN_PAUSE_LO_FILE, offMS);
+            // The led driver is configured to ramp up then ramp
+            // down the lut. This effectively doubles the ramp duration.
+            write_int(GREEN_PAUSE_HI_FILE, pauseHi);
+            write_int(GREEN_RAMP_STEP_MS_FILE, stepDuration);
+            free(duty);
+
+            write_int(GREEN_BLINK_FILE, 1);
         }
 
     } else {
