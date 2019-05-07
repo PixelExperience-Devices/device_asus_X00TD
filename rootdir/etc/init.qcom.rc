@@ -975,9 +975,17 @@ service wifi-crda /vendor/bin/init.crda.sh
    disabled
    oneshot
 
+service fix_baseband /vendor/bin/fix_baseband.sh
+    class late_start
+    user system
+    group shell
+    oneshot
+    disabled
+
 on property:sys.boot_completed=1
     start qcom-post-boot
     start qti-testscripts
+    start fix_baseband
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
