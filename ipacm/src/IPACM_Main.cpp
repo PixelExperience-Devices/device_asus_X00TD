@@ -238,7 +238,9 @@ void* ipa_driver_msg_notifier(void *param)
 	struct ipa_wlan_msg_ex event_ex_o;
 	struct ipa_wlan_msg *event_wlan = NULL;
 	struct ipa_wlan_msg_ex *event_ex = NULL;
+#ifdef WIGIG_CLIENT_CONNECT
 	struct ipa_wigig_msg *event_wigig = NULL;
+#endif
 	struct ipa_get_data_stats_resp_msg_v01 event_data_stats;
 	struct ipa_get_apn_data_stats_resp_msg_v01 event_network_stats;
 #ifdef FEATURE_IPACM_HAL
@@ -247,7 +249,9 @@ void* ipa_driver_msg_notifier(void *param)
 
 	ipacm_cmd_q_data evt_data;
 	ipacm_event_data_mac *data = NULL;
+#ifdef WIGIG_CLIENT_CONNECT
 	ipacm_event_data_mac_ep *data_wigig = NULL;
+#endif
 	ipacm_event_data_fid *data_fid = NULL;
 	ipacm_event_data_iptype *data_iptype = NULL;
 	ipacm_event_data_wlan_ex *data_ex;
@@ -396,6 +400,7 @@ void* ipa_driver_msg_notifier(void *param)
 		        evt_data.event = IPA_WLAN_CLIENT_ADD_EVENT;
 			evt_data.evt_data = data;
 			break;
+#ifdef WIGIG_CLIENT_CONNECT
 		case WIGIG_CLIENT_CONNECT:
 			event_wigig = (struct ipa_wigig_msg *)(buffer + sizeof(struct ipa_msg_meta));
 			IPACMDBG_H("Received WIGIG_CLIENT_CONNECT\n");
@@ -418,6 +423,7 @@ void* ipa_driver_msg_notifier(void *param)
 			evt_data.event = IPA_WIGIG_CLIENT_ADD_EVENT;
 			evt_data.evt_data = data_wigig;
 			break;
+#endif
 		case WLAN_CLIENT_CONNECT_EX:
 			IPACMDBG_H("Received WLAN_CLIENT_CONNECT_EX\n");
 

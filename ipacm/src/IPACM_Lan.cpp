@@ -4479,6 +4479,8 @@ int IPACM_Lan::set_tether_client_wigig(wan_ioctl_set_tether_client_pipe *tether_
 	{
 		/* 4 tx pipes for wigig */
 		tether_client->dl_dst_pipe_len = tx_prop->num_tx_props;
+
+#ifdef IPA_CLIENT_WIGIG4_CONS
 		for(cnt = 0; cnt < tx_prop->num_tx_props; cnt++)
 		{
 			enum ipa_client_type client;
@@ -4511,7 +4513,7 @@ int IPACM_Lan::set_tether_client_wigig(wan_ioctl_set_tether_client_pipe *tether_
 				cnt, i + 1,
 				tether_client->dl_dst_pipe_list[cnt]);
 		}
-
+#endif
 		ret = ioctl(fd_wwan_ioctl, WAN_IOC_SET_TETHER_CLIENT_PIPE, tether_client);
 		if(ret != 0)
 		{
@@ -4742,6 +4744,9 @@ int IPACM_Lan::eth_bridge_add_rt_rule(uint8_t *mac, char *rt_tbl_name, uint32_t 
 	IPACMDBG_H("Received client MAC 0x%02x%02x%02x%02x%02x%02x.\n",
 			mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
+	/*fix -Wall -Werror if wigig feature is not enabled */
+	IPACMDBG_H("ep: %d\n", ep);
+
 	num_rt_rule = each_client_rt_rule_count[iptype];
 
 	len = sizeof(ipa_ioc_add_rt_rule) + num_rt_rule * sizeof(ipa_rt_rule_add);
@@ -4780,13 +4785,15 @@ int IPACM_Lan::eth_bridge_add_rt_rule(uint8_t *mac, char *rt_tbl_name, uint32_t 
 				res = IPACM_FAILURE;
 				goto end;
 			}
-
+#ifdef IPA_CLIENT_WIGIG4_CONS
 			if ((ep >= IPA_CLIENT_WIGIG1_CONS) && (ep <= IPA_CLIENT_WIGIG4_CONS))
 			{
 				IPACMDBG_H("wigig DL pipe %d\n", ep);
 				rt_rule.rule.dst = (enum ipa_client_type)ep;
 			}
-			else if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->isMCC_Mode)
+			else 
+#endif
+			if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->isMCC_Mode)
 			{
 				IPACMDBG_H("In WLAN MCC mode, use alt dst pipe: %d\n",
 						tx_prop->tx[i].alt_dst_pipe);
