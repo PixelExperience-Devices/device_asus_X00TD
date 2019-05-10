@@ -172,11 +172,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.use_data_netmgrd=true \
     persist.vendor.data.mode=concurrent
 
-# NFC
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.nfc_nci=pn8x \
-    ro.nfc.port=I2C
-
 # NTP Server
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.backup.ntpServer="0.pool.ntp.org"
