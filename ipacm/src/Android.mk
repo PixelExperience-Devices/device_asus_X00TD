@@ -8,6 +8,7 @@ BOARD_IPAv3_LIST += msmnile
 BOARD_IPAv3_LIST += kona
 BOARD_IPAv3_LIST += $(MSMSTEPPE)
 BOARD_IPAv3_LIST += $(TRINKET)
+BOARD_IPAv3_LIST += lito
 
 ifneq ($(call is-board-platform-in-list,$(BOARD_PLATFORM_LIST)),true)
 ifneq (,$(filter $(QCOM_BOARD_PLATFORMS),$(TARGET_BOARD_PLATFORM)))
