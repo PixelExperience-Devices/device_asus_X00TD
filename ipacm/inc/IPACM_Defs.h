@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -197,6 +197,8 @@ typedef enum
 #endif
 	IPA_WLAN_FWR_SSR_BEFORE_SHUTDOWN_NOTICE,
 	IPA_LAN_DELETE_SELF,                      /* ipacm_event_data_fid */
+	IPA_WIGIG_CLIENT_ADD_EVENT,               /* ipacm_event_data_mac_ep */
+	IPA_WIGIG_FST_SWITCH,                     /* ipacm_event_data_fst */
 	IPACM_EVENT_MAX
 } ipa_cm_event_id;
 
@@ -275,6 +277,7 @@ typedef struct
 	ipa_ip_type iptype;
 	uint8_t mac_addr[6];
 	char iface_name[IPA_IFACE_NAME_LEN];
+	int ep;
 } ipacm_event_eth_bridge;
 
 typedef struct
@@ -327,6 +330,20 @@ typedef struct _ipacm_event_data_mac
 	int ipa_if_cate;
 	uint8_t mac_addr[IPA_MAC_ADDR_SIZE];
 } ipacm_event_data_mac;
+
+typedef struct _ipacm_event_data_mac_ep
+{
+	int if_index;
+	enum ipa_client_type client;
+	uint8_t mac_addr[IPA_MAC_ADDR_SIZE];
+} ipacm_event_data_mac_ep;
+
+typedef struct _ipacm_event_data_fst
+{
+	int if_index;
+	bool to_wigig;
+	uint8_t mac_addr[IPA_MAC_ADDR_SIZE];
+} ipacm_event_data_fst;
 
 typedef struct
 {

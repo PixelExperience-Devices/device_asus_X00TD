@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -71,6 +71,7 @@ typedef struct _ipa_wlan_client
 	bool ipv4_header_set;
 	bool ipv6_header_set;
 	bool power_save_set;
+	enum ipa_client_type wigig_ipa_client;
 	wlan_client_rt_hdl wifi_rt_hdl[0]; /* depends on number of tx properties */
 }ipa_wlan_client;
 
@@ -210,6 +211,8 @@ private:
 
 		return IPACM_SUCCESS;
 	}
+
+	int handle_wigig_client_add(ipacm_event_data_mac_ep *data);
 
 	/* for handle wifi client initial,copy all partial headers (tx property) */
 	int handle_wlan_client_init_ex(ipacm_event_data_wlan_ex *data);

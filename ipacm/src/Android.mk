@@ -8,6 +8,8 @@ BOARD_IPAv3_LIST += msmnile
 BOARD_IPAv3_LIST += kona
 BOARD_IPAv3_LIST += $(MSMSTEPPE)
 BOARD_IPAv3_LIST += $(TRINKET)
+BOARD_IPAv3_LIST += lito
+BOARD_IPAv3_LIST += atoll
 
 ifneq ($(call is-board-platform-in-list,$(BOARD_PLATFORM_LIST)),true)
 ifneq (,$(filter $(QCOM_BOARD_PLATFORMS),$(TARGET_BOARD_PLATFORM)))
@@ -62,6 +64,7 @@ LOCAL_SRC_FILES := IPACM_Main.cpp \
 		IPACM_OffloadManager.cpp
 
 LOCAL_MODULE := ipacm
+LOCAL_INIT_RC := ipacm.rc
 LOCAL_CLANG := false
 LOCAL_MODULE_TAGS := optional
 

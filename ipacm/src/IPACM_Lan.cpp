@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -379,7 +379,7 @@ void IPACM_Lan::event_callback(ipa_cm_event_id event, void *param)
 			{
 				IPACMDBG_H("Got IPv6 new addr event for a vlan iface %s.\n", data->iface_name);
 				eth_bridge_post_event(IPA_HANDLE_VLAN_IFACE_INFO, data->iptype, NULL,
-					data->ipv6_addr, data->iface_name);
+					data->ipv6_addr, data->iface_name, IPA_CLIENT_MAX);
 			}
 #endif
 			if (ipa_interface_index == ipa_if_num)
@@ -973,7 +973,8 @@ void IPACM_Lan::event_callback(ipa_cm_event_id event, void *param)
 						/* Add NAT rules after ipv4 RT rules are set */
 						CtList->HandleNeighIpAddrAddEvt(data);
 					}
-					eth_bridge_post_event(IPA_ETH_BRIDGE_CLIENT_ADD, IPA_IP_MAX, data->mac_addr, NULL, data->iface_name);
+					eth_bridge_post_event(IPA_ETH_BRIDGE_CLIENT_ADD, IPA_IP_MAX, data->mac_addr, NULL, data->iface_name,
+						IPA_CLIENT_MAX);
 				}
 #ifdef FEATURE_L2TP
 				else if(is_l2tp_event(data->iface_name) && ipa_if_cate == ODU_IF)
@@ -989,13 +990,14 @@ void IPACM_Lan::event_callback(ipa_cm_event_id event, void *param)
 							IPACM_Iface::ipacmcfg->AddRmDepend(IPACM_Iface::ipacmcfg->ipa_client_rm_map_tbl[tx_prop->tx[0].dst_pipe],false);
 						}
 					}
-					eth_bridge_post_event(IPA_ETH_BRIDGE_CLIENT_ADD, IPA_IP_MAX, data->mac_addr, NULL, data->iface_name);
+					eth_bridge_post_event(IPA_ETH_BRIDGE_CLIENT_ADD, IPA_IP_MAX, data->mac_addr, NULL, data->iface_name,
+						IPA_CLIENT_MAX);
 				}
 				else
 				{
 					if(data->iptype == IPA_IP_v6 && is_unique_local_ipv6_addr(data->ipv6_addr))
 					{
-						eth_bridge_post_event(IPA_HANDLE_VLAN_CLIENT_INFO, IPA_IP_MAX, data->mac_addr, data->ipv6_addr, data->iface_name);
+						eth_bridge_post_event(IPA_HANDLE_VLAN_CLIENT_INFO, IPA_IP_MAX, data->mac_addr, data->ipv6_addr, data->iface_name, IPA_CLIENT_MAX);
 					}
 				}
 #endif
@@ -1036,7 +1038,8 @@ void IPACM_Lan::event_callback(ipa_cm_event_id event, void *param)
 				}
 				else
 				{
-					eth_bridge_post_event(IPA_ETH_BRIDGE_CLIENT_DEL, IPA_IP_MAX, data->mac_addr, NULL, data->iface_name);
+					eth_bridge_post_event(IPA_ETH_BRIDGE_CLIENT_DEL, IPA_IP_MAX, data->mac_addr, NULL, data->iface_name,
+						IPA_CLIENT_MAX);
 				}
 				return;
 			}
@@ -1361,7 +1364,7 @@ int IPACM_Lan::handle_addr_evt(ipacm_event_data_addr *data)
 
 		/* populate the flt rule offset for eth bridge */
 		eth_bridge_flt_rule_offset[data->iptype] = ipv4_icmp_flt_rule_hdl[0];
-		eth_bridge_post_event(IPA_ETH_BRIDGE_IFACE_UP, IPA_IP_v4, NULL, NULL, NULL);
+		eth_bridge_post_event(IPA_ETH_BRIDGE_IFACE_UP, IPA_IP_v4, NULL, NULL, NULL, IPA_CLIENT_MAX);
 	}
 	else
 	{
@@ -1463,7 +1466,7 @@ int IPACM_Lan::handle_addr_evt(ipacm_event_data_addr *data)
 
 			/* populate the flt rule offset for eth bridge */
 			eth_bridge_flt_rule_offset[data->iptype] = ipv6_icmp_flt_rule_hdl[0];
-			eth_bridge_post_event(IPA_ETH_BRIDGE_IFACE_UP, IPA_IP_v6, NULL, NULL, NULL);
+			eth_bridge_post_event(IPA_ETH_BRIDGE_IFACE_UP, IPA_IP_v6, NULL, NULL, NULL, IPA_CLIENT_MAX);
 
 			init_fl_rule(data->iptype);
 		}
@@ -3071,7 +3074,7 @@ int IPACM_Lan::handle_down_evt()
 			IPACM_Iface::ipacmcfg->DelRmDepend(IPACM_Iface::ipacmcfg->ipa_client_rm_map_tbl[tx_prop->tx[0].dst_pipe]);
 		}
 	}
-	eth_bridge_post_event(IPA_ETH_BRIDGE_IFACE_DOWN, IPA_IP_MAX, NULL, NULL, NULL);
+	eth_bridge_post_event(IPA_ETH_BRIDGE_IFACE_DOWN, IPA_IP_MAX, NULL, NULL, NULL, IPA_CLIENT_MAX);
 
 /* Delete private subnet*/
 #ifdef FEATURE_IPA_ANDROID
@@ -4419,69 +4422,193 @@ int IPACM_Lan::handle_tethering_stats_event(ipa_get_data_stats_resp_msg_v01 *dat
 	return IPACM_SUCCESS;
 }
 
-/*handle tether client */
-int IPACM_Lan::handle_tethering_client(bool reset, ipacm_client_enum ipa_client)
+int IPACM_Lan::set_client_pipe(enum ipa_client_type client, uint32_t *pipe)
 {
-	int fd, ret = IPACM_SUCCESS;
-	uint32_t cnt;
-	int fd_wwan_ioctl = open(WWAN_QMI_IOCTL_DEVICE_NAME, O_RDWR);
-	wan_ioctl_set_tether_client_pipe tether_client;
+	int fd;
 
-	if(fd_wwan_ioctl < 0)
+	fd = open(IPA_DEVICE_NAME, O_RDWR);
+	if(fd < 0)
 	{
-		IPACMERR("Failed to open %s.\n",WWAN_QMI_IOCTL_DEVICE_NAME);
+		IPACMERR("Failed opening %s.\n", IPA_DEVICE_NAME);
 		return IPACM_FAILURE;
 	}
 
-	fd = open(IPA_DEVICE_NAME, O_RDWR);
-	if (fd < 0)
+	*pipe = ioctl(fd, IPA_IOC_QUERY_EP_MAPPING, client);
+
+	close(fd);
+	return IPACM_SUCCESS;
+}
+
+int IPACM_Lan::set_tether_client_wigig(wan_ioctl_set_tether_client_pipe *tether_client)
+{
+#define NUM_WIGIG_TX_PIPES 4
+
+	uint32_t cnt;
+	int ret;
+	int fd_wwan_ioctl = open(WWAN_QMI_IOCTL_DEVICE_NAME, O_RDWR);
+
+	if(fd_wwan_ioctl < 0)
 	{
-		IPACMERR("Failed opening %s.\n", IPA_DEVICE_NAME);
+		IPACMERR("Failed to open %s.\n", WWAN_QMI_IOCTL_DEVICE_NAME);
+		return IPACM_FAILURE;
+	}
+
+	if(!tx_prop || !rx_prop)
+	{
+		IPACMERR("no props, can't set client %p, %p\n", rx_prop, tx_prop);
 		close(fd_wwan_ioctl);
 		return IPACM_FAILURE;
 	}
 
-	memset(&tether_client, 0, sizeof(tether_client));
-	tether_client.reset_client = reset;
-	tether_client.ipa_client = ipa_client;
+	/* only one rx pipe for wigig */
+	tether_client->ul_src_pipe_len = rx_prop->num_rx_props;
+	for(cnt = 0; cnt < rx_prop->num_rx_props; cnt++)
+	{
+		ret = set_client_pipe(rx_prop->rx[cnt].src_pipe, &tether_client->ul_src_pipe_list[cnt]);
+		if(ret)
+		{
+			close(fd_wwan_ioctl);
+			return ret;
+		}
+		IPACMDBG_H("Rx(%d), src_pipe: %d, ipa_pipe: %d\n",
+			cnt, rx_prop->rx[cnt].src_pipe,
+			tether_client->ul_src_pipe_list[cnt]);
+	}
+
+	for(int i = 0; i < NUM_WIGIG_TX_PIPES; i++)
+	{
+		/* 4 tx pipes for wigig */
+		tether_client->dl_dst_pipe_len = tx_prop->num_tx_props;
+
+#ifdef IPA_CLIENT_WIGIG4_CONS
+		for(cnt = 0; cnt < tx_prop->num_tx_props; cnt++)
+		{
+			enum ipa_client_type client;
+
+			switch(i) {
+				case 0:
+					client = IPA_CLIENT_WIGIG1_CONS;
+					break;
+				case 1:
+					client = IPA_CLIENT_WIGIG2_CONS;
+					break;
+				case 2:
+					client = IPA_CLIENT_WIGIG3_CONS;
+					break;
+				case 3:
+					client = IPA_CLIENT_WIGIG4_CONS;
+					break;
+				default:
+					IPACMERR("shouldn't get here\n");
+					close(fd_wwan_ioctl);
+					return IPACM_FAILURE;
+			}
+			ret = set_client_pipe(client, &tether_client->dl_dst_pipe_list[cnt]);
+			if(ret)
+			{
+				close(fd_wwan_ioctl);
+				return ret;
+			}
+			IPACMDBG_H("Tx(%d), IPA_CLIENT_WIGIG%d_CONS, ipa_pipe: %d\n",
+				cnt, i + 1,
+				tether_client->dl_dst_pipe_list[cnt]);
+		}
+#endif
+		ret = ioctl(fd_wwan_ioctl, WAN_IOC_SET_TETHER_CLIENT_PIPE, tether_client);
+		if(ret != 0)
+		{
+			IPACMERR("Failed set tether-client-pipe %p with ret %d\n ", tether_client, ret);
+		}
+		IPACMDBG("Set wigig tether-client-pipe (%d) %p\n", i, tether_client);
+	}
+
+	close(fd_wwan_ioctl);
+	return ret;
+}
+
+int IPACM_Lan::set_tether_client(wan_ioctl_set_tether_client_pipe *tether_client)
+{
+	uint32_t cnt;
+	int ret;
+	int fd_wwan_ioctl = open(WWAN_QMI_IOCTL_DEVICE_NAME, O_RDWR);
+
+	if(fd_wwan_ioctl < 0)
+	{
+		IPACMERR("Failed to open %s.\n", WWAN_QMI_IOCTL_DEVICE_NAME);
+		return IPACM_FAILURE;
+	}
 
 	if(tx_prop != NULL)
 	{
-		tether_client.dl_dst_pipe_len = tx_prop->num_tx_props;
-		for (cnt = 0; cnt < tx_prop->num_tx_props; cnt++)
+		tether_client->dl_dst_pipe_len = tx_prop->num_tx_props;
+		for(cnt = 0; cnt < tx_prop->num_tx_props; cnt++)
 		{
+			ret = set_client_pipe(tx_prop->tx[cnt].dst_pipe, &tether_client->dl_dst_pipe_list[cnt]);
+			if(ret)
+			{
+				close(fd_wwan_ioctl);
+				return ret;
+			}
 			IPACMDBG_H("Tx(%d), dst_pipe: %d, ipa_pipe: %d\n",
-					cnt, tx_prop->tx[cnt].dst_pipe,
-						ioctl(fd, IPA_IOC_QUERY_EP_MAPPING, tx_prop->tx[cnt].dst_pipe));
-			tether_client.dl_dst_pipe_list[cnt] = ioctl(fd, IPA_IOC_QUERY_EP_MAPPING, tx_prop->tx[cnt].dst_pipe);
+				cnt, tx_prop->tx[cnt].dst_pipe,
+				tether_client->dl_dst_pipe_list[cnt]);
 		}
 	}
 
 	if(rx_prop != NULL)
 	{
-		tether_client.ul_src_pipe_len = rx_prop->num_rx_props;
-		for (cnt = 0; cnt < rx_prop->num_rx_props; cnt++)
+		tether_client->ul_src_pipe_len = rx_prop->num_rx_props;
+		for(cnt = 0; cnt < rx_prop->num_rx_props; cnt++)
 		{
+			ret = set_client_pipe(rx_prop->rx[cnt].src_pipe, &tether_client->ul_src_pipe_list[cnt]);
+			if(ret)
+			{
+				close(fd_wwan_ioctl);
+				return ret;
+			}
 			IPACMDBG_H("Rx(%d), src_pipe: %d, ipa_pipe: %d\n",
-					cnt, rx_prop->rx[cnt].src_pipe,
-						ioctl(fd, IPA_IOC_QUERY_EP_MAPPING, rx_prop->rx[cnt].src_pipe));
-			tether_client.ul_src_pipe_list[cnt] = ioctl(fd, IPA_IOC_QUERY_EP_MAPPING, rx_prop->rx[cnt].src_pipe);
+				cnt, rx_prop->rx[cnt].src_pipe,
+				tether_client->ul_src_pipe_list[cnt]);
 		}
 	}
 
 	ret = ioctl(fd_wwan_ioctl, WAN_IOC_SET_TETHER_CLIENT_PIPE, &tether_client);
-	if (ret != 0)
+	if(ret != 0)
 	{
 		IPACMERR("Failed set tether-client-pipe %p with ret %d\n ", &tether_client, ret);
 	}
 	IPACMDBG("Set tether-client-pipe %p\n", &tether_client);
-	close(fd);
+
 	close(fd_wwan_ioctl);
 	return ret;
 }
 
+/*handle tether client */
+int IPACM_Lan::handle_tethering_client(bool reset, ipacm_client_enum ipa_client)
+{
+	int ret = IPACM_SUCCESS;
+	wan_ioctl_set_tether_client_pipe tether_client;
+
+	memset(&tether_client, 0, sizeof(tether_client));
+	tether_client.reset_client = reset;
+	tether_client.ipa_client = ipa_client;
+
+	/* special case for wigig (11ad) who has 4 Tx and 1 RX pipe */
+	if(!strcmp(dev_name, "wigig0"))
+	{
+		set_tether_client_wigig(&tether_client);
+	}
+	else
+	{
+		set_tether_client(&tether_client);
+	}
+
+	return ret;
+}
+
 /* mac address has to be provided for client related events */
-void IPACM_Lan::eth_bridge_post_event(ipa_cm_event_id evt, ipa_ip_type iptype, uint8_t *mac, uint32_t *ipv6_addr, char *iface_name)
+void IPACM_Lan::eth_bridge_post_event(ipa_cm_event_id evt, ipa_ip_type iptype, uint8_t *mac, uint32_t *ipv6_addr, char *iface_name,
+	int ep)
 {
 	ipacm_cmd_q_data eth_bridge_evt;
 	ipacm_event_eth_bridge *evt_data_eth_bridge;
@@ -4540,6 +4667,7 @@ void IPACM_Lan::eth_bridge_post_event(ipa_cm_event_id evt, ipa_ip_type iptype, u
 
 		evt_data_eth_bridge->p_iface = this;
 		evt_data_eth_bridge->iptype = iptype;
+		evt_data_eth_bridge->ep = ep;
 		if(mac)
 		{
 			IPACMDBG_H("Mac: 0x%02x%02x%02x%02x%02x%02x \n",
@@ -4605,7 +4733,8 @@ end:
 
 /* add routing rule and return handle to lan2lan controller */
 int IPACM_Lan::eth_bridge_add_rt_rule(uint8_t *mac, char *rt_tbl_name, uint32_t hdr_proc_ctx_hdl,
-		ipa_hdr_l2_type peer_l2_hdr_type, ipa_ip_type iptype, uint32_t *rt_rule_hdl, int *rt_rule_count)
+		ipa_hdr_l2_type peer_l2_hdr_type, ipa_ip_type iptype, uint32_t *rt_rule_hdl, int *rt_rule_count,
+		int ep)
 {
 	int len, res = IPACM_SUCCESS;
 	uint32_t i, position, num_rt_rule;
@@ -4614,6 +4743,9 @@ int IPACM_Lan::eth_bridge_add_rt_rule(uint8_t *mac, char *rt_tbl_name, uint32_t 
 
 	IPACMDBG_H("Received client MAC 0x%02x%02x%02x%02x%02x%02x.\n",
 			mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+
+	/*fix -Wall -Werror if wigig feature is not enabled */
+	IPACMDBG_H("ep: %d\n", ep);
 
 	num_rt_rule = each_client_rt_rule_count[iptype];
 
@@ -4653,7 +4785,14 @@ int IPACM_Lan::eth_bridge_add_rt_rule(uint8_t *mac, char *rt_tbl_name, uint32_t 
 				res = IPACM_FAILURE;
 				goto end;
 			}
-
+#ifdef IPA_CLIENT_WIGIG4_CONS
+			if ((ep >= IPA_CLIENT_WIGIG1_CONS) && (ep <= IPA_CLIENT_WIGIG4_CONS))
+			{
+				IPACMDBG_H("wigig DL pipe %d\n", ep);
+				rt_rule.rule.dst = (enum ipa_client_type)ep;
+			}
+			else 
+#endif
 			if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->isMCC_Mode)
 			{
 				IPACMDBG_H("In WLAN MCC mode, use alt dst pipe: %d\n",

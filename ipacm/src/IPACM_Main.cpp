@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -63,6 +63,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "IPACM_Neighbor.h"
 #include "IPACM_IfaceManager.h"
 #include "IPACM_Log.h"
+#include "IPACM_Wan.h"
 
 #include "IPACM_ConntrackListener.h"
 #include "IPACM_ConntrackClient.h"
@@ -235,8 +236,11 @@ void* ipa_driver_msg_notifier(void *param)
 	struct ipa_ecm_msg event_ecm;
 	struct ipa_wan_msg event_wan;
 	struct ipa_wlan_msg_ex event_ex_o;
-	struct ipa_wlan_msg *event_wlan=NULL;
-	struct ipa_wlan_msg_ex *event_ex= NULL;
+	struct ipa_wlan_msg *event_wlan = NULL;
+	struct ipa_wlan_msg_ex *event_ex = NULL;
+#ifdef WIGIG_CLIENT_CONNECT
+	struct ipa_wigig_msg *event_wigig = NULL;
+#endif
 	struct ipa_get_data_stats_resp_msg_v01 event_data_stats;
 	struct ipa_get_apn_data_stats_resp_msg_v01 event_network_stats;
 #ifdef FEATURE_IPACM_HAL
@@ -245,6 +249,9 @@ void* ipa_driver_msg_notifier(void *param)
 
 	ipacm_cmd_q_data evt_data;
 	ipacm_event_data_mac *data = NULL;
+#ifdef WIGIG_CLIENT_CONNECT
+	ipacm_event_data_mac_ep *data_wigig = NULL;
+#endif
 	ipacm_event_data_fid *data_fid = NULL;
 	ipacm_event_data_iptype *data_iptype = NULL;
 	ipacm_event_data_wlan_ex *data_ex;
@@ -393,7 +400,30 @@ void* ipa_driver_msg_notifier(void *param)
 		        evt_data.event = IPA_WLAN_CLIENT_ADD_EVENT;
 			evt_data.evt_data = data;
 			break;
+#ifdef WIGIG_CLIENT_CONNECT
+		case WIGIG_CLIENT_CONNECT:
+			event_wigig = (struct ipa_wigig_msg *)(buffer + sizeof(struct ipa_msg_meta));
+			IPACMDBG_H("Received WIGIG_CLIENT_CONNECT\n");
+			IPACMDBG_H("Mac Address %02x:%02x:%02x:%02x:%02x:%02x, ep %d\n",
+				event_wigig->client_mac_addr[0], event_wigig->client_mac_addr[1], event_wigig->client_mac_addr[2],
+				event_wigig->client_mac_addr[3], event_wigig->client_mac_addr[4], event_wigig->client_mac_addr[5],
+				event_wigig->u.ipa_client);
 
+			data_wigig = (ipacm_event_data_mac_ep *)malloc(sizeof(ipacm_event_data_mac_ep));
+			if(data_wigig == NULL)
+			{
+				IPACMERR("unable to allocate memory for event_wigig data\n");
+				return NULL;
+			}
+			memcpy(data_wigig->mac_addr,
+				event_wigig->client_mac_addr,
+				sizeof(data_wigig->mac_addr));
+			ipa_get_if_index(event_wigig->name, &(data_wigig->if_index));
+			data_wigig->client = event_wigig->u.ipa_client;
+			evt_data.event = IPA_WIGIG_CLIENT_ADD_EVENT;
+			evt_data.evt_data = data_wigig;
+			break;
+#endif
 		case WLAN_CLIENT_CONNECT_EX:
 			IPACMDBG_H("Received WLAN_CLIENT_CONNECT_EX\n");
 
@@ -715,6 +745,7 @@ void* ipa_driver_msg_notifier(void *param)
 			continue;
 		case IPA_SSR_BEFORE_SHUTDOWN:
 			IPACMDBG_H("Received IPA_SSR_BEFORE_SHUTDOWN\n");
+			IPACM_Wan::clearExtProp();
 			OffloadMng = IPACM_OffloadManager::GetInstance();
 			if (OffloadMng->elrInstance == NULL) {
 				IPACMERR("OffloadMng->elrInstance is NULL, can't forward to framework!\n");

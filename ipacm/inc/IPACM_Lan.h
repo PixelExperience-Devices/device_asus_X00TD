@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -151,7 +151,7 @@ public:
 
 	/* add routing rule and return handle to lan2lan controller */
 	int eth_bridge_add_rt_rule(uint8_t *mac, char *rt_tbl_name, uint32_t hdr_proc_ctx_hdl,
-		ipa_hdr_l2_type peer_l2_hdr_type, ipa_ip_type iptype, uint32_t *rt_rule_hdl, int *rt_rule_count);
+		ipa_hdr_l2_type peer_l2_hdr_type, ipa_ip_type iptype, uint32_t *rt_rule_hdl, int *rt_rule_count, int ep);
 
 	/* modify routing rule*/
 	int eth_bridge_modify_rt_rule(uint8_t *mac, uint32_t hdr_proc_ctx_hdl,
@@ -209,7 +209,7 @@ protected:
 
 	/* mac address has to be provided for client related events */
 	void eth_bridge_post_event(ipa_cm_event_id evt, ipa_ip_type iptype, uint8_t *mac,
-		uint32_t *ipv6_addr, char *iface_name);
+		uint32_t *ipv6_addr, char *iface_name, int ep);
 
 #ifdef FEATURE_L2TP
 	/* check if the event is associated with vlan interface */
@@ -281,6 +281,10 @@ protected:
 	uint32_t tcp_syn_flt_rule_hdl[IPA_IP_MAX];
 
 private:
+
+	int set_client_pipe(enum ipa_client_type client, uint32_t *pipe);
+	int set_tether_client(wan_ioctl_set_tether_client_pipe *tether_client);
+	int set_tether_client_wigig(wan_ioctl_set_tether_client_pipe *tether_client);
 
 	/* get hdr proc ctx type given source and destination l2 hdr type */
 	ipa_hdr_proc_type eth_bridge_get_hdr_proc_type(ipa_hdr_l2_type t1, ipa_hdr_l2_type t2);
