@@ -242,12 +242,13 @@ on property:vendor.ims.QMI_DAEMON_STATUS=1
     start vendor.imsdatadaemon
 
 on property:vold.decrypt=trigger_restart_framework
-   start cnss_diag
+#   start cnss_diag
 
 service cnss_diag /vendor/bin/cnss_diag -q -f -t HELIUM
    class main
    user system
    group system wifi inet sdcard_rw media_rw diag
+   disabled
    oneshot
 
 service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon

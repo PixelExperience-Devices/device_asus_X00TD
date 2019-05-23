@@ -101,7 +101,7 @@ case "$baseband" in
         start vendor.ril-daemon
     fi
 
-    start vendor.ipacm-diag
+    # start vendor.ipacm-diag
     start vendor.ipacm
     case "$baseband" in
         "svlte2a" | "csfb")

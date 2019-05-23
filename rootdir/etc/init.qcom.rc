@@ -896,6 +896,7 @@ service ssgtzd /vendor/bin/ssgtzd
     user system
     group system
     socket ssgtzd stream 0660 system inet
+    disabled
 
 service loc_launcher /vendor/bin/loc_launcher
     class late_start
@@ -932,6 +933,7 @@ service vendor-sensor-sh /vendor/bin/init.qcom.sensors.sh
 service crashdata-sh /vendor/bin/init.qcom.crashdata.sh
     class late_start
     user root
+    disabled
     oneshot
 
 service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
@@ -1174,6 +1176,7 @@ service vendor.wifilearner /vendor/bin/wifilearner
     class main
     user wifi
     group wifi
+    disabled
     oneshot
 
 on property:init.svc.vendor.ipacm-diag=running
