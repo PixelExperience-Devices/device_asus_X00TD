@@ -100,14 +100,14 @@ vendor/etc/acdbdata/QRD/QRD_Speaker_cal.acdb
 vendor/etc/acdbdata/QRD/QRD_workspaceFile.qwsp
 vendor/etc/acdbdata/adsp_avs_config.acdb
 
-# Bluetooth - from lavender - PPR1.180904.001 V10.2.3.0.PFGCNXM
-vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|dff50e256246ab04e01ec5658f94073dddb9fb0c
-vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|a979981c55f3dcaf6cf2212e71b901ca4d58b959
-vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0.so|65044df90882e97700a7fbd3405a2c64423d7f01
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|e3aac2202a3242d3f29219df481a34aefd78adc7
-vendor/lib64/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so|eb68ea9f4021cc28d9267dd6c0e10ded248e4a89
-vendor/lib64/libbt-hidlclient.so|cd3513edb12f5e9ef1825c13a290d42e05b7a69b
-vendor/lib64/libbtnv.so|c0251f0064fc6fff2444760b0723755fc4a51957
+# Bluetooth
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
+vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib64/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so
+vendor/lib64/libbt-hidlclient.so
+vendor/lib64/libbtnv.so
 
 # Camera
 vendor/lib/hw/camera.sdm660.so
