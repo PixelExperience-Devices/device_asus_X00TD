@@ -116,6 +116,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.early_phase_offset_ns=5000000 \
     debug.sf.hw=1 \
     debug.sf.latch_unsignaled=1 \
+    debug.gralloc.enable_fb_ubwc=1 \
     vendor.gralloc.enable_fb_ubwc=1 \
     vendor.gralloc.disable_ubwc=0 \
     debug.hwui.use_buffer_age=false \
@@ -144,11 +145,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-qcp=true \
     media.stagefright.enable-scan=true \
     mm.enable.smoothstreaming=true \
-    vendor.mm.enable.qcom_parser=13631487 \
+    vendor.mm.enable.qcom_parser=13631486 \
     mmp.enable.3g2=true \
     persist.mm.enable.prefetch=true \
     vendor.vidc.enc.disable_bframes=1 \
-    vendor.vidc.dec.enable.downscalar=1 \
+    vendor.vidc.dec.enable.downscalar=0 \
     vendor.vidc.enc.disable.pq=false \
     vidc.enc.dcvs.extra-buff-count=2 \
     vidc.enc.target_support_bframe=1
@@ -177,10 +178,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # NTP Server
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.backup.ntpServer="0.pool.ntp.org"
+    persist.backup.ntpServer="0.pool.ntp.org" \
+    persist.vendor.overlay.izat.optin=rro
 
 # QCOM cabl
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.cabl=2 \
     ro.vendor.display.cabl=2
 
 # QTI
@@ -226,7 +229,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sensors.sta_detect=true \
     ro.vendor.qti.sensors.mot_detect=true \
     ro.vendor.qti.sensors.facing=false \
-    ro.vendor.qti.sensors.cmc=false
+    ro.vendor.qti.sensors.cmc=false \
+    ro.vendor.sensors.dev_ori=true \
+    ro.vendor.sensors.pmd=true \
+    ro.vendor.sensors.sta_detect=true \
+    ro.vendor.sensors.mot_detect=true \
+    ro.vendor.sdk.sensors.gestures \
+    ro.vendor.sensors.cmc=false \
+    ro.vendor.sensors.facing=false
 
 # Skip Validate Disable
 PRODUCT_PROPERTY_OVERRIDES += \
