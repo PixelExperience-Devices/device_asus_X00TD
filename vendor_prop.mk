@@ -251,11 +251,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.video.disable.ubwc=1
 
-# Tap to Wake
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.asus.dclick=1 \
-    persist.asus.gesture.type=1000000
-
 # Time
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
