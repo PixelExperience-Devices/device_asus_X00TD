@@ -253,9 +253,16 @@ public:
 		return curr_wan_ip;
 	}
 
-	static bool getXlat_Mux_Id()
+	static int getXlat_Mux_Id()
 	{
-		return xlat_mux_id;
+		if (is_xlat)
+		{
+			IPACMDBG_H("xlat_mux_id: %d\n", xlat_mux_id);
+			return xlat_mux_id;
+		} else {
+			IPACMDBG_H("no xlat return invalid mux-id: 0\n");
+			return 0;
+		}
 	}
 
 	static void clearExtProp()
