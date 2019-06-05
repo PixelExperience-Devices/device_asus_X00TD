@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 SlimRoms Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- General strings -->
+
+    <string name="dlg_ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="reset">Reset</string>
+    <string name="reset_message">Reset all entries to default?</string>
+    <string name="group_applications">Applications</string>
+    <string name="select_custom_app_title">Select custom application</string>
+    <string name="gestures_dashboard_summary">Zenmotion gestures for Zenfone</string>
+    <string name="enable_gestures_title">Enable gestures</string>
+    <string name="enable_gestures_summary">Enable screen off gestures</string>
+    <string name="gestures_title">Gestures</string>
+    <string name="gesture_z_title">Gesture Z</string>	
+    <string name="gesture_s_title">Gesture S</string>
+    <string name="gesture_v_title">Gesture V</string>
+    <string name="gesture_w_title">Gesture W</string>
+    <string name="gesture_c_title">Gesture C</string>
+    <string name="gesture_e_title">Gesture e</string>
+    <string name="gesture_double_tap_title">Double tap</string>
+    <string name="LineageActions">LineageActions</string>
+    <string name="LineageActions_summary">Gestures and Tweaks for Zenfone</string>
+    <string name="screen_off_gestures">Screen-off gestures</string>
+    <string name="gestures">Gestures</string>
+
+    <!-- Ambient Display -->
+    <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_display_enable_title">Ambient display</string>
+    <string name="ambient_display_enable_summary">Wake screen when you receive notifications</string>
+    <string name="ambient_display_gestures_title">Ambient display gestures</string>
+    <string name="ambient_display_gestures_summary">Additional gestures to wake the screen</string>
+    <string name="ambient_display_summary">Wake screen when you receive notifications</string>
+    <string name="ambient_display_summary_on">Screen will wake when you receive notifications</string>
+    <string name="ambient_display_summary_off">Screen will not wake when you receive notifications</string>
+
+    <!-- Tilt sensor -->
+    <string name="tilt_sensor_title">Tilt sensor</string>
+
+    <!-- Pickup sensor -->
+    <string name="pickup_sensor_title">Pickup sensor</string>
+
+    <!-- Proximity sensor -->
+    <string name="proximity_sensor_title">Proximity sensor</string>
+
+    <!-- Hand wave gesture -->
+    <string name="hand_wave_gesture_title">Hand wave</string>
+    <string name="hand_wave_gesture_summary">Pulse notifications on hand wave</string>
+    <string name="hand_wave_gesture_flat_title">Detect orientation</string>
+    <string name="hand_wave_gesture_flat_summary">Pulse only if the phone is lying face up on a flat surface</string>
+
+    <!-- Pick-up gesture -->
+    <string name="pick_up_gesture_title">Pick-up</string>
+    <string name="pick_up_gesture_summary">Pulse notifications on pick-up</string>
+
+    <!-- Pocket gesture -->
+    <string name="pocket_gesture_title">Pocket</string>
+    <string name="pocket_gesture_summary">Pulse notifications on removal from pocket</string>
+
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Proximity wake</string>
+    <string name="proximity_wake_enable_title">Proximity wake</string>
+    <string name="proximity_wake_enable_summary">Wake device on hand wave</string>
+
+    <!-- Label for feature switch  -->
+    <string name="switch_bar_on">On</string>
+
+    <!-- Label for feature switch -->
+    <string name="switch_bar_off">Off</string>
+
+    <!-- Device specific settings -->
+    <string name="device_settings_app_name">Advanced settings</string>
+
+    <!-- Device gestures panel -->
+    <string name="screen_gestures_panel_title">Gestures</string>
+
+    <!-- Ambient gesture haptic feedback -->
+    <string name="ambient_gesture_extras">Extras</string>
+    <string name="ambient_gesture_haptic_feedback">Haptic feedback</string>
+    <string name="ambient_gesture_haptic_feedback_summary">Vibrate when a Ambient gesture is detected</string>
+
+</resources>

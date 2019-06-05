@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:sharedUserId="android.uid.system"
+          package="org.lineageos.settings.device"
+          android:versionCode="1"
+          android:versionName="1" >
+
+    <uses-permission android:name="android.permission.INJECT_EVENTS"/>
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CAMERA" />
+	
+    <protected-broadcast android:name="com.android.systemui.doze.pulse" />
+    <protected-broadcast android:name="org.lineageos.settings.device.CUST_UPDATE" />
+
+    <uses-sdk
+        android:minSdkVersion="27"
+        android:targetSdkVersion="27"/>
+
+    <application
+            android:icon="@android:drawable/sym_def_app_icon"
+            android:label="@string/LineageActions"
+            android:theme="@style/AppTheme"
+            >
+
+        <!-- stub to ensure its loaded - DO NOT REMOVE -->
+        <activity android:name=".KeyHandler" />
+
+        <activity
+            android:name=".LineageActionsActivity"
+            android:label="@string/LineageActions"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+	    </activity>
+
+        <activity-alias
+            android:name=".LineageActions"
+            android:label="@string/LineageActions"
+            android:targetActivity="LineageActionsActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/ic_settings_gestures" />
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.homepage" />
+            <meta-data android:name="com.android.settings.summary"
+                android:resource="@string/LineageActions_summary" />
+        </activity-alias>
+
+        <activity
+            android:name=".settings.ScreenOffGestureSettings"
+            android:label="@string/screen_off_gestures">
+          <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+          </intent-filter>
+        </activity>
+
+        <receiver android:name=".BootReceiver" >
+          <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+          </intent-filter>
+        </receiver>
+
+        <service android:name="org.lineageos.settings.device.gestures.SensorsDozeService"
+                 android:permission="SensorsDozeService">
+        </service>
+
+        <activity
+            android:name="org.lineageos.settings.device.gestures.AmbientGesturePreferenceActivity"
+            android:label="@string/ambient_display_gestures_title">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
