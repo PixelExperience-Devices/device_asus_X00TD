@@ -28,6 +28,12 @@
             android:title="@string/gestures_title" >
 
             <Preference
+                android:key="gesture_double_tap"
+                android:title="@string/gesture_double_tap_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
                 android:key="gesture_v"
                 android:title="@string/gesture_v_title"
                 android:persistent="false"
@@ -63,6 +69,29 @@
                 android:persistent="false"
                 android:dependency="enable_gestures" />
 
+            <Preference
+                android:key="gesture_up"
+                android:title="@string/gesture_up_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_down"
+                android:title="@string/gesture_down_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_left"
+                android:title="@string/gesture_left_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_right"
+                android:title="@string/gesture_right_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
         </PreferenceCategory>
 
 </PreferenceScreen>

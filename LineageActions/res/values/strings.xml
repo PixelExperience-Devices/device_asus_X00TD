@@ -33,7 +33,11 @@
     <string name="gesture_w_title">Gesture W</string>
     <string name="gesture_c_title">Gesture C</string>
     <string name="gesture_e_title">Gesture e</string>
-    <string name="gesture_double_tap_title">Double tap</string>
+    <string name="gesture_double_tap_title">Gesture Double Tap</string>
+    <string name="gesture_up_title">Gesture Swipe Up</string>
+    <string name="gesture_down_title">Gesture Swipe Down</string>
+    <string name="gesture_left_title">Gesture Swipe Left</string>
+    <string name="gesture_right_title">Gesture Swipe Right</string>
     <string name="LineageActions">LineageActions</string>
     <string name="LineageActions_summary">Gestures and Tweaks for Zenfone</string>
     <string name="screen_off_gestures">Screen-off gestures</string>
