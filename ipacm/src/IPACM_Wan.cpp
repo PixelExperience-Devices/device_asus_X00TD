@@ -4369,6 +4369,7 @@ int IPACM_Wan::handle_route_del_evt(ipa_ip_type iptype)
 		else
 		{
 			/* change wan_state for Q6_MHI */
+#ifdef WAN_IOC_NOTIFY_WAN_STATE
 			IPACMDBG_H("ipa_pm_q6_check to %d\n", ipa_pm_q6_check);
 			if(ipa_pm_q6_check == 1 && m_is_sta_mode == Q6_MHI_WAN)
 			{
@@ -4389,6 +4390,7 @@ int IPACM_Wan::handle_route_del_evt(ipa_ip_type iptype)
 				ipa_pm_q6_check--;
 			else
 				IPACMERR(" ipa_pm_q6_check becomes negative !!!\n");
+#endif
 		}
 
 		for (tx_index = 0; tx_index < iface_query->num_tx_props; tx_index++)
