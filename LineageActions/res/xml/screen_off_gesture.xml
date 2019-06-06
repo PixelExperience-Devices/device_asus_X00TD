@@ -23,6 +23,13 @@
             android:persistent="false"
             android:summary="@string/enable_gestures_summary" />
 
+        <SwitchPreference
+            android:key="gesture_haptic_feedback"
+            android:persistent="false"
+            android:title="@string/touchscreen_gesture_haptic_feedback"
+            android:summary="@string/touchscreen_gesture_haptic_feedback_summary"
+            android:dependency="enable_gestures" />
+
         <PreferenceCategory
             android:key="gestures"
             android:title="@string/gestures_title" >

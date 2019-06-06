@@ -98,4 +98,8 @@
     <string name="ambient_gesture_haptic_feedback">Haptic feedback</string>
     <string name="ambient_gesture_haptic_feedback_summary">Vibrate when a Ambient gesture is detected</string>
 
+    <!-- Touchscreen gesture haptic feedback -->
+    <string name="touchscreen_gesture_haptic_feedback">Haptic feedback</string>
+    <string name="touchscreen_gesture_haptic_feedback_summary">Vibrate when a Touchscreen gesture is detected</string>
+
 </resources>

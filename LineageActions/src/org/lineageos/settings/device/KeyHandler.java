@@ -46,6 +46,7 @@ import com.android.internal.os.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
 import org.lineageos.settings.device.util.ActionConstants;
 import org.lineageos.settings.device.util.Action;
+import org.lineageos.settings.device.util.Utils;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
@@ -255,12 +256,15 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mVibrator == null) {
             return;
         }
+        boolean enabled = getGestureSharedPreferences().getInt(Utils.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, 1) != 0;
+        if (enabled) {
             mVibrator.vibrate(50);
+        }
     }
 
     private SharedPreferences getGestureSharedPreferences() {
         return mGestureContext.getSharedPreferences(
-                ScreenOffGesture.GESTURE_SETTINGS,
+                Utils.PREFERENCES,
                 Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
     }
 

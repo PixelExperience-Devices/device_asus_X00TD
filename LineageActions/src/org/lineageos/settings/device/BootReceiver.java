@@ -55,7 +55,7 @@ private void restore(String file, String value) {
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
                 enableComponent(context, ScreenOffGesture.class.getName());
                 SharedPreferences screenOffGestureSharedPreferences = context.getSharedPreferences(
-                        ScreenOffGesture.GESTURE_SETTINGS, Activity.MODE_PRIVATE);
+                        Utils.PREFERENCES, Activity.MODE_PRIVATE);
                 KernelControl.enableGestures(
                         screenOffGestureSharedPreferences.getBoolean(
                         ScreenOffGesture.PREF_GESTURE_ENABLE, true));

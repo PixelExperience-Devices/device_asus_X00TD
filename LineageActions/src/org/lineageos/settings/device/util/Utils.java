@@ -24,11 +24,13 @@ import java.util.List;
 
 public class Utils {
 
-    public static final String TAG = "SettingsUtils";
+    public static final String TAG = "LineageActions";
 
-    public static final String PREFERENCES = "SettingsUtilsPreferences";
+    public static final String PREFERENCES = "LineageActionsPreferences";
     public static final String AMBIENT_GESTURE_HAPTIC_FEEDBACK =
             "AMBIENT_GESTURE_HAPTIC_FEEDBACK";
+    public static final String TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK =
+            "TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK";
 
     private static final String SETTINGS_METADATA_NAME = "com.android.settings";
 
