@@ -141,6 +141,31 @@ IPACM_Wan::IPACM_Wan(int iface_index,
 
 	if(iface_query != NULL)
 	{
+		IPACMDBG_H("index:%d constructor: Tx properties:%d\n", iface_index, iface_query->num_tx_props);
+
+		if(is_sta_mode == Q6_WAN)
+		{
+			query_ext_prop();
+
+			if ((iface_query->num_ext_props == 1) && ((ext_prop != NULL) && ext_prop->ext[0].ip == IPA_IP_MAX))
+			{
+				/* only has one ext properties with IP_MAX type, will be the mhi-modem */
+				IPACMDBG_H("One extended property for iface %s, replace %d to Q6_MHI_WAN\n", dev_name, is_sta_mode);
+				m_is_sta_mode = Q6_MHI_WAN;
+			}
+			else
+			{
+				IPACMDBG_H("The new WAN interface is modem.\n");
+				m_is_sta_mode = is_sta_mode;
+				is_default_gateway = false;
+			}
+		}
+		else
+		{
+			m_is_sta_mode = is_sta_mode;
+			IPACMDBG_H("The new WAN interface is WLAN STA.\n");
+		}
+
 		wan_client_len = (sizeof(ipa_wan_client)) + (iface_query->num_tx_props * sizeof(wan_client_rt_hdl));
 		wan_client = (ipa_wan_client *)calloc(IPA_MAX_NUM_WAN_CLIENTS, wan_client_len);
 		if (wan_client == NULL)
@@ -148,31 +173,11 @@ IPACM_Wan::IPACM_Wan(int iface_index,
 			IPACMERR("unable to allocate memory\n");
 			return;
 		}
-		IPACMDBG_H("index:%d constructor: Tx properties:%d\n", iface_index, iface_query->num_tx_props);
-	}
-
-
-	if(is_sta_mode == Q6_WAN)
-	{
-		query_ext_prop();
-
-		if ((iface_query->num_ext_props == 1) && (ext_prop->ext[0].ip = IPA_IP_MAX))
-		{
-			/* only has one ext properties with IP_MAX type, will be the mhi-modem */
-			IPACMDBG_H("One extended property for iface %s, replace %d to Q6_MHI_WAN\n", dev_name, is_sta_mode);
-			m_is_sta_mode = Q6_MHI_WAN;
-		}
-		else
-		{
-			IPACMDBG_H("The new WAN interface is modem.\n");
-			m_is_sta_mode = is_sta_mode;
-			is_default_gateway = false;
-		}
 	}
 	else
 	{
-		m_is_sta_mode = is_sta_mode;
-		IPACMDBG_H("The new WAN interface is WLAN STA.\n");
+		IPACMDBG_H("iface_query is empty.\n");
+		return;
 	}
 
 	m_fd_ipa = open(IPA_DEVICE_NAME, O_RDWR);
