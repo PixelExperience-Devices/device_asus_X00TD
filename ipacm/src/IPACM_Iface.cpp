@@ -639,6 +639,7 @@ int IPACM_Iface::init_fl_rule(ipa_ip_type iptype)
 	int res = IPACM_SUCCESS, len = 0;
 	struct ipa_flt_rule_add flt_rule_entry;
 	ipa_ioc_add_flt_rule *m_pFilteringTable;
+	bool result;
 
   /* Adding this hack because WLAN may not registered for Rx-endpoint, other ifaces will always have*/
 	const char *dev_wlan0="wlan0";
@@ -745,7 +746,25 @@ int IPACM_Iface::init_fl_rule(ipa_ip_type iptype)
 #endif
 		memcpy(&(m_pFilteringTable->rules[2]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
-		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+		} else if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		} else
+		{
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+		}
+#else
+		result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+		if (result == false)
 		{
 			IPACMERR("Error Adding Filtering rule, aborting...\n");
 			res = IPACM_FAILURE;
@@ -927,7 +946,20 @@ int IPACM_Iface::init_fl_rule(ipa_ip_type iptype)
 		memcpy(&(m_pFilteringTable->rules[7]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
 #endif
-		if (m_filtering.AddFilteringRule(m_pFilteringTable) == false)
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+		}
+#else
+		result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+		if (result == false)
 		{
 			IPACMERR("Error Adding Filtering rule, aborting...\n");
 			res = IPACM_FAILURE;

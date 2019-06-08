@@ -147,6 +147,11 @@ public:
 
 	bool isMCC_Mode;
 
+	/* IPA_HW_FNR_STATS */
+	bool hw_fnr_stats_support;
+	int hw_counter_offset;
+	int sw_counter_offset;
+
 	/* To return the instance */
 	static IPACM_Config* GetInstance();
 
