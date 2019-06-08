@@ -1626,6 +1626,12 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 			IPACM_Wan::backhaul_mode = m_is_sta_mode;		
 			IPACMDBG_H("Setting up QMAP ID %d.\n", ext_prop->ext[0].mux_id);
 			IPACM_Iface::ipacmcfg->SetQmapId(ext_prop->ext[0].mux_id);
+			/* sending mux-id info to PCIE-modem for UL */
+			if(false == m_filtering.AddOffloadFilteringRule(NULL, ext_prop->ext[0].mux_id))
+			{
+				IPACMERR("Failed to send mux id info to modem.\n");
+				return IPACM_FAILURE;
+			}
 		}
 		else
 		{
