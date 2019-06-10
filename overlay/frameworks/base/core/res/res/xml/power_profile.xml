@@ -54,7 +54,11 @@
         <value>170</value>
         <value>193</value>
     </array>
-    <item name="cpu.idle">0.1</item>
+    <item name="cpu.suspend">4</item>
+    <item name="cpu.idle">3</item>
+    <item name="cpu.active">1</item>
+    <item name="cpu.cluster_power.cluster0">1</item>
+    <item name="cpu.cluster_power.cluster1">1</item>
     <array name="memory.bandwidths">
         <value>22.7</value>
     </array>
