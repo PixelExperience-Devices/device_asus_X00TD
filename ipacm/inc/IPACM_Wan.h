@@ -243,7 +243,7 @@ public:
 	static int num_v6_flt_rule;
 
 	ipacm_wan_iface_type m_is_sta_mode;
-	static bool backhaul_is_sta_mode;
+	static ipacm_wan_iface_type backhaul_mode;
 	static bool is_ext_prop_set;
 	static uint32_t backhaul_ipv6_prefix[2];
 
@@ -512,6 +512,9 @@ private:
 	/* handle new_address event */
 	int handle_addr_evt(ipacm_event_data_addr *data);
 
+	/* handle new_address event for q6_mhi */
+	int handle_addr_evt_mhi_q6(ipacm_event_data_addr *data);
+
 	/* wan default route/filter rule configuration */
 	int handle_route_add_evt(ipa_ip_type iptype);
 
@@ -567,10 +570,6 @@ private:
 	int add_tcpv6_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset);
 
 	int install_wan_filtering_rule(bool is_sw_routing);
-
-	void change_to_network_order(ipa_ip_type iptype, ipa_rule_attrib* attrib);
-
-	bool is_global_ipv6_addr(uint32_t* ipv6_addr);
 
 	void handle_wlan_SCC_MCC_switch(bool, ipa_ip_type);
 

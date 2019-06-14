@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -139,6 +139,12 @@ int IPACM_Iface::handle_software_routing_enable(void)
 	memcpy(&flt_rule_entry.rule.attrib,
 				 &rx_prop->rx[0].attrib,
 				 sizeof(flt_rule_entry.rule.attrib));
+	/* disble meta-data filtering skylar */
+	if (IPACM_Wan::backhaul_mode == Q6_MHI_WAN)
+	{
+		flt_rule_entry.rule.attrib.attrib_mask &= ~((uint32_t)IPA_FLT_META_DATA);
+		IPACMDBG_H("disable meta-data filtering 0x%x\n", flt_rule_entry.rule.attrib.attrib_mask);
+	}
 
 	memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
@@ -1043,6 +1049,58 @@ void IPACM_Iface::config_ip_type(ipa_ip_type iptype)
 	}
 
 	return;
+}
+
+void IPACM_Iface::change_to_network_order(ipa_ip_type iptype, ipa_rule_attrib* attrib)
+{
+	if(attrib == NULL)
+	{
+		IPACMERR("Attribute pointer is NULL.\n");
+		return;
+	}
+
+	if(iptype == IPA_IP_v6)
+	{
+		int i;
+		for(i=0; i<4; i++)
+		{
+			attrib->u.v6.src_addr[i] = htonl(attrib->u.v6.src_addr[i]);
+			attrib->u.v6.src_addr_mask[i] = htonl(attrib->u.v6.src_addr_mask[i]);
+			attrib->u.v6.dst_addr[i] = htonl(attrib->u.v6.dst_addr[i]);
+			attrib->u.v6.dst_addr_mask[i] = htonl(attrib->u.v6.dst_addr_mask[i]);
+		}
+	}
+	else
+	{
+		IPACMDBG_H("IP type is not IPv6, do nothing: %d\n", iptype);
+	}
+
+	return;
+}
+
+bool IPACM_Iface::is_global_ipv6_addr(uint32_t* ipv6_addr)
+{
+	uint32_t ipv6_link_local_prefix, ipv6_link_local_prefix_mask;
+	ipv6_link_local_prefix = 0xFE800000;
+	ipv6_link_local_prefix_mask = 0xFFC00000;
+
+	if(ipv6_addr == NULL)
+	{
+		IPACMERR("IPv6 address is empty.\n");
+		return false;
+	}
+	IPACMDBG_H("Get ipv6 address with first word 0x%08x.\n", ipv6_addr[0]);
+
+	if((ipv6_addr[0] & ipv6_link_local_prefix_mask) == (ipv6_link_local_prefix & ipv6_link_local_prefix_mask))
+	{
+		IPACMDBG_H("This IPv6 address is link local.\n");
+		return false;
+	}
+	else
+	{
+		IPACMDBG_H("This IPv6 address is not link local.\n");
+		return true;
+	}
 }
 
 void IPACM_Iface::delete_iface(void)

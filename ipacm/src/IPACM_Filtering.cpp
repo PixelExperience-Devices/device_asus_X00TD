@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -57,6 +57,8 @@ IPACM_Filtering::IPACM_Filtering()
 	{
 		IPACMERR("Failed opening %s.\n", DEVICE_NAME);
 	}
+	total_num_offload_rules = 0;
+	pcie_modem_rule_id = 0;
 }
 
 IPACM_Filtering::~IPACM_Filtering()
@@ -459,6 +461,195 @@ bool IPACM_Filtering::AddWanDLFilteringRule(struct ipa_ioc_add_flt_rule const *r
 
 	close(fd_wwan_ioctl);
 	return true;
+}
+
+bool IPACM_Filtering::AddOffloadFilteringRule(struct ipa_ioc_add_flt_rule *flt_rule_tbl, uint8_t mux_id)
+{
+#ifdef WAN_IOCTL_ADD_OFFLOAD_CONNECTION
+	int ret = 0, cnt, pos = 0;
+	ipa_add_offload_connection_req_msg_v01 qmi_add_msg;
+	int fd_wwan_ioctl = open(WWAN_QMI_IOCTL_DEVICE_NAME, O_RDWR);
+	if(fd_wwan_ioctl < 0)
+	{
+		IPACMERR("Failed to open %s.\n",WWAN_QMI_IOCTL_DEVICE_NAME);
+		return false;
+	}
+
+	if(flt_rule_tbl == NULL)
+	{
+		IPACMERR("Invalid add_offload_req\n");
+		close(fd_wwan_ioctl);
+		return false;
+	}
+	/* check Max offload connections */
+	if (total_num_offload_rules + flt_rule_tbl->num_rules > QMI_IPA_MAX_FILTERS_V01)
+	{
+		IPACMERR("(%d) add_offload req with curent(%d), exceed max (%d).\n",
+		flt_rule_tbl->num_rules, total_num_offload_rules,
+		QMI_IPA_MAX_FILTERS_V01);
+		close(fd_wwan_ioctl);
+		return false;
+	}
+	else
+	{
+		memset(&qmi_add_msg, 0, sizeof(qmi_add_msg));
+
+		if (flt_rule_tbl->num_rules > 0)
+		{
+			qmi_add_msg.filter_spec_ex2_list_valid = true;
+		}
+		else
+		{
+			IPACMDBG_H("Get %d offload-req\n", flt_rule_tbl->num_rules);
+			close(fd_wwan_ioctl);
+			return true;
+		}
+		qmi_add_msg.filter_spec_ex2_list_len = flt_rule_tbl->num_rules;
+
+		IPACMDBG_H("passing %d offload req to modem.\n", flt_rule_tbl->num_rules);
+
+		if(flt_rule_tbl != NULL)
+		{
+			for(cnt = flt_rule_tbl->num_rules - 1; cnt >= 0; cnt--)
+			{
+				if (pos < QMI_IPA_MAX_FILTERS_V01)
+				{
+					if (flt_rule_tbl->ip == IPA_IP_v4)
+					{
+						qmi_add_msg.filter_spec_ex2_list[pos].ip_type = QMI_IPA_IP_TYPE_V4_V01;
+					} else if (flt_rule_tbl->ip == IPA_IP_v6) {
+						qmi_add_msg.filter_spec_ex2_list[pos].ip_type = QMI_IPA_IP_TYPE_V6_V01;
+					} else {
+						IPACMDBG_H("invalid ip-type %d\n", flt_rule_tbl->ip);
+						close(fd_wwan_ioctl);
+						return true;
+					}
+
+					qmi_add_msg.filter_spec_ex2_list[pos].filter_action = GetQmiFilterAction(flt_rule_tbl->rules[cnt].rule.action);
+					qmi_add_msg.filter_spec_ex2_list[pos].is_mux_id_valid = 1;
+					qmi_add_msg.filter_spec_ex2_list[pos].mux_id = mux_id;
+					/* assign the rule-id */
+					flt_rule_tbl->rules[cnt].flt_rule_hdl = IPA_PCIE_MODEM_RULE_ID_START + pcie_modem_rule_id;
+					qmi_add_msg.filter_spec_ex2_list[pos].rule_id = flt_rule_tbl->rules[cnt].flt_rule_hdl;
+					qmi_add_msg.filter_spec_ex2_list[pos].is_rule_hashable = flt_rule_tbl->rules[cnt].rule.hashable;
+					memcpy(&qmi_add_msg.filter_spec_ex2_list[pos].filter_rule,
+						&flt_rule_tbl->rules[cnt].rule.eq_attrib,
+						sizeof(struct ipa_filter_rule_type_v01));
+					IPACMDBG_H("mux-id %d, hashable %d\n", qmi_add_msg.filter_spec_ex2_list[pos].mux_id, qmi_add_msg.filter_spec_ex2_list[pos].is_rule_hashable);
+					pos++;
+					pcie_modem_rule_id = (pcie_modem_rule_id + 1)%100;
+				}
+				else
+				{
+					IPACMERR(" QMI only support max %d rules, current (%d)\n ",QMI_IPA_MAX_FILTERS_V01, pos);
+				}
+			}
+		}
+
+		ret = ioctl(fd_wwan_ioctl, WAN_IOC_ADD_OFFLOAD_CONNECTION, &qmi_add_msg);
+		if (ret != 0)
+		{
+			IPACMERR("Failed sending WAN_IOC_ADD_OFFLOAD_CONNECTION with ret %d\n ", ret);
+			close(fd_wwan_ioctl);
+			return false;
+		}
+	}
+	/* update total_num_offload_rules */
+	total_num_offload_rules += flt_rule_tbl->num_rules;
+	IPACMDBG_H("total_num_offload_rules %d \n", total_num_offload_rules);
+	close(fd_wwan_ioctl);
+	return true;
+#else
+	if(flt_rule_tbl != NULL)
+	{
+		IPACMERR("Not support (%d) AddOffloadFilteringRule with mux-id (%d)\n", flt_rule_tbl->num_rules, mux_id);
+	}
+	return false;
+#endif
+}
+
+bool IPACM_Filtering::DelOffloadFilteringRule(struct ipa_ioc_del_flt_rule const *flt_rule_tbl)
+{
+#ifdef WAN_IOCTL_ADD_OFFLOAD_CONNECTION
+	bool result = true;
+	int ret = 0, cnt, pos = 0;
+	ipa_remove_offload_connection_req_msg_v01 qmi_del_msg;
+	int fd_wwan_ioctl = open(WWAN_QMI_IOCTL_DEVICE_NAME, O_RDWR);
+
+	if(fd_wwan_ioctl < 0)
+	{
+		IPACMERR("Failed to open %s.\n",WWAN_QMI_IOCTL_DEVICE_NAME);
+		return false;
+	}
+
+	if(flt_rule_tbl == NULL)
+	{
+		IPACMERR("Invalid add_offload_req\n");
+		result =  false;
+		goto fail;
+	}
+
+	/* check # of offload connections */
+	if (flt_rule_tbl->num_hdls > total_num_offload_rules) {
+		IPACMERR("(%d) del_offload req , exceed curent(%d)\n",
+		flt_rule_tbl->num_hdls, total_num_offload_rules);
+		result =  false;
+		goto fail;
+	}
+	else
+	{
+		memset(&qmi_del_msg, 0, sizeof(qmi_del_msg));
+
+		if (flt_rule_tbl->num_hdls > 0)
+		{
+			qmi_del_msg.filter_handle_list_valid = true;
+		}
+		else
+		{
+			IPACMERR("Get %d offload-req\n", flt_rule_tbl->num_hdls);
+			goto fail;
+		}
+		qmi_del_msg.filter_handle_list_len = flt_rule_tbl->num_hdls;
+
+		IPACMDBG_H("passing %d offload req to modem.\n", flt_rule_tbl->num_hdls);
+
+		if(flt_rule_tbl != NULL)
+		{
+			for(cnt = flt_rule_tbl->num_hdls - 1; cnt >= 0; cnt--)
+			{
+				if (pos < QMI_IPA_MAX_FILTERS_V01)
+				{
+					/* passing rule-id to wan-driver */
+					qmi_del_msg.filter_handle_list[pos].filter_spec_identifier = flt_rule_tbl->hdl[cnt].hdl;
+					pos++;
+				}
+				else
+				{
+					IPACMERR(" QMI only support max %d rules, current (%d)\n ",QMI_IPA_MAX_FILTERS_V01, pos);
+					result =  false;
+					goto fail;
+				}
+			}
+		}
+
+		ret = ioctl(fd_wwan_ioctl, WAN_IOC_RMV_OFFLOAD_CONNECTION, &qmi_del_msg);
+		if (ret != 0)
+		{
+			IPACMERR("Failed deleting Filtering rule %pK with ret %d\n ", &qmi_del_msg, ret);
+			result =  false;
+			goto fail;
+		}
+	}
+fail:
+	close(fd_wwan_ioctl);
+	return result;
+#else
+	if(flt_rule_tbl != NULL)
+	{
+		IPACMERR("Not support (%d) DelOffloadFilteringRule\n", flt_rule_tbl->num_hdls);
+	}
+	return false;
+#endif
 }
 
 bool IPACM_Filtering::SendFilteringRuleIndex(struct ipa_fltr_installed_notif_req_msg_v01* table)
