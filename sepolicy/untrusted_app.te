@@ -1,1 +1,1 @@
-dontaudit untrusted_app proc:file r_file_perms;
+dontaudit untrusted_app proc_vmstat:file { getattr open };
