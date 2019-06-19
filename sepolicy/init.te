@@ -5,6 +5,7 @@ allow init nvram_btwifi:process { rlimitinh siginh transition };
 allow init nvram_btwifi_exec:file execute;
 
 allow init sysfs_mmc_host:file { setattr w_file_perms };
+allow init proc_swappiness:file w_file_perms;
 
 dontaudit init nvram_btwifi:process noatsecure;
 

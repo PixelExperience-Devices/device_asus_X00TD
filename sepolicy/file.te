@@ -7,3 +7,6 @@ type sysfs_touchpanel, sysfs_type, fs_type;
 
 # bluetooth
 type nvram_btwifi_tmpfs, fs_type;
+
+# proc
+type proc_swappiness, proc_type, fs_type;
