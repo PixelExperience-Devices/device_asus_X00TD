@@ -260,10 +260,6 @@
         <item>"ethernet,9,9,9,-1,true"</item>
     </string-array>
 
-    <!-- The duration (in milliseconds) that the radio will scan for a signal
-         when there's no network connection. If the scan doesn't timeout, use zero -->
-    <integer name="config_radioScanningTimeout">5000</integer>
-
     <!-- This string array should be overridden by the device to present a list of radio
          attributes.  This is used by the connectivity manager to decide which networks can coexist
          based on the hardware -->
@@ -507,4 +503,13 @@
 
     <!-- True if the firmware supports Wi-Fi link probing -->
     <bool name="config_wifi_link_probing_supported">true</bool>
+
+    <!-- Whether the always on display mode is available. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!--AlwaysOnDisplay disabled by default -->
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+
+    <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
 </resources>
