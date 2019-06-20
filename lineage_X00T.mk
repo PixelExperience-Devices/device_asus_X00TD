@@ -29,6 +29,7 @@ PRODUCT_BRAND := asus
 PRODUCT_DEVICE := X00T
 PRODUCT_MANUFACTURER := asus
 PRODUCT_NAME := lineage_X00T
+PRODUCT_MODEL := ZenFone Max Pro M1
 
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 
@@ -40,14 +41,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
 BUILD_FINGERPRINT := Android/sdm660_64/sdm660_64:9/PKQ1/16.2017.1910.059-20190920:user/release-keys
-
-# The following system and vendor props will be set by vendor init
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
-    ro.product.device \
-    ro.product.model \
-    ro.product.name
-
-PRODUCT_VENDOR_PROPERTY_BLACKLIST := \
-    ro.vendor.product.device \
-    ro.vendor.product.model \
-    ro.vendor.product.name
