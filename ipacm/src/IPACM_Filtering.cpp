@@ -659,6 +659,10 @@ bool IPACM_Filtering::DelOffloadFilteringRule(struct ipa_ioc_del_flt_rule const 
 			goto fail;
 		}
 	}
+	/* update total_num_offload_rules */
+	total_num_offload_rules -= flt_rule_tbl->num_hdls;
+	IPACMDBG_H("total_num_offload_rules %d \n", total_num_offload_rules);
+
 fail:
 	close(fd_wwan_ioctl);
 	return result;
