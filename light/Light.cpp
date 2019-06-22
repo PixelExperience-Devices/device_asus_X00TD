@@ -151,8 +151,12 @@ void Light::handleNotification(const LightState& state, size_t index) {
         set("/sys/class/leds/green/ramp_step_ms", stepDuration);
 
         // Start blinking
-        set("/sys/class/leds/green/blink", 1);
-        set("/sys/class/leds/red/blink", 1);
+        // battery blinking
+        if (index == 1) {
+            set("/sys/class/leds/red/blink", 1);
+        } else {
+            set("/sys/class/leds/green/blink", 1);
+        }
     } else {
         set("/sys/class/leds/green/brightness", greenBrightness);
         set("/sys/class/leds/red/brightness", redBrightness);
