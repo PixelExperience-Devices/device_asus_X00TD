@@ -323,6 +323,7 @@ PRODUCT_PACKAGES += \
     init.qcom.sensors.sh \
     init.qcom.sh \
     init.qcom.usb.sh \
+    init.qcom.ipastart.sh \
     init.qti.ims.sh \
     move_time_data.sh \
     move_wifi_data.sh \
