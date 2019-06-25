@@ -138,6 +138,7 @@ IPACM_Wan::IPACM_Wan(int iface_index,
 	is_default_gateway = false;
 	m_fd_ipa = 0;
 	wan_client_len = 0;
+	m_is_sta_mode = is_sta_mode;
 
 	if(iface_query != NULL)
 	{
