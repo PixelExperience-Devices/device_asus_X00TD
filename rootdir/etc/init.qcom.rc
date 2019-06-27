@@ -1224,6 +1224,12 @@ service vendor.vppservice /vendor/bin/vppservice
     group camera
     disabled
 
+service time_daemon /vendor/bin/time_daemon
+    class main
+    user system
+    group system
+    capabilities SYS_TIME
+
 # Set vendor-ril lib path based on Meta version
 on property:vendor.rild.libpath=*
     setprop rild.libpath ${vendor.rild.libpath}
