@@ -25,7 +25,7 @@ import android.util.Log;
 public class BootCompletedReceiver extends BroadcastReceiver {
 
     private static final boolean DEBUG = false;
-    private static final String TAG = "XiaomiDoze";
+    private static final String TAG = "Doze";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
