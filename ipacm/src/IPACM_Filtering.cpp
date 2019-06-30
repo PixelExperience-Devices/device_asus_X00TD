@@ -477,9 +477,28 @@ bool IPACM_Filtering::AddOffloadFilteringRule(struct ipa_ioc_add_flt_rule *flt_r
 
 	if(flt_rule_tbl == NULL)
 	{
-		IPACMERR("Invalid add_offload_req\n");
+		if(mux_id ==0)
+		{
+			IPACMERR("Invalid add_offload_req muxd: (%d)\n", mux_id);
+			close(fd_wwan_ioctl);
+			return false;
+		}
+#ifdef QMI_IPA_MAX_FILTERS_EX2_V01
+		/* used for sending mux_id info to modem for UL sky*/
+		IPACMDBG_H("sending mux_id info (%d) to modem for UL\n", mux_id);
+		memset(&qmi_add_msg, 0, sizeof(qmi_add_msg));
+		qmi_add_msg.embedded_call_mux_id_valid = true;
+		qmi_add_msg.embedded_call_mux_id = mux_id;
+		ret = ioctl(fd_wwan_ioctl, WAN_IOC_ADD_OFFLOAD_CONNECTION, &qmi_add_msg);
+		if (ret != 0)
+		{
+			IPACMERR("Failed sending WAN_IOC_ADD_OFFLOAD_CONNECTION with ret %d\n ", ret);
+			close(fd_wwan_ioctl);
+			return false;
+		}
+#endif
 		close(fd_wwan_ioctl);
-		return false;
+		return true;
 	}
 	/* check Max offload connections */
 	if (total_num_offload_rules + flt_rule_tbl->num_rules > QMI_IPA_MAX_FILTERS_V01)
@@ -640,6 +659,10 @@ bool IPACM_Filtering::DelOffloadFilteringRule(struct ipa_ioc_del_flt_rule const 
 			goto fail;
 		}
 	}
+	/* update total_num_offload_rules */
+	total_num_offload_rules -= flt_rule_tbl->num_hdls;
+	IPACMDBG_H("total_num_offload_rules %d \n", total_num_offload_rules);
+
 fail:
 	close(fd_wwan_ioctl);
 	return result;

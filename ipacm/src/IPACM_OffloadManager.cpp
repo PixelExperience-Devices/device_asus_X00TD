@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2017-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2017-2019, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -238,39 +238,44 @@ RET IPACM_OffloadManager::addDownstream(const char * downstream_name, const Pref
 		/* copy to the cache */
 		for(int i = 0; i < MAX_EVENT_CACHE ;i++)
 		{
-			if(event_cache[latest_cache_index].valid == false)
+			if (latest_cache_index >= 0)
 			{
-				//do the copy
-				event_cache[latest_cache_index].valid = true;
-				event_cache[latest_cache_index].event = IPA_DOWNSTREAM_ADD;
-				memcpy(event_cache[latest_cache_index].dev_name, downstream_name, sizeof(event_cache[latest_cache_index].dev_name));
-				memcpy(&event_cache[latest_cache_index].prefix_cache, &prefix, sizeof(event_cache[latest_cache_index].prefix_cache));
-				if (prefix.fam == V4) {
-					IPACMDBG_H("cache event(%d) subnet info v4Addr (%x) v4Mask (%x) dev(%s) on entry (%d)\n",
-						event_cache[latest_cache_index].event,
-						event_cache[latest_cache_index].prefix_cache.v4Addr,
-						event_cache[latest_cache_index].prefix_cache.v4Mask,
-						event_cache[latest_cache_index].dev_name,
-						latest_cache_index);
-				} else {
-					IPACMDBG_H("cache event (%d) v6Addr: %08x:%08x:%08x:%08x \n",
-						event_cache[latest_cache_index].event,
-						event_cache[latest_cache_index].prefix_cache.v6Addr[0],
-						event_cache[latest_cache_index].prefix_cache.v6Addr[1],
-						event_cache[latest_cache_index].prefix_cache.v6Addr[2],
-						event_cache[latest_cache_index].prefix_cache.v6Addr[3]);
-					IPACMDBG_H("subnet v6Mask: %08x:%08x:%08x:%08x dev(%s) on entry(%d), \n",
-						event_cache[latest_cache_index].prefix_cache.v6Mask[0],
-						event_cache[latest_cache_index].prefix_cache.v6Mask[1],
-						event_cache[latest_cache_index].prefix_cache.v6Mask[2],
-						event_cache[latest_cache_index].prefix_cache.v6Mask[3],
-						event_cache[latest_cache_index].dev_name,
-						latest_cache_index);
+				if(event_cache[latest_cache_index].valid == false)
+				{
+					//do the copy
+					event_cache[latest_cache_index].valid = true;
+					event_cache[latest_cache_index].event = IPA_DOWNSTREAM_ADD;
+					memcpy(event_cache[latest_cache_index].dev_name, downstream_name,
+						sizeof(event_cache[latest_cache_index].dev_name));
+					memcpy(&event_cache[latest_cache_index].prefix_cache, &prefix,
+						sizeof(event_cache[latest_cache_index].prefix_cache));
+					if (prefix.fam == V4) {
+						IPACMDBG_H("cache event(%d) subnet info v4Addr (%x) v4Mask (%x) dev(%s) on entry (%d)\n",
+							event_cache[latest_cache_index].event,
+							event_cache[latest_cache_index].prefix_cache.v4Addr,
+							event_cache[latest_cache_index].prefix_cache.v4Mask,
+							event_cache[latest_cache_index].dev_name,
+							latest_cache_index);
+					} else {
+						IPACMDBG_H("cache event (%d) v6Addr: %08x:%08x:%08x:%08x \n",
+							event_cache[latest_cache_index].event,
+							event_cache[latest_cache_index].prefix_cache.v6Addr[0],
+							event_cache[latest_cache_index].prefix_cache.v6Addr[1],
+							event_cache[latest_cache_index].prefix_cache.v6Addr[2],
+							event_cache[latest_cache_index].prefix_cache.v6Addr[3]);
+						IPACMDBG_H("subnet v6Mask: %08x:%08x:%08x:%08x dev(%s) on entry(%d), \n",
+							event_cache[latest_cache_index].prefix_cache.v6Mask[0],
+							event_cache[latest_cache_index].prefix_cache.v6Mask[1],
+							event_cache[latest_cache_index].prefix_cache.v6Mask[2],
+							event_cache[latest_cache_index].prefix_cache.v6Mask[3],
+							event_cache[latest_cache_index].dev_name,
+							latest_cache_index);
+					}
+					latest_cache_index = (latest_cache_index + 1)% MAX_EVENT_CACHE;
+					break;
 				}
 				latest_cache_index = (latest_cache_index + 1)% MAX_EVENT_CACHE;
-				break;
 			}
-			latest_cache_index = (latest_cache_index + 1)% MAX_EVENT_CACHE;
 			if(i == MAX_EVENT_CACHE - 1)
 			{
 				IPACMDBG_H(" run out of event cache (%d)\n", i);
@@ -413,37 +418,43 @@ RET IPACM_OffloadManager::setUpstream(const char *upstream_name, const Prefix& g
 			/* copy to the cache */
 			for(int i = 0; i < MAX_EVENT_CACHE ;i++)
 			{
-				if(event_cache[latest_cache_index].valid == false)
+				if (latest_cache_index >= 0)
 				{
-					//do the copy
-					event_cache[latest_cache_index].valid = true;
-					event_cache[latest_cache_index].event = IPA_WAN_UPSTREAM_ROUTE_ADD_EVENT;
-					memcpy(event_cache[latest_cache_index].dev_name, upstream_name, sizeof(event_cache[latest_cache_index].dev_name));
-					memcpy(&event_cache[latest_cache_index].prefix_cache, &gw_addr_v4, sizeof(event_cache[latest_cache_index].prefix_cache));
-					memcpy(&event_cache[latest_cache_index].prefix_cache_v6, &gw_addr_v6, sizeof(event_cache[latest_cache_index].prefix_cache_v6));
-					if (gw_addr_v4.fam == V4) {
-						IPACMDBG_H("cache event(%d) ipv4 gateway: (%x) dev(%s) on entry (%d)\n",
-							event_cache[latest_cache_index].event,
-							event_cache[latest_cache_index].prefix_cache.v4Addr,
-							event_cache[latest_cache_index].dev_name,
-							latest_cache_index);
-		}
+					if(event_cache[latest_cache_index].valid == false)
+					{
+						//do the copy
+						event_cache[latest_cache_index].valid = true;
+						event_cache[latest_cache_index].event = IPA_WAN_UPSTREAM_ROUTE_ADD_EVENT;
+						memcpy(event_cache[latest_cache_index].dev_name, upstream_name,
+							sizeof(event_cache[latest_cache_index].dev_name));
+						memcpy(&event_cache[latest_cache_index].prefix_cache, &gw_addr_v4,
+							sizeof(event_cache[latest_cache_index].prefix_cache));
+						memcpy(&event_cache[latest_cache_index].prefix_cache_v6, &gw_addr_v6,
+							sizeof(event_cache[latest_cache_index].prefix_cache_v6));
+						if (gw_addr_v4.fam == V4) {
+							IPACMDBG_H("cache event(%d) ipv4 gateway: (%x) dev(%s) on entry (%d)\n",
+								event_cache[latest_cache_index].event,
+								event_cache[latest_cache_index].prefix_cache.v4Addr,
+								event_cache[latest_cache_index].dev_name,
+								latest_cache_index);
+						}
 
-					if (gw_addr_v6.fam == V6)
-		{
-						IPACMDBG_H("cache event (%d) ipv6 gateway: %08x:%08x:%08x:%08x dev(%s) on entry(%d)\n",
-							event_cache[latest_cache_index].event,
-							event_cache[latest_cache_index].prefix_cache_v6.v6Addr[0],
-							event_cache[latest_cache_index].prefix_cache_v6.v6Addr[1],
-							event_cache[latest_cache_index].prefix_cache_v6.v6Addr[2],
-							event_cache[latest_cache_index].prefix_cache_v6.v6Addr[3],
-							event_cache[latest_cache_index].dev_name,
-							latest_cache_index);
+						if (gw_addr_v6.fam == V6)
+						{
+							IPACMDBG_H("cache event (%d) ipv6 gateway: %08x:%08x:%08x:%08x dev(%s) on entry(%d)\n",
+								event_cache[latest_cache_index].event,
+								event_cache[latest_cache_index].prefix_cache_v6.v6Addr[0],
+								event_cache[latest_cache_index].prefix_cache_v6.v6Addr[1],
+								event_cache[latest_cache_index].prefix_cache_v6.v6Addr[2],
+								event_cache[latest_cache_index].prefix_cache_v6.v6Addr[3],
+								event_cache[latest_cache_index].dev_name,
+								latest_cache_index);
+						}
+						latest_cache_index = (latest_cache_index + 1)% MAX_EVENT_CACHE;
+						break;
 					}
 					latest_cache_index = (latest_cache_index + 1)% MAX_EVENT_CACHE;
-					break;
 				}
-				latest_cache_index = (latest_cache_index + 1)% MAX_EVENT_CACHE;
 				if(i == MAX_EVENT_CACHE - 1)
 				{
 					IPACMDBG_H(" run out of event cache (%d) \n", i);
