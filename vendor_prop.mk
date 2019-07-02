@@ -56,10 +56,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.ois.disable=1 \
     persist.vendor.camera.is_type=4 \
     persist.ts.rtmakeup=1 \
-    persist.vendor.camera.HAL3.enabled=1 \
     persist.vendor.camera.expose.aux=1 \
     persist.vendor.camera.preview.ubwc=0 \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam
+
+# Camera HAL 3
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.camera.HAL3.enabled=1 \
+    vendor.camera.hal1.packagelist=com.whatsapp
 
 # Charging maximum voltage
 PRODUCT_PROPERTY_OVERRIDES += \
