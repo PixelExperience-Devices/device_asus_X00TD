@@ -109,6 +109,7 @@ vendor/lib64/libbt-hidlclient.so|cd3513edb12f5e9ef1825c13a290d42e05b7a69b
 vendor/lib64/libbtnv.so|c0251f0064fc6fff2444760b0723755fc4a51957
 
 # Camera
+framework/com.qualcomm.qti.camera.jar
 vendor/lib/hw/camera.sdm660.so
 vendor/lib/libarcsoft_arc3dnr_intf.so
 vendor/lib/libarcsoft_arcshdr_intf.so
@@ -806,16 +807,20 @@ vendor/lib/libGPreqcancel.so
 vendor/lib/libGPreqcancel_svc.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libbase64.so
+vendor/lib/libcpion.so
 vendor/lib/libcppf.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
+vendor/lib/libhdcpsrm.so
 vendor/lib/libmm-hdcpmgr.so
+vendor/lib/liboemcrypto.so
 vendor/lib/libqisl.so
 vendor/lib/librmp.so
 vendor/lib/librpmb.so
 vendor/lib/libsdedrm.so
 vendor/lib/libsi.so
 vendor/lib/libssd.so
+vendor/lib/libwvhidl.so
 vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
@@ -824,9 +829,12 @@ vendor/lib64/libGPreqcancel.so
 vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/libbase64.so
+vendor/lib64/libcpion.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
+vendor/lib64/libhdcpsrm.so
 vendor/lib64/libmm-hdcpmgr.so
+vendor/lib64/liboemcrypto.so
 vendor/lib64/libqisl.so
 vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
@@ -838,14 +846,7 @@ vendor/lib64/libssd.so
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
 vendor/lib64/mediadrm/libwvdrmengine.so
-vendor/lib/libhdcpsrm.so
-vendor/lib64/libhdcpsrm.so
-vendor/lib/libcpion.so
-vendor/lib64/libcpion.so
-vendor/lib/libwvhidl.so
 vendor/lib64/libwvhidl.so
-vendor/lib/liboemcrypto.so
-vendor/lib64/liboemcrypto.so
 
 # ESE-Powermanager
 lib64/vendor.qti.esepowermanager@1.0.so
@@ -1243,6 +1244,7 @@ lib64/libimsmedia_jni.so
 lib64/vendor.qti.ims.callinfo@1.0.so
 lib64/vendor.qti.imsrtpservice@1.0.so
 -priv-app/ims/ims.apk
+-framework/qti-telephony-common.jar
 vendor/bin/ims_rtp_daemon
 vendor/bin/imsdatadaemon
 vendor/bin/imsqmidaemon
@@ -1272,9 +1274,6 @@ vendor/lib64/vendor.qti.hardware.radio.ims@1.4.so
 vendor/lib64/vendor.qti.ims.callinfo@1.0.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so
-
-# Radio (QTI telephony) - from jasmine - PKQ1.180904.001 V10.0.1.0.PDIMIFJ
-framework/qti-telephony-common.jar|5362cf7dc277ff53ef33868b44027ca9a07e29f3
 
 # Sensors
 vendor/bin/sensors.qti
@@ -1320,9 +1319,6 @@ vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
 vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
 vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.soter@1.0.so
-
-# Telephony - from jasmine-user-9-PKQ1.180904.001-V10.0.1.0.PDIMIFJ-release-keys
-framework/qti-telephony-common.jar|2ff99f59424637220556eb036c04896f82ddc3b5
 
 # Thermal
 vendor/bin/thermal-engine
@@ -1394,6 +1390,7 @@ lib64/libwfdclient.so
 lib64/libwfdnative.so
 lib64/libwfds.so
 -priv-app/WfdService/WfdService.apk
+-system/framework/WfdCommon.jar
 vendor/bin/wifidisplayhalservice
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
@@ -1406,3 +1403,4 @@ vendor/lib/libwfdmmservice.so
 vendor/lib/libwfdmodulehdcpsession.so
 vendor/lib64/libmmosal_proprietary.so
 vendor/lib64/libwfdhdcpcp.so
+
