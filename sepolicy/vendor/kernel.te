@@ -6,3 +6,6 @@ allow kernel sdcardfs:file { read create open };
 allow kernel storage_file:dir search;
 allow kernel storage_file:lnk_file read;
 allow kernel tmpfs:dir search;
+allow kernel kcal_dev:dir relabelto;
+allow kernel kcal_dev:file relabelto;
+allow kernel kcal_dev:lnk_file relabelto;
