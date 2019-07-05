@@ -1,3 +1,7 @@
+# FM Radio/BT
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    vendor.bluetooth.soc=cherokee
+
 # GMS
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.clientidbase.ms=android-asus-tpin \
