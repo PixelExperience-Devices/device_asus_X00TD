@@ -1,0 +1,9 @@
+<!-- drawable/cellphone_settings_variant.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="120dp"
+    android:width="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120"
+    android:tint="?android:attr/colorAccent">
+    <path android:fillColor="#000" android:pathData="M34 39c4,-2 8,-5 12,-7 6,-3 11,-6 15,-8 6,-2 10,-4 11,-4 0,0 0,0 0,0l0 0c0,1 -1,3 -3,4 -9,4 -31,16 -40,23 1,1 7,2 14,3 3,0 4,-1 6,-1 1,-1 3,-3 5,-5 2,-4 4,-8 4,-8l-24 10c0,0 21,-13 34,-19 0,1 -2,6 -4,11 -1,3 -3,6 -5,9 -4,5 -7,7 -8,7 -1,0 -6,0 -10,0 -8,-2 -16,-4 -19,-6 0,-1 6,-5 12,-9zm32 -24l-1 0c-10,0 -19,3 -19,4 -2,0 -5,3 -6,4 -1,1 -5,5 -9,9 -4,4 -8,8 -10,10 -2,0 -8,-5 -11,-5 1,0 1,2 3,5 1,3 3,6 5,9 2,2 6,5 9,6 -3,-2 -7,-7 -7,-9 0,-3 7,-7 14,-12 4,-3 21,-17 37,-21 -2,0 -4,0 -5,0zm-57 29c-3,-1 -5,-2 -5,-3 -1,-1 -1,-2 -2,-4 -1,-3 -2,-6 -2,-6 0,0 4,5 7,9 4,4 7,7 7,7 0,0 -3,-1 -5,-3z" />
+</vector>

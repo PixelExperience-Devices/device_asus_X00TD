@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2018 The Asus-SDM660 Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="advanced_settings">Zenfone Parts</string>
+    <string name="advanced_settings_summary">Kustomisasi Perangkat</string>
+
+    <string name="display_title">Layar</string>
+
+    <string name="torch_title">Senter</string>
+    <string name="torch_brightness_title">Kecerahan</string>
+    <string name="vibration_title">Getaran</string>
+    <string name="vibration_strength_title">Kekuatan</string>
+
+    <string name="audio_title">Suara</string>
+
+    <!-- CustomSeekBarPreference -->
+    <string name="edit_value">Atur nilai</string>
+    <string name="default_value">Nilai bawaan</string>
+    <string name="edit_hint">Nilai antara %1$d and %2$d</string>
+
+    <!-- KCal -->
+    <string name="kcal_title">Kalibrasi layar</string>
+    <string name="kcal_summary">Kalibrasi warna layar dengan KCAL</string>
+    <string name="kcal_enabled_title">Aktifkan KCAL</string>
+    <string name="kcal_enabled_summary">Aktifkan kalibrasi layar dengan KCAL</string>
+    <string name="kcal_red">Merah</string>
+    <string name="kcal_green">Hijau</string>
+    <string name="kcal_blue">Biru</string>
+    <string name="kcal_saturation">Saturasi</string>
+    <string name="kcal_contrast">Kontras</string>
+    <string name="kcal_hue">Corak warna</string>
+    <string name="kcal_value">Nilai</string>
+    <string name="menu_reset">Atur ulang</string>
+    <string name="kcal_color_temp">Suhu warna (K)</string>
+    <string name="kcal_greyscale_title">Skala abu-abu</string>
+    <string name="kcal_greyscale_summary">Matikan saturasi secara penuh</string>
+    <string name="presets_list_title">Gunakan KCAL preset</string>
+    <string name="default_values">Bawaan</string>
+    <string name="version_1">Versi 1</string>
+    <string name="version_2">Versi 2</string>
+    <string name="version_3">Versi 3</string>
+    <string name="triluminous">Triluminus</string>
+    <string name="deep_black_and_white">Hitam putih</string>
+    <string name="deep_natural">Alami</string>
+    <string name="cool_amoled">Amoled sejuk</string>
+    <string name="extreme_amoled">Amoled ekstrim</string>
+    <string name="warm_amoled">Amoled hangat</string>
+    <string name="hybrid_mamba">Hybrid Mamba</string>
+
+    <!-- Zenmotions -->
+    <string name="dlg_ok">OK</string>
+    <string name="cancel">Batalkan</string>
+    <string name="reset">Atur ulang</string>
+    <string name="reset_message">Atur ulang ke bawaan bosku?</string>
+
+    <string name="category_gesture">Gestur</string>
+    <string name="screen_off_gesture_title">Zenmotions</string>
+    <string name="group_applications">Aplikasi</string>
+    <string name="select_custom_app_title">Pilih aplikasi kustom</string>
+    <string name="gestures_dashboard_summary">Gestur layar mati yang aduhai</string>
+    <string name="enable_gestures_title">Aktifkan gestur</string>
+    <string name="enable_gestures_summary">Aktifkan gestur layar mati</string>
+    <string name="gestures_title">Gestur</string>
+    <string name="zenmotions">Zenmotions</string>
+    <string name="zenmotions_summary">Gestur layar mati yang aduhai</string>
+    <string name="gestures">Gestur</string>
+    <string name="screen_off_gestures">Gestur layar mati</string>
+    <string name="gesture_double_tap_title">Ketuk dua kali</string>
+    <string name="gesture_z_title">Gestur Z</string>	
+    <string name="gesture_s_title">Gestur S</string>
+    <string name="gesture_v_title">Gestur V</string>
+    <string name="gesture_w_title">Gestur W</string>
+    <string name="gesture_c_title">Gestur C</string>
+    <string name="gesture_e_title">Gestur e</string>
+    <string name="gesture_up_title">Usap ke atas</string>
+    <string name="gesture_down_title">Usap ke bawah</string>
+    <string name="gesture_left_title">Usap ke kiri</string>
+    <string name="gesture_right_title">Usap ke kanan</string>
+    <string name="screen_gestures_panel_title">Gestur</string>
+    <string name="proxi_summary_head">Cek sensor proksimiti untuk gestur dan sensor sidik jari</string>
+    <string name="proxi_title_head">Cek sensor proksimiti</string>
+
+    <!-- Ambient Display -->
+    <string name="ambient_display_title">Layar ambien</string>
+    <string name="ambient_display_enable_title">Layar ambien</string>
+    <string name="ambient_display_enable_summary">Bangunkan layar ketika menerima notifikasi</string>
+    <string name="ambient_display_gestures_title">Gestur layar ambien</string>
+    <string name="ambient_display_gestures_summary">Gestur tambahan untuk membangunkan layar</string>
+    <string name="ambient_display_summary">Bangunkan layar ketika menerima notifikasi</string>
+    <string name="ambient_display_summary_on">Layar akan bangun ketika menerima notifikasi</string>
+    <string name="ambient_display_summary_off">Layar tidak akan bangun ketika menerima notifikasi</string>
+
+    <!-- Tilt sensor -->
+    <string name="tilt_sensor_title">Sensor kemiringan</string>
+
+    <!-- Pickup sensor -->
+    <string name="pickup_sensor_title">Sensor angkat</string>
+
+    <!-- Proximity sensor -->
+    <string name="proximity_sensor_title">Sensor proximity</string>
+
+    <!-- Hand wave gesture -->
+    <string name="hand_wave_gesture_title">Lambaian tangan</string>
+    <string name="hand_wave_gesture_summary">Notifikasi berkedip pada lambaian tangan</string>
+    <string name="hand_wave_gesture_flat_title">Mendeteksi orientasi</string>
+    <string name="hand_wave_gesture_flat_summary">Hanya berkedip ketika telepon berada pada permukaan datar</string>
+
+    <!-- Pick-up gesture -->
+    <string name="pick_up_gesture_title">Angkat</string>
+    <string name="pick_up_gesture_summary">Notifikasi berkedip ketika diangkat</string>
+
+    <!-- Pocket gesture -->
+    <string name="pocket_gesture_title">Saku</string>
+    <string name="pocket_gesture_summary">Notifikasi berkedip ketika diambil dari kantong</string>
+
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Bangunkan dari sensor proximity</string>
+    <string name="proximity_wake_enable_title">Bangunkan dari sensor proximity</string>
+    <string name="proximity_wake_enable_summary">Bangunkan perangkat dengan lambaian tangan</string>
+
+    <!-- Label for feature switch [CHAR LIMIT=30] -->
+    <string name="switch_bar_on">Nyala</string>
+
+    <!-- Label for feature switch [CHAR LIMIT=30] -->
+    <string name="switch_bar_off">Mati</string>
+
+    <!-- Device specific settings -->
+    <string name="device_settings_app_name">Pengaturan lanjutan</string>
+
+    <!-- Touchscreen gesture haptic feedback -->
+    <string name="touchscreen_gesture_extras">Tambahan</string>
+    <string name="touchscreen_gesture_haptic_feedback">Getaran Balik</string>
+    <string name="touchscreen_gesture_haptic_feedback_summary">Bergetar ketika gestur ambien terdeteksi</string>
+
+</resources>
