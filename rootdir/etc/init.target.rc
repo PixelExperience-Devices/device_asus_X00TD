@@ -256,6 +256,7 @@ service audiod /system/vendor/bin/audiod
    class late_start
    user system
    group system
+   disabled
 
 service vendor.cdsprpcd /vendor/bin/cdsprpcd
    class main
