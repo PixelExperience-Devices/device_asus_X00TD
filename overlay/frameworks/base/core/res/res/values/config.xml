@@ -464,9 +464,6 @@
     <!-- Flag indicating whether we should enable smart battery. -->
     <bool name="config_smart_battery_available">true</bool>
 
-    <!-- Define that we use a higher screen ratio (18:9) than standard (16:9) -->
-    <bool name="config_haveHigherAspectRatioScreen">true</bool>
-
     <!-- Amount of time it takes for the light sensor to warm up in milliseconds.
          For this time after the screen turns on, the Power Manager
          will not debounce light sensor readings -->
