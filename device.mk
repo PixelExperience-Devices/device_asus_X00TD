@@ -411,13 +411,6 @@ PRODUCT_COPY_FILES += \
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
-# Telephony
-PRODUCT_PACKAGES += \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-
 # Tetheroffload
 PRODUCT_PACKAGES += \
     ipacm \
