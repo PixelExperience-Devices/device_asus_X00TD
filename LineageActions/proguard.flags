@@ -1,5 +1,0 @@
--keep public class org.lineageos.settings.device.KeyHandler
-
--keepclassmembers public class org.lineageos.settings.device.KeyHandler {
-    *;
-}
