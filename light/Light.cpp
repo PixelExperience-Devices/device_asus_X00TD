@@ -54,27 +54,6 @@ static constexpr int kDefaultMaxBrightness = 255;
 static constexpr int kRampSteps = 50;
 static constexpr int kRampMaxStepDurationMs = 5;
 
-static uint32_t getBrightness(const LightState& state) {
-    uint32_t alpha, red, green, blue;
-
-    // Extract brightness from AARRGGBB
-    alpha = (state.color >> 24) & 0xff;
-
-    // Retrieve each of the RGB colors
-    red = (state.color >> 16) & 0xff;
-    green = (state.color >> 8) & 0xff;
-    blue = state.color & 0xff;
-
-    // Scale RGB colors if a brightness has been applied by the user
-    if (alpha != 0xff) {
-        red = red * alpha / 0xff;
-        green = green * alpha / 0xff;
-        blue = blue * alpha / 0xff;
-    }
-
-    return (77 * red + 150 * green + 29 * blue) >> 8;
-}
-
 static uint32_t rgbToBrightness(const LightState& state) {
     uint32_t color = state.color & 0x00ffffff;
     return ((77 * ((color >> 16) & 0xff))
@@ -112,8 +91,19 @@ void Light::handleNotification(const LightState& state, size_t index) {
         }
     }
 
-    uint32_t greenBrightness = getBrightness(stateToUse);
-    uint32_t redBrightness = getBrightness(stateToUse);
+    uint32_t alpha, red, green;
+    // Extract brightness from AARRGGBB
+    alpha = (state.color >> 24) & 0xff;
+
+    // Retrieve each of the RGB colors
+    red = (state.color >> 16) & 0xff;
+    green = (state.color >> 8) & 0xff;
+
+    // Scale RGB colors if a brightness has been applied by the user
+    if (alpha != 0xff) {
+        red = red * alpha / 0xff;
+        green = green * alpha / 0xff;
+    }
 
     uint32_t onMs = stateToUse.flashMode == Flash::TIMED ? stateToUse.flashOnMs : 0;
     uint32_t offMs = stateToUse.flashMode == Flash::TIMED ? stateToUse.flashOffMs : 0;
@@ -129,37 +119,30 @@ void Light::handleNotification(const LightState& state, size_t index) {
         return output;
     };
 
-    // Disable blinking to start
-    set("/sys/class/leds/green/blink", 0);
-    set("/sys/class/leds/red/blink", 0);
-
     if (onMs > 0 && offMs > 0) {
-        uint32_t pauseLo, pauseHi, stepDuration;
-        if (kRampMaxStepDurationMs * kRampSteps > onMs) {
-            stepDuration = onMs / kRampSteps;
-            pauseHi = 0;
-        } else {
-            stepDuration = kRampMaxStepDurationMs;
-            pauseHi = onMs - kRampSteps * stepDuration;
-            pauseLo = offMs - kRampSteps * stepDuration;
-        }
-
-        set("/sys/class/leds/green/start_idx", 0);
-        set("/sys/class/leds/green/duty_pcts", getScaledDutyPercent(greenBrightness));
-        set("/sys/class/leds/green/pause_lo", pauseLo);
-        set("/sys/class/leds/green/pause_hi", pauseHi);
-        set("/sys/class/leds/green/ramp_step_ms", stepDuration);
-
-        // Start blinking
-        // battery blinking
         if (index == 1) {
             set("/sys/class/leds/red/blink", 1);
         } else {
+            uint32_t pauseLo, pauseHi, stepDuration;
+            if (kRampMaxStepDurationMs * kRampSteps > onMs) {
+                stepDuration = onMs / kRampSteps;
+                pauseHi = 0;
+            } else {
+                stepDuration = kRampMaxStepDurationMs;
+                pauseHi = onMs - kRampSteps * stepDuration;
+                pauseLo = offMs - kRampSteps * stepDuration;
+            }
+
+            set("/sys/class/leds/green/start_idx", 0);
+            set("/sys/class/leds/green/duty_pcts", getScaledDutyPercent(green));
+            set("/sys/class/leds/green/pause_lo", pauseLo);
+            set("/sys/class/leds/green/pause_hi", pauseHi);
+            set("/sys/class/leds/green/ramp_step_ms", stepDuration);
             set("/sys/class/leds/green/blink", 1);
         }
     } else {
-        set("/sys/class/leds/green/brightness", greenBrightness);
-        set("/sys/class/leds/red/brightness", redBrightness);
+        set("/sys/class/leds/red/brightness", red);
+        set("/sys/class/leds/green/brightness", green);
     }
 }
 
