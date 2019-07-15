@@ -119,6 +119,8 @@ void Light::handleNotification(const LightState& state, size_t index) {
         return output;
     };
 
+    set("/sys/class/leds/red/blink", 0);
+    set("/sys/class/leds/green/blink", 0);
     if (onMs > 0 && offMs > 0) {
         if (index == 1) {
             set("/sys/class/leds/red/blink", 1);

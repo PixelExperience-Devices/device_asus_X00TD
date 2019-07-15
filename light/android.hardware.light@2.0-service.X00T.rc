@@ -1,5 +1,6 @@
 on boot
     chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/red/brightness
 
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/green/duty_pcts
@@ -7,6 +8,7 @@ on boot
     chown system system /sys/class/leds/green/pause_lo
     chown system system /sys/class/leds/green/ramp_step_ms
     chown system system /sys/class/leds/green/start_idx
+    chown system system /sys/class/leds/red/blink
 
     chmod 660 /sys/class/leds/green/blink
     chmod 660 /sys/class/leds/green/duty_pcts
@@ -14,6 +16,7 @@ on boot
     chmod 660 /sys/class/leds/green/pause_lo
     chmod 660 /sys/class/leds/green/ramp_step_ms
     chmod 660 /sys/class/leds/green/start_idx
+    chmod 660 /sys/class/leds/red/blink
 
 service vendor.light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.X00T
     interface android.hardware.light@2.0::ILight default
