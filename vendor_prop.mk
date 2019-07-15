@@ -19,6 +19,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.adm.buffering.ms=12 \
     vendor.audio.dolby.ds2.enabled=false \
     vendor.audio.dolby.ds2.hardbypass=false \
+    vendor.audio.feature.multi_voice_session.enable=true \
     vendor.audio.flac.sw.decoder.24bit=true \
     vendor.audio.hw.aac.encoder=true \
     vendor.audio.noisy.broadcast.delay=600 \
