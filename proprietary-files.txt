@@ -868,12 +868,7 @@ vendor/etc/permissions/qti_fingerprint_interface.xml
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/hw/cdfinger.default.so
 vendor/lib64/hw/cdfinger.fingerprint.default.so
-vendor/lib64/hw/fingerprint.default.so
-vendor/lib64/libgf_ca.so
-vendor/lib64/libgf_hal.so
 vendor/lib64/libqfp-service.so
-vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
-vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
 # FM
