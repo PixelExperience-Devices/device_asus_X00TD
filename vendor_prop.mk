@@ -146,6 +146,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.sib16_support=1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
+    persist.vendor.radio.procedure_bytes=SKIP \
     ro.carrier=unknown \
     ro.com.android.dataroaming=false \
     ro.ril.ecclist=112,911 \
