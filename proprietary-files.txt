@@ -1056,8 +1056,8 @@ vendor/lib/libvqzip.so
 vendor/lib64/libgpustats.so
 
 # NVRAM
-bin/nvram_btwifi:vendor/bin/nvram_btwifi
-lib64/libmmi.so:vendor/lib64/libmmi.so
+bin/nvram_btwifi
+lib64/libmmi.so
 
 # Perf
 vendor/bin/energy-awareness
