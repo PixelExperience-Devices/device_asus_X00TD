@@ -72,14 +72,6 @@
     <!-- Whether device has screen with higher aspect ratio -->
     <bool name="config_haveHigherAspectRatioScreen">true</bool>
 
-    <string-array name="config_deviceKeyHandlerLibs" translatable="false">
-        <item>/system/priv-app/LineageParts/LineageParts.apk</item>
-    </string-array>
-
-    <string-array name="config_deviceKeyHandlerClasses" translatable="false">
-        <item>org.lineageos.lineageparts.gestures.KeyHandler</item>
-    </string-array>
-
     <!-- Whether device needs to wait for Qualcomm MPCTL service to start
          before setting power profiles on boot. -->
     <bool name="config_waitForMpctlOnBoot">true</bool>
