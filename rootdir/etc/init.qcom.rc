@@ -698,11 +698,11 @@ service qmiproxy /system/bin/qmiproxy
     disabled
 
 # QMUX must be in multiple groups to support external process connections
-service vendor.qmuxd /system/vendor/bin/qmuxd
-    class main
-    user root
-    group radio audio bluetooth gps nfc diag
-    disabled
+#service vendor.qmuxd /system/vendor/bin/qmuxd
+#    class main
+#    user root
+#    group radio audio bluetooth gps nfc diag
+#    disabled
 
 service vendor.netmgrd /system/vendor/bin/netmgrd
     class main
@@ -937,11 +937,11 @@ service ssgqmigd /vendor/bin/ssgqmigd
     socket ssgqmig seqpacket 0660 radio inet
     disabled
 
-service ssgtzd /vendor/bin/ssgtzd
-    class late_start
-    user system
-    group system
-    socket ssgtzd stream 0660 system inet
+#service ssgtzd /vendor/bin/ssgtzd
+#    class late_start
+#    user system
+#    group system
+#    socket ssgtzd stream 0660 system inet
 
 service mlid /vendor/bin/mlid
     class late_start
