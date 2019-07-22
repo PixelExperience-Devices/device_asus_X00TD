@@ -104,6 +104,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.early_gl_phase_offset_ns=3000000 \
     debug.sf.early_gl_app_phase_offset_ns=15000000
 
+# Enable backpressure for GL comp
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.enable_gl_backpressure=1
+
 # Memory optimizations
 #PRODUCT_PROPERTY_OVERRIDES += \
     #ro.vendor.qti.sys.fw.bservice_enable=true \
