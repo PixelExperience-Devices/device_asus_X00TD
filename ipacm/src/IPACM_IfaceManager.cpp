@@ -484,6 +484,7 @@ int IPACM_IfaceManager::create_iface_instance(ipacm_ifacemgr_data *param)
 					}
 					else
 					{
+						IPACM_EvtDispatcher::registr(IPA_COALESCE_NOTICE, w);
 						IPACM_EvtDispatcher::registr(IPA_LINK_DOWN_EVENT, w);
 					}
 
