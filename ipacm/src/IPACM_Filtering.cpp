@@ -463,7 +463,7 @@ bool IPACM_Filtering::AddWanDLFilteringRule(struct ipa_ioc_add_flt_rule const *r
 	return true;
 }
 
-bool IPACM_Filtering::AddOffloadFilteringRule(struct ipa_ioc_add_flt_rule *flt_rule_tbl, uint8_t mux_id)
+bool IPACM_Filtering::AddOffloadFilteringRule(struct ipa_ioc_add_flt_rule *flt_rule_tbl, uint8_t mux_id, uint8_t default_path)
 {
 #ifdef WAN_IOCTL_ADD_OFFLOAD_CONNECTION
 	int ret = 0, cnt, pos = 0;
@@ -525,7 +525,14 @@ bool IPACM_Filtering::AddOffloadFilteringRule(struct ipa_ioc_add_flt_rule *flt_r
 		}
 		qmi_add_msg.filter_spec_ex2_list_len = flt_rule_tbl->num_rules;
 
-		IPACMDBG_H("passing %d offload req to modem.\n", flt_rule_tbl->num_rules);
+		/* check if we want to take default MHI path */
+		if (default_path)
+		{
+			qmi_add_msg.default_mhi_path_valid = true;
+			qmi_add_msg.default_mhi_path = true;
+		}
+
+		IPACMDBG_H("passing %d offload req to modem. default %d\n", flt_rule_tbl->num_rules, qmi_add_msg.default_mhi_path);
 
 		if(flt_rule_tbl != NULL)
 		{
@@ -581,7 +588,7 @@ bool IPACM_Filtering::AddOffloadFilteringRule(struct ipa_ioc_add_flt_rule *flt_r
 #else
 	if(flt_rule_tbl != NULL)
 	{
-		IPACMERR("Not support (%d) AddOffloadFilteringRule with mux-id (%d)\n", flt_rule_tbl->num_rules, mux_id);
+		IPACMERR("Not support (%d) AddOffloadFilteringRule with mux-id (%d) and default path = %d\n", flt_rule_tbl->num_rules, mux_id, default_path);
 	}
 	return false;
 #endif
