@@ -1,9 +1,6 @@
 # bluetooth
 /(vendor|system/vendor|system)/bin/nvram_btwifi                         u:object_r:nvram_btwifi_exec:s0
 
-# Goodix Fingerprint
-/dev/goodix_fp                                                          u:object_r:fingerprintd_device:s0
-
 # Keylayout
 /(vendor|system/vendor)/usr/keylayout(/.*)?                             u:object_r:keylayout_file:s0
 
@@ -14,9 +11,10 @@
 # NFC
 /(vendor|system/vendor)/bin/hw/vendor\.nxp\.nxpnfc@1\.0-service         u:object_r:nxpnfc_hal_svc_exec:s0
 
-# cdfinger Fingerprint
+# Fingerprint
 /dev/fpsdev0                                                            u:object_r:cdfinger_device:s0
 /data/system/cdfinger(/.*)?                                             u:object_r:cdfinger_data_file:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-X00T u:object_r:hal_fingerprint_default_exec:s0
 
 # Lights HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.X00T    u:object_r:hal_light_default_exec:s0
