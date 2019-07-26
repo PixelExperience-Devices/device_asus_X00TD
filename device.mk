@@ -270,13 +270,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
 
-# Media Extensions
-PRODUCT_PACKAGES += \
-    libavmediaserviceextensions \
-    libmediametrics \
-    libregistermsext \
-    mediametrics
-
 # Netutils
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \
@@ -292,9 +285,7 @@ PRODUCT_PACKAGES += \
     libOmxAmrEnc \
     libOmxCore \
     libOmxEvrcEnc \
-    libOmxG711Enc \
     libOmxQcelp13Enc \
-    libOmxSwVencHevc \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
