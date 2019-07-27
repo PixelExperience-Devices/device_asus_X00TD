@@ -311,22 +311,25 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.class_late.sh \
-    init.class_main.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.sensors.sh \
-    init.qcom.sh \
-    init.qcom.usb.sh \
-    init.qcom.ipastart.sh \
-    init.qti.ims.sh \
-    move_time_data.sh \
-    move_wifi_data.sh \
     fstab.qcom \
     init.msm.usb.configfs.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \
     ueventd.qcom.rc
+
+PRODUCT_PACKAGES += \
+    init.class_late.sh \
+    init.class_main.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.ipastart.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sensors.sh \
+    init.qcom.sh \
+    init.qcom.usb.sh \
+    init.qti.ims.sh \
+    move_time_data.sh \
+    move_wifi_data.sh
 
 # RCS
 PRODUCT_PACKAGES += \
