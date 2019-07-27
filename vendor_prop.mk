@@ -50,36 +50,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    bt.max.hfpclient.connections=1 \
-    persist.bt.a2dp.aac_disable=true \
+    persist.bluetooth.disableabsvol=true \
     persist.bt.enable.multicast=0 \
-    persist.bt.hfp.playbackforvr=false \
-    persist.bt.hfp.playbackforvoip=false \
+    persist.bt.max.a2dp.connections=1 \
+    persist.bt.max.hs.connections=2 \
+    persist.vendor.bluetooth.modem_nv_support=true \
     persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
-    persist.vendor.btstack.enable.splita2dp=true \
-    ro.bluetooth.emb_wp_mode=true \
-    ro.bluetooth.wipower=true \
     vendor.qcom.bluetooth.soc=cherokee
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.camera.eis.enable=1 \
-    persist.vendor.camera.ois.disable=1 \
-    persist.vendor.camera.is_type=4 \
-    persist.ts.rtmakeup=1 \
-    persist.vendor.camera.HAL3.enabled=1 \
-    persist.vendor.camera.expose.aux=1 \
-    persist.vendor.camera.preview.ubwc=0 \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap \
-    vendor.camera.hal1.packagelist=com.whatsapp,com.instagram.android
-
-# Charging maximum voltage
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.chg.max_volt_mv=9000
-
-# CNE
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.cne.feature=1
+    persist.vendor.camera.HAL3.enabled=1
+    #persist.vendor.camera.eis.enable=1 \
+    #persist.vendor.camera.ois.disable=1 \
+    #persist.vendor.camera.is_type=4 \
+    #vendor.camera.hal1.packagelist=com.whatsapp,com.instagram.android
 
 # Dalvik overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -94,10 +79,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
-# Enable stm-events
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.debug.coresight.config=stm-events
-
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.fm.a2dp.conc.disabled=false
@@ -106,28 +87,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
-# FUSE
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.fuse_sdcard=true
-
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.enable_hwc_vds=1 \
-    debug.sf.hw=1 \
-    debug.sf.latch_unsignaled=1 \
     debug.hwui.use_buffer_age=false \
-    dev.pm.dyn_samplingrate=1 \
-    persist.demo.hdmirotationlock=false \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=420 \
-    vendor.display.disable_inline_rotator=1 \
     vendor.display.disable_partial_split=1 \
     vendor.display.disable_rotator_downscale=1 \
-    vendor.display.disable_skip_validate=1 \
-    vendor.display.enable_default_color_mode=1 \
-    vendor.display.perf_hint_window=50 \
-    vendor.gralloc.disable_ubwc=0 \
-    vendor.gralloc.enable_fb_ubwc=1
+    vendor.display.perf_hint_window=50
+    #vendor.display.disable_inline_rotator=1 \
 
 # Early phase offset configuration for SurfaceFlinger
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -136,117 +104,47 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.early_gl_phase_offset_ns=3000000 \
     debug.sf.early_gl_app_phase_offset_ns=15000000
 
-# LED
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.asus.led.on=1
-
-# Location
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.location.osnlp.package=com.google.android.gms \
-    ro.location.osnlp.region.package=""
-
-# Media
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.aac_51_output_enabled=true \
-    media.stagefright.enable-player=true \
-    media.stagefright.enable-http=true \
-    media.stagefright.enable-aac=true \
-    media.stagefright.enable-qcp=true \
-    media.stagefright.enable-scan=true \
-    mm.enable.smoothstreaming=true \
-    vendor.mm.enable.qcom_parser=13631487 \
-    mmp.enable.3g2=true \
-    persist.mm.enable.prefetch=true \
-    vendor.vidc.enc.disable_bframes=1 \
-    vendor.vidc.dec.enable.downscalar=1 \
-    vendor.vidc.enc.disable.pq=false \
-    vidc.enc.dcvs.extra-buff-count=2 \
-    vidc.enc.target_support_bframe=1
-
 # Memory optimizations
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.sys.fw.bservice_enable=true \
-    ro.vendor.qti.am.reschedule_service=true
+#PRODUCT_PROPERTY_OVERRIDES += \
+    #ro.vendor.qti.sys.fw.bservice_enable=true \
+    #ro.vendor.qti.am.reschedule_service=true
 
 # Misc
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     persist.vendor.qcomsysd.enabled=1 \
     ro.additionalbutton.operation=0 \
-    ro.sys.fw.use_trim_settings=true \
     sys.autosuspend.timeout=500000
 
-# Netflix
+# Play store
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.netflix.bsp_rev=Q660-13149-1
-
-# Netmgr
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.use_data_netmgrd=true \
-    persist.vendor.data.mode=concurrent
-
-# NTP Server
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.backup.ntpServer="0.pool.ntp.org" \
-    persist.vendor.overlay.izat.optin=rro
-
-# QCOM cabl
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.cabl=0 \
-    ro.vendor.display.cabl=0
+    ro.com.google.clientidbase.ms=android-asus-tpin \
+    ro.com.google.rlzbrandcode=ASUP \
+    ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y9
 
 # QTI
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.at_library=libqti-at.so \
-    ro.vendor.extension_library=libqti-perfd-client.so \
-    ro.vendor.qti.core_ctl_min_cpu=2 \
-    ro.vendor.qti.core_ctl_max_cpu=4 \
-    ro.vendor.qti.sys.fw.bg_apps_limit=60
+    ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    DEVICE_PROVISIONED=1 \
-    persist.data.iwlan.enable=true \
     persist.radio.multisim.config=dsds \
-    persist.radio.VT_CAM_INTERFACE=1 \
-    persist.radio.VT_CAM_INTERFACE=2 \
-    persist.vendor.radio.atfwd.start=true \
     persist.vendor.radio.sib16_support=1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
-    persist.vendor.qti.telephony.vt_cam_interface=1 \
-    ril.subscription.types=NV,RUIM \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     ro.carrier=unknown \
     ro.com.android.dataroaming=false \
-    ro.config.vc_call_vol_steps=11 \
     ro.ril.ecclist=112,911 \
-    ro.telephony.default_network=20,20 \
-    telephony.lteOnCdmaDevice=1
+    rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
 
 # Power save functionality for modem
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.add_power_save=1 \
     persist.vendor.radio.apm_sim_not_pwdn=1
 
-# RmNet Data
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.df.dev_name=rmnet_usb0
-
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.sdk.sensors.gestures=false \
-    ro.vendor.qti.sensors.dev_ori=true \
-    ro.vendor.qti.sensors.pmd=true \
-    ro.vendor.qti.sensors.sta_detect=true \
-    ro.vendor.qti.sensors.mot_detect=true \
-    ro.vendor.qti.sensors.facing=false \
-    ro.vendor.qti.sensors.cmc=false \
-    ro.vendor.sensors.dev_ori=true \
-    ro.vendor.sensors.pmd=true \
-    ro.vendor.sensors.sta_detect=true \
-    ro.vendor.sensors.mot_detect=true \
-    ro.vendor.sdk.sensors.gestures \
+    ro.vendor.sdk.sensors.gestures=false \
     ro.vendor.sensors.cmc=false \
     ro.vendor.sensors.facing=false
 
@@ -257,21 +155,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # System prop for UBWC
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.video.disable.ubwc=1
-
-# Time
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.timed.enable=true
-
-# USB
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.usb.firstboot.config=diag,serial_cdev,rmnet,adb
-
-# WFD display
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.debug.wfd.enable=1 \
-    persist.hwc.enable_vds=1 \
-    persist.sys.wfd.virtual=0
-
-# ZRAM disk
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.config.zram=true
