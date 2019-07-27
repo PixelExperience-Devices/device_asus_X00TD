@@ -2526,6 +2526,7 @@ int IPACM_Wlan::add_connection(int client_index, int v6_num)
 	}
 
 	get_client_memptr(wlan_client, client_index)->v6_rt_rule_id[v6_num] = pFilteringTable->rules[0].flt_rule_hdl;
+	IPACMDBG_H("%d-st client v6_num %d: id handle 0x%x\n", client_index, v6_num, get_client_memptr(wlan_client, client_index)->v6_rt_rule_id[v6_num]);
 
 fail:
 	close(fd);

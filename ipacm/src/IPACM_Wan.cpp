@@ -1345,6 +1345,7 @@ void IPACM_Wan::event_callback(ipa_cm_event_id event, void *param)
 					else if(m_is_sta_mode == Q6_MHI_WAN)
 					{
 						/* only need cleanup rt-rule*/
+						del_dft_firewall_rules(IPA_IP_v4);
 						handle_route_del_evt(IPA_IP_v4);
 					}
 					else
@@ -1379,6 +1380,7 @@ void IPACM_Wan::event_callback(ipa_cm_event_id event, void *param)
 					else if(m_is_sta_mode == Q6_MHI_WAN)
 					{
 						/* only need cleanup rt-rule*/
+						del_dft_firewall_rules(IPA_IP_v6);
 						handle_route_del_evt(IPA_IP_v6);
 					}
 
@@ -7321,7 +7323,8 @@ fail:
 
 int IPACM_Wan::delete_offload_frag_rule()
 {
-	int len, res = true;
+	int res = IPACM_SUCCESS;
+	int len;
 	ipa_ioc_del_flt_rule *pFilteringTable = NULL;
 
 	struct ipa_flt_rule_del flt_rule_entry;
