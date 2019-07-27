@@ -1831,6 +1831,13 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 				IPACMERR("Failed to send DL frag rule to modem.\n");
 				return IPACM_FAILURE;
 			}
+
+			/* send ipv6 ICMP filtering rule */
+			if(iptype==IPA_IP_v6 && add_icmpv6_exception_rule())
+			{
+				IPACMERR("Failed to send ICMPv6 ex rule to modem.\n");
+				return IPACM_FAILURE;
+			}
 		}
 		else
 		{
@@ -4683,6 +4690,12 @@ int IPACM_Wan::handle_route_del_evt(ipa_ip_type iptype)
 				IPACMERR("Failed to delete DL frag rule \n");
 				return IPACM_FAILURE;
 			}
+			/* Delete MHI icmpv6 exception rule */
+			if(delete_icmpv6_exception_rule())
+			{
+				IPACMERR("Failed to delete icmpv6 rule \n");
+				return IPACM_FAILURE;
+			}
 		}
 		else
 		{
@@ -7347,6 +7360,144 @@ int IPACM_Wan::delete_offload_frag_rule()
 		goto fail;
 	}
 	mhi_dl_v4_frag_hdl = 0;
+
+fail:
+	if(pFilteringTable != NULL)
+	{
+		free(pFilteringTable);
+	}
+	return res;
+}
+
+int IPACM_Wan::add_icmpv6_exception_rule()
+{
+	int fd;
+	int len, res = IPACM_SUCCESS;
+	uint8_t mux_id;
+	ipa_ioc_add_flt_rule *pFilteringTable = NULL;
+
+	mux_id = ext_prop->ext[0].mux_id;
+	/* contruct filter rules to pcie modem */
+	struct ipa_flt_rule_add flt_rule_entry;
+	ipa_ioc_generate_flt_eq flt_eq;
+
+	/* construct rule */
+	IPACMDBG_H("adding MHI icmpv6 rule\n");
+	len = sizeof(struct ipa_ioc_add_flt_rule) + sizeof(struct ipa_flt_rule_add);
+	pFilteringTable = (struct ipa_ioc_add_flt_rule*)malloc(len);
+	if (pFilteringTable == NULL)
+	{
+		IPACMERR("Error Locate ipa_flt_rule_add memory...\n");
+		return IPACM_FAILURE;
+	}
+	memset(pFilteringTable, 0, len);
+
+	pFilteringTable->commit = 1;
+	pFilteringTable->global = false;
+	pFilteringTable->ip = IPA_IP_v6;
+	pFilteringTable->num_rules = (uint8_t)1;
+
+	/* Configuring ICMPv6 Filtering Rule */
+	memset(&flt_rule_entry, 0, sizeof(struct ipa_flt_rule_add));
+	flt_rule_entry.rule.retain_hdr = 1;
+	flt_rule_entry.rule.to_uc = 0;
+	flt_rule_entry.rule.eq_attrib_type = 0;
+	flt_rule_entry.at_rear = true;
+	flt_rule_entry.flt_rule_hdl = -1;
+	flt_rule_entry.status = -1;
+	flt_rule_entry.rule.action = IPA_PASS_TO_EXCEPTION;
+#ifdef FEATURE_IPA_V3
+	flt_rule_entry.rule.hashable = true;
+#endif
+	IPACMDBG_H("rx property attrib mask:0x%x\n", rx_prop->rx[0].attrib.attrib_mask);
+	memcpy(&flt_rule_entry.rule.attrib, &rx_prop->rx[0].attrib, sizeof(flt_rule_entry.rule.attrib));
+	flt_rule_entry.rule.attrib.attrib_mask |= IPA_FLT_NEXT_HDR;
+	flt_rule_entry.rule.attrib.u.v6.next_hdr = (uint8_t)IPACM_FIREWALL_IPPROTO_ICMP6;
+
+	/* generate eq */
+	memset(&flt_eq, 0, sizeof(flt_eq));
+	memcpy(&flt_eq.attrib, &flt_rule_entry.rule.attrib, sizeof(flt_eq.attrib));
+	flt_eq.ip = IPA_IP_v6;
+
+	fd = open(IPA_DEVICE_NAME, O_RDWR);
+	if (fd < 0)
+	{
+		IPACMERR("Failed opening %s.\n", IPA_DEVICE_NAME);
+		free(pFilteringTable);
+		return IPACM_FAILURE;
+	}
+
+	if(0 != ioctl(fd, IPA_IOC_GENERATE_FLT_EQ, &flt_eq)) //define and cpy attribute to this struct
+	{
+		IPACMERR("Failed to get eq_attrib\n");
+		res = IPACM_FAILURE;
+		goto fail;
+	}
+	memcpy(&flt_rule_entry.rule.eq_attrib,
+		&flt_eq.eq_attrib,
+		sizeof(flt_rule_entry.rule.eq_attrib));
+	memcpy(&(pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
+
+	/* add rule */
+	if(false == m_filtering.AddOffloadFilteringRule(pFilteringTable, mux_id, 1))
+	{
+		IPACMERR("Failed to install WAN DL filtering table.\n");
+		res = IPACM_FAILURE;
+		goto fail;
+	}
+
+	/* save handle */
+	icmpv6_exception_hdl = pFilteringTable->rules[0].flt_rule_hdl;
+
+fail:
+	close(fd);
+	if(pFilteringTable != NULL)
+	{
+		free(pFilteringTable);
+	}
+	return res;
+}
+
+int IPACM_Wan::delete_icmpv6_exception_rule()
+{
+	int len, res = IPACM_SUCCESS;
+	ipa_ioc_del_flt_rule *pFilteringTable = NULL;
+
+	struct ipa_flt_rule_del flt_rule_entry;
+
+	IPACMDBG_H("deleting MHI icmpv6 rule \n");
+	len = sizeof(struct ipa_ioc_del_flt_rule) + sizeof(struct ipa_flt_rule_del);
+	pFilteringTable = (struct ipa_ioc_del_flt_rule*)malloc(len);
+	if (pFilteringTable == NULL)
+	{
+		IPACMERR("Error Locate ipa_ioc_del_flt_rule memory...\n");
+		return IPACM_FAILURE;
+	}
+	memset(pFilteringTable, 0, len);
+
+	pFilteringTable->commit = 1;
+	pFilteringTable->ip = IPA_IP_v6;
+	pFilteringTable->num_hdls = (uint8_t)1;
+
+	if (icmpv6_exception_hdl == 0)
+	{
+		IPACMERR("invalid icmpv6_exception_hdl.\n");
+		res = IPACM_FAILURE;
+		goto fail;
+	}
+
+	memset(&flt_rule_entry, 0, sizeof(struct ipa_flt_rule_del));
+	flt_rule_entry.hdl = icmpv6_exception_hdl;
+
+	memcpy(&(pFilteringTable->hdl[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_del));
+
+	if(false == m_filtering.DelOffloadFilteringRule(pFilteringTable))
+	{
+		IPACMERR("Failed to delete MHI icmpv6 rule.\n");
+		res = IPACM_FAILURE;
+		goto fail;
+	}
+	icmpv6_exception_hdl = 0;
 
 fail:
 	if(pFilteringTable != NULL)
