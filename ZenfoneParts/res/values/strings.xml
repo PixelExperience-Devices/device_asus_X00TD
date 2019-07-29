@@ -30,39 +30,47 @@
     <string name="headphone_gain">Headphone gain</string>
     <string name="microphone_gain">Microphone gain</string>
 
+    <!-- Kcal Settings -->
+    <string name="device_kcal_title">Display Color Calibration</string>
+    <string name="advanced_settings_kcal">Display Color Calibration</string>
+    <string name="cat_colormanagement">Color Settings</string>
+    <string name="cat_calibration">Display Calibration</string>
+    <string name="kcal_summary">Display color calibration using KCAL</string>
+    <string name="kcal_enabled">On</string>
+    <string name="kcal_disabled">Off</string>
+    <string name="set_on_boot">Set On Boot</string>
+    <string name="color_red">Red</string>
+    <string name="color_green">Green</string>
+    <string name="color_blue">Blue</string>
+    <string name="color_minimum">Minimum</string>
+    <string name="saturation">Saturation</string>
+    <string name="value">Value</string>
+    <string name="contrast">Contrast</string>
+    <string name="hue">Hue</string>
+    <string name="grayscale">Grayscale Display</string>
+
+    <string name="presets_dialog_title">Select Preset</string>
+    <!-- Presets -->
+    <string name="preset_default">Default</string>
+    <string name="preset_version_1">Version 1</string>
+    <string name="preset_version_2">Version 2</string>
+    <string name="preset_version_3">Version 3</string>
+    <string name="preset_triluminous">Triluminous</string>
+    <string name="preset_deep_black_white">Deep Black and White</string>
+    <string name="preset_deep_natural">Deep Natural</string>
+    <string name="preset_cool_amoled">Cool Amoled</string>
+    <string name="preset_extreme_amoled">Extreme Amoled</string>
+    <string name="preset_warm_amoled">Warm Amoled</string>
+    <string name="preset_hybrid_mamba">Hybrid Mamba</string>
+
+    <!-- Menu -->
+    <string name="kcal_presets" translatable="false">@string/presets_dialog_title</string>
+    <string name="kcal_reset">Reset</string>
+
     <!-- CustomSeekBarPreference -->
     <string name="edit_value">Choose new Value</string>
     <string name="default_value">Default Value</string>
     <string name="edit_hint">Value between %1$d and %2$d</string>
-
-    <!-- KCal -->
-    <string name="kcal_title">Display Calibration</string>
-    <string name="kcal_summary">Display color calibration using KCAL</string>
-    <string name="kcal_enabled_title">Enable KCAL</string>
-    <string name="kcal_enabled_summary">Turn on display calibration using KCAL</string>
-    <string name="kcal_red">Red</string>
-    <string name="kcal_green">Green</string>
-    <string name="kcal_blue">Blue</string>
-    <string name="kcal_saturation">Saturation</string>
-    <string name="kcal_contrast">Contrast</string>
-    <string name="kcal_hue">Hue</string>
-    <string name="kcal_value">Value</string>
-    <string name="menu_reset">Reset</string>
-    <string name="kcal_color_temp">Color temperature (K)</string>
-    <string name="kcal_greyscale_title">Greyscale</string>
-    <string name="kcal_greyscale_summary">Fully disable saturation</string>
-    <string name="presets_list_title">Load KCAL preset</string>
-    <string name="default_values">Default</string>
-    <string name="version_1">Version 1</string>
-    <string name="version_2">Version 2</string>
-    <string name="version_3">Version 3</string>
-    <string name="triluminous">Triluminous</string>
-    <string name="deep_black_and_white">Deep Black and White</string>
-    <string name="deep_natural">Deep Natural</string>
-    <string name="cool_amoled">Cool Amoled</string>
-    <string name="extreme_amoled">Extreme Amoled</string>
-    <string name="warm_amoled">Warm Amoled</string>
-    <string name="hybrid_mamba">Hybrid Mamba</string>
 
     <!-- Zenmotions -->
     <string name="dlg_ok">OK</string>

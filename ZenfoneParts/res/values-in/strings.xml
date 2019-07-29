@@ -31,34 +31,35 @@
     <string name="default_value">Nilai bawaan</string>
     <string name="edit_hint">Nilai antara %1$d and %2$d</string>
 
-    <!-- KCal -->
-    <string name="kcal_title">Kalibrasi layar</string>
+    <!-- Kcal Settings -->
+    <string name="device_kcal_title">Kalibrasi Warna Layar</string>
+    <string name="advanced_settings_kcal">Kalibrasi Warna Layar</string>
+    <string name="cat_colormanagement">Pengaturan Warna</string>
+    <string name="cat_calibration">Kalibrasi Warna</string>
     <string name="kcal_summary">Kalibrasi warna layar dengan KCAL</string>
-    <string name="kcal_enabled_title">Aktifkan KCAL</string>
-    <string name="kcal_enabled_summary">Aktifkan kalibrasi layar dengan KCAL</string>
-    <string name="kcal_red">Merah</string>
-    <string name="kcal_green">Hijau</string>
-    <string name="kcal_blue">Biru</string>
-    <string name="kcal_saturation">Saturasi</string>
-    <string name="kcal_contrast">Kontras</string>
-    <string name="kcal_hue">Corak warna</string>
-    <string name="kcal_value">Nilai</string>
-    <string name="menu_reset">Atur ulang</string>
-    <string name="kcal_color_temp">Suhu warna (K)</string>
-    <string name="kcal_greyscale_title">Skala abu-abu</string>
-    <string name="kcal_greyscale_summary">Matikan saturasi secara penuh</string>
-    <string name="presets_list_title">Gunakan KCAL preset</string>
-    <string name="default_values">Bawaan</string>
-    <string name="version_1">Versi 1</string>
-    <string name="version_2">Versi 2</string>
-    <string name="version_3">Versi 3</string>
-    <string name="triluminous">Triluminus</string>
-    <string name="deep_black_and_white">Hitam putih</string>
-    <string name="deep_natural">Alami</string>
-    <string name="cool_amoled">Amoled sejuk</string>
-    <string name="extreme_amoled">Amoled ekstrim</string>
-    <string name="warm_amoled">Amoled hangat</string>
-    <string name="hybrid_mamba">Hybrid Mamba</string>
+    <string name="kcal_enabled">Nyala</string>
+    <string name="kcal_disabled">Mati</string>
+    <string name="set_on_boot">Aktifkan KCAL setelah boot</string>
+    <string name="color_red">Merah</string>
+    <string name="color_green">Hijau</string>
+    <string name="color_blue">Biru</string>
+    <string name="color_minimum">Minimum</string>
+    <string name="saturation">Saturasi</string>
+    <string name="value">Nilai</string>
+    <string name="contrast">Kontras</string>
+    <string name="hue">Rona</string>
+    <string name="grayscale">Skala Abu-Abu</string>
+
+    <!-- Presets -->
+    <string name="preset_default">Standar</string>
+    <string name="preset_version_1">Versi 1</string>
+    <string name="preset_version_2">Versi 2</string>
+    <string name="preset_version_3">Versi 3</string>
+    <string name="preset_triluminous">Triluminus</string>
+
+    <!-- Menu -->
+    <string name="kcal_presets" translatable="false">@string/presets_dialog_title</string>
+    <string name="kcal_reset">Atur Ulang</string>
 
     <!-- Zenmotions -->
     <string name="dlg_ok">OK</string>

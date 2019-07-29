@@ -35,12 +35,17 @@
     <PreferenceCategory
         android:key="display"
         android:title="@string/display_title">
-       <PreferenceScreen
-                 android:key="kcal"
-                 android:fragment="com.asus.zenparts.DisplayCalibration"
-                 android:summary="@string/kcal_summary"
-                 android:title="@string/kcal_title"
-                 android:icon="@drawable/ic_kcal" />
+        <Preference
+            android:key="device_kcal"
+            android:persistent="false"
+            android:icon="@drawable/ic_kcal"
+            android:title="@string/device_kcal_title"
+            android:summary="@string/kcal_summary">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.asus.zenparts.kcal.KCalSettingsActivity"
+                android:targetPackage="com.asus.zenparts.kcal" />
+        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory

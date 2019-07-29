@@ -23,6 +23,7 @@ import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 
+import com.asus.zenparts.kcal.KCalSettingsActivity;
 import com.asus.zenparts.preferences.SecureSettingCustomSeekBarPreference;
 import com.asus.zenparts.preferences.SecureSettingListPreference;
 import com.asus.zenparts.preferences.SecureSettingSwitchPreference;
@@ -45,6 +46,7 @@ public class DeviceSettings extends PreferenceFragment implements
     final static int MAX_VIBRATION = 3596;
 
     private static final String CATEGORY_DISPLAY = "display";
+    private static final String PREF_DEVICE_KCAL = "device_kcal";
 
     final static String PREF_HEADPHONE_GAIN = "headphone_gain";
     private static final String HEADPHONE_GAIN_PATH = "/sys/kernel/sound_control/headphone_gain";
@@ -55,7 +57,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private VibrationSeekBarPreference mVibrationStrength;
     private SecureSettingCustomSeekBarPreference mHeadphoneGain;
     private SecureSettingCustomSeekBarPreference mMicrophoneGain;
-    private Preference mKcalPref;
+    private Preference mKcal;
     private Preference mAmbientPref;
 
     @Override
@@ -91,14 +93,12 @@ public class DeviceSettings extends PreferenceFragment implements
             }
         });
 
-        mKcalPref = findPreference("kcal");
-        mKcalPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Intent intent = new Intent(getContext(), DisplayCalibration.class);
-                startActivity(intent);
-                return true;
-            }
+        mKcal = findPreference(PREF_DEVICE_KCAL);
+
+        mKcal.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(getActivity().getApplicationContext(), KCalSettingsActivity.class);
+            startActivity(intent);
+            return true;
         });
     }
 
