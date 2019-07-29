@@ -105,7 +105,8 @@ void vendor_check_variant()
 {
     struct sysinfo sys;
     char const *region_file = "/mnt/vendor/persist/flag/countrycode.txt";
-    char const *build_fingerprint, *product_device, *product_model, *product_name;
+    char const *product_device, *product_model, *product_name, *build_fingerprint;
+
     std::string region;
 
     sysinfo(&sys);
@@ -155,6 +156,9 @@ void vendor_check_variant()
         product_model = "ASUS_X00TDA";
     else
         product_model = "ASUS_X00TD";
+
+    //Google walley Fingerptint
+    build_fingerprint = "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys";
 
     // Override props based on values set
     property_override_dual("ro.product.device", "ro.vendor.product.device", product_device);
