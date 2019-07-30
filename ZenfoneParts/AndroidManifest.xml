@@ -102,8 +102,7 @@
         <activity
             android:name="com.asus.zenparts.TouchscreenGesturePreferenceActivity"
 			android:exported="true"
-            android:label="@string/ambient_display_gestures_title"
-            android:theme="@style/DeviceSettings">
+            android:label="@string/ambient_display_gestures_title">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>
