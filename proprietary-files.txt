@@ -55,7 +55,7 @@ vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so|474187a8132aabd45089cacd2f8de9a
 vendor/bin/audioflacapp
 vendor/firmware/tfa98xx.cnt
 vendor/lib/libacdb-fts.so
-vendor/lib/libacdbloader.so
+vendor/lib/libacdbloader.so|47b2337da7758ab9d944a8fffa1b8cc3d1c62523
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libadm.so
@@ -70,7 +70,7 @@ vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 vendor/lib64/libacdb-fts.so
-vendor/lib64/libacdbloader.so
+vendor/lib64/libacdbloader.so|40573e9d3f1b0753cd7f77c689d174467e7dd989
 vendor/lib64/libacdbrtac.so
 vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
@@ -90,14 +90,15 @@ vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
 vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb
 vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 vendor/etc/acdbdata/MTP/MTP_workspaceFile.qwsp
-vendor/etc/acdbdata/QRD/QRD_Bluetooth_cal.acdb
-vendor/etc/acdbdata/QRD/QRD_General_cal.acdb
-vendor/etc/acdbdata/QRD/QRD_Global_cal.acdb
-vendor/etc/acdbdata/QRD/QRD_Handset_cal.acdb
-vendor/etc/acdbdata/QRD/QRD_Hdmi_cal.acdb
-vendor/etc/acdbdata/QRD/QRD_Speaker_cal.acdb
-vendor/etc/acdbdata/QRD/QRD_workspaceFile.qwsp
-vendor/etc/acdbdata/adsp_avs_config.acdb
+vendor/etc/acdbdata/QRD/QRD_Bluetooth_cal.acdb|121035567575c4841d1be05daa9d58f33b38962a
+vendor/etc/acdbdata/QRD/QRD_General_cal.acdb|6749c118ea725f0c24d7499611c354e85ddc67eb
+vendor/etc/acdbdata/QRD/QRD_Global_cal.acdb|85ea340fd59826d1722c2522797a2f941623dc94
+vendor/etc/acdbdata/QRD/QRD_Handset_cal.acdb|db65913535aa612948899be8da17d607fb2ebb19
+vendor/etc/acdbdata/QRD/QRD_Hdmi_cal.acdb|8fedb6dad4552adca6ec40cd6ce59111c32ed43e
+vendor/etc/acdbdata/QRD/QRD_Headset_cal.acdb|7e2e0e0f4f25fce9048ad3162176a3afd1ed37ba
+vendor/etc/acdbdata/QRD/QRD_Speaker_cal.acdb|d7176aede0bdf4cde24656cdcc433605e6975d5a
+vendor/etc/acdbdata/QRD/QRD_workspaceFile.qwsp|5082131d11ff0b789648c7aa07ff81b0f46a4c6d
+vendor/etc/acdbdata/adsp_avs_config.acdb|df26d45014538751c377f35728a6d3f284130996
 
 # Bluetooth - from lavender - PPR1.180904.001 V10.2.3.0.PFGCNXM
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|dff50e256246ab04e01ec5658f94073dddb9fb0c
