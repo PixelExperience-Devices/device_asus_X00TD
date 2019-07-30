@@ -46,6 +46,7 @@ vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
 # ANT+ - from lavender - PKQ1.180904.001 V10.2.3.0.PFGCNXM
 -lib/libantradio.so|d1f41ee14d4cd7b3a306a628bca5cc9e19027201
+lib/libqti-at.so|0a9e48985cdb5737af1ed7c6f2985fb8b19f3d16
 lib64/com.qualcomm.qti.ant@1.0.so|3a19c81d66ef1190d0b2f361420d5cbf707cc600
 -lib64/libantradio.so|456b6b2fda1450c852ad0b766143b9cf3c61cde0
 vendor/lib64/com.qualcomm.qti.ant@1.0.so|44294189280e86d95538bc51bdccd87b3f010f27
@@ -896,6 +897,41 @@ vendor/lib/vendor.qti.hardware.fm@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.fm@1.0.so
 
+# FW-Boost
+app/Perfdump/Perfdump.apk|c80290c1a97310e311595319bf0eaa420a8e0b56
+framework/QPerformance.jar
+framework/UxPerformance.jar
+lib/libqti-iopd-client_system.so
+lib/libqti-util_system.so
+lib/libqti-perfd-client_system.so|74f4d9657cf492cf1de2e9b93983f4e7b5431c45
+lib/libqti_performance.so|dc0995fa3217b6c44029b55b5151adaae515392a
+lib/vendor.qti.hardware.iop@1.0.so|1b8bd6f5f3d8229385077aff655764fa2ec955aa
+lib/vendor.qti.hardware.iop@2.0.so|5c44374318c6c44274ff2939123c33631c7e0e3c
+lib/vendor.qti.hardware.perf@1.0.so|84e437b0dea2d8c1d5712a9fadf132ae5d665d46
+lib64/libqti-iopd-client_system.so
+lib64/libqti-at.so|cf040c87b79568f7f7b1be64c52fca931e779bea
+lib64/libqti-perfd-client_system.so|de5b61f07d7981bb208167b357f46a9ad083c9e7
+lib64/libqti-util_system.so|7247dc9562fbd0b319f3c23902ac8a7ad874991a
+lib64/libqti_performance.so|9c88af412e0276c578f06e1069b6c3aeae7e3f8d
+lib64/vendor.qti.hardware.iop@1.0.so|97cba08fa2f0a4d86c41f9a15215b57f5b4b826b
+lib64/vendor.qti.hardware.iop@2.0.so|179b469e12ae74ea640da18c23353c97a875bd59
+lib64/vendor.qti.hardware.perf@1.0.so|30798b76c4ef1755b74d17974dc90f39898c9eea
+vendor/bin/hw/vendor.qti.hardware.iop@2.0-service|6cd75cd82413481eca0d0071c9984e0869a6babc
+vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so|bfbc06d08f216597271fd43d148fd90d519e8d82
+vendor/etc/init/vendor.qti.hardware.iop@2.0-service.rc|fd11367b2585702190ef2577ce2ce6fc68f3a2f8
+vendor/lib/libperfgluelayer.so|3850d4ea3dbead227b622fcc47fcec29955fcc63
+vendor/lib/libqti-iopd-client.so|5935fb7726ce8a50374fbd9602cdf84357c29de1
+vendor/lib/libqti-iopd.so|124672742bb36f610fa0da328162459f30d7fd80
+vendor/lib/libqti-utils.so|75e86906dfb368a0b0a854dd341de0e905570c66
+vendor/lib/vendor.qti.hardware.iop@1.0.so|1b8bd6f5f3d8229385077aff655764fa2ec955aa
+vendor/lib/vendor.qti.hardware.iop@2.0.so|5c44374318c6c44274ff2939123c33631c7e0e3c
+vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so|805af950ae3ff696808a71fa1183cc3d8294e4e9
+vendor/lib64/libqti-iopd-client.so|6510e37e52fe2f5f1da892d4be4a7c91eb9f1525
+vendor/lib64/libqti-utils.so|4716e35c1605a3ef971b61ada7e84172c70deeb5
+vendor/lib64/vendor.qti.hardware.iop@1.0.so|97cba08fa2f0a4d86c41f9a15215b57f5b4b826b
+vendor/lib64/vendor.qti.hardware.iop@2.0.so|179b469e12ae74ea640da18c23353c97a875bd59
+vendor/lib64/libqti-iopd.so|66359e2e0d6ec5cf31927ba4bfdbecce52b0fa3a
+
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
@@ -1087,7 +1123,7 @@ vendor/etc/perf/targetresourceconfigs.xml
 vendor/lib/libqti-perfd-client.so
 vendor/lib/libqti-perfd.so
 vendor/lib/libqti-util.so
-vendor/lib/vendor.qti.hardware.perf@1.0.so
+vendor/lib/vendor.qti.hardware.perf@1.0.so|84e437b0dea2d8c1d5712a9fadf132ae5d665d46
 vendor/lib64/libperfgluelayer.so
 vendor/lib64/libqti-perfd-client.so
 vendor/lib64/libqti-perfd.so
