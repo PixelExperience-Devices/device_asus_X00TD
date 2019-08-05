@@ -1,0 +1,2 @@
+# Light HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.asus_sdm660                u:object_r:hal_light_default_exec:s0
