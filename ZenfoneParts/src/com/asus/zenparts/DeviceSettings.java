@@ -47,6 +47,8 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String HEADPHONE_GAIN_PATH = "/sys/kernel/sound_control/headphone_gain";
     final static String PREF_MICROPHONE_GAIN = "microphone_gain";
     private static final String MICROPHONE_GAIN_PATH = "/sys/kernel/sound_control/mic_gain";
+    public static final String PREF_BACKLIGHT_DIMMER = "backlight_dimmer";
+    public static final String BACKLIGHT_DIMMER_PATH = "/sys/module/mdss_fb/parameters/backlight_dimmer";
 
     private CustomSeekBarPreference mTorchBrightness;
     private VibratorStrengthPreference mVibratorStrength;
@@ -54,6 +56,8 @@ public class DeviceSettings extends PreferenceFragment implements
     private CustomSeekBarPreference mMicrophoneGain;
     private Preference mKcal;
     private Preference mAmbientPref;
+
+    private SecureSettingSwitchPreference mBacklightDimmer;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -77,6 +81,14 @@ public class DeviceSettings extends PreferenceFragment implements
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         if (mVibratorStrength != null) {
             mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
+        }
+
+        if (FileUtils.fileWritable(BACKLIGHT_DIMMER_PATH)) {
+            mBacklightDimmer = (SecureSettingSwitchPreference) findPreference(PREF_BACKLIGHT_DIMMER);
+            mBacklightDimmer.setChecked(FileUtils.getFileValueAsBoolean(BACKLIGHT_DIMMER_PATH, false));
+            mBacklightDimmer.setOnPreferenceChangeListener(this);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(PREF_BACKLIGHT_DIMMER));
         }
 
 	mAmbientPref = findPreference("ambient_display_gestures");
@@ -113,6 +125,10 @@ public class DeviceSettings extends PreferenceFragment implements
 
             case PREF_MICROPHONE_GAIN:
                 FileUtils.setValue(MICROPHONE_GAIN_PATH, (int) value);
+                break;
+
+            case PREF_BACKLIGHT_DIMMER:
+                FileUtils.setValue(BACKLIGHT_DIMMER_PATH, (boolean) value);
                 break;
 
             default:

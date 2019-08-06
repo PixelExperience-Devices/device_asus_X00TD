@@ -48,6 +48,8 @@ public class BootReceiver extends BroadcastReceiver implements Utils {
         FileUtils.setValue(HEADPHONE_GAIN_PATH, gain + " " + gain);
         FileUtils.setValue(MICROPHONE_GAIN_PATH, Settings.Secure.getInt(context.getContentResolver(),
                 DeviceSettings.PREF_MICROPHONE_GAIN, 0));
+        FileUtils.setValue(DeviceSettings.BACKLIGHT_DIMMER_PATH, Settings.Secure.getInt(context.getContentResolver(),
+                DeviceSettings.PREF_BACKLIGHT_DIMMER, 0));
 
         if (Settings.Secure.getInt(context.getContentResolver(), PREF_ENABLED, 0) == 1) {
             FileUtils.setValue(KCAL_ENABLE, Settings.Secure.getInt(context.getContentResolver(),

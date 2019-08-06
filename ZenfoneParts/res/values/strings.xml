@@ -19,6 +19,8 @@
 
     <string name="display_title">Display</string>
 
+    <string name="backlight_dimmer">Backlight Dimmer</string>
+    <string name="backlight_summary">Dim the display to the maximum value</string>
     <string name="torch_title">Torch</string>
     <string name="torch_brightness_title">Brightness</string>
     <string name="vibration_title">Vibration</string>

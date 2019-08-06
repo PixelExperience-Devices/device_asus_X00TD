@@ -19,6 +19,8 @@
 
     <string name="display_title">Layar</string>
 
+    <string name="backlight_dimmer">Backlight Dimmer</string>
+    <string name="backlight_summary">Redupkan layar ke nilai paling maksimum</string>
     <string name="torch_title">Senter</string>
     <string name="torch_brightness_title">Kecerahan</string>
     <string name="vibration_title">Getaran</string>
