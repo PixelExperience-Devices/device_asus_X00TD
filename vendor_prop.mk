@@ -82,7 +82,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Enable headset calibration
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.volume.headset.gain.depcal=true
+    vendor.audio.volume.headset.gain.depcal=true
 
 # Enable dualmic fluence for voice communication
 PRODUCT_PROPERTY_OVERRIDES += \
