@@ -65,7 +65,7 @@ public:
 													 uint8_t num_rules);
 
 	bool AddWanDLFilteringRule(struct ipa_ioc_add_flt_rule const *rule_table_v4, struct ipa_ioc_add_flt_rule const * rule_table_v6, uint8_t mux_id);
-	bool AddOffloadFilteringRule(struct ipa_ioc_add_flt_rule *flt_rule_tbl, uint8_t mux_id);
+	bool AddOffloadFilteringRule(struct ipa_ioc_add_flt_rule *flt_rule_tbl, uint8_t mux_id, uint8_t default_path);
 	bool DelOffloadFilteringRule(struct ipa_ioc_del_flt_rule const *flt_rule_tbl);
 	bool SendFilteringRuleIndex(struct ipa_fltr_installed_notif_req_msg_v01* table);
 	bool ModifyFilteringRule(struct ipa_ioc_mdfy_flt_rule* ruleTable);

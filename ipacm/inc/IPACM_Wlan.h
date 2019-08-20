@@ -189,7 +189,7 @@ private:
 					for(num_v6 =0;num_v6 < get_client_memptr(wlan_client, clt_indx)->route_rule_set_v6;num_v6++)
 					{
 						/* send client-v6 delete to pcie modem only with global ipv6 with tx_index = 0 one time*/
-						if(is_global_ipv6_addr(get_client_memptr(wlan_client, clt_indx)->v6_addr[num_v6]) && (IPACM_Wan::backhaul_mode == Q6_MHI_WAN) && (tx_index == 0)
+						if(is_global_ipv6_addr(get_client_memptr(wlan_client, clt_indx)->v6_addr[num_v6]) && (IPACM_Wan::backhaul_mode == Q6_MHI_WAN)
 							&& (get_client_memptr(wlan_client, clt_indx)->v6_rt_rule_id[num_v6] > 0))
 						{
 							IPACMDBG_H("Delete client index %d ipv6 RT-rules for %d-st ipv6 for rule-id:%d\n", clt_indx,num_v6,

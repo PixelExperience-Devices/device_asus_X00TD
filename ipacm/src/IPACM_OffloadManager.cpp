@@ -603,7 +603,7 @@ RET IPACM_OffloadManager::setQuota(const char * upstream_name /* upstream */, ui
 		return FAIL_INPUT_CHECK;
 	}
 
-	IPACMDBG_H("SET_DATA_QUOTA %s %llu", quota.interface_name, (long long)mb);
+	IPACMDBG_H("SET_DATA_QUOTA %s %llu\n", quota.interface_name, (long long)mb);
 
 	rc = ioctl(fd, WAN_IOC_SET_DATA_QUOTA, &quota);
 
@@ -778,12 +778,14 @@ IPACM_OffloadManager* IPACM_OffloadManager::GetInstance()
 bool IPACM_OffloadManager::search_framwork_cache(char * interface_name)
 {
 	bool rel = false;
+	bool cache_need = false;
 
 	/* IPACM needs to kee old FDs, can't clear */
 	IPACMDBG_H("check netdev(%s)\n", interface_name);
 
 	for(int i = 0; i < MAX_EVENT_CACHE ;i++)
 	{
+		cache_need = false;
 		if(event_cache[i].valid == true)
 		{
 			//do the compare
@@ -793,14 +795,40 @@ bool IPACM_OffloadManager::search_framwork_cache(char * interface_name)
 			{
 				IPACMDBG_H("found netdev (%s) in entry (%d) with event (%d)\n", interface_name, i, event_cache[i].event);
 				/* post event again */
-				if (event_cache[i].event == IPA_DOWNSTREAM_ADD)
+				if (event_cache[i].event == IPA_DOWNSTREAM_ADD) {
+					/* check if downsteam netdev driver finished its configuration on IPA-HW for ipv4 and ipv6 */
+					if (event_cache[i].prefix_cache.fam == V4 && IPACM_Iface::ipacmcfg->CheckNatIfaces(event_cache[i].dev_name, IPA_IP_v4))
+						cache_need = true;
+					if (event_cache[i].prefix_cache.fam == V6 && IPACM_Iface::ipacmcfg->CheckNatIfaces(event_cache[i].dev_name, IPA_IP_v6))
+						cache_need = true;
+					if (cache_need) {
+						IPACMDBG_H("still need cache (%d), index (%d) ip-family (%d)\n", cache_need, i, event_cache[i].prefix_cache.fam);
+						break;
+					} else {
+						IPACMDBG_H("no need cache (%d), handling it event (%d)\n", cache_need, event_cache[i].event);
 					addDownstream(interface_name, event_cache[i].prefix_cache);
-				else if (event_cache[i].event == IPA_WAN_UPSTREAM_ROUTE_ADD_EVENT)
+					}
+				} else if (event_cache[i].event == IPA_WAN_UPSTREAM_ROUTE_ADD_EVENT) {
+					/* check if upstream netdev driver finished its configuration on IPA-HW for ipv4 and ipv6 */
+					if (event_cache[i].prefix_cache.fam == V4 && IPACM_Iface::ipacmcfg->CheckNatIfaces(event_cache[i].dev_name, IPA_IP_v4))
+						cache_need = true;
+					if (event_cache[i].prefix_cache_v6.fam == V6 && IPACM_Iface::ipacmcfg->CheckNatIfaces(event_cache[i].dev_name, IPA_IP_v6))
+						cache_need = true;
+					if (cache_need) {
+						IPACMDBG_H("still need cache (%d), index (%d)\n", cache_need, i);
+						break;
+					} else {
+						IPACMDBG_H("no need cache (%d), handling it event (%d)\n", cache_need, event_cache[i].event);
 					setUpstream(interface_name, event_cache[i].prefix_cache, event_cache[i].prefix_cache_v6);
-				else
-					IPACMERR("wrong event cached (%d)", event_cache[i].event);
+					}
+				} else {
+						IPACMERR("wrong event cached (%d) index (%d)\n", event_cache[i].event, i);
+				}
+
+				/* reset entry */
 				event_cache[i].valid = false;
 				rel = true;
+				IPACMDBG_H("reset entry (%d)", i);
 			}
 		}
 	}

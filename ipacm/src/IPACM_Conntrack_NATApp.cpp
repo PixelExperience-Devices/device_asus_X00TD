@@ -579,7 +579,7 @@ int NatApp::AddConnection(const nat_table_entry *rule)
 		sizeof(flt_rule_entry.rule.eq_attrib));
 	memcpy(&(pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
-	if(false == IPACM_Iface::m_filtering.AddOffloadFilteringRule(pFilteringTable, pub_mux_id))
+	if(false == IPACM_Iface::m_filtering.AddOffloadFilteringRule(pFilteringTable, pub_mux_id, 0))
 	{
 		IPACMERR("Failed to install WAN DL filtering table.\n");
 		res = IPACM_FAILURE;

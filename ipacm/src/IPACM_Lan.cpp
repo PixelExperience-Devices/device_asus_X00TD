@@ -2425,7 +2425,7 @@ int IPACM_Lan::handle_eth_client_route_rule(uint8_t *mac_addr, ipa_ip_type iptyp
 					IPACMDBG_H("tx:%d, rt rule hdl=%x ip-type: %d\n", tx_index,
 		            				 get_client_memptr(eth_client, eth_index)->eth_rt_hdl[tx_index].eth_rt_rule_hdl_v6_wan[v6_num], iptype);
 
-					/* send client-v6 info to pcie modem only with global ipv6 with tx_index = 0 one time*/
+					/* send client-v6 info to pcie modem only with global ipv6 with tx_index = 1 one time*/
 					if(is_global_ipv6_addr(get_client_memptr(eth_client, eth_index)->v6_addr[v6_num]) && (IPACM_Wan::backhaul_mode == Q6_MHI_WAN))
 					{
 						if (add_connection(eth_index, v6_num))
@@ -6124,7 +6124,7 @@ int IPACM_Lan::add_connection(int client_index, int v6_num)
 		sizeof(flt_rule_entry.rule.eq_attrib));
 	memcpy(&(pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
-	if(false == m_filtering.AddOffloadFilteringRule(pFilteringTable, mux_id))
+	if(false == m_filtering.AddOffloadFilteringRule(pFilteringTable, mux_id, 0))
 	{
 		IPACMERR("Failed to install WAN DL filtering table.\n");
 		res = IPACM_FAILURE;
@@ -6132,7 +6132,7 @@ int IPACM_Lan::add_connection(int client_index, int v6_num)
 	}
 
 	get_client_memptr(eth_client, client_index)->v6_rt_rule_id[v6_num] = pFilteringTable->rules[0].flt_rule_hdl;
-
+	IPACMDBG_H("%d-st client v6_num %d: id handle 0x%x\n", client_index, v6_num, get_client_memptr(eth_client, client_index)->v6_rt_rule_id[v6_num]);
 fail:
 	close(fd);
 	if(pFilteringTable != NULL)

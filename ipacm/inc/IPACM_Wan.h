@@ -364,6 +364,12 @@ private:
 	uint32_t hdr_hdl_dummy_v6;
 	uint32_t hdr_proc_hdl_dummy_v6;
 
+	/* handle for UDP mhi frag rule */
+	uint32_t mhi_dl_v4_frag_hdl;
+
+	/* handle for icmpv6 exception rule */
+	uint32_t icmpv6_exception_hdl;
+
 	inline ipa_wan_client* get_client_memptr(ipa_wan_client *param, int cnt)
 	{
 	    char *ret = ((char *)param) + (wan_client_len * cnt);
@@ -622,6 +628,14 @@ private:
 	int add_dummy_rx_hdr();
 
 	int handle_coalesce_evt();
+
+	int add_offload_frag_rule();
+
+	int delete_offload_frag_rule();
+
+	int add_icmpv6_exception_rule();
+
+	int delete_icmpv6_exception_rule();
 };
 
 #endif /* IPACM_WAN_H */
