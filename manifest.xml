@@ -357,7 +357,7 @@
     <hal format="hidl">
         <name>com.qualcomm.qti.imscmservice</name>
         <transport>hwbinder</transport>
-        <version>2.1</version>
+        <version>2.2</version>
         <interface>
             <name>IImsCmService</name>
             <instance>qti.ims.connectionmanagerservice</instance>
@@ -366,7 +366,7 @@
     <hal format="hidl">
         <name>com.qualcomm.qti.uceservice</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>2.1</version>
         <interface>
             <name>IUceService</name>
             <instance>com.qualcomm.qti.uceservice</instance>
@@ -490,6 +490,15 @@
         <version>1.0</version>
         <interface>
             <name>IAlarm</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.cacert</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IService</name>
             <instance>default</instance>
         </interface>
     </hal>
