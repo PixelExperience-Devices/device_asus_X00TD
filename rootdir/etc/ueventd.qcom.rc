@@ -153,14 +153,9 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/mhi_qdss             0660   system    oem_2902
 /sys/class/qdss_bridge/mhi_qdss  mode      0660     system   oem_2902
 
-/* Huaqin modify for ZQL1650-143 by wangxiang at 2018/01/23 start */
 # fingerprint
-/dev/fpsdev0              0666   system     system
-/* Huaqin modify for ZQL1650-143 by wangxiang at 2018/01/23 end */
-
-/* Huaqin add for ZQL1650-143 by wangxiang at 2018/02/09 end */
-/dev/goodix_fp            0666   system     system
-/* Huaqin add for ZQL1650-143 by wangxiang at 2018/02/09 end */
+/dev/fpsdev0              0660   system     system
+/dev/goodix_fp            0660   system     system
 
 # wlan
 /dev/wcnss_wlan           0660   system     system
