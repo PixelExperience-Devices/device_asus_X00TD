@@ -33,7 +33,7 @@ sdm.debug.disable_skip_validate=1
 debug.cpurend.vsync=false
 
 #Property to enable display default color mode
-vendor.display.enable_default_color_mode=1
+vendor.display.enable_default_color_mode=0
 
 # Display Properties as per treble compliance
 vendor.gralloc.enable_fb_ubwc=1
