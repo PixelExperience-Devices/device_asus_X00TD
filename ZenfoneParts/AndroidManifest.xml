@@ -102,6 +102,16 @@
         <service android:name="com.asus.zenparts.SensorsDozeService"
                  android:permission="SensorsDozeService">
         </service>
+        <service
+            android:name=".ZenpartsTile"
+            android:enabled="true"
+            android:icon="@drawable/qs_asus"
+            android:label="@string/advanced_settings"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
         <activity
             android:name="com.asus.zenparts.TouchscreenGesturePreferenceActivity"
 			android:exported="true"
