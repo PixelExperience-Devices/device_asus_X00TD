@@ -50,7 +50,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.btstack.enable.splita2dp=true \
     ro.bluetooth.emb_wp_mode=true \
     ro.bluetooth.wipower=true \
-    vendor.qcom.bluetooth.soc=cherokee
+    vendor.qcom.bluetooth.soc=cherokee \
+    persist.bluetooth.bluetooth_audio_hal.disabled=true
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
