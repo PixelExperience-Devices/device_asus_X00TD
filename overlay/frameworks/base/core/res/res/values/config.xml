@@ -472,10 +472,14 @@
     <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
     <bool name="config_displayBlanksAfterDoze">true</bool>
     <!-- Paths to the libraries that contain device specific key handlers -->
-    <string name="config_deviceKeyHandlerLib" translatable="false">/system/priv-app/Zenmotions/Zenmotions.apk</string>
+    <string-array name="config_deviceKeyHandlerLibs" translatable="false">
+       <item>/system/priv-app/Zenmotions/Zenmotions.apk</item>
+    </string-array>
 
     <!-- Names of the key handler classes -->
-    <string name="config_deviceKeyHandlerClass" translatable="false">com.asus.zenmotions.KeyHandler</string>
+     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
+       <item>com.asus.zenmotions.KeyHandler</item>
+    </string-array>
 
     <!-- Disable AOD by default -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
