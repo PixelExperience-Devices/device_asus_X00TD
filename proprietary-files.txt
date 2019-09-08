@@ -826,7 +826,6 @@ vendor/lib/librpmb.so
 vendor/lib/libsdedrm.so
 vendor/lib/libsi.so
 vendor/lib/libssd.so
-vendor/lib/libwvhidl.so
 vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
@@ -848,11 +847,10 @@ vendor/lib64/libsdedrm.so
 vendor/lib64/libsi.so
 vendor/lib64/libssd.so
 
-# DRM (Widevine)
-vendor/bin/hw/android.hardware.drm@1.1-service.widevine
-vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
-vendor/lib64/mediadrm/libwvdrmengine.so
-vendor/lib64/libwvhidl.so
+# DRM (Widevine) - from mata QP1A.190711.107
+vendor/bin/hw/android.hardware.drm@1.2-service.widevine|5c2f83943a1c8680cde657e22425f665ab438714
+vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc|e3cb732c0bd519988100675edf385d947abf5f6c
+vendor/lib64/libwvhidl.so|ff967a2aab27d75eb858c6a7a269d4090af9f377
 
 # ESE-Powermanager
 lib64/vendor.qti.esepowermanager@1.0.so
