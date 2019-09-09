@@ -700,6 +700,10 @@ vendor/lib/libchromatix_ov8856_zsl_video.so
 # Camera firmware
 vendor/firmware/cpp_firmware_v1_12_0.fw
 
+# Camera watermark hax
+vendor/lib/libicuuc.so:vendor/lib/libicuuq.so
+vendor/lib/libminikin.so:vendor/lib/libminikiq.so
+
 # Charger
 vendor/bin/hvdcp_opti
 
