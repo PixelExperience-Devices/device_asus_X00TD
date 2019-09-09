@@ -31,6 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.offload.track.enable=true \
     vendor.audio.parser.ip.buffer.size=262144 \
     vendor.audio.safx.pbe.enabled=true \
+    vendor.audio.spkr_prot.tx.sampling_rate=48000 \
     vendor.audio.tunnel.encode=false \
     vendor.display.disable_partial_split=1 \
     vendor.display.disable_inline_rotator=1 \
