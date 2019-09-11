@@ -143,6 +143,10 @@ IPACM_Config::IPACM_Config()
 	ipa_bridge_enable = false;
 	isMCC_Mode = false;
 	ipa_max_valid_rm_entry = 0;
+	/* IPA_HW_FNR_STATS */
+	hw_fnr_stats_support = false;
+	hw_counter_offset = 0;
+	sw_counter_offset = 0;
 
 	memset(&rt_tbl_default_v4, 0, sizeof(rt_tbl_default_v4));
 	memset(&rt_tbl_lan_v4, 0, sizeof(rt_tbl_lan_v4));

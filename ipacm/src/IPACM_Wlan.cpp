@@ -1456,6 +1456,7 @@ int IPACM_Wlan::handle_wlan_client_route_rule(uint8_t *mac_addr, ipa_ip_type ipt
 	uint32_t tx_index;
 	int wlan_index,v6_num;
 	const int NUM = 1;
+	bool result;
 
 	if(tx_prop == NULL)
 	{
@@ -1576,8 +1577,19 @@ int IPACM_Wlan::handle_wlan_client_route_rule(uint8_t *mac_addr, ipa_ip_type ipt
 				{
 					rt_rule_entry->rule.hashable = true;
 				}
-
-				if (false == m_routing.AddRoutingRule(rt_rule))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+				/* use index hw-counter */
+				if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+				{
+					IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_HW);
+					result = m_routing.AddRoutingRule_hw_index(rt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_HW);
+				} else {
+					result = m_routing.AddRoutingRule(rt_rule);
+				}
+#else
+				result = m_routing.AddRoutingRule(rt_rule);
+#endif
+				if (result == false)
 				{
 					IPACMERR("Routing rule addition failed!\n");
 					free(rt_rule);
@@ -1671,7 +1683,20 @@ int IPACM_Wlan::handle_wlan_client_route_rule(uint8_t *mac_addr, ipa_ip_type ipt
 #ifdef FEATURE_IPA_V3
 					rt_rule_entry->rule.hashable = true;
 #endif
-					if (false == m_routing.AddRoutingRule(rt_rule))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+					/* use index hw-counter */
+					if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+					{
+						IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_HW);
+						result = m_routing.AddRoutingRule_hw_index(rt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_HW);
+					} else {
+						result = m_routing.AddRoutingRule(rt_rule);
+					}
+#else
+					result = m_routing.AddRoutingRule(rt_rule);
+#endif
+
+					if (result == false)
 					{
 						IPACMERR("Routing rule addition failed!\n");
 						free(rt_rule);

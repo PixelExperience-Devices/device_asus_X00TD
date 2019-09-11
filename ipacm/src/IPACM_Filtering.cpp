@@ -116,6 +116,242 @@ bool IPACM_Filtering::AddFilteringRule(struct ipa_ioc_add_flt_rule const *ruleTa
 	return true;
 }
 
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+bool IPACM_Filtering::AddFilteringRule_hw_index(struct ipa_ioc_add_flt_rule *ruleTable, int hw_counter_index)
+{
+	int retval=0, cnt = 0, len = 0;
+	struct ipa_ioc_add_flt_rule_v2 *ruleTable_v2;
+	struct ipa_flt_rule_add_v2 flt_rule_entry;
+	bool ret = true;
+
+	IPACMDBG("Printing filter add attributes\n");
+	IPACMDBG("ip type: %d\n", ruleTable->ip);
+	IPACMDBG("Number of rules: %d\n", ruleTable->num_rules);
+	IPACMDBG("End point: %d and global value: %d\n", ruleTable->ep, ruleTable->global);
+	IPACMDBG("commit value: %d\n", ruleTable->commit);
+
+	/* change to v2 format*/
+	len = sizeof(struct ipa_ioc_add_flt_rule_v2);
+	ruleTable_v2 = (struct ipa_ioc_add_flt_rule_v2*)malloc(len);
+	if (ruleTable_v2 == NULL)
+	{
+		IPACMERR("Error Locate ipa_ioc_add_flt_rule_v2 memory...\n");
+		return false;
+	}
+	memset(ruleTable_v2, 0, len);
+	ruleTable_v2->rules = (uint64_t)calloc(ruleTable->num_rules, sizeof(struct ipa_flt_rule_add_v2));
+	if (!ruleTable_v2->rules) {
+		IPACMERR("Failed to allocate memory for filtering rules\n");
+		ret = false;
+		goto fail_tbl;
+	}
+
+	ruleTable_v2->commit = ruleTable->commit;
+	ruleTable_v2->ep = ruleTable->ep;
+	ruleTable_v2->global = ruleTable->global;
+	ruleTable_v2->ip = ruleTable->ip;
+	ruleTable_v2->num_rules = ruleTable->num_rules;
+	ruleTable_v2->flt_rule_size = sizeof(struct ipa_flt_rule_add_v2);
+
+	for (cnt=0; cnt < ruleTable->num_rules; cnt++)
+	{
+		memset(&flt_rule_entry, 0, sizeof(struct ipa_flt_rule_add_v2));
+		flt_rule_entry.at_rear = ruleTable->rules[cnt].at_rear;
+		flt_rule_entry.rule.retain_hdr = ruleTable->rules[cnt].rule.retain_hdr;
+		flt_rule_entry.rule.to_uc = ruleTable->rules[cnt].rule.to_uc;
+		flt_rule_entry.rule.action = ruleTable->rules[cnt].rule.action;
+		flt_rule_entry.rule.rt_tbl_hdl = ruleTable->rules[cnt].rule.rt_tbl_hdl;
+		flt_rule_entry.rule.rt_tbl_idx = ruleTable->rules[cnt].rule.rt_tbl_idx;
+		flt_rule_entry.rule.eq_attrib_type = ruleTable->rules[cnt].rule.eq_attrib_type;
+		flt_rule_entry.rule.max_prio = ruleTable->rules[cnt].rule.max_prio;
+		flt_rule_entry.rule.hashable = ruleTable->rules[cnt].rule.hashable;
+		flt_rule_entry.rule.rule_id = ruleTable->rules[cnt].rule.rule_id;
+		flt_rule_entry.rule.set_metadata = ruleTable->rules[cnt].rule.set_metadata;
+		flt_rule_entry.rule.pdn_idx = ruleTable->rules[cnt].rule.pdn_idx;
+		memcpy(&flt_rule_entry.rule.eq_attrib,
+					 &ruleTable->rules[cnt].rule.eq_attrib,
+					 sizeof(flt_rule_entry.rule.eq_attrib));
+		memcpy(&flt_rule_entry.rule.attrib,
+					 &ruleTable->rules[cnt].rule.attrib,
+					 sizeof(flt_rule_entry.rule.attrib));
+		IPACMDBG("Filter rule:%d attrib mask: 0x%x\n", cnt,
+				ruleTable->rules[cnt].rule.attrib.attrib_mask);
+		/* 0 means disable hw-counter-sats */
+		if (hw_counter_index != 0)
+		{
+			flt_rule_entry.rule.enable_stats = 1;
+			flt_rule_entry.rule.cnt_idx = hw_counter_index;
+		}
+
+		/* copy to v2 table*/
+		memcpy((void *)(ruleTable_v2->rules + (cnt * sizeof(struct ipa_flt_rule_add_v2))),
+			&flt_rule_entry, sizeof(flt_rule_entry));
+	}
+
+	retval = ioctl(fd, IPA_IOC_ADD_FLT_RULE_V2, ruleTable_v2);
+	if (retval != 0)
+	{
+		IPACMERR("Failed adding Filtering rule %pK\n", ruleTable_v2);
+		PERROR("unable to add filter rule:");
+
+		for (int cnt = 0; cnt < ruleTable_v2->num_rules; cnt++)
+		{
+			if (((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].status != 0)
+			{
+				IPACMERR("Adding Filter rule:%d failed with status:%d\n",
+								 cnt, ((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].status);
+			}
+		}
+		ret = false;
+		goto fail_rule;
+	}
+
+	/* copy results from v2 to v1 format */
+	for (int cnt = 0; cnt < ruleTable->num_rules; cnt++)
+	{
+		/* copy status to v1 format */
+		ruleTable->rules[cnt].status = ((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].status;
+		ruleTable->rules[cnt].flt_rule_hdl = ((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].flt_rule_hdl;
+
+		if(((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].status != 0)
+		{
+			IPACMERR("Adding Filter rule:%d failed with status:%d\n",
+							 cnt, ((struct ipa_flt_rule_add_v2 *) ruleTable_v2->rules)[cnt].status);
+		}
+	}
+
+	IPACMDBG("Added Filtering rule %pK\n", ruleTable_v2);
+
+fail_rule:
+	if((void *)ruleTable_v2->rules != NULL)
+		free((void *)ruleTable_v2->rules);
+fail_tbl:
+	if (ruleTable_v2 != NULL)
+		free(ruleTable_v2);
+	return ret;
+}
+
+bool IPACM_Filtering::AddFilteringRuleAfter_hw_index(struct ipa_ioc_add_flt_rule_after *ruleTable, int hw_counter_index)
+{
+	bool ret = true;
+#ifdef FEATURE_IPA_V3
+	int retval=0, cnt = 0, len = 0;
+	struct ipa_ioc_add_flt_rule_after_v2 *ruleTable_v2;
+	struct ipa_flt_rule_add_v2 flt_rule_entry;
+
+	IPACMDBG("Printing filter add attributes\n");
+	IPACMDBG("ep: %d\n", ruleTable->ep);
+	IPACMDBG("ip type: %d\n", ruleTable->ip);
+	IPACMDBG("Number of rules: %d\n", ruleTable->num_rules);
+	IPACMDBG("add_after_hdl: %d\n", ruleTable->add_after_hdl);
+	IPACMDBG("commit value: %d\n", ruleTable->commit);
+
+	/* change to v2 format*/
+	len = sizeof(struct ipa_ioc_add_flt_rule_after_v2);
+	ruleTable_v2 = (struct ipa_ioc_add_flt_rule_after_v2*)malloc(len);
+	if (ruleTable_v2 == NULL)
+	{
+		IPACMERR("Error Locate ipa_ioc_add_flt_rule_after_v2 memory...\n");
+		return false;
+	}
+	memset(ruleTable_v2, 0, len);
+	ruleTable_v2->rules = (uint64_t)calloc(ruleTable->num_rules, sizeof(struct ipa_flt_rule_add_v2));
+	if (!ruleTable_v2->rules) {
+		IPACMERR("Failed to allocate memory for filtering rules\n");
+		ret = false;
+		goto fail_tbl;
+	}
+
+	ruleTable_v2->commit = ruleTable->commit;
+	ruleTable_v2->ep = ruleTable->ep;
+	ruleTable_v2->ip = ruleTable->ip;
+	ruleTable_v2->num_rules = ruleTable->num_rules;
+	ruleTable_v2->add_after_hdl = ruleTable->add_after_hdl;
+	ruleTable_v2->flt_rule_size = sizeof(struct ipa_flt_rule_add_v2);
+
+	for (cnt=0; cnt < ruleTable->num_rules; cnt++)
+	{
+		memset(&flt_rule_entry, 0, sizeof(struct ipa_flt_rule_add_v2));
+		flt_rule_entry.at_rear = ruleTable->rules[cnt].at_rear;
+		flt_rule_entry.rule.retain_hdr = ruleTable->rules[cnt].rule.retain_hdr;
+		flt_rule_entry.rule.to_uc = ruleTable->rules[cnt].rule.to_uc;
+		flt_rule_entry.rule.action = ruleTable->rules[cnt].rule.action;
+		flt_rule_entry.rule.rt_tbl_hdl = ruleTable->rules[cnt].rule.rt_tbl_hdl;
+		flt_rule_entry.rule.rt_tbl_idx = ruleTable->rules[cnt].rule.rt_tbl_idx;
+		flt_rule_entry.rule.eq_attrib_type = ruleTable->rules[cnt].rule.eq_attrib_type;
+		flt_rule_entry.rule.max_prio = ruleTable->rules[cnt].rule.max_prio;
+		flt_rule_entry.rule.hashable = ruleTable->rules[cnt].rule.hashable;
+		flt_rule_entry.rule.rule_id = ruleTable->rules[cnt].rule.rule_id;
+		flt_rule_entry.rule.set_metadata = ruleTable->rules[cnt].rule.set_metadata;
+		flt_rule_entry.rule.pdn_idx = ruleTable->rules[cnt].rule.pdn_idx;
+		memcpy(&flt_rule_entry.rule.eq_attrib,
+					 &ruleTable->rules[cnt].rule.eq_attrib,
+					 sizeof(flt_rule_entry.rule.eq_attrib));
+		memcpy(&flt_rule_entry.rule.attrib,
+					 &ruleTable->rules[cnt].rule.attrib,
+					 sizeof(flt_rule_entry.rule.attrib));
+		IPACMDBG("Filter rule:%d attrib mask: 0x%x\n", cnt,
+				ruleTable->rules[cnt].rule.attrib.attrib_mask);
+		/* 0 means disable hw-counter-sats */
+		if (hw_counter_index != 0)
+		{
+			flt_rule_entry.rule.enable_stats = 1;
+			flt_rule_entry.rule.cnt_idx = hw_counter_index;
+		}
+
+		/* copy to v2 table*/
+		memcpy((void *)(ruleTable_v2->rules + (cnt * sizeof(struct ipa_flt_rule_add_v2))),
+			&flt_rule_entry, sizeof(flt_rule_entry));
+	}
+
+	retval = ioctl(fd, IPA_IOC_ADD_FLT_RULE_AFTER_V2, ruleTable_v2);
+	if (retval != 0)
+	{
+		IPACMERR("Failed adding Filtering rule %pK\n", ruleTable_v2);
+		PERROR("unable to add filter rule:");
+
+		for (int cnt = 0; cnt < ruleTable_v2->num_rules; cnt++)
+		{
+			if (((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].status != 0)
+			{
+				IPACMERR("Adding Filter rule:%d failed with status:%d\n",
+								 cnt, ((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].status);
+			}
+		}
+		ret = false;
+		goto fail_rule;
+	}
+
+	/* copy results from v2 to v1 format */
+	for (int cnt = 0; cnt < ruleTable->num_rules; cnt++)
+	{
+		/* copy status to v1 format */
+		ruleTable->rules[cnt].status = ((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].status;
+		ruleTable->rules[cnt].flt_rule_hdl = ((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].flt_rule_hdl;
+
+		if(((struct ipa_flt_rule_add_v2 *)ruleTable_v2->rules)[cnt].status != 0)
+		{
+			IPACMERR("Adding Filter rule:%d failed with status:%d\n",
+							 cnt, ((struct ipa_flt_rule_add_v2 *) ruleTable_v2->rules)[cnt].status);
+		}
+	}
+
+	IPACMDBG("Added Filtering rule %pK\n", ruleTable_v2);
+
+fail_rule:
+	if((void *)ruleTable_v2->rules != NULL)
+		free((void *)ruleTable_v2->rules);
+fail_tbl:
+	if (ruleTable_v2 != NULL)
+		free(ruleTable_v2);
+#else
+	if (ruleTable)
+	IPACMERR("Not support adding Filtering rule %pK\n", ruleTable);
+#endif
+	return ret;
+}
+#endif //IPA_IOCTL_SET_FNR_COUNTER_INFO
+
 bool IPACM_Filtering::AddFilteringRuleAfter(struct ipa_ioc_add_flt_rule_after const *ruleTable)
 {
 #ifdef FEATURE_IPA_V3
