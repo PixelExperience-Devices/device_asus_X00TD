@@ -511,7 +511,7 @@ void IPACM_Lan::event_callback(ipa_cm_event_id event, void *param)
 					{
 						/* handle software routing enable event*/
 						IPACMDBG_H("IPA_SW_ROUTING_ENABLE for iface: %s \n",IPACM_Iface::ipacmcfg->iface_table[ipa_if_num].iface_name);
-						handle_software_routing_enable();
+						handle_software_routing_enable(false);
 					}
 
 				}
@@ -1066,13 +1066,13 @@ void IPACM_Lan::event_callback(ipa_cm_event_id event, void *param)
 	case IPA_SW_ROUTING_ENABLE:
 		IPACMDBG_H("Received IPA_SW_ROUTING_ENABLE\n");
 		/* handle software routing enable event*/
-		handle_software_routing_enable();
+		handle_software_routing_enable(false);
 		break;
 
 	case IPA_SW_ROUTING_DISABLE:
 		IPACMDBG_H("Received IPA_SW_ROUTING_DISABLE\n");
 		/* handle software routing disable event*/
-		handle_software_routing_disable();
+		handle_software_routing_disable(false);
 		break;
 
 	case IPA_CRADLE_WAN_MODE_SWITCH:
@@ -3223,7 +3223,7 @@ fail:
 	/* check software routing fl rule hdl */
 	if (softwarerouting_act == true && rx_prop != NULL)
 	{
-		handle_software_routing_disable();
+		handle_software_routing_disable(false);
 	}
 
 	if (odu_route_rule_v4_hdl != NULL)

@@ -88,12 +88,14 @@ IPACM_Iface::IPACM_Iface(int iface_index)
 }
 
 /* software routing enable */
-int IPACM_Iface::handle_software_routing_enable(void)
+int IPACM_Iface::handle_software_routing_enable(bool mhip)
 {
-
+	int fd =0;
 	int res = IPACM_SUCCESS;
 	struct ipa_flt_rule_add flt_rule_entry;
 	ipa_ioc_add_flt_rule *m_pFilteringTable;
+	/* contruct filter rules to pcie modem */
+	ipa_ioc_generate_flt_eq flt_eq;
 
 	IPACMDBG("\n");
 	if (softwarerouting_act == true)
@@ -121,10 +123,8 @@ int IPACM_Iface::handle_software_routing_enable(void)
 	}
 
 	m_pFilteringTable->commit = 1;
-	m_pFilteringTable->ep = rx_prop->rx[0].src_pipe;
 	m_pFilteringTable->global = false;
 	m_pFilteringTable->num_rules = (uint8_t)1;
-
 
 	/* Configuring Software-Routing Filtering Rule */
 	memset(&flt_rule_entry, 0, sizeof(struct ipa_flt_rule_add));
@@ -139,72 +139,52 @@ int IPACM_Iface::handle_software_routing_enable(void)
 	memcpy(&flt_rule_entry.rule.attrib,
 				 &rx_prop->rx[0].attrib,
 				 sizeof(flt_rule_entry.rule.attrib));
-	/* disble meta-data filtering skylar */
-	if (IPACM_Wan::backhaul_mode == Q6_MHI_WAN)
-	{
-		flt_rule_entry.rule.attrib.attrib_mask &= ~((uint32_t)IPA_FLT_META_DATA);
-		IPACMDBG_H("disable meta-data filtering 0x%x\n", flt_rule_entry.rule.attrib.attrib_mask);
-	}
 
 	memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
 	/* check iface is v4 or v6 or both*/
-//	if (ip_type == IPA_IP_MAX)
-//	{
+
 		/* handle v4 */
 		m_pFilteringTable->ip = IPA_IP_v4;
-		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+
+	fd = open(IPA_DEVICE_NAME, O_RDWR);
+	if (fd < 0)
+	{
+		IPACMERR("Failed opening %s.\n", IPA_DEVICE_NAME);
+		free(m_pFilteringTable);
+		return IPACM_FAILURE;
+	}
+
+	if (mhip)
+	{
+		/* generate eq */
+		memset(&flt_eq, 0, sizeof(flt_eq));
+		memcpy(&flt_eq.attrib, &flt_rule_entry.rule.attrib, sizeof(flt_eq.attrib));
+		flt_eq.ip = IPA_IP_v4;
+
+
+		if(0 != ioctl(fd, IPA_IOC_GENERATE_FLT_EQ, &flt_eq)) //define and cpy attribute to this struct
 		{
-			IPACMERR("Error Adding Filtering rule, aborting...\n");
+			IPACMERR("Failed to get eq_attrib\n");
 			res = IPACM_FAILURE;
 			goto fail;
 		}
-		else if (m_pFilteringTable->rules[0].status)
+		memcpy(&flt_rule_entry.rule.eq_attrib,
+			&flt_eq.eq_attrib,
+			sizeof(flt_rule_entry.rule.eq_attrib));
+		memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
+
+		/* add rule */
+		if(false == m_filtering.AddOffloadFilteringRule(m_pFilteringTable, IPACM_Iface::ipacmcfg->GetQmapId(), 1))
 		{
-			IPACMERR("adding flt rule failed status=0x%x\n", m_pFilteringTable->rules[0].status);
+			IPACMERR("Failed to install WAN DL filtering table.\n");
 			res = IPACM_FAILURE;
 			goto fail;
 		}
-
-		IPACM_Iface::ipacmcfg->increaseFltRuleCount(rx_prop->rx[0].src_pipe, IPA_IP_v4, 1);
-		IPACMDBG("soft-routing flt rule hdl0=0x%x\n", m_pFilteringTable->rules[0].flt_rule_hdl);
-		/* copy filter hdls */
-		software_routing_fl_rule_hdl[0] = m_pFilteringTable->rules[0].flt_rule_hdl;
-
-
-		/* handle v6*/
-		m_pFilteringTable->ip = IPA_IP_v6;
-		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
-		{
-			IPACMERR("Error Adding Filtering rule, aborting...\n");
-			res = IPACM_FAILURE;
-			goto fail;
-		}
-		else if (m_pFilteringTable->rules[0].status)
-		{
-			IPACMDBG("adding flt rule failed status=0x%x\n", m_pFilteringTable->rules[0].status);
-			res = IPACM_FAILURE;
-			goto fail;
-		}
-
-		IPACM_Iface::ipacmcfg->increaseFltRuleCount(rx_prop->rx[0].src_pipe, IPA_IP_v6, 1);
-		IPACMDBG("soft-routing flt rule hdl0=0x%x\n", m_pFilteringTable->rules[0].flt_rule_hdl);
-		/* copy filter hdls */
-		software_routing_fl_rule_hdl[1] = m_pFilteringTable->rules[0].flt_rule_hdl;
-		softwarerouting_act = true;
-#if 0
 	}
 	else
 	{
-		if (ip_type == IPA_IP_v4)
-		{
-			m_pFilteringTable->ip = IPA_IP_v4;
-		}
-		else
-		{
-			m_pFilteringTable->ip = IPA_IP_v6;
-		}
-
+		m_pFilteringTable->ep = rx_prop->rx[0].src_pipe;
 		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
 		{
 			IPACMERR("Error Adding Filtering rule, aborting...\n");
@@ -217,32 +197,79 @@ int IPACM_Iface::handle_software_routing_enable(void)
 			res = IPACM_FAILURE;
 			goto fail;
 		}
-
-		IPACM_Iface::ipacmcfg->increaseFltRuleCount(rx_prop->rx[0].src_pipe, ip_type, 1);
-		IPACMDBG("soft-routing flt rule hdl0=0x%x\n", m_pFilteringTable->rules[0].flt_rule_hdl);
-		/* copy filter hdls */
-		if (ip_type == IPA_IP_v4)
-		{
-			software_routing_fl_rule_hdl[0] = m_pFilteringTable->rules[0].flt_rule_hdl;
-		}
-		else
-		{
-			software_routing_fl_rule_hdl[1] = m_pFilteringTable->rules[0].flt_rule_hdl;
-		}
-		softwarerouting_act = true;
+		IPACM_Iface::ipacmcfg->increaseFltRuleCount(rx_prop->rx[0].src_pipe, IPA_IP_v4, 1);
 	}
-#endif
+
+	IPACMDBG("soft-routing ipv4 flt rule hdl0=0x%x\n", m_pFilteringTable->rules[0].flt_rule_hdl);
+		/* copy filter hdls */
+		software_routing_fl_rule_hdl[0] = m_pFilteringTable->rules[0].flt_rule_hdl;
+
+		/* handle v6*/
+		m_pFilteringTable->ip = IPA_IP_v6;
+	if (mhip)
+	{
+		/* generate eq */
+		memset(&flt_eq, 0, sizeof(flt_eq));
+		memcpy(&flt_eq.attrib, &flt_rule_entry.rule.attrib, sizeof(flt_eq.attrib));
+		flt_eq.ip = IPA_IP_v6;
+
+		if(0 != ioctl(fd, IPA_IOC_GENERATE_FLT_EQ, &flt_eq)) //define and cpy attribute to this struct
+		{
+			IPACMERR("Failed to get eq_attrib\n");
+			res = IPACM_FAILURE;
+			goto fail;
+		}
+		memcpy(&flt_rule_entry.rule.eq_attrib,
+			&flt_eq.eq_attrib,
+			sizeof(flt_rule_entry.rule.eq_attrib));
+		memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
+
+		/* add rule */
+		if(false == m_filtering.AddOffloadFilteringRule(m_pFilteringTable, IPACM_Iface::ipacmcfg->GetQmapId(), 1))
+		{
+			IPACMERR("Failed to install WAN DL filtering table.\n");
+			res = IPACM_FAILURE;
+			goto fail;
+		}
+	}
+	else
+	{
+		m_pFilteringTable->ep = rx_prop->rx[0].src_pipe;
+		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+		{
+			IPACMERR("Error Adding Filtering rule, aborting...\n");
+			res = IPACM_FAILURE;
+			goto fail;
+		}
+		else if (m_pFilteringTable->rules[0].status)
+		{
+			IPACMERR("adding flt rule failed status=0x%x\n", m_pFilteringTable->rules[0].status);
+			res = IPACM_FAILURE;
+			goto fail;
+		}
+		IPACM_Iface::ipacmcfg->increaseFltRuleCount(rx_prop->rx[0].src_pipe, IPA_IP_v6, 1);
+	}
+
+	IPACMDBG("soft-routing ipv6 flt rule hdl0=0x%x\n", m_pFilteringTable->rules[0].flt_rule_hdl);
+		/* copy filter hdls */
+			software_routing_fl_rule_hdl[1] = m_pFilteringTable->rules[0].flt_rule_hdl;
+		softwarerouting_act = true;
 
 fail:
+	close(fd);
+	if(m_pFilteringTable != NULL)
+	{
 	free(m_pFilteringTable);
-
+	}
 	return res;
 }
 
 /* software routing disable */
-int IPACM_Iface::handle_software_routing_disable(void)
+int IPACM_Iface::handle_software_routing_disable(bool mhip)
 {
-	int res = IPACM_SUCCESS;
+	int len, res = IPACM_SUCCESS;
+	ipa_ioc_del_flt_rule *pFilteringTable = NULL;
+	struct ipa_flt_rule_del flt_rule_entry;
 
 	if (rx_prop == NULL)
 	{
@@ -256,8 +283,43 @@ int IPACM_Iface::handle_software_routing_disable(void)
 		return IPACM_SUCCESS;
 	}
 
-//	if (ip_type == IPA_IP_MAX)
-//	{
+	if(mhip)
+	{
+		len = sizeof(struct ipa_ioc_del_flt_rule) + sizeof(struct ipa_flt_rule_del);
+		pFilteringTable = (struct ipa_ioc_del_flt_rule*)malloc(len);
+		if (pFilteringTable == NULL)
+		{
+			IPACMERR("Error Locate ipa_ioc_del_flt_rule memory...\n");
+			return IPACM_FAILURE;
+		}
+		memset(pFilteringTable, 0, len);
+
+		pFilteringTable->commit = 1;
+		pFilteringTable->ip = IPA_IP_v4;
+		pFilteringTable->num_hdls = (uint8_t)1;
+
+		if (software_routing_fl_rule_hdl[0] == 0)
+		{
+			IPACMERR("invalid ipv4_exception_hdl.\n");
+			res = IPACM_FAILURE;
+			goto fail;
+		}
+
+		memset(&flt_rule_entry, 0, sizeof(struct ipa_flt_rule_del));
+		flt_rule_entry.hdl = software_routing_fl_rule_hdl[0];
+
+		memcpy(&(pFilteringTable->hdl[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_del));
+
+		if(false == m_filtering.DelOffloadFilteringRule(pFilteringTable))
+		{
+			IPACMERR("Failed to delete MHI ipv4 exception rule.\n");
+			res = IPACM_FAILURE;
+			goto fail;
+		}
+		software_routing_fl_rule_hdl[0] = 0;
+	}
+	else
+	{
 		/* ipv4 case */
 		if (m_filtering.DeleteFilteringHdls(&software_routing_fl_rule_hdl[0],
 																				IPA_IP_v4, 1) == false)
@@ -266,8 +328,34 @@ int IPACM_Iface::handle_software_routing_disable(void)
 			res = IPACM_FAILURE;
 			goto fail;
 		}
-		IPACM_Iface::ipacmcfg->decreaseFltRuleCount(rx_prop->rx[0].src_pipe, IPA_IP_v4, 1);
+		}
+	IPACM_Iface::ipacmcfg->decreaseFltRuleCount(rx_prop->rx[0].src_pipe, IPA_IP_v4, 1);
 
+	if(mhip)
+	{
+		pFilteringTable->ip = IPA_IP_v6;
+		if (software_routing_fl_rule_hdl[1] == 0)
+		{
+			IPACMERR("invalid ipv6_exception_hdl.\n");
+			res = IPACM_FAILURE;
+			goto fail;
+		}
+
+		memset(&flt_rule_entry, 0, sizeof(struct ipa_flt_rule_del));
+		flt_rule_entry.hdl = software_routing_fl_rule_hdl[1];
+
+		memcpy(&(pFilteringTable->hdl[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_del));
+
+		if(false == m_filtering.DelOffloadFilteringRule(pFilteringTable))
+		{
+			IPACMERR("Failed to delete MHI ipv6 exception rule.\n");
+			res = IPACM_FAILURE;
+			goto fail;
+		}
+		software_routing_fl_rule_hdl[1] = 0;
+		}
+		else
+		{
 		/* ipv6 case */
 		if (m_filtering.DeleteFilteringHdls(&software_routing_fl_rule_hdl[1],
 																				IPA_IP_v6, 1) == false)
@@ -276,43 +364,15 @@ int IPACM_Iface::handle_software_routing_disable(void)
 			res = IPACM_FAILURE;
 			goto fail;
 		}
-		IPACM_Iface::ipacmcfg->decreaseFltRuleCount(rx_prop->rx[0].src_pipe, IPA_IP_v6, 1);
-		softwarerouting_act = false;
-#if 0
 	}
-	else
-	{
-		if (ip_type == IPA_IP_v4)
-		{
-			ip = IPA_IP_v4;
-		}
-		else
-		{
-			ip = IPA_IP_v6;
-		}
-
-
-		if (ip_type == IPA_IP_v4)
-		{
-			flt_hdl = software_routing_fl_rule_hdl[0];
-		}
-		else
-		{
-			flt_hdl = software_routing_fl_rule_hdl[1];
-		}
-
-		if (m_filtering.DeleteFilteringHdls(&flt_hdl, ip, 1) == false)
-		{
-			IPACMERR("Error Adding Filtering rule, aborting...\n");
-			res = IPACM_FAILURE;
-			goto fail;
-		}
-		IPACM_Iface::ipacmcfg->decreaseFltRuleCount(rx_prop->rx[0].src_pipe, ip, 1);
+	IPACM_Iface::ipacmcfg->decreaseFltRuleCount(rx_prop->rx[0].src_pipe, IPA_IP_v6, 1);
 		softwarerouting_act = false;
-	}
-#endif
 
 fail:
+	if(pFilteringTable != NULL)
+	{
+		free(pFilteringTable);
+	}
 	return res;
 }
 

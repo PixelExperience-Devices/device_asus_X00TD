@@ -350,7 +350,7 @@ void IPACM_Wlan::event_callback(ipa_cm_event_id event, void *param)
 					{
 						/* handle software routing enable event*/
 						IPACMDBG_H("IPA_SW_ROUTING_ENABLE for iface: %s \n",IPACM_Iface::ipacmcfg->iface_table[ipa_if_num].iface_name);
-						handle_software_routing_enable();
+						handle_software_routing_enable(false);
 					}
 				}
 			}
@@ -860,13 +860,13 @@ void IPACM_Wlan::event_callback(ipa_cm_event_id event, void *param)
 		/* handle software routing enable event, iface will update softwarerouting_act to true*/
 	case IPA_SW_ROUTING_ENABLE:
 		IPACMDBG_H("Received IPA_SW_ROUTING_ENABLE\n");
-		IPACM_Iface::handle_software_routing_enable();
+		IPACM_Iface::handle_software_routing_enable(false);
 		break;
 
 		/* handle software routing disable event, iface will update softwarerouting_act to false*/
 	case IPA_SW_ROUTING_DISABLE:
 		IPACMDBG_H("Received IPA_SW_ROUTING_DISABLE\n");
-		IPACM_Iface::handle_software_routing_disable();
+		IPACM_Iface::handle_software_routing_disable(false);
 		break;
 
 	case IPA_WLAN_SWITCH_TO_SCC:
@@ -2119,7 +2119,7 @@ fail:
 	if (softwarerouting_act == true && rx_prop != NULL )
 	{
 		IPACMDBG_H("Delete sw routing filtering rules\n");
-		IPACM_Iface::handle_software_routing_disable();
+		IPACM_Iface::handle_software_routing_disable(false);
 	}
 	IPACMDBG_H("finished delete software-routing filtering rules\n ");
 

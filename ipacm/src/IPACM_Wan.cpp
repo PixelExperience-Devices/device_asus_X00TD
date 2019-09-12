@@ -1179,7 +1179,15 @@ void IPACM_Wan::event_callback(ipa_cm_event_id event, void *param)
 					{
 						/* handle software routing enable event*/
 						IPACMDBG_H("IPA_SW_ROUTING_ENABLE for iface: %s \n",IPACM_Iface::ipacmcfg->iface_table[ipa_if_num].iface_name);
-						handle_software_routing_enable();
+
+						if(m_is_sta_mode == Q6_MHI_WAN)
+						{
+							handle_software_routing_enable(true);
+						}
+						else
+						{
+							handle_software_routing_enable(false);
+						}
 					}
 
 				}
@@ -1632,9 +1640,13 @@ void IPACM_Wan::event_callback(ipa_cm_event_id event, void *param)
 		{
 			install_wan_filtering_rule(true);
 		}
+		else if(m_is_sta_mode == Q6_MHI_WAN)
+		{
+			handle_software_routing_enable(true);
+		}
 		else
 		{
-			handle_software_routing_enable();
+			handle_software_routing_enable(false);
 		}
 		break;
 
@@ -1647,9 +1659,13 @@ void IPACM_Wan::event_callback(ipa_cm_event_id event, void *param)
 			install_wan_filtering_rule(false);
 			softwarerouting_act = false;
 		}
+		else if(m_is_sta_mode == Q6_MHI_WAN)
+		{
+			handle_software_routing_disable(true);
+		}
 		else
 		{
-			handle_software_routing_disable();
+			handle_software_routing_disable(false);
 		}
 		break;
 
@@ -5381,7 +5397,14 @@ int IPACM_Wan::handle_down_evt()
 		/* check software routing fl rule hdl */
 		if (softwarerouting_act == true)
 		{
-			handle_software_routing_disable();
+			if(m_is_sta_mode == Q6_MHI_WAN)
+			{
+				handle_software_routing_disable(true);
+			}
+			else
+			{
+				handle_software_routing_disable(false);
+			}
 		}
 		/* free dft ipv4 filter rule handlers if any */
 		if (ip_type != IPA_IP_v6 && rx_prop != NULL)
@@ -5770,11 +5793,11 @@ int IPACM_Wan::handle_down_evt_ex()
 		}
 	}
 
-	/* check software routing fl rule hdl */
-	if (softwarerouting_act == true)
-	{
-		handle_software_routing_disable();
-	}
+//	/* check software routing fl rule hdl */
+//	if (softwarerouting_act == true)
+//	{
+//		handle_software_routing_disable();
+//	}
 
 fail:
 	if (tx_prop != NULL)

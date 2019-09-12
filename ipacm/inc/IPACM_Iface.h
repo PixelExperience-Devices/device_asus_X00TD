@@ -142,10 +142,10 @@ public:
 	void change_to_network_order(ipa_ip_type iptype, ipa_rule_attrib* attrib);
 
 	/* software routing enable */
-	virtual int handle_software_routing_enable(void);
+	virtual int handle_software_routing_enable(bool mhip);
 
 	/* software routing disable */
-	virtual int handle_software_routing_disable(void);
+	virtual int handle_software_routing_disable(bool mhip);
 	void delete_iface(void);
 
 	bool is_global_ipv6_addr(uint32_t* ipv6_addr);
