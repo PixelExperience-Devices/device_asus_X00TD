@@ -229,10 +229,6 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.base@1.0_system
 
-# IMS
-PRODUCT_PACKAGES += \
-    ims-ext-common
-
 # IPv6
 PRODUCT_PACKAGES += \
     ebtables \
@@ -409,9 +405,11 @@ PRODUCT_COPY_FILES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
+    ims-ext-common_system \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
+    ims-ext-common_system \
     telephony-ext
 
 # Tetheroffload
