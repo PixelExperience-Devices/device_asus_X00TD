@@ -370,6 +370,12 @@ private:
 	/* handle for icmpv6 exception rule */
 	uint32_t icmpv6_exception_hdl;
 
+	/* handle for TCP FIN rule */
+	uint32_t tcp_fin_hdl;
+
+	/* handle for TCP RST rule */
+	uint32_t tcp_rst_hdl;
+
 	inline ipa_wan_client* get_client_memptr(ipa_wan_client *param, int cnt)
 	{
 	    char *ret = ((char *)param) + (wan_client_len * cnt);
@@ -636,6 +642,10 @@ private:
 	int add_icmpv6_exception_rule();
 
 	int delete_icmpv6_exception_rule();
+
+	int add_tcp_fin_rst_exception_rule();
+
+	int delete_tcp_fin_rst_exception_rule();
 };
 
 #endif /* IPACM_WAN_H */
