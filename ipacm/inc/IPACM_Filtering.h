@@ -56,6 +56,10 @@ public:
 	~IPACM_Filtering();
 	bool AddFilteringRule(struct ipa_ioc_add_flt_rule const *ruleTable);
 	bool AddFilteringRuleAfter(struct ipa_ioc_add_flt_rule_after const *ruleTable);
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+	bool AddFilteringRule_hw_index(struct ipa_ioc_add_flt_rule *ruleTable, int hw_counter_index);
+	bool AddFilteringRuleAfter_hw_index(struct ipa_ioc_add_flt_rule_after *ruleTable, int hw_counter_index);
+#endif //IPA_IOCTL_SET_FNR_COUNTER_INFO
 	bool DeleteFilteringRule(struct ipa_ioc_del_flt_rule *ruleTable);
 	bool Commit(enum ipa_ip_type ip);
 	bool Reset(enum ipa_ip_type ip);

@@ -1,3 +1,13 @@
+TARGET_DISABLE_IPACM := false
+
+ifeq ($(TARGET_USES_QMAA),true)
+ifneq ($(TARGET_USES_QMAA_OVERRIDE_DATA),true)
+	TARGET_DISABLE_IPACM := true
+endif #TARGET_USES_QMAA_OVERRIDE_DATA
+endif #TARGET_USES_QMAA
+
+
+ifneq ($(TARGET_DISABLE_IPACM),true)
 ifneq ($(TARGET_HAS_LOW_RAM),true)
 BOARD_PLATFORM_LIST := msm8909
 BOARD_PLATFORM_LIST += msm8916
@@ -126,6 +136,7 @@ LOCAL_MODULE_OWNER := ipacm
 include $(BUILD_PREBUILT)
 
 endif # $(TARGET_ARCH)
+endif
 endif
 endif
 endif

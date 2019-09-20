@@ -113,6 +113,12 @@ int ipa_reset();
 int ipa_query_wlan_client();
 #endif
 
+
+/* support ipa-hw-index-counters */
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+int ipa_reset_hw_index_counter();
+#endif
+
 #ifdef FEATURE_IPACM_HAL
 	IPACM_OffloadManager* OffloadMng;
 	HAL *hal;
@@ -932,6 +938,11 @@ int main(int argc, char **argv)
 	ipa_reset();
 #endif
 
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+	IPACMDBG_H("Configure IPA-HW index-counter\n");
+	ipa_reset_hw_index_counter();
+#endif
+
 	neigh = new IPACM_Neighbor();
 	ifacemgr = new IPACM_IfaceManager();
 #ifdef FEATURE_IPACM_HAL
@@ -1156,6 +1167,54 @@ int ipa_reset()
 	}
 
 	IPACMDBG_H("send IPA_IOC_CLEANUP \n");
+	close(fd);
+	return IPACM_SUCCESS;
+}
+#endif
+
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+int ipa_reset_hw_index_counter()
+{
+	int fd = -1;
+	struct ipa_ioc_flt_rt_counter_alloc fnr_counters;
+	struct ipa_ioc_fnr_index_info fnr_info;
+
+	if ((fd = open(IPA_DEVICE_NAME, O_RDWR)) < 0) {
+		IPACMERR("Failed opening %s.\n", IPA_DEVICE_NAME);
+		return IPACM_FAILURE;
+	}
+
+	memset(&fnr_counters, 0, sizeof(fnr_counters));
+	fnr_counters.hw_counter.num_counters = 4;
+	fnr_counters.hw_counter.allow_less = false;
+	fnr_counters.sw_counter.num_counters = 4;
+	fnr_counters.sw_counter.allow_less = false;
+	IPACMDBG_H("Allocating %d hw counters and %d sw counters\n",
+		fnr_counters.hw_counter.num_counters, fnr_counters.sw_counter.num_counters);
+
+	if (ioctl(fd, IPA_IOC_FNR_COUNTER_ALLOC, &fnr_counters) < 0) {
+		IPACMERR("IPA_IOC_FNR_COUNTER_ALLOC call failed: %s \n", strerror(errno));
+		close(fd);
+		return IPACM_FAILURE;
+	}
+
+	IPACMDBG_H("hw-counter start offset %d, sw-counter start offset %d\n",
+		fnr_counters.hw_counter.start_id, fnr_counters.sw_counter.start_id);
+	IPACM_Iface::ipacmcfg->hw_fnr_stats_support = true;
+	IPACM_Iface::ipacmcfg->hw_counter_offset = fnr_counters.hw_counter.start_id;
+	IPACM_Iface::ipacmcfg->sw_counter_offset = fnr_counters.sw_counter.start_id;
+
+	/* set FNR counter info */
+	memset(&fnr_info, 0, sizeof(fnr_info));
+	fnr_info.hw_counter_offset = fnr_counters.hw_counter.start_id;
+	fnr_info.sw_counter_offset = fnr_counters.sw_counter.start_id;
+
+	if (ioctl(fd, IPA_IOC_SET_FNR_COUNTER_INFO, &fnr_info) < 0) {
+		IPACMERR("IPA_IOC_SET_FNR_COUNTER_INFO call failed: %s \n", strerror(errno));
+		close(fd);
+		return IPACM_FAILURE;
+	}
+
 	close(fd);
 	return IPACM_SUCCESS;
 }

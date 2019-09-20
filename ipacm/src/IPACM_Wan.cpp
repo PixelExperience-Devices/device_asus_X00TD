@@ -227,6 +227,7 @@ int IPACM_Wan::handle_addr_evt(ipacm_event_data_addr *data)
 	struct ipa_ioc_add_flt_rule *flt_rule;
 	struct ipa_flt_rule_add flt_rule_entry;
 	struct ipa_ioc_get_hdr hdr;
+	bool result;
 
 	const int NUM_RULES = 1;
 	uint32_t num_ipv6_addr;
@@ -498,8 +499,20 @@ int IPACM_Wan::handle_addr_evt(ipacm_event_data_addr *data)
 				flt_rule_entry.rule.attrib.u.v6.dst_addr_mask[2] = 0xFFFFFFFF;
 				flt_rule_entry.rule.attrib.u.v6.dst_addr_mask[3] = 0xFFFFFFFF;
 				memcpy(&(flt_rule->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+				/* use index hw-counter */
+				if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+				{
+					IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+					result = m_filtering.AddFilteringRule_hw_index(flt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+				} else {
+					result = m_filtering.AddFilteringRule(flt_rule);
+				}
+#else
+				result = m_filtering.AddFilteringRule(flt_rule);
+#endif
 
-				if (m_filtering.AddFilteringRule(flt_rule) == false)
+				if (result == false)
 				{
 					IPACMERR("Error Adding Filtering rule, aborting...\n");
 					free(flt_rule);
@@ -1759,6 +1772,7 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 	const int NUM = 1;
 	ipacm_cmd_q_data evt_data;
 	struct ipa_ioc_get_hdr hdr;
+	bool result;
 #ifdef	WAN_IOC_NOTIFY_WAN_STATE //resolve compile issue on 4.9 kernel
 	struct wan_ioctl_notify_wan_state wan_state;
 	int fd_wwan_ioctl;
@@ -1878,8 +1892,6 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 	rt_rule->num_rules = (uint8_t)NUM;
 	rt_rule->ip = iptype;
 
-
-	IPACMDBG_H(" WAN table created %s \n", rt_rule->rt_tbl_name);
 	rt_rule_entry = &rt_rule->rules[0];
 	rt_rule_entry->at_rear = true;
 
@@ -1907,6 +1919,7 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 				rt_rule_entry->rule.hdr_hdl = hdr_hdl_sta_v6;
 			}
 
+			IPACMDBG_H(" WAN table created %s \n", rt_rule->rt_tbl_name);
 			/* replace the hdr handle for q6_PCIE*/
 			if(m_is_sta_mode == Q6_MHI_WAN)
 			{
@@ -1945,10 +1958,21 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 				rt_rule_entry->rule.attrib.u.v4.dst_addr      = 0;
 				rt_rule_entry->rule.attrib.u.v4.dst_addr_mask = 0;
 #ifdef FEATURE_IPA_V3
-
 				rt_rule_entry->rule.hashable = true;
 #endif
-				if (false == m_routing.AddRoutingRule(rt_rule))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+				/* use index hw-counter */
+				if((m_is_sta_mode == WLAN_WAN) && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+				{
+					IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_HW);
+					result = m_routing.AddRoutingRule_hw_index(rt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_HW);
+				} else {
+					result = m_routing.AddRoutingRule(rt_rule);			
+				}
+#else
+				result = m_routing.AddRoutingRule(rt_rule);
+#endif
+				if (result == false)
 				{
 		    		IPACMERR("Routing rule addition failed!\n");
 		    		free(rt_rule);
@@ -1973,7 +1997,19 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 #ifdef FEATURE_IPA_V3
 				rt_rule_entry->rule.hashable = true;
 #endif
-				if (false == m_routing.AddRoutingRule(rt_rule))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+				/* use index hw-counter */
+				if((m_is_sta_mode == WLAN_WAN) && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+				{
+					IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_HW);
+					result = m_routing.AddRoutingRule_hw_index(rt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_HW);
+				} else {
+					result = m_routing.AddRoutingRule(rt_rule);
+				}
+#else
+				result = m_routing.AddRoutingRule(rt_rule);
+#endif
+				if (result == false)
 				{
 		    		IPACMERR("Routing rule addition failed!\n");
 		    		free(rt_rule);
@@ -1993,6 +2029,7 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 	if (iptype == IPA_IP_v6 && m_is_sta_mode != Q6_MHI_WAN)
 	{
 		strlcpy(rt_rule->rt_tbl_name, IPACM_Iface::ipacmcfg->rt_tbl_wan_v6.name, sizeof(rt_rule->rt_tbl_name));
+		IPACMDBG_H(" WAN table created %s \n", rt_rule->rt_tbl_name);
 		memset(rt_rule_entry, 0, sizeof(struct ipa_rt_rule_add));
 		rt_rule_entry->at_rear = true;
 		if(m_is_sta_mode == Q6_WAN)
@@ -2454,6 +2491,7 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 {
 	struct ipa_flt_rule_add flt_rule_entry;
 	int i, rule_v4 = 0, rule_v6 = 0, len;
+	bool result;
 
 	IPACMDBG_H("ip-family: %d; \n", iptype);
 
@@ -2528,7 +2566,19 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 		memcpy(&flt_rule_entry.rule.attrib, &rx_prop->rx[0].attrib, sizeof(struct ipa_rule_attrib));
 		flt_rule_entry.rule.attrib.attrib_mask |= IPA_FLT_FRAGMENT;
 		memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
-		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+		}
+#else
+		result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+		if (false == result)
 		{
 			IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 			free(m_pFilteringTable);
@@ -2621,8 +2671,19 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 			}
 
 			memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
-
-			if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+			/* use index hw-counter */
+			if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+			{
+				IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+				result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+			} else {
+				result = m_filtering.AddFilteringRule(m_pFilteringTable);
+			}
+#else
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+			if (false == result)
 			{
 				IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 				free(m_pFilteringTable);
@@ -2709,7 +2770,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 
 						IPACMDBG_H("Filter rule attrib mask: 0x%x\n",
 										 m_pFilteringTable->rules[0].rule.attrib.attrib_mask);
-						if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+						/* use index hw-counter */
+						if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+						{
+							IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+							result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+						} else {
+							result = m_filtering.AddFilteringRule(m_pFilteringTable);
+						}
+#else
+						result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+						if (false == result)
 						{
 							IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 							free(m_pFilteringTable);
@@ -2733,7 +2807,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 
 						IPACMDBG_H("Filter rule attrib mask: 0x%x\n",
 										 m_pFilteringTable->rules[0].rule.attrib.attrib_mask);
-						if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+						/* use index hw-counter */
+						if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+						{
+							IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+							result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+						} else {
+							result = m_filtering.AddFilteringRule(m_pFilteringTable);
+						}
+#else
+						result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+						if (false == result)
 						{
 							IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 							free(m_pFilteringTable);
@@ -2757,7 +2844,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 
 						IPACMDBG_H("Filter rule attrib mask: 0x%x\n",
 										 m_pFilteringTable->rules[0].rule.attrib.attrib_mask);
-						if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+						/* use index hw-counter */
+						if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+						{
+							IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+							result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+						} else {
+							result = m_filtering.AddFilteringRule(m_pFilteringTable);
+						}
+#else
+						result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+						if (false == result)
 						{
 							IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 							free(m_pFilteringTable);
@@ -2833,7 +2933,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 
 			IPACMDBG_H("Filter rule attrib mask: 0x%x\n",
 							 m_pFilteringTable->rules[0].rule.attrib.attrib_mask);
-			if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+			/* use index hw-counter */
+			if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+			{
+				IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+				result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+			} else {
+				result = m_filtering.AddFilteringRule(m_pFilteringTable);
+			}
+#else
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+			if (false == result)
 			{
 				IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 				free(m_pFilteringTable);
@@ -2881,7 +2994,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 				flt_rule_entry.rule.attrib.attrib_mask |= IPA_FLT_NEXT_HDR;
 				flt_rule_entry.rule.attrib.u.v6.next_hdr = (uint8_t)IPACM_FIREWALL_IPPROTO_ICMP6;
 				memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
-				if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+			/* use index hw-counter */
+			if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+			{
+				IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+				result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+			} else {
+				result = m_filtering.AddFilteringRule(m_pFilteringTable);
+			}
+#else
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+			if (false == result)
 				{
 					IPACMERR("Error Adding Filtering rules, aborting...\n");
 					free(m_pFilteringTable);
@@ -2955,8 +3081,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 			}
 
 			memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+			/* use index hw-counter */
+			if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+			{
+				IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+				result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+			} else {
+				result = m_filtering.AddFilteringRule(m_pFilteringTable);
+			}
+#else
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
 
-			if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+			if (false == result)
 			{
 				IPACMERR("Error Adding Filtering rules, aborting...\n");
 				free(m_pFilteringTable);
@@ -3027,7 +3165,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 						/* insert TCP rule*/
 						flt_rule_entry.rule.attrib.u.v6.next_hdr = IPACM_FIREWALL_IPPROTO_TCP;
 						memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
-						if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+						/* use index hw-counter */
+						if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+						{
+							IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+							result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+						} else {
+							result = m_filtering.AddFilteringRule(m_pFilteringTable);
+						}
+#else
+						result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+						if (false == result)
 						{
 							IPACMERR("Error Adding Filtering rules, aborting...\n");
 							free(m_pFilteringTable);
@@ -3046,7 +3197,19 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 						/* insert UDP rule*/
 						flt_rule_entry.rule.attrib.u.v6.next_hdr = IPACM_FIREWALL_IPPROTO_UDP;
 						memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
-						if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+						/* use index hw-counter */
+						if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+						{
+							IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+							result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+						} else {
+							result = m_filtering.AddFilteringRule(m_pFilteringTable);
+						}
+#else
+						result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+						if (false == result)
 						{
 							IPACMERR("Error Adding Filtering rules, aborting...\n");
 							free(m_pFilteringTable);
@@ -3065,7 +3228,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 					else
 					{
 						memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
-						if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+						/* use index hw-counter */
+						if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+						{
+							IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+							result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+						} else {
+							result = m_filtering.AddFilteringRule(m_pFilteringTable);
+						}
+#else
+						result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+						if (false == result)
 						{
 							IPACMERR("Error Adding Filtering rules, aborting...\n");
 							free(m_pFilteringTable);
@@ -3103,7 +3279,19 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 			flt_rule_entry.rule.attrib.u.v6.next_hdr = (uint8_t)IPACM_FIREWALL_IPPROTO_ICMP6;
 			memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
-			if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+			/* use index hw-counter */
+			if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+			{
+				IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+				result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+			} else {
+				result = m_filtering.AddFilteringRule(m_pFilteringTable);
+			}
+#else
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+			if (result == false)
 			{
 				IPACMERR("Error Adding Filtering rules, aborting...\n");
 				free(m_pFilteringTable);
@@ -3163,7 +3351,20 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 
 			memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
-			if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+			/* use index hw-counter */
+			if(IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+			{
+				IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + DL_ALL);
+				result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset+ DL_ALL);
+			} else {
+				result = m_filtering.AddFilteringRule(m_pFilteringTable);
+			}
+#else
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+			if (result == false)
 			{
 				IPACMERR("Error Adding Filtering rules, aborting...\n");
 				free(m_pFilteringTable);

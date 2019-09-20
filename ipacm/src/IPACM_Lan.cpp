@@ -1522,6 +1522,7 @@ int IPACM_Lan::handle_private_subnet(ipa_ip_type iptype)
 {
 	struct ipa_flt_rule_add flt_rule_entry;
 	int i;
+	bool result;
 
 	ipa_ioc_add_flt_rule *m_pFilteringTable;
 
@@ -1585,7 +1586,20 @@ int IPACM_Lan::handle_private_subnet(ipa_ip_type iptype)
 			IPACMDBG_H("Loop %d  5\n", i);
 		}
 
-		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+		}
+#else
+		result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+		if (result == false)
 		{
 			IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 			free(m_pFilteringTable);
@@ -1614,6 +1628,7 @@ int IPACM_Lan::handle_wan_up(ipa_ip_type ip_type)
 	struct ipa_flt_rule_add flt_rule_entry;
 	int len = 0;
 	ipa_ioc_add_flt_rule *m_pFilteringTable;
+	bool result;
 
 	IPACMDBG_H("set WAN interface as default filter rule\n");
 
@@ -1688,7 +1703,20 @@ int IPACM_Lan::handle_wan_up(ipa_ip_type ip_type)
 		flt_rule_entry.rule.attrib.u.v4.src_addr = prefix[IPA_IP_v4].v4Addr;
 #endif
 		memcpy(&m_pFilteringTable->rules[0], &flt_rule_entry, sizeof(flt_rule_entry));
-		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+		}
+#else
+		result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+		if (result == false)
 		{
 			IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 			free(m_pFilteringTable);
@@ -1777,7 +1805,21 @@ int IPACM_Lan::handle_wan_up(ipa_ip_type ip_type)
 
 #endif
 		memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
-		if (false == m_filtering.AddFilteringRule(m_pFilteringTable))
+
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(m_pFilteringTable);
+		}
+#else
+		result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
+
+		if (result == false)
 		{
 			IPACMERR("Error Adding Filtering rule, aborting...\n");
 			free(m_pFilteringTable);
@@ -3238,6 +3280,7 @@ int IPACM_Lan::handle_uplink_filter_rule(ipacm_ext_prop *prop, ipa_ip_type iptyp
 	int i, index, eq_index;
 	uint32_t value = 0;
 	uint8_t qmap_id;
+	bool result;
 
 	IPACMDBG_H("Set modem UL flt rules\n");
 
@@ -3522,7 +3565,20 @@ int IPACM_Lan::handle_uplink_filter_rule(ipacm_ext_prop *prop, ipa_ip_type iptyp
 		goto fail;
 	}
 
-	if(false == m_filtering.AddFilteringRule(pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+	/* use index hw-counter */
+	if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+	{
+		IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		result = m_filtering.AddFilteringRule_hw_index(pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+	} else {
+		result = m_filtering.AddFilteringRule(pFilteringTable);
+	}
+#else
+	result = m_filtering.AddFilteringRule(pFilteringTable);
+#endif
+
+	if(result == false)
 	{
 		IPACMERR("Error Adding RuleTable to Filtering, aborting...\n");
 		ret = IPACM_FAILURE;
@@ -3818,6 +3874,7 @@ int IPACM_Lan::install_ipv4_icmp_flt_rule()
 	int len;
 	struct ipa_ioc_add_flt_rule* flt_rule;
 	struct ipa_flt_rule_add flt_rule_entry;
+	bool result;
 
 	if(rx_prop != NULL)
 	{
@@ -3854,7 +3911,20 @@ int IPACM_Lan::install_ipv4_icmp_flt_rule()
 		flt_rule_entry.rule.attrib.u.v4.protocol = (uint8_t)IPACM_FIREWALL_IPPROTO_ICMP;
 		memcpy(&(flt_rule->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
-		if (m_filtering.AddFilteringRule(flt_rule) == false)
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(flt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(flt_rule);
+		}
+#else
+		result = m_filtering.AddFilteringRule(flt_rule);
+#endif
+
+		if (result == false)
 		{
 			IPACMERR("Error Adding Filtering rule, aborting...\n");
 			free(flt_rule);
@@ -3877,6 +3947,7 @@ int IPACM_Lan::install_ipv6_icmp_flt_rule()
 	int len;
 	struct ipa_ioc_add_flt_rule* flt_rule;
 	struct ipa_flt_rule_add flt_rule_entry;
+	bool result;
 
 	if(rx_prop != NULL)
 	{
@@ -3912,7 +3983,20 @@ int IPACM_Lan::install_ipv6_icmp_flt_rule()
 		flt_rule_entry.rule.attrib.u.v6.next_hdr = (uint8_t)IPACM_FIREWALL_IPPROTO_ICMP6;
 		memcpy(&(flt_rule->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
-		if (m_filtering.AddFilteringRule(flt_rule) == false)
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(flt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(flt_rule);
+		}
+#else
+		result = m_filtering.AddFilteringRule(flt_rule);
+#endif
+
+		if (result == false)
 		{
 			IPACMERR("Error Adding Filtering rule, aborting...\n");
 			free(flt_rule);
@@ -3945,6 +4029,7 @@ int IPACM_Lan::add_dummy_private_subnet_flt_rule(ipa_ip_type iptype)
 	int i, len, res = IPACM_SUCCESS;
 	struct ipa_flt_rule_add flt_rule;
 	ipa_ioc_add_flt_rule* pFilteringTable;
+	bool result;
 
 	len = sizeof(struct ipa_ioc_add_flt_rule) +	IPA_MAX_PRIVATE_SUBNET_ENTRIES * sizeof(struct ipa_flt_rule_add);
 
@@ -3988,7 +4073,20 @@ int IPACM_Lan::add_dummy_private_subnet_flt_rule(ipa_ip_type iptype)
 			memcpy(&(pFilteringTable->rules[i]), &flt_rule, sizeof(struct ipa_flt_rule_add));
 		}
 
-		if (false == m_filtering.AddFilteringRule(pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(pFilteringTable);
+		}
+#else
+		result = m_filtering.AddFilteringRule(pFilteringTable);
+#endif
+
+		if (result == false)
 		{
 			IPACMERR("Error adding dummy private subnet v4 flt rule\n");
 			res = IPACM_FAILURE;
@@ -4113,6 +4211,7 @@ int IPACM_Lan::install_ipv6_prefix_flt_rule(uint32_t* prefix)
 	int len;
 	struct ipa_ioc_add_flt_rule* flt_rule;
 	struct ipa_flt_rule_add flt_rule_entry;
+	bool result;
 
 	if(rx_prop != NULL)
 	{
@@ -4155,7 +4254,20 @@ int IPACM_Lan::install_ipv6_prefix_flt_rule(uint32_t* prefix)
 		flt_rule_entry.rule.attrib.u.v6.dst_addr_mask[3] = 0x0;
 		memcpy(&(flt_rule->rules[0]), &flt_rule_entry, sizeof(struct ipa_flt_rule_add));
 
-		if (m_filtering.AddFilteringRule(flt_rule) == false)
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+		/* use index hw-counter */
+		if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+		{
+			IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+			result = m_filtering.AddFilteringRule_hw_index(flt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		} else {
+			result = m_filtering.AddFilteringRule(flt_rule);
+		}
+#else
+		result = m_filtering.AddFilteringRule(flt_rule);
+#endif
+
+		if (result == false)
 		{
 			IPACMERR("Error Adding Filtering rule, aborting...\n");
 			free(flt_rule);
@@ -4998,6 +5110,7 @@ int IPACM_Lan::eth_bridge_add_flt_rule(uint8_t *mac, uint32_t rt_tbl_hdl, ipa_ip
 	int len;
 	struct ipa_flt_rule_add flt_rule_entry;
 	struct ipa_ioc_add_flt_rule_after *pFilteringTable = NULL;
+	bool result;
 
 	if (rx_prop == NULL || tx_prop == NULL)
 	{
@@ -5046,7 +5159,19 @@ int IPACM_Lan::eth_bridge_add_flt_rule(uint8_t *mac, uint32_t rt_tbl_hdl, ipa_ip
 	memset(flt_rule_entry.rule.attrib.dst_mac_addr_mask, 0xFF, sizeof(flt_rule_entry.rule.attrib.dst_mac_addr_mask));
 
 	memcpy(&(pFilteringTable->rules[0]), &flt_rule_entry, sizeof(flt_rule_entry));
-	if (false == m_filtering.AddFilteringRuleAfter(pFilteringTable))
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+	/* use index hw-counter */
+	if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+	{
+		IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		result = m_filtering.AddFilteringRuleAfter_hw_index(pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+	} else {
+		result = m_filtering.AddFilteringRuleAfter(pFilteringTable);
+	}
+#else
+	result = m_filtering.AddFilteringRuleAfter(pFilteringTable);
+#endif
+	if (result == false)
 	{
 		IPACMERR("Failed to add client filtering rules.\n");
 		res = IPACM_FAILURE;
@@ -5924,6 +6049,7 @@ int IPACM_Lan::add_tcp_syn_flt_rule(ipa_ip_type iptype)
 	int len;
 	struct ipa_flt_rule_add flt_rule_entry;
 	ipa_ioc_add_flt_rule *m_pFilteringTable;
+	bool result;
 
 	if(rx_prop == NULL)
 	{
@@ -5968,8 +6094,20 @@ int IPACM_Lan::add_tcp_syn_flt_rule(ipa_ip_type iptype)
 	}
 
 	memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(flt_rule_entry));
+#ifdef IPA_IOCTL_SET_FNR_COUNTER_INFO
+	/* use index hw-counter */
+	if(ipa_if_cate == WLAN_IF && IPACM_Iface::ipacmcfg->hw_fnr_stats_support)
+	{
+		IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+		result = m_filtering.AddFilteringRule_hw_index(m_pFilteringTable, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_ALL);
+	} else {
+		result = m_filtering.AddFilteringRule(m_pFilteringTable);
+	}
+#else
+	result = m_filtering.AddFilteringRule(m_pFilteringTable);
+#endif
 
-	if(false == m_filtering.AddFilteringRule(m_pFilteringTable))
+	if(result == false)
 	{
 		IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
 		free(m_pFilteringTable);
@@ -6029,7 +6167,7 @@ int IPACM_Lan::add_tcp_syn_flt_rule_l2tp(ipa_ip_type inner_ip_type)
 	}
 
 	memcpy(&(m_pFilteringTable->rules[0]), &flt_rule_entry, sizeof(flt_rule_entry));
-
+	/* no need for hw counters */
 	if(false == m_filtering.AddFilteringRule(m_pFilteringTable))
 	{
 		IPACMERR("Error Adding RuleTable(0) to Filtering, aborting...\n");
