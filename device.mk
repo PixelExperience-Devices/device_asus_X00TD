@@ -259,6 +259,10 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0-java
 
+# HW Crypto
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.cryptfshw@1.0-service-qti
+
 # IMS
 PRODUCT_PACKAGES += \
     qti-telephony-hidl-wrapper \
