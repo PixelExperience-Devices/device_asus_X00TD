@@ -44,3 +44,6 @@ fi
 if [ ! -f /data/system/users/0/settings_fingerprint.xml ]; then
     rm -rf /persist/data/finger_*
 fi
+
+# Append input group for sensors
+sed -i '/group/ s/$/ input/' /vendor/etc/init/android.hardware.sensors@1.0-service.rc
