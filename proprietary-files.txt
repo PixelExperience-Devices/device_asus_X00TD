@@ -1089,15 +1089,14 @@ vendor/lib/libgcs-osal.so
 vendor/lib/libgcs.so
 vendor/lib/libsmwrapper.so
 
-# Media
+# Media - from LA.UM.8.2.r1-03200-sdm660.0
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
 vendor/lib/libFlacSwDec.so
+vendor/lib/libgpustats.so
 vendor/lib/libI420colorconvert.so
+vendor/lib/libmm-color-convertor.so
 vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxQcelp13Dec.so
-vendor/lib/libOmxVpp.so
 vendor/lib/libOmxAlacDec.so
 vendor/lib/libOmxAlacDecSw.so
 vendor/lib/libOmxAmrDec.so
@@ -1105,20 +1104,29 @@ vendor/lib/libOmxAmrwbplusDec.so
 vendor/lib/libOmxApeDec.so
 vendor/lib/libOmxApeDecSw.so
 vendor/lib/libOmxDsdDec.so
+vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxG711Dec.so
+vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxVideoDSMode.so
 vendor/lib/libOmxWmaDec.so
-vendor/lib/libdsd2pcm.so
-vendor/lib/libgpustats.so
-vendor/lib/libmm-color-convertor.so
-vendor/lib/libmmsw_detail_enhancement.so
-vendor/lib/libmmsw_math.so
-vendor/lib/libmmsw_opencl.so
-vendor/lib/libmmsw_platform.so
-vendor/lib/libvpphvx.so
-vendor/lib/libvpplibrary.so
 vendor/lib/libvqzip.so
+vendor/lib64/libAlacSwDec.so
+vendor/lib64/libApeSwDec.so
+vendor/lib64/libFlacSwDec.so
 vendor/lib64/libgpustats.so
+vendor/lib64/libI420colorconvert.so
+vendor/lib64/libmm-color-convertor.so
+vendor/lib64/libOmxAacDec.so
+vendor/lib64/libOmxAlacDec.so
+vendor/lib64/libOmxAlacDecSw.so
+vendor/lib64/libOmxAmrDec.so
+vendor/lib64/libOmxAmrwbplusDec.so
+vendor/lib64/libOmxApeDec.so
+vendor/lib64/libOmxApeDecSw.so
+vendor/lib64/libOmxEvrcDec.so
+vendor/lib64/libOmxG711Dec.so
+vendor/lib64/libOmxQcelp13Dec.so
+vendor/lib64/libOmxWmaDec.so
 
 # NFC
 vendor/firmware/libpn553_fw.so:vendor/lib/libpn553_fw.so
@@ -1127,35 +1135,62 @@ vendor/firmware/libpn553_fw.so:vendor/lib/libpn553_fw.so
 bin/nvram_btwifi:vendor/bin/nvram_btwifi
 lib64/libmmi.so:vendor/lib64/libmmi.so
 
-# Perf
+# Perf - from LA.UM.8.2.r1-03200-sdm660.0
+product/lib/vendor.qti.hardware.perf@1.0.so
+product/lib/vendor.qti.hardware.perf@2.0.so
+product/lib64/vendor.qti.hardware.perf@1.0.so
+product/lib64/vendor.qti.hardware.perf@2.0.so
+lib/libqti_performance.so
+lib/libqti-perfd-client_system.so
+lib64/libqti_performance.so
+lib64/libqti-perfd-client_system.so
 vendor/bin/energy-awareness
-vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
-vendor/bin/msm_irqbalance
-vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
+vendor/bin/hw/vendor.qti.hardware.perf@2.0-service
+vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc
 vendor/etc/perf/commonresourceconfigs.xml
+vendor/etc/perf/perfconfigstore.xml
 vendor/etc/perf/perfboostsconfig.xml
 vendor/etc/perf/targetconfig.xml
 vendor/etc/perf/targetresourceconfigs.xml
+vendor/lib/libperfconfig.so
+vendor/lib/libperfgluelayer.so
 vendor/lib/libqti-perfd-client.so
 vendor/lib/libqti-perfd.so
 vendor/lib/libqti-util.so
-vendor/lib/vendor.qti.hardware.perf@1.0.so|84e437b0dea2d8c1d5712a9fadf132ae5d665d46
+vendor/lib/libqti-utils.so
+vendor/lib/vendor.qti.hardware.perf@1.0.so
+vendor/lib/vendor.qti.hardware.perf@2.0.so
+vendor/lib64/libperfconfig.so
 vendor/lib64/libperfgluelayer.so
 vendor/lib64/libqti-perfd-client.so
 vendor/lib64/libqti-perfd.so
 vendor/lib64/libqti-util.so
+vendor/lib64/libqti-utils.so
 vendor/lib64/vendor.qti.hardware.perf@1.0.so
+vendor/lib64/vendor.qti.hardware.perf@2.0.so
 
-# Peripheral manager
+# IOP - from LA.UM.8.2.r1-03200-sdm660.0
+vendor/lib/vendor.qti.hardware.iop@1.0.so
+vendor/lib/vendor.qti.hardware.iop@2.0.so
+vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so
+vendor/lib/libqti-iopd-client.so
+vendor/lib64/vendor.qti.hardware.iop@1.0.so
+vendor/lib64/vendor.qti.hardware.iop@2.0.so
+vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so
+vendor/lib64/libqti-iopd-client.so
+
+# Peripheral manager - from LA.UM.8.2.r1-03200-sdm660.0
 vendor/bin/pm-proxy
 vendor/bin/pm-service
+vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
-# Postprocessing
+# Postprocessing - from LA.UM.8.2.r1-03200-sdm660.0
 vendor/bin/hw/vendor.display.color@1.0-service
-vendor/bin/mm-pp-dpps
 vendor/etc/init/vendor.display.color@1.0-service.rc
-vendor/lib/libdisp-aba.so
+vendor/lib/vendor.display.color@1.0.so
+vendor/lib/vendor.display.color@1.1.so
+vendor/lib/vendor.display.postproc@1.0.so
 vendor/lib64/libdisp-aba.so
 vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.color@1.1.so
@@ -1414,16 +1449,17 @@ vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
 vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.soter@1.0.so
 
-# Thermal
+# Thermal - from LA.UM.8.2.r1-03200-sdm660.0
 vendor/bin/thermal-engine
 -vendor/lib/libthermalclient.so
 -vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
 
-# Time services
+# Time services - from LA.UM.8.2.r1-03200-sdm660.0
 -vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
-vendor/lib64/libtime_genoff.so
+-vendor/lib/libtime_genoff.so
+-vendor/lib64/libtime_genoff.so
 
 # Universal Bandwidth Compression (UBWC)
 vendor/lib/libstreamparser.so
@@ -1442,7 +1478,7 @@ vendor/firmware/widevine.b06
 vendor/firmware/widevine.b07
 vendor/firmware/widevine.mdt
 
-# Wi-Fi
+# Wi-Fi - from LA.UM.8.2.r1-03200-sdm660.0
 vendor/bin/cnss-daemon
 
 # Wi-Fi Display
