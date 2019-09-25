@@ -172,6 +172,10 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.3 \
     vendor.display.config@1.3.vendor
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
+    ro.surface_flinger.max_virtual_display_dimension=4096
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
