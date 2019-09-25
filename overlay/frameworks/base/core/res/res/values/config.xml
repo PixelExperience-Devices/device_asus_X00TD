@@ -493,4 +493,8 @@
     <bool name="config_swipe_up_gesture_setting_available">true</bool>
     <integer name="config_navBarInteractionMode">1</integer>
 
+    <!-- Whether to artificially interpret all signal strengths as
+         one bar higher than they actually are -->
+    <bool name="config_inflateSignalStrength">true</bool>
+
 </resources>
