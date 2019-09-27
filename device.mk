@@ -392,8 +392,8 @@ PRODUCT_PACKAGES += \
     libxml2 \
     libprotobuf-cpp-full
 
-PRODUCT_BOOT_JARS += \
-    qcrilhook
+#PRODUCT_BOOT_JARS += \
+#    qcrilhook
 
 # QCOM
 PRODUCT_COPY_FILES += \
@@ -428,8 +428,8 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_PACKAGES += \
     telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+#PRODUCT_BOOT_JARS += \
+#    telephony-ext
 
 # Tetheroffload
 PRODUCT_PACKAGES += \
@@ -485,8 +485,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libnl
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+#PRODUCT_BOOT_JARS += \
+#    WfdCommon
 
 # WiFi
 PRODUCT_PACKAGES += \
