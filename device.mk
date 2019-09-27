@@ -256,7 +256,7 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service
 
 # Zenmotions
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     Zenmotions
 
 # LiveDisplay native
