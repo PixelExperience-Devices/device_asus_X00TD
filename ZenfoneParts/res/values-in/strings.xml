@@ -63,77 +63,6 @@
     <string name="kcal_presets" translatable="false">@string/presets_dialog_title</string>
     <string name="kcal_reset">Atur Ulang</string>
 
-    <!-- Zenmotions -->
-    <string name="dlg_ok">OK</string>
-    <string name="cancel">Batalkan</string>
-    <string name="reset">Atur ulang</string>
-    <string name="reset_message">Atur ulang ke bawaan bosku?</string>
-
-    <string name="category_gesture">Gestur</string>
-    <string name="screen_off_gesture_title">Zenmotions</string>
-    <string name="group_applications">Aplikasi</string>
-    <string name="select_custom_app_title">Pilih aplikasi kustom</string>
-    <string name="gestures_dashboard_summary">Gestur layar mati yang aduhai</string>
-    <string name="enable_gestures_title">Aktifkan gestur</string>
-    <string name="enable_gestures_summary">Aktifkan gestur layar mati</string>
-    <string name="gestures_title">Gestur</string>
-    <string name="zenmotions">Zenmotions</string>
-    <string name="zenmotions_summary">Gestur layar mati yang aduhai</string>
-    <string name="gestures">Gestur</string>
-    <string name="screen_off_gestures">Gestur layar mati</string>
-    <string name="gesture_double_tap_title">Ketuk dua kali</string>
-    <string name="gesture_z_title">Gestur Z</string>	
-    <string name="gesture_s_title">Gestur S</string>
-    <string name="gesture_v_title">Gestur V</string>
-    <string name="gesture_w_title">Gestur W</string>
-    <string name="gesture_c_title">Gestur C</string>
-    <string name="gesture_e_title">Gestur e</string>
-    <string name="gesture_up_title">Usap ke atas</string>
-    <string name="gesture_down_title">Usap ke bawah</string>
-    <string name="gesture_left_title">Usap ke kiri</string>
-    <string name="gesture_right_title">Usap ke kanan</string>
-    <string name="screen_gestures_panel_title">Gestur</string>
-    <string name="proxi_summary_head">Cek sensor proksimiti untuk gestur dan sensor sidik jari</string>
-    <string name="proxi_title_head">Cek sensor proksimiti</string>
-
-    <!-- Ambient Display -->
-    <string name="ambient_display_title">Layar ambien</string>
-    <string name="ambient_display_enable_title">Layar ambien</string>
-    <string name="ambient_display_enable_summary">Bangunkan layar ketika menerima notifikasi</string>
-    <string name="ambient_display_gestures_title">Gestur layar ambien</string>
-    <string name="ambient_display_gestures_summary">Gestur tambahan untuk membangunkan layar</string>
-    <string name="ambient_display_summary">Bangunkan layar ketika menerima notifikasi</string>
-    <string name="ambient_display_summary_on">Layar akan bangun ketika menerima notifikasi</string>
-    <string name="ambient_display_summary_off">Layar tidak akan bangun ketika menerima notifikasi</string>
-
-    <!-- Tilt sensor -->
-    <string name="tilt_sensor_title">Sensor kemiringan</string>
-
-    <!-- Pickup sensor -->
-    <string name="pickup_sensor_title">Sensor angkat</string>
-
-    <!-- Proximity sensor -->
-    <string name="proximity_sensor_title">Sensor proximity</string>
-
-    <!-- Hand wave gesture -->
-    <string name="hand_wave_gesture_title">Lambaian tangan</string>
-    <string name="hand_wave_gesture_summary">Notifikasi berkedip pada lambaian tangan</string>
-    <string name="hand_wave_gesture_flat_title">Mendeteksi orientasi</string>
-    <string name="hand_wave_gesture_flat_summary">Hanya berkedip ketika telepon berada pada permukaan datar</string>
-
-    <!-- Pick-up gesture -->
-    <string name="pick_up_gesture_title">Angkat</string>
-    <string name="pick_up_gesture_summary">Notifikasi berkedip ketika diangkat</string>
-
-    <!-- Pocket gesture -->
-    <string name="pocket_gesture_title">Saku</string>
-    <string name="pocket_gesture_summary">Notifikasi berkedip ketika diambil dari kantong</string>
-
-    <!-- Proximity wake -->
-    <string name="proximity_wake_title">Bangunkan dari sensor proximity</string>
-    <string name="proximity_wake_enable_title">Bangunkan dari sensor proximity</string>
-    <string name="proximity_wake_enable_summary">Bangunkan perangkat dengan lambaian tangan</string>
-
     <!-- Label for feature switch [CHAR LIMIT=30] -->
     <string name="switch_bar_on">Nyala</string>
 
@@ -142,10 +71,5 @@
 
     <!-- Device specific settings -->
     <string name="device_settings_app_name">Pengaturan lanjutan</string>
-
-    <!-- Touchscreen gesture haptic feedback -->
-    <string name="touchscreen_gesture_extras">Tambahan</string>
-    <string name="touchscreen_gesture_haptic_feedback">Getaran Balik</string>
-    <string name="touchscreen_gesture_haptic_feedback_summary">Bergetar ketika gestur ambien terdeteksi</string>
 
 </resources>

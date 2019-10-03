@@ -55,7 +55,6 @@ public class DeviceSettings extends PreferenceFragment implements
     private CustomSeekBarPreference mHeadphoneGain;
     private CustomSeekBarPreference mMicrophoneGain;
     private Preference mKcal;
-    private Preference mAmbientPref;
 
     private SecureSettingSwitchPreference mBacklightDimmer;
 
@@ -90,16 +89,6 @@ public class DeviceSettings extends PreferenceFragment implements
         } else {
             getPreferenceScreen().removePreference(findPreference(PREF_BACKLIGHT_DIMMER));
         }
-
-	mAmbientPref = findPreference("ambient_display_gestures");
-        mAmbientPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Intent intent = new Intent(getContext(), TouchscreenGesturePreferenceActivity.class);
-                startActivity(intent);
-                return true;
-            }
-        });
 
         mKcal = findPreference(PREF_DEVICE_KCAL);
 

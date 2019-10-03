@@ -21,9 +21,6 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INJECT_EVENTS"/>
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-sdk android:minSdkVersion="27" />
 
@@ -90,18 +87,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
         </activity>
-        <activity android:name="com.asus.zenparts.KeyHandler" />
-	<activity
-            android:name="com.asus.zenparts.settings.ScreenOffGestureSettings"
-			android:exported="true"
-            android:label="@string/screen_off_gesture_title">
-          <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-          </intent-filter>
-	</activity>
-        <service android:name="com.asus.zenparts.SensorsDozeService"
-                 android:permission="SensorsDozeService">
-        </service>
         <service
             android:name=".ZenpartsTile"
             android:enabled="true"
@@ -112,18 +97,5 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
         </service>
-        <activity
-            android:name="com.asus.zenparts.TouchscreenGesturePreferenceActivity"
-			android:exported="true"
-            android:label="@string/ambient_display_gestures_title">
-            <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
-            </intent-filter>
-        </activity>
-        <receiver android:name="com.asus.zenparts.Startup" >
-            <intent-filter android:priority="100" >
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
     </application>
 </manifest>
