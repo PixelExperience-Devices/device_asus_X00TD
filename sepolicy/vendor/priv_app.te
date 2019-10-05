@@ -1,0 +1,1 @@
+dontaudit priv_app { firmware_file bt_firmware_file }:filesystem getattr;
