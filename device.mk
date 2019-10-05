@@ -84,6 +84,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.dsi.ant.antradio_library.xml
 
+# Android Q
+PRODUCT_PACKAGES += \
+    com.android.media \
+    android.frameworks.bufferhub@1.0-service \
+    libSurfaceFlingerProperties \
+    libmediandk_utils \
+    libmedia2_jni_core
+
 # AR CONFIG
 PRODUCT_COPY_FILES += \
    device/asus/X00TD/configs/android.hardware.camera.ar.xml:vendor/etc/permissions/android.hardware.camera.ar.xml
