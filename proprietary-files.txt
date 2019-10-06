@@ -1194,7 +1194,7 @@ framework/qti-telephony-common.jar
 framework/QtiTelephonyServicelibrary.jar
 framework/embmslibrary.jar
 -framework/qcrilhook.jar
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|cb9d80f42cde08e6620523f8bac0f298ecc79b56
 vendor/bin/ATFWD-daemon
 vendor/bin/hw/qcrild
 vendor/bin/netmgrd
