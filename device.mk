@@ -96,7 +96,7 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libvolumelistener \
-    tinymix
+    tinymix.vendor
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
