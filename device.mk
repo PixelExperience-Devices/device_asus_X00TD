@@ -154,6 +154,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     qcom.fmradio
 
+# GPS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@2.0-impl-qti \
+    android.hardware.gnss@2.0-service-qti \
+    libbatching \
+    libgeofencing \
+    libgnss \
+    libgps.utils \
+    liblocation_api \
+    libsensorndkbridge \
+    libwifi-hal-ctrl
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
