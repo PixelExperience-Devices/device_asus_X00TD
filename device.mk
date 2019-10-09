@@ -209,8 +209,14 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_PACKAGES += \
+    libbatching \
     libcurl \
-    libsensorndkbridge
+    libgeofencing \
+    libgnss \
+    libgps.utils \
+    liblocation_api \
+    libsensorndkbridge \
+    libvehiclenetwork-native
 
 PRODUCT_PACKAGES += \
     apdr.conf \
@@ -220,6 +226,10 @@ PRODUCT_PACKAGES += \
     lowi.conf \
     sap.conf \
     xtwifi.conf
+
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@2.0-impl-qti \
+    android.hardware.gnss@2.0-service-qti
 
 # Health
 PRODUCT_PACKAGES += \
