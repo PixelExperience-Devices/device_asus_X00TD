@@ -1134,7 +1134,6 @@ vendor/lib/libidl.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
-vendor/lib/libqmi_cci.so
 vendor/lib/libqmi_client_helper.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
@@ -1151,7 +1150,6 @@ vendor/lib64/libidl.so
 vendor/lib64/libqcci_legacy.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
-vendor/lib64/libqmi_cci.so
 vendor/lib64/libqmi_client_helper.so
 vendor/lib64/libqmi_client_qmux.so
 vendor/lib64/libqmi_common_so.so
@@ -1161,6 +1159,10 @@ vendor/lib64/libqmi.so
 vendor/lib64/libqmiservices.so
 vendor/lib64/libqrtr.so
 vendor/lib64/libqsocket.so
+
+# QMI (libqmi_cci) - from DRG - QKQ1.190828.002
+vendor/lib/libqmi_cci.so|c9875888360b5498af4c067464c7956bd140c8bb
+vendor/lib64/libqmi_cci.so|93902ee01db0ba6ad9c26287fd1aba0f37b134bf
 
 # QTEE
 lib/libGPTEE_system.so
