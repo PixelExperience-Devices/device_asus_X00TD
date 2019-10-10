@@ -4719,7 +4719,7 @@ int IPACM_Lan::set_tether_client(wan_ioctl_set_tether_client_pipe *tether_client
 		}
 	}
 
-	ret = ioctl(fd_wwan_ioctl, WAN_IOC_SET_TETHER_CLIENT_PIPE, &tether_client);
+	ret = ioctl(fd_wwan_ioctl, WAN_IOC_SET_TETHER_CLIENT_PIPE, tether_client);
 	if(ret != 0)
 	{
 		IPACMERR("Failed set tether-client-pipe %p with ret %d\n ", &tether_client, ret);
