@@ -24,6 +24,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    audio.bluetooth.default \
     audio.primary.sdm660 \
     audio.r_submix.default \
     audio.usb.default \
@@ -58,6 +59,9 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
 
 # Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.audio@2.0-impl
+
 PRODUCT_PACKAGES += \
     libbthost_if
 
