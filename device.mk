@@ -27,6 +27,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    audio.bluetooth.default \
     audio.primary.sdm660 \
     audio.r_submix.default \
     audio.usb.default \
@@ -65,6 +66,9 @@ TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
 
 # Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.audio@2.0-impl
+
 PRODUCT_PACKAGES += \
     libbthost_if
 
