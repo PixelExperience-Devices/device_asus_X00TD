@@ -67,8 +67,8 @@ vidc.enc.target_support_bframe=1
 vendor.vidc.enc.disable_bframes=1
 vendor.vidc.dec.enable.downscalar=0
 
-# enable PQ feature by default
-vendor.vidc.enc.disable.pq=false
+# disable PQ feature by default
+vendor.vidc.enc.disable.pq=true
 
 # Additional buffers shared between Camera and Video
 vidc.enc.dcvs.extra-buff-count=2
