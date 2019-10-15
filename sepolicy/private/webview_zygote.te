@@ -1,3 +1,0 @@
-# TODO(b/867711): Remove this once there is no longer a socket call to parent.
-# See https://r.android.com/867711
-dontaudit webview_zygote zygote:unix_dgram_socket write;
