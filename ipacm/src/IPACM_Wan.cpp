@@ -1005,7 +1005,7 @@ void IPACM_Wan::event_callback(ipa_cm_event_id event, void *param)
 			if ((ipa_interface_index == ipa_if_num) && (m_is_sta_mode == Q6_WAN))
 			{
 				is_xlat_local = true;
-				IPACMDBG_H("WAN-LTE (%s) link up, iface: %d is_xlat: %d\n",
+				IPACMDBG_H("WAN-LTE (%s) link up, iface: %d is_xlat_local: %d\n",
 						IPACM_Iface::ipacmcfg->iface_table[ipa_interface_index].iface_name,data->if_index, is_xlat_local);
 			}
 			break;
@@ -2146,13 +2146,13 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 		IPACM_Wan::is_xlat = is_xlat_local;
 
 		/* send xlat configuration for installing uplink rules */
-		if(IPACM_Wan::is_xlat && (m_is_sta_mode == Q6_WAN))
+		if(is_xlat_local && (m_is_sta_mode == Q6_WAN))
 		{
 			IPACM_Wan::xlat_mux_id = ext_prop->ext[0].mux_id;
 			wanup_data->xlat_mux_id = IPACM_Wan::xlat_mux_id;
 			IPACMDBG_H("Set xlat configuraiton with below information:\n");
-			IPACMDBG_H("xlat_enabled: %d xlat_mux_id: %d \n",
-					IPACM_Wan::is_xlat, xlat_mux_id);
+			IPACMDBG_H("xlat_enabled: %d set xlat_mux_id: %d \n",
+					is_xlat_local, IPACM_Wan::xlat_mux_id);
 		}
 		else /*temp put xlat = 0 for Q6_MHI_WAN*/
 		{
@@ -2268,7 +2268,7 @@ int IPACM_Wan::post_wan_up_tether_evt(ipa_ip_type iptype, int ipa_if_num_tether)
 	wanup_data->if_index_tether = ipa_if_num_tether;
 	wanup_data->backhaul_type = m_is_sta_mode;
 	/* xlat mux-id*/
-	if(is_xlat && (m_is_sta_mode == Q6_WAN))
+	if(is_xlat_local && (m_is_sta_mode == Q6_WAN))
 		wanup_data->xlat_mux_id = ext_prop->ext[0].mux_id;
 	else
 		wanup_data->xlat_mux_id = 0;
