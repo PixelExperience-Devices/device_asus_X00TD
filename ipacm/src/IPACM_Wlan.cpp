@@ -350,7 +350,7 @@ void IPACM_Wlan::event_callback(ipa_cm_event_id event, void *param)
 					{
 						/* handle software routing enable event*/
 						IPACMDBG_H("IPA_SW_ROUTING_ENABLE for iface: %s \n",IPACM_Iface::ipacmcfg->iface_table[ipa_if_num].iface_name);
-						handle_software_routing_enable();
+						handle_software_routing_enable(false);
 					}
 				}
 			}
@@ -562,15 +562,19 @@ void IPACM_Wlan::event_callback(ipa_cm_event_id event, void *param)
 		{
 			IPACMDBG_H("Received IPA_DOWNSTREAM_ADD event.\n");
 #ifdef FEATURE_IPA_ANDROID
-			/* indicate v4-offload */
-			IPACM_OffloadManager::num_offload_v4_tethered_iface++;
-
-			/* xlat not support for 2st tethered iface sky */
-			if (IPACM_Wan::isXlat() && (data->prefix.iptype == IPA_IP_v4) && (IPACM_OffloadManager::num_offload_v4_tethered_iface > 1))
+			if (IPACM_Wan::isXlat() && (data->prefix.iptype == IPA_IP_v4))
 			{
-				IPACMDBG_H("Not support 2st downstream iface %s for xlat, cur: %d\n", dev_name,
-					IPACM_OffloadManager::num_offload_v4_tethered_iface);
-				return;
+				/* indicate v4-offload */
+				IPACM_OffloadManager::num_offload_v4_tethered_iface++;
+				IPACMDBG_H("in xlat: update num_offload_v4_tethered_iface %d\n", IPACM_OffloadManager::num_offload_v4_tethered_iface);
+
+				/* xlat not support for 2st tethered iface */
+				if (IPACM_OffloadManager::num_offload_v4_tethered_iface > 1)
+				{
+					IPACMDBG_H("Not support 2st downstream iface %s for xlat, cur: %d\n", dev_name,
+						IPACM_OffloadManager::num_offload_v4_tethered_iface);
+					return;
+				}
 			}
 
 			IPACMDBG_H(" support downstream iface %s, cur %d\n", dev_name,
@@ -602,6 +606,7 @@ void IPACM_Wlan::event_callback(ipa_cm_event_id event, void *param)
 							ext_prop = IPACM_Iface::ipacmcfg->GetExtProp(data->prefix.iptype);
 							if (data->prefix.iptype == IPA_IP_v4)
 							{
+								IPACMDBG_H("check getXlat_Mux_Id:%d\n", IPACM_Wan::getXlat_Mux_Id());
 								handle_wan_up_ex(ext_prop, data->prefix.iptype,
 									IPACM_Wan::getXlat_Mux_Id());
 							}
@@ -860,13 +865,13 @@ void IPACM_Wlan::event_callback(ipa_cm_event_id event, void *param)
 		/* handle software routing enable event, iface will update softwarerouting_act to true*/
 	case IPA_SW_ROUTING_ENABLE:
 		IPACMDBG_H("Received IPA_SW_ROUTING_ENABLE\n");
-		IPACM_Iface::handle_software_routing_enable();
+		IPACM_Iface::handle_software_routing_enable(false);
 		break;
 
 		/* handle software routing disable event, iface will update softwarerouting_act to false*/
 	case IPA_SW_ROUTING_DISABLE:
 		IPACMDBG_H("Received IPA_SW_ROUTING_DISABLE\n");
-		IPACM_Iface::handle_software_routing_disable();
+		IPACM_Iface::handle_software_routing_disable(false);
 		break;
 
 	case IPA_WLAN_SWITCH_TO_SCC:
@@ -2119,7 +2124,7 @@ fail:
 	if (softwarerouting_act == true && rx_prop != NULL )
 	{
 		IPACMDBG_H("Delete sw routing filtering rules\n");
-		IPACM_Iface::handle_software_routing_disable();
+		IPACM_Iface::handle_software_routing_disable(false);
 	}
 	IPACMDBG_H("finished delete software-routing filtering rules\n ");
 

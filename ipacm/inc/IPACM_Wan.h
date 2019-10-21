@@ -253,9 +253,16 @@ public:
 		return curr_wan_ip;
 	}
 
-	static bool getXlat_Mux_Id()
+	static int getXlat_Mux_Id()
 	{
-		return xlat_mux_id;
+		if (is_xlat)
+		{
+			IPACMDBG_H("xlat_mux_id: %d\n", xlat_mux_id);
+			return xlat_mux_id;
+		} else {
+			IPACMDBG_H("no xlat return invalid mux-id: 0\n");
+			return 0;
+		}
 	}
 
 	static void clearExtProp()
@@ -369,6 +376,12 @@ private:
 
 	/* handle for icmpv6 exception rule */
 	uint32_t icmpv6_exception_hdl;
+
+	/* handle for TCP FIN rule */
+	uint32_t tcp_fin_hdl;
+
+	/* handle for TCP RST rule */
+	uint32_t tcp_rst_hdl;
 
 	inline ipa_wan_client* get_client_memptr(ipa_wan_client *param, int cnt)
 	{
@@ -636,6 +649,10 @@ private:
 	int add_icmpv6_exception_rule();
 
 	int delete_icmpv6_exception_rule();
+
+	int add_tcp_fin_rst_exception_rule();
+
+	int delete_tcp_fin_rst_exception_rule();
 };
 
 #endif /* IPACM_WAN_H */
