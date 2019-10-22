@@ -134,6 +134,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.calls.on.ims=1 \
     persist.radio.multisim.config=dsds \
+    persist.sys.fflag.override.settings_network_and_internet_v2=true \
     persist.vendor.radio.sib16_support=1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
