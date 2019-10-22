@@ -58,6 +58,7 @@ persist.backup.ntpServer="0.pool.ntp.org"
 # RIL
 DEVICE_PROVISIONED=1
 persist.radio.VT_CAM_INTERFACE=2
+persist.sys.fflag.override.settings_network_and_internet_v2=true
 ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
 
