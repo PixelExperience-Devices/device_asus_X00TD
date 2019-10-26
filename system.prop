@@ -225,6 +225,7 @@ persist.vendor.qti.telephony.vt_cam_interface=1
 
 # VoWifi function
 persist.data.iwlan.enable=true
+persist.vendor.data.iwlan.enable=true
 
 # Bluetooth
 persist.bt.hfp.playbackforvr=false
