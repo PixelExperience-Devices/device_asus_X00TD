@@ -704,6 +704,7 @@ vendor/firmware/cpp_firmware_v1_12_0.fw
 # Charger
 vendor/bin/hvdcp_opti
 
+# CNE - from DRG - QKQ1.190828.002
 etc/cne/Nexus/ATT/ATT_profiles.xml|a0039cb3a4c5a4ca1adf897904b61c91e32d06f7|33e568627fd3f94dc45bca1c01ad10e6d8fb5b52
 etc/cne/Nexus/ROW/ROW_profiles.xml|e3907ff71cbbe0f1073ec1bf0223d26c8282aa35|238e785e9674b27c4b2365958d127533d7293132
 etc/cne/Nexus/VZW/VZW_profiles.xml|0d35b3266ea656d8868ae8f5d7e938f4859e9b0a|0f63b632e3a3f114def7aeadaabd13851c8ceec5
@@ -742,6 +743,7 @@ vendor/lib64/libcne.so|1344c4749026a55eee9e3a814c7a71b6733e08fb
 vendor/lib64/libcneapiclient.so|a99c0ebb180bca17ed05c2ac348ee8e16227a5a3
 vendor/lib64/libcneoplookup.so|99dbc1b2ae37181ae49a72d581fe53abe8207c42
 vendor/lib64/libcneqmiutils.so|f2fc09230fdf877020f734451c13a6adb749838d
+vendor/lib64/libmmosal_proprietary.so|b8dbc765c15f30dec9f1c0907a25810df1bc9731
 vendor/lib64/libwms.so|19a39c776120515292dc821599cf504a5fd600b3
 vendor/lib64/libwqe.so|e762bb803cdb4fa55224df58e06c3a5bca5f36a7
 vendor/lib64/libxml.so|9fa23668a2ab5fb0aff7e694fe44fb050b20f83d
@@ -755,6 +757,7 @@ vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so|bf7766fbd49a3aa3426a93ab
 vendor/lib64/vendor.qti.hardware.data.iwlan@1.0.so|c471659fc3fb56dcdcda183e080397a737e4708b
 vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|ff7a319e51ddd4de14af28a84f7bca5e82547f6e
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so|90f1106f7462a9e01721e1159ed3301579adee07
+vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so|38080477e0515ea698fb2cc7ed33f1d1a39cd1f4
 vendor/lib64/vendor.qti.latency@2.0.so|91a8b05b20485057ee9f42c55ce70207ef6af761
 
 # Display
@@ -782,7 +785,7 @@ vendor/firmware/novatek_ts_fw_txd.bin
 # Display firmware (Synaptics)
 vendor/firmware/startup_fw_update.img
 
-# DPM
+# DPM - from DRG - QKQ1.190828.002
 product/bin/dpmd|49caa8e7d8af8055efdd7ebc0d7f7d67bc600041
 product/etc/dpm/dpm.conf|95e27da8c989e96c6faea6f0697bce11955b62a5
 product/etc/init/dpmd.rc|7f95195a89fddce06b93006a737701270e91f669
