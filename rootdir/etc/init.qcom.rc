@@ -610,14 +610,8 @@ service qcom-c_main-sh /vendor/bin/init.class_main.sh
     group root system
     oneshot
 
-service qcom-c_late-sh /vendor/bin/init.class_late.sh
-    class late_start
-    user root
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
-    start qcom-c_late-sh
     restart vendor.camera-provider-2-4
     restart vendor.audio-hal-2-0
     start wcnss-service
