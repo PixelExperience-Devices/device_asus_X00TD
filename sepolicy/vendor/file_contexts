@@ -22,3 +22,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.X00T    u:object_r:hal_light_default_exec:s0
 # Ipa
 /vendor/bin/init\.qcom\.ipastart\.sh                                    u:object_r:init-qcom-ipastart-sh_exec:s0
+
+# Firmware
+/bt_firmware(/.*)?                                                      u:object_r:bt_firmware_file:s0
+/firmware(/.*)?                                                         u:object_r:firmware_file:s0
