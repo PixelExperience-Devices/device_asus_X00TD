@@ -5,9 +5,6 @@ persist.vendor.runin.fp            u:object_r:cdfinger_prop:s0
 # Audio
 use.audio.eu.parameters            u:object_r:hal_audio_prop:s0
 
-# Camera
-persist.vendor.camera.debug.logfile       u:object_r:camera_prop:s0
-
 # nvram
 ro.btmac                           u:object_r:nvram_btwifi_prop:s0
 ro.wifimac                         u:object_r:nvram_btwifi_prop:s0
