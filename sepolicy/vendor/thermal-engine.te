@@ -1,0 +1,2 @@
+# to read /sys/devices
+allow thermal-engine sysfs:dir r_dir_perms;
