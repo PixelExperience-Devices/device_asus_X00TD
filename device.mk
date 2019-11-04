@@ -520,6 +520,10 @@ PRODUCT_COPY_FILES += \
     android.hardware.vr@1.0-service \
     vr.sdm660
 
+# Wallpapers
+PRODUCT_PACKAGES += \
+    WallpapersBReel2019
+
 # WFD
 PRODUCT_PACKAGES += \
     libnl
