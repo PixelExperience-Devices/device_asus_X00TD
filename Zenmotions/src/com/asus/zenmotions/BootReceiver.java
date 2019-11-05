@@ -28,7 +28,7 @@ import com.asus.zenmotions.settings.ScreenOffGesture;
 import com.asus.zenmotions.util.Utils;
 import com.asus.zenmotions.gestures.SensorsDozeService;
 import java.io.File;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 public class BootReceiver extends BroadcastReceiver {
 

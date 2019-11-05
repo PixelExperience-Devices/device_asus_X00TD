@@ -19,15 +19,14 @@ package com.asus.zenmotions.gestures;
 
 import android.os.Bundle;
 import com.asus.zenmotions.R;
-import com.android.settingslib.drawer.SettingsDrawerActivity;
+import android.preference.PreferenceActivity;
 
-public class AmbientGesturePreferenceActivity extends SettingsDrawerActivity {
+public class AmbientGesturePreferenceActivity extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction()
-                .replace(R.id.content_frame, new AmbientGesturePreferenceFragment())
-                .commit();
+                .replace(android.R.id.content, new AmbientGesturePreferenceFragment()).commit();
     }
 }
