@@ -255,6 +255,9 @@ include device/qcom/sepolicy-legacy-um/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 
+# We modify several neverallows, so let the build proceed
+SELINUX_IGNORE_NEVERALLOWS := true
+
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
 
