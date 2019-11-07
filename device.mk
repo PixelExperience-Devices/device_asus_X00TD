@@ -148,6 +148,7 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0 \
+    liba2dpoffload \
     libbthost_if
 
 # Boot animation
