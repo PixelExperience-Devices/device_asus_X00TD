@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="advanced_settings">Zenfone Parts</string>
+    <string name="advanced_settings">ZenParts</string>
     <string name="advanced_settings_summary">Kustomisasi Perangkat</string>
 
     <string name="display_title">Layar</string>
