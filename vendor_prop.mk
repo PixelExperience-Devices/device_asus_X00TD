@@ -116,11 +116,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.additionalbutton.operation=0 \
     sys.autosuspend.timeout=500000
 
-# NFC
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.nfc_nci=pn8x \
-    ro.nfc.port=I2C
-
 # Play store
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.clientidbase.ms=android-asus-tpin \
