@@ -333,10 +333,6 @@ on post-fs-data
     mkdir /data/vendor/ipa 0770 radio radio
     chmod 0770 /data/vendor/ipa
 
-    #Create QTI dir for logs
-    mkdir /data/vendor/dataqti 0770 radio radio
-    chmod 0770 /data/vendor/dataqti
-
     # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
     chown radio radio /data/vendor/connectivity
@@ -668,13 +664,6 @@ service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     disabled
     oneshot
 
-service vendor.port-bridge /system/vendor/bin/port-bridge
-    class main
-    user radio
-    group radio system inet
-    disabled
-    oneshot
-
 service qmiproxy /system/bin/qmiproxy
     class main
     user radio
@@ -688,33 +677,10 @@ service qmiproxy /system/bin/qmiproxy
 #    group radio audio bluetooth gps nfc diag
 #    disabled
 
-service vendor.netmgrd /system/vendor/bin/netmgrd
-    class main
-    disabled
-
-service vendor.ipacm-diag /system/vendor/bin/ipacm-diag
-    class main
-    user radio
-    socket ipacm_log_file dgram 660 radio radio
-    group radio diag oem_2901
-    disabled
-
 service vendor.ipacm /system/vendor/bin/ipacm
     class main
     user radio
     group radio inet
-    disabled
-
-service vendor.dataqti /system/vendor/bin/qti
-    class main
-    user radio
-    group radio oem_2901 diag usb net_admin
-    disabled
-
-service vendor.dataadpl /system/vendor/bin/adpl
-    class main
-    user radio
-    group radio oem_2901 diag usb net_admin
     disabled
 
 service vendor.sensors /vendor/bin/sscrpcd
