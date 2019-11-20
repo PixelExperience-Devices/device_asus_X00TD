@@ -100,6 +100,9 @@ BOARD_USES_QCOM_HARDWARE := true
 # Sepolicy
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
 
+# Treble
+BOARD_VNDK_VERSION := current
+
 # Vendor Security patch level
 VENDOR_SECURITY_PATCH := 2020-04-05
 
