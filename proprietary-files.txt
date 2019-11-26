@@ -1069,6 +1069,9 @@ vendor/lib/libvpplibrary.so
 vendor/lib/libvqzip.so
 vendor/lib64/libgpustats.so
 
+# NFC
+vendor/firmware/libpn553_fw.so:vendor/lib/libpn553_fw.so
+
 # NVRAM
 bin/nvram_btwifi
 lib64/libmmi.so

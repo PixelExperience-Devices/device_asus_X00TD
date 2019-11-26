@@ -543,9 +543,9 @@ on property:ro.config.versatility=ID
 
 #Huaqin modify for disable sar in Indonesia by chenyijun5 at 2018/03/20 end
 #Huaqin porting nfc for ZQL1650-1157 by daiweiwei at 2018/4/17 start
-#on boot
-#    chmod 0666 /dev/nq-nci
-#    chown system system /dev/nq-nci
+on boot
+    chmod 0666 /dev/nq-nci
+    chown system system /dev/nq-nci
 #Huaqin porting nfc for ZQL1650-1157 by daiweiwei at 2018/4/17 end
 
 # Huaqin add for ZQL1820-84 by liunianliang at 2018/07/16 start
