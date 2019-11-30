@@ -500,6 +500,10 @@ PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-service \
     vr.sdm660
 
+# Wallpapers
+PRODUCT_PACKAGES += \
+    PixelLiveWallpaperPrebuilt
+
 # WFD
 PRODUCT_PACKAGES += \
     libaacwrapper \
