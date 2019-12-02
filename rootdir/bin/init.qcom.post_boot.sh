@@ -236,7 +236,7 @@ function configure_zram_parameters() {
 
     RamSizeGB=`echo "($MemTotal / 1048576 ) + 1" | bc`
     zRamSizeBytes=`echo "$RamSizeGB * 1024 * 1024 * 1024 / 2" | bc`
-    if [ $zRamSizeBytes -gt 4294967296 ]; then
+    if [ $RamSizeGB -gt 4 ]; then
         zRamSizeBytes=4294967296
     fi
 
