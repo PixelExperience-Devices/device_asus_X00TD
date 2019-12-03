@@ -1,1 +1,2 @@
 dontaudit untrusted_app proc_vmstat:file { getattr open };
+allow untrusted_app hal_memtrack_default:binder call;

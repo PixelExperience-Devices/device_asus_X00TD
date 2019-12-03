@@ -1,3 +1,5 @@
 type cdfinger_prop, property_type;
 type hal_audio_prop, property_type;
 type nvram_btwifi_prop, property_type;
+
+type vendor_camera_prop, property_type;
