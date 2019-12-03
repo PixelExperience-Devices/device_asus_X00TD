@@ -159,16 +159,6 @@ persist.vendor.radio.atfwd.start=true
 #property to enable VDS WFD solution
 persist.hwc.enable_vds=1
 
-#Settings to enable sensors
-#Device Orientation sensor
-ro.vendor.sensors.dev_ori=true
-#Persistent Motion Detector
-ro.vendor.sensors.pmd=true
-#Stationary Detector
-ro.vendor.sensors.sta_detect=true
-#Motion Detector
-ro.vendor.sensors.mot_detect=true
-
 #Expose aux camera for below packages
 vendor.camera.aux.packagelist=org.codeaurora.snapcam
 persist.vendor.camera.expose.aux=1
