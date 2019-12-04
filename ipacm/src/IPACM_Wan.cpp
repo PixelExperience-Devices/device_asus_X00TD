@@ -52,6 +52,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "linux/ipa_qmi_service_v01.h"
 #ifdef FEATURE_IPACM_HAL
 #include "IPACM_OffloadManager.h"
+#include <IPACM_Netlink.h>
 #endif
 
 bool IPACM_Wan::wan_up = false;
@@ -91,6 +92,8 @@ int	IPACM_Wan::ipa_if_num_tether_v4[IPA_MAX_IFACE_ENTRIES];
 int	IPACM_Wan::ipa_if_num_tether_v6[IPA_MAX_IFACE_ENTRIES];
 #endif
 
+uint16_t IPACM_Wan::mtu_default_wan = DEFAULT_MTU_SIZE;
+
 IPACM_Wan::IPACM_Wan(int iface_index,
 	ipacm_wan_iface_type is_sta_mode,
 	uint8_t *mac_addr) : IPACM_Iface(iface_index)
@@ -129,6 +132,7 @@ IPACM_Wan::IPACM_Wan(int iface_index,
 	ext_prop = NULL;
 	is_ipv6_frag_firewall_flt_rule_installed = false;
 	ipv6_frag_firewall_flt_rule_hdl = 0;
+	mtu_size = DEFAULT_MTU_SIZE;
 
 	num_wan_client = 0;
 	header_name_count = 0;
@@ -1818,6 +1822,9 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 	}
 	IPACMDBG_H("backhaul_is_wan_bridge ?: %d \n", IPACM_Wan::backhaul_is_wan_bridge);
 
+	/* query MTU size of the interface */
+	query_mtu_size();
+
 	if (m_is_sta_mode ==Q6_WAN)
 	{
 		IPACM_Wan::backhaul_mode = m_is_sta_mode;
@@ -1990,7 +1997,7 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 					IPACMDBG_H("hw-index-enable %d, counter %d\n", IPACM_Iface::ipacmcfg->hw_fnr_stats_support, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_HW);
 					result = m_routing.AddRoutingRule_hw_index(rt_rule, IPACM_Iface::ipacmcfg->hw_counter_offset + UL_HW);
 				} else {
-					result = m_routing.AddRoutingRule(rt_rule);			
+					result = m_routing.AddRoutingRule(rt_rule);
 				}
 #else
 				result = m_routing.AddRoutingRule(rt_rule);
@@ -2105,6 +2112,11 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 				wan_route_rule_v6_hdl_a5[0], 0, iptype);
 	}
 
+	/* set mtu_default_wan to current default wan instance */
+	mtu_default_wan = mtu_size;
+
+	IPACMDBG_H("replace the mtu_default_wan to %d\n", mtu_default_wan);
+
 	ipacm_event_iface_up *wanup_data;
 	wanup_data = (ipacm_event_iface_up *)malloc(sizeof(ipacm_event_iface_up));
 	if (wanup_data == NULL)
@@ -2218,8 +2230,9 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 			IPACMDBG_H("dev %s add producer dependency\n", dev_name);
 			IPACMDBG_H("depend Got pipe %d rm index : %d \n", tx_prop->tx[0].dst_pipe, IPACM_Iface::ipacmcfg->ipa_client_rm_map_tbl[tx_prop->tx[0].dst_pipe]);
 			IPACM_Iface::ipacmcfg->AddRmDepend(IPACM_Iface::ipacmcfg->ipa_client_rm_map_tbl[tx_prop->tx[0].dst_pipe],false);
+	}
 #ifdef WAN_IOC_NOTIFY_WAN_STATE
-	} else {
+	else {
 			if ((m_is_sta_mode == Q6_WAN && ipa_pm_q6_check == 0 ) || (m_is_sta_mode == Q6_MHI_WAN))
 			{
 				fd_wwan_ioctl = open(WWAN_QMI_IOCTL_DEVICE_NAME, O_RDWR);
@@ -2240,9 +2253,8 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 			ipa_pm_q6_check++;
 			IPACMDBG_H("update ipa_pm_q6_check to %d\n", ipa_pm_q6_check);
 	}
-#else
-	}
 #endif
+
 	if(rt_rule != NULL)
 	{
 		free(rt_rule);
@@ -4989,8 +5001,9 @@ int IPACM_Wan::handle_route_del_evt_ex(ipa_ip_type iptype)
 			IPACMDBG_H("dev %s delete producer dependency\n", dev_name);
 			IPACMDBG_H("depend Got pipe %d rm index : %d \n", tx_prop->tx[0].dst_pipe, IPACM_Iface::ipacmcfg->ipa_client_rm_map_tbl[tx_prop->tx[0].dst_pipe]);
 			IPACM_Iface::ipacmcfg->DelRmDepend(IPACM_Iface::ipacmcfg->ipa_client_rm_map_tbl[tx_prop->tx[0].dst_pipe]);
+		}
 #ifdef WAN_IOC_NOTIFY_WAN_STATE
-		} else {
+		else {
 			IPACMDBG_H("ipa_pm_q6_check to %d\n", ipa_pm_q6_check);
 			if(ipa_pm_q6_check == 1)
 			{
@@ -5012,8 +5025,6 @@ int IPACM_Wan::handle_route_del_evt_ex(ipa_ip_type iptype)
 			else
 				IPACMERR(" ipa_pm_q6_check becomes negative !!!\n");
 		}
-#else
-}
 #endif
 		/* Delete the default route*/
 		if (iptype == IPA_IP_v6)
@@ -5553,6 +5564,9 @@ int IPACM_Wan::handle_down_evt_ex()
 	{
 		goto fail;
 	}
+
+	/* reset the mtu size */
+	mtu_size = DEFAULT_MTU_SIZE;
 
 	if(ip_type == IPA_IP_v4)
 	{
@@ -7912,4 +7926,34 @@ fail:
 		free(pFilteringTable);
 	}
 	return res;
+}
+
+int IPACM_Wan::query_mtu_size()
+{
+	int fd;
+	struct ifreq if_mtu;
+
+	fd = socket(AF_INET, SOCK_DGRAM, 0);
+	if ( fd < 0 ) {
+		IPACMERR("ipacm: socket open failed [%d]\n", fd);
+		return IPACM_FAILURE;
+	}
+
+	strlcpy(if_mtu.ifr_name, dev_name, IFNAMSIZ);
+	IPACMDBG_H("device name: %s\n", dev_name);
+	if_mtu.ifr_name[IFNAMSIZ - 1] = '\0';
+
+	if ( ioctl(fd, SIOCGIFMTU, &if_mtu) < 0 ) {
+		IPACMERR("ioctl failed to get mtu\n");
+		close(fd);
+		return IPACM_FAILURE;
+	}
+	IPACMDBG_H("mtu=[%d]\n", if_mtu.ifr_mtu);
+	if (if_mtu.ifr_mtu < DEFAULT_MTU_SIZE) {
+		mtu_size = if_mtu.ifr_mtu;
+		IPACMDBG_H("replaced mtu=[%d] for (%s)\n", mtu_size, dev_name);
+	}
+
+	close(fd);
+	return IPACM_SUCCESS;
 }
