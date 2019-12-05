@@ -204,13 +204,6 @@
          provisioning, availability etc -->
     <bool name="config_carrier_volte_available">true</bool>
 
-    <!-- ImsService package name to bind to by default. If none is specified in an overlay, an
-         empty string is passed in -->
-    <string name="config_ims_package">org.codeaurora.ims</string>
-
-    <!-- Flag specifying whether or not IMS will use the dynamic ImsResolver -->
-    <bool name="config_dynamic_bind_ims">true</bool>
-
     <string-array name="config_mobile_tcp_buffers">
         <item>"5gnr:2097152,6291456,16777216,512000,2097152,8388608"</item>
         <item>"lte:2097152,4194304,8388608,262144,524288,1048576"</item>
