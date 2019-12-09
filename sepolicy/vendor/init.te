@@ -4,5 +4,8 @@ allow init nvram_btwifi_exec:file { read getattr execute map open };
 allow init sysfs_mmc_host:file { setattr w_file_perms };
 allow init proc_swappiness:file w_file_perms;
 
+allow init firmware_file:filesystem getattr;
+allow init bt_firmware_file:filesystem getattr;
+
 dontaudit init nvram_btwifi:process noatsecure;
 dontaudit init domain:process noatsecure;
