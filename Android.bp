@@ -1,4 +1,3 @@
-//
 // Copyright (C) 2018 The LineageOS Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,20 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-cc_binary {
-    name: "android.hardware.light@2.0-service.X00T",
-    relative_install_path: "hw",
-    init_rc: ["android.hardware.light@2.0-service.X00T.rc"],
-    srcs: ["service.cpp", "Light.cpp"],
-    shared_libs: [
-        "libbase",
-        "libcutils",
-        "libhardware",
-        "libhidlbase",
-        "libhidltransport",
-        "libhwbinder",
-        "libutils",
-        "android.hardware.light@2.0",
-    ],
-    proprietary: true,
-}
+subdirs = [
+    "light",
+]

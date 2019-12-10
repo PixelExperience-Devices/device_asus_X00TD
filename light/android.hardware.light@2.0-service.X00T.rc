@@ -1,27 +1,34 @@
-on boot
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/red/brightness
+# FreeMarkW binderized lights HAL for Asus X00T & maybe X01B
+# HAL has support for RG led and LCD Backlight
+# For perfect work need setup next options in framework:
+#       config_defaultNotificationColor = #ff00ff00
+#       config_notificationsBatteryLowARGB = 0xFFFF0000
+#       config_notificationsBatteryMediumARGB = 0xFF50FF00
+#       config_notificationsBatteryFullARGB = 0xFF00FF00
+# Features for setup brightness, speed and color
+# are is disabled - X00T don't support it!
+# From Russia with LOVE :D
 
-    chown system system /sys/class/leds/green/blink
-    chown system system /sys/class/leds/green/duty_pcts
-    chown system system /sys/class/leds/green/pause_hi
-    chown system system /sys/class/leds/green/pause_lo
-    chown system system /sys/class/leds/green/ramp_step_ms
-    chown system system /sys/class/leds/green/start_idx
+on init
+    # Lights
     chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/green/brightness
 
-    chmod 660 /sys/class/leds/green/blink
-    chmod 660 /sys/class/leds/green/duty_pcts
-    chmod 660 /sys/class/leds/green/pause_hi
-    chmod 660 /sys/class/leds/green/pause_lo
-    chmod 660 /sys/class/leds/green/ramp_step_ms
-    chmod 660 /sys/class/leds/green/start_idx
-    chmod 660 /sys/class/leds/red/blink
+    # Perms for Lights
+    chmod 0664 /sys/class/leds/red/blink
+    chmod 0644 /sys/class/leds/red/brightness
+    chmod 0664 /sys/class/leds/green/blink
+    chmod 0644 /sys/class/leds/green/brightness
+
+    # LCD backlight
+    chown system system /sys/class/leds/lcd-backlight/brightness
 
 service vendor.light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.X00T
-    interface android.hardware.light@2.0::ILight default
     class hal
     user system
     group system
     # shutting off lights while powering-off
     shutdown critical
+
