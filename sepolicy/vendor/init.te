@@ -7,5 +7,7 @@ allow init proc_swappiness:file w_file_perms;
 allow init firmware_file:filesystem getattr;
 allow init bt_firmware_file:filesystem getattr;
 
+allow init vendor_file:file execute;
+
 dontaudit init nvram_btwifi:process noatsecure;
 dontaudit init domain:process noatsecure;
