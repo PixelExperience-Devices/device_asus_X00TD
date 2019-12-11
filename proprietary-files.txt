@@ -126,7 +126,6 @@ vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|dacf9a625cc9f882
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|71ad8980142e7d8d754607accc0cffd8f5e68dbd
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|f9dcf9a19a0b601969bcd606bedb8a8419de9d81
 vendor/lib64/libbluetooth_audio_session_qti.so|124b2adcde969954bc2f2b8eab8e98b2694f7a59
-vendor/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so|4dfa7c2d66966a4b05108e18ed09b05d7677d3f0
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|9346946b110086a6b473c8226e072e9a0cdbb87e
 vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|c51214b092f7e47c2d21989a605c4a8c7e7b85eb
 vendor/lib/hw/audio.bluetooth_qti.default.so|ecc09bb4a84c964b50af91f73295e2cecdc1433d
@@ -134,7 +133,6 @@ vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|3cc64b90af15016a3b
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|1360ae1d4f10d3762699d6ce82b456d8a0145a23
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|b2a644519ad0d890274c384f76269de76e706058
 vendor/lib/libbluetooth_audio_session_qti.so|4dca1e62a630f9ab9900f217a27f77a02e74767a
-vendor/lib/vendor.qti.hardware.bluetooth_audio@2.0.so|9aafedaa8da8f0eb13bc957acbabece4bebd0507
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so|5c24249adf85a30aa66f6a391bf697063d989a87
 vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so|20464213b5f2cdb7d9c10f31b5b53fc03526698f
 
