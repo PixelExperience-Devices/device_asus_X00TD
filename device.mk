@@ -293,10 +293,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service
 
-# Zenmotions
-PRODUCT_PACKAGES += \
-    Zenmotions
-
 # LiveDisplay native
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service-sdm

@@ -1,5 +1,0 @@
--keep public class com.asus.zenmotions.KeyHandler
-
--keepclassmembers public class com.asus.zenmotions.KeyHandler {
-    *;
-}
