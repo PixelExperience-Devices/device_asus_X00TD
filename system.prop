@@ -137,9 +137,6 @@ persist.sys.wfd.virtual=0
 # system prop for NFC DT
 ro.nfc.port=I2C
 
-#property for vendor specific library
-ro.vendor.at_library=libqti-at.so
-
 #min/max cpu in core control
 ro.vendor.qti.core_ctl_min_cpu=2
 ro.vendor.qti.core_ctl_max_cpu=4
@@ -162,9 +159,6 @@ persist.vendor.radio.atfwd.start=true
 
 #property to enable VDS WFD solution
 persist.hwc.enable_vds=1
-
-#Increase cached app limit
-ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 #Settings to enable sensors
 #Device Orientation sensor

@@ -198,19 +198,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
 
-# GPS / Location
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl-qti \
-    libcurl \
-    libgnss \
-    libgnsspps \
-    libgps.utils \
-    liblocation_api \
-    libloc_core \
-    libloc_pla \
-    libsensorndkbridge \
-    libvehiclenetwork-native
-
+# GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
     $(LOCAL_PATH)/configs/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
@@ -374,8 +362,8 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.2 \
-    android.hardware.radio.config@1.0 \
+    android.hardware.radio@1.4 \
+    android.hardware.radio.config@1.2 \
     android.hardware.secure_element@1.0 \
     rild \
     librmnetctl \
@@ -387,7 +375,8 @@ PRODUCT_BOOT_JARS += \
 
 # QCOM
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
+    $(LOCAL_PATH)/configs/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml
 
 # QMI
 PRODUCT_PACKAGES += \
