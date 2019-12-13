@@ -40,9 +40,59 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio_hal.period_size=192 \
     vendor.voice.path.for.pcm.voip=false
 
+# AUDIO_FEATURE_FLAGS
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.bluetooth.bluetooth_audio_hal.disabled=true \
+    persist.vendor.audio.hw.binder.size_kbyte=1024 \
+    vendor.audio.volume.headset.gain.depcal=true \
+    persist.vendor.bt.aac_frm_ctl.enabled=true \
+    vendor.audio.feature.a2dp_offload.enable=true \
+    vendor.audio.feature.afe_proxy.enable=true \
+    vendor.audio.feature.anc_headset.enable=true \
+    vendor.audio.feature.battery_listener.enable=false \
+    vendor.audio.feature.compr_cap.enable=true \
+    vendor.audio.feature.compress_in.enable=true \
+    vendor.audio.feature.compress_meta_data.enable=true \
+    vendor.audio.feature.compr_voip.enable=true \
+    vendor.audio.feature.concurrent_capture.enable=true \
+    vendor.audio.feature.custom_stereo.enable=true \
+    vendor.audio.feature.display_port.enable=true \
+    vendor.audio.feature.dsm_feedback.enable=false \
+    vendor.audio.feature.dynamic_ecns.enable=false \
+    vendor.audio.feature.ext_hw_plugin.enable=false \
+    vendor.audio.feature.external_dsp.enable=false \
+    vendor.audio.feature.external_speaker.enable=true \
+    vendor.audio.feature.external_speaker_tfa.enable=false \
+    vendor.audio.feature.fluence.enable=true \
+    vendor.audio.feature.fm.enable=true \
+    vendor.audio.feature.hdmi_edid.enable=true \
+    vendor.audio.feature.hdmi_passthrough.enable=true \
+    vendor.audio.feature.hfp.enable=true \
+    vendor.audio.feature.hifi_audio.enable=true \
+    vendor.audio.feature.hwdep_cal.enable=false \
+    vendor.audio.feature.incall_music.enable=true \
+    vendor.audio.feature.multi_voice_session.enable=true \
+    vendor.audio.feature.keep_alive.enable=false \
+    vendor.audio.feature.kpi_optimize.enable=true \
+    vendor.audio.feature.maxx_audio.enable=false \
+    vendor.audio.feature.ras.enable=true \
+    vendor.audio.feature.record_play_concurency.enable=true \
+    vendor.audio.feature.src_trkn.enable=true \
+    vendor.audio.feature.spkr_prot.enable=true \
+    vendor.audio.feature.ssrec.enable=true \
+    vendor.audio.feature.usb_offload.enable=true \
+    vendor.audio.feature.usb_offload_burst_mode.enable=false \
+    vendor.audio.feature.usb_offload_sidetone_volume.enable=false \
+    vendor.audio.feature.deepbuffer_as_primary.enable=false \
+    vendor.audio.feature.vbat.enable=true \
+    vendor.audio.feature.wsa.enable=false \
+    vendor.audio.feature.audiozoom.enable=false \
+    vendor.audio.feature.snd_mon.enable=true
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bt.max.hfpclient.connections=1 \
+    persist.vendor.bt.aac_frm_ctl.enabled=true \
     persist.bt.a2dp.aac_disable=true \
     persist.bt.enable.multicast=0 \
     persist.bt.hfp.playbackforvr=false \
@@ -51,8 +101,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.btstack.enable.splita2dp=true \
     ro.bluetooth.emb_wp_mode=true \
     ro.bluetooth.wipower=true \
-    vendor.qcom.bluetooth.soc=cherokee \
-    persist.bluetooth.bluetooth_audio_hal.disabled=true
+    vendor.qcom.bluetooth.soc=cherokee
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -71,7 +120,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Codec2 switch
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.media.codec2=2
+    debug.media.codec2=2 \
+    vendor.audio.feature.multi_voice_session.enable=true
 
 # Charging maximum voltage
 PRODUCT_PROPERTY_OVERRIDES += \
