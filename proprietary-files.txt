@@ -35,21 +35,24 @@ vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so
 
-# Alarm
-framework/vendor.qti.hardware.alarm-V1.0-java.jar
--vendor/app/PowerOffAlarm/PowerOffAlarm.apk|881e8db50782b0c72aa9ca51731f30156c097f78
-vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
-vendor/bin/power_off_alarm
-vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
-vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.alarm@1.0.so
+# Alarm - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+product/framework/vendor.qti.hardware.alarm-V1.0-java.jar|69dedc62181ae26bb2fac4eaacb1f2c38eb21c31
+-product/app/PowerOffAlarm/PowerOffAlarm.apk|fa84887979055559c0aaaf9d3d324f82ed24076f
+vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|faccc2a7d94d486c2f61a5fe85f5c4598b4147a7
+vendor/bin/power_off_alarm|9f800336a28ad1ad111f164b8c779313cddc98c1
+vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|c9877b6cae0353d5fdea5bc23dba77101b3d6980
+vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|1e2631850cc97dfedbde50a9d0d55c8d14881b44
+vendor/lib64/vendor.qti.hardware.alarm@1.0.so|271f85f1c6dc0c65dc3aa9a8603f3910fa50e1ea
 
-# ANT+ - from lavender - PKQ1.180904.001 V10.2.3.0.PFGCNXM
--lib/libantradio.so|d1f41ee14d4cd7b3a306a628bca5cc9e19027201
-lib64/com.qualcomm.qti.ant@1.0.so|3a19c81d66ef1190d0b2f361420d5cbf707cc600
--lib64/libantradio.so|456b6b2fda1450c852ad0b766143b9cf3c61cde0
-vendor/lib64/com.qualcomm.qti.ant@1.0.so|44294189280e86d95538bc51bdccd87b3f010f27
-vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so|474187a8132aabd45089cacd2f8de9a6d9f449a3
+# ANT+ - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+-lib/libantradio.so|37c36369eeab19d5e6266d9d25ae0de9bb59502d
+-lib64/libantradio.so|43f6105678c082216f1606d8dd43fa1b0b753d7e
+product/lib/com.qualcomm.qti.ant@1.0.so|8119c98f53a94736d95a2fb59225e0a054e038b8
+product/lib64/com.qualcomm.qti.ant@1.0.so|f40868ad57012f1a512b14c889bc8380652cc50f
+vendor/lib/com.qualcomm.qti.ant@1.0.so|1b5236c8ad7990c2bcf5a91f1d3b3a7f2c8f8adf
+vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so|273739730b88ed740fbcbe068909162116552dd1
+vendor/lib64/com.qualcomm.qti.ant@1.0.so|181a8ab9b1d40705d3151821b53732c5566a2848
+vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so|aa08f9ec51392ed841f60ad08b7f083312c8c5ee
 
 # Audio
 vendor/bin/audioflacapp
@@ -95,14 +98,28 @@ vendor/etc/acdbdata/QRD/QRD_Speaker_cal.acdb
 vendor/etc/acdbdata/QRD/QRD_workspaceFile.qwsp
 vendor/etc/acdbdata/adsp_avs_config.acdb
 
-# Bluetooth - from lavender - PPR1.180904.001 V10.2.3.0.PFGCNXM
-vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|dff50e256246ab04e01ec5658f94073dddb9fb0c
+# Bluetooth - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|57a0a575a2b1b96176fda1bcb84ea8371c4070d1
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|a979981c55f3dcaf6cf2212e71b901ca4d58b959
-vendor/lib64/com.qualcomm.qti.bluetooth_audio@1.0.so|65044df90882e97700a7fbd3405a2c64423d7f01
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|e3aac2202a3242d3f29219df481a34aefd78adc7
-vendor/lib64/hw/com.qualcomm.qti.bluetooth_audio@1.0-impl.so|eb68ea9f4021cc28d9267dd6c0e10ded248e4a89
-vendor/lib64/libbt-hidlclient.so|cd3513edb12f5e9ef1825c13a290d42e05b7a69b
-vendor/lib64/libbtnv.so|c0251f0064fc6fff2444760b0723755fc4a51957
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|15d5841dd4f2fc27a58fe5a71b80afefcaa1cf7d
+vendor/lib64/libbtnv.so|afa8f54b606c1c23ba598d8f85581c219a627eee
+vendor/lib64/libbt-hidlclient.so|4a4038013bf438627154899d3823c9346c3d84ec
+vendor/lib64/hw/audio.bluetooth_qti.default.so|227b61f8b6851839d1a826b734c759361bab4e23
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|dacf9a625cc9f8829dd2ab8256d769291f33e98a
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|71ad8980142e7d8d754607accc0cffd8f5e68dbd
+vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|f9dcf9a19a0b601969bcd606bedb8a8419de9d81
+vendor/lib64/libbluetooth_audio_session_qti.so|124b2adcde969954bc2f2b8eab8e98b2694f7a59
+vendor/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so|4dfa7c2d66966a4b05108e18ed09b05d7677d3f0
+vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|9346946b110086a6b473c8226e072e9a0cdbb87e
+vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|c51214b092f7e47c2d21989a605c4a8c7e7b85eb
+vendor/lib/hw/audio.bluetooth_qti.default.so|ecc09bb4a84c964b50af91f73295e2cecdc1433d
+vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|3cc64b90af15016a3bbe21eb265805d0c3e35796
+vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|1360ae1d4f10d3762699d6ce82b456d8a0145a23
+vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|b2a644519ad0d890274c384f76269de76e706058
+vendor/lib/libbluetooth_audio_session_qti.so|4dca1e62a630f9ab9900f217a27f77a02e74767a
+vendor/lib/vendor.qti.hardware.bluetooth_audio@2.0.so|9aafedaa8da8f0eb13bc957acbabece4bebd0507
+vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so|5c24249adf85a30aa66f6a391bf697063d989a87
+vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so|20464213b5f2cdb7d9c10f31b5b53fc03526698f
 
 # Camera
 vendor/lib/hw/camera.sdm660.so
@@ -693,64 +710,75 @@ vendor/lib/libchromatix_ov8856_zsl_video.so
 # Camera firmware
 vendor/firmware/cpp_firmware_v1_12_0.fw
 
-# Charger
-vendor/bin/hvdcp_opti
+# Charger - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hvdcp_opti|120837d6d44abfd86515731dd26183be9cdd5596
 
-# CNE
-etc/permissions/cneapiclient.xml
-etc/permissions/com.quicinc.cne.xml
-framework/cneapiclient.jar
-framework/com.quicinc.cne.jar
--priv-app/CNEService/CNEService.apk
-vendor/bin/cnd
-vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml
-vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml
-vendor/etc/cne/wqeclient/ATT/ATT_profile3.xml
-vendor/etc/cne/wqeclient/ATT/ATT_profile4.xml
-vendor/etc/cne/wqeclient/ATT/ATT_profile5.xml
-vendor/etc/cne/wqeclient/ATT/ATT_profile6.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile1.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile2.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile3.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile4.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile5.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile6.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile7.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile15.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile16.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile17.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile18.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile19.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile20.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile21.xml
-vendor/etc/cne/wqeclient/ROW/ROW_profile32.xml
-vendor/etc/cne/wqeclient/VZW/VZW_profile1.xml
-vendor/etc/cne/wqeclient/VZW/VZW_profile2.xml
-vendor/etc/cne/wqeclient/VZW/VZW_profile3.xml
-vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml
-vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml
-vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
-vendor/lib64/com.quicinc.cne.api@1.0.so
-vendor/lib64/com.quicinc.cne.api@1.1.so
-vendor/lib64/com.quicinc.cne.constants@1.0.so
-vendor/lib64/com.quicinc.cne.constants@2.0.so
-vendor/lib64/com.quicinc.cne.constants@2.1.so
-vendor/lib64/com.quicinc.cne.server@2.0.so
-vendor/lib64/com.quicinc.cne.server@2.1.so
-vendor/lib64/com.quicinc.cne.server@2.2.so
-vendor/lib64/libcne.so
-vendor/lib64/libcneapiclient.so
-vendor/lib64/libcneoplookup.so
-vendor/lib64/libcneqmiutils.so
-vendor/lib64/libwms.so
-vendor/lib64/libwqe.so
-vendor/lib64/libxml.so
-vendor/lib64/vendor.qti.data.factory@1.0.so
-vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
-vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so
-vendor/lib64/vendor.qti.latency@2.0.so
+# CNE - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+etc/cne/Nexus/ATT/ATT_profiles.xml|33e568627fd3f94dc45bca1c01ad10e6d8fb5b52
+etc/cne/Nexus/ROW/ROW_profiles.xml|238e785e9674b27c4b2365958d127533d7293132
+etc/cne/Nexus/VZW/VZW_profiles.xml|0f63b632e3a3f114def7aeadaabd13851c8ceec5
+product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml|75e8a824d368cd4172985c884796381327d950da
+product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml|620c9fa0047bb681e918af2d1e7a98c648f45fb7
+product/framework/vendor.qti.data.factory-V1.0-java.jar|f0a14b08ab6c2fb85342383235be6b75d67806fb
+product/framework/vendor.qti.data.factory-V2.0-java.jar|df667317984cf08e06bad7957a6a6390fe5f2bb4
+product/framework/vendor.qti.hardware.data.connection-V1.0-java.jar|b42d139ba5c502f1cd2092c35d6bd867c60284f5
+product/framework/vendor.qti.hardware.data.connection-V1.1-java.jar|a502d317d28d322fe375aa0fd1f46b32d016624a
+product/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar|2d2d18476583ab286920313cf3add3a682bc2dea
+product/framework/vendor.qti.hardware.data.iwlan-V1.0-java.jar|853b3d936a1c99c399ec5087051fb863ccebad4f
+product/lib64/vendor.qti.hardware.data.connection@1.0.so|e93ac376853fa497ba67eeb43157cbb27d61bcf9
+product/lib64/vendor.qti.hardware.data.connection@1.1.so|5eba375977dc8981e8a4308e3237601cdc01cbe7
+product/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so|b412051aa59f06d3c5a965c7286ef93ddf420569
+product/lib64/vendor.qti.hardware.data.iwlan@1.0.so|f338ec0fe9c5f49ecd94e1835b6a16b020afb66c
+product/lib64/vendor.qti.hardware.data.latency@1.0.so|53794a8d4dfeb0fbd233a4b128749a06d515c3f7
+-vendor/app/CneApp/CneApp.apk|a4e342225519712b5ac67b3fa6fb832f7ca8f197
+-vendor/app/IWlanService/IWlanService.apk|a1af13159be91fdae677e45d9c7a0fe3e6ec0936
+vendor/bin/cnd|ca653a8064fe83a12a12798a73c9cc8c1fecf758
+vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml|578f3f8f56059bfdbef926bcc68d01c15e06951f
+vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml|1fb42c672a12b6660bdce3ea94e0c43719dd9de8
+vendor/etc/cne/wqeclient/ATT/ATT_profile3.xml|f88e13f1dd7b82388c90358f71813026370c9ed8
+vendor/etc/cne/wqeclient/ATT/ATT_profile4.xml|fb08e04f57797c5684bf734f7ce4bb4968859b18
+vendor/etc/cne/wqeclient/ATT/ATT_profile5.xml|eb726ad1a42b9b78b9ee3b821fc108611bc9eeac
+vendor/etc/cne/wqeclient/ATT/ATT_profile6.xml|be97b46b0d07ee2f6ebcc677d8099ed2140d5d85
+vendor/etc/cne/wqeclient/ROW/ROW_profile1.xml|e7ca213d0998cb3a6a603ad3eca7bda69830ff55
+vendor/etc/cne/wqeclient/ROW/ROW_profile2.xml|169a5209000e357a1a3183e8e5bfdf6fd07c2787
+vendor/etc/cne/wqeclient/ROW/ROW_profile3.xml|4be4060e8ac2d9fcea490feec7938cadcff46e1f
+vendor/etc/cne/wqeclient/ROW/ROW_profile4.xml|f88e13f1dd7b82388c90358f71813026370c9ed8
+vendor/etc/cne/wqeclient/ROW/ROW_profile5.xml|96101f6b01436a02572c67a469ff67ccfb738874
+vendor/etc/cne/wqeclient/ROW/ROW_profile6.xml|cef14ff8a160c7ad719b85d024a4b3301c3638d0
+vendor/etc/cne/wqeclient/ROW/ROW_profile7.xml|8d6773a4c418d0dcc4dc9096017d2681c7a1defe
+vendor/etc/cne/wqeclient/ROW/ROW_profile15.xml|0130dfd8326ee710bf4e15718ede87c49a85b763
+vendor/etc/cne/wqeclient/ROW/ROW_profile16.xml|e05b935d7ccf48d306b71c719b2e4df83187d9c0
+vendor/etc/cne/wqeclient/ROW/ROW_profile17.xml|f1b33204799268eda78dd8314f26abf2e37431e2
+vendor/etc/cne/wqeclient/ROW/ROW_profile18.xml|19db16f62dabb806a62f192858a9d52b5bc2a064
+vendor/etc/cne/wqeclient/ROW/ROW_profile19.xml|1fcc57b1fa4dbbc7d250e8dd92acf1527d447eb3
+vendor/etc/cne/wqeclient/ROW/ROW_profile20.xml|7be0614cf0116c39b736c58fe5eca36838aeb3db
+vendor/etc/cne/wqeclient/ROW/ROW_profile21.xml|cc62517e6c37e12ee1ebebbb27f9c22878749be3
+vendor/etc/cne/wqeclient/ROW/ROW_profile32.xml|b87542b9284efe4c2bd0ae868bb9a765c2c3dbc5
+vendor/etc/cne/wqeclient/VZW/VZW_profile1.xml|c89d3c062790b442cbe941cafc641a4e322f2d59
+vendor/etc/cne/wqeclient/VZW/VZW_profile2.xml|ba14a9df975cf872ed0cbe28bee8fac63cd848d4
+vendor/etc/cne/wqeclient/VZW/VZW_profile3.xml|9b123d81c9b8991499cda33b0706810e0c8fb974
+vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml|ff91feb5060a6df07e3e4d9bc99ae58bccad7649
+vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml|f76c894f3c6d5b6ed35113a088dc3174c900501b
+vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml|14d136e7fcc682311757d3edc0b9d3eaeba11815
+vendor/etc/init/cnd.rc|ff205cff8e00ec6805fd1e19f3ca6ff86700cbb6
+vendor/lib64/libcne.so|1344c4749026a55eee9e3a814c7a71b6733e08fb
+vendor/lib64/libcneapiclient.so|a99c0ebb180bca17ed05c2ac348ee8e16227a5a3
+vendor/lib64/libcneoplookup.so|99dbc1b2ae37181ae49a72d581fe53abe8207c42
+vendor/lib64/libcneqmiutils.so|f2fc09230fdf877020f734451c13a6adb749838d
+vendor/lib64/libwms.so|19a39c776120515292dc821599cf504a5fd600b3
+vendor/lib64/libwqe.so|e762bb803cdb4fa55224df58e06c3a5bca5f36a7
+vendor/lib64/libxml.so|9fa23668a2ab5fb0aff7e694fe44fb050b20f83d
+vendor/lib64/vendor.qti.data.factory@2.0.so|428b56ac165ba30c450a1e191db9b386752f653b
+vendor/lib64/vendor.qti.hardware.data.cne.internal.api@1.0.so|fc8634f7cf90524c24c45d8771eec888d652db92
+vendor/lib64/vendor.qti.hardware.data.cne.internal.constants@1.0.so|ffa8e4013bc1bd8bd44e3d64c278be0d36274f6e
+vendor/lib64/vendor.qti.hardware.data.cne.internal.server@1.0.so|f4e1e9991fa90546dfe0d4f9c7da8441b6a0af35
+vendor/lib64/vendor.qti.hardware.data.connection@1.0.so|e2f77b104fbc3abe7423fc24743051b69cc887be
+vendor/lib64/vendor.qti.hardware.data.connection@1.1.so|7b2e00bfbc40280a520dffc3eb99c68c1832761d
+vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so|bf7766fbd49a3aa3426a93ab82bcd825cc72334a
+vendor/lib64/vendor.qti.hardware.data.iwlan@1.0.so|c471659fc3fb56dcdcda183e080397a737e4708b
+vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|ff7a319e51ddd4de14af28a84f7bca5e82547f6e
+vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so|90f1106f7462a9e01721e1159ed3301579adee07
+vendor/lib64/vendor.qti.latency@2.0.so|91a8b05b20485057ee9f42c55ce70207ef6af761
 
 # Display
 etc/permissions/com.qti.snapdragon.sdk.display.xml
@@ -777,88 +805,113 @@ vendor/firmware/novatek_ts_fw_txd.bin
 # Display firmware (Synaptics)
 vendor/firmware/startup_fw_update.img
 
-# DPM
-bin/dpmd
-etc/dpm/dpm.conf
-etc/init/dpmd.rc
-etc/permissions/com.qti.dpmframework.xml
-etc/permissions/dpmapi.xml
-framework/com.qti.dpmframework.jar
-framework/dpmapi.jar
-framework/tcmclient.jar
-lib64/com.qualcomm.qti.dpm.api@1.0.so
-lib64/libdpmctmgr.so
-lib64/libdpmfdmgr.so
-lib64/libdpmframework.so
-lib64/libdpmtcm.so
--priv-app/dpmserviceapp/dpmserviceapp.apk
-vendor/bin/dpmQmiMgr
-vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so
-vendor/lib64/libdpmqmihal.so
+# DPM - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+framework/tcmclient.jar|a55e6981795bf74b3249c5e7297ea4e3cf1dea83
+product/bin/dpmd|49caa8e7d8af8055efdd7ebc0d7f7d67bc600041
+product/etc/dpm/dpm.conf|95e27da8c989e96c6faea6f0697bce11955b62a5
+product/etc/init/dpmd.rc|7f95195a89fddce06b93006a737701270e91f669
+product/etc/permissions/com.qti.dpmframework.xml|4613f8b8629d0b823e6aaab45d399ac30da06c09
+product/etc/permissions/dpmapi.xml|0991b3069308620cfcad53873e9f09af181b981d
+product/framework/com.qti.dpmframework.jar|e39a7e06af2d1e95a3724c19c36b8716277f53a1
+product/framework/dpmapi.jar|4696df9793ad676b305d53b5d7ce65ecf74771ad
+product/lib64/com.qualcomm.qti.dpm.api@1.0.so|a763bb1bbeecb84723bff6f547a3b23fab68dee3
+product/lib64/libdiag_system.so|dbc091dbaf688533dd10f83561d61b4e3d1b5938
+product/lib64/libdpmctmgr.so|3d4b87a4937caf3a8d276f48a4f0dc2cad246c5b
+product/lib64/libdpmfdmgr.so|e809155312a05d83b323ab0be64cb393d936e52a
+product/lib64/libdpmframework.so|8fd037eb8740a468a67c78e7fa01c69b1ba3fd2a
+product/lib64/libdpmtcm.so|71a3d624602807f6fa6cbdb3a489efe9e93de634
+-product/priv-app/dpmserviceapp/dpmserviceapp.apk|92cdfac225a35372b532be4fc64ac817edffaf8f
+vendor/bin/dpmQmiMgr|d536096b310a2d3f30a683c1bdcad8658db1ba52
+vendor/etc/init/dpmQmiMgr.rc|67569302d3a8828a9118c835e5b69c51b0c8ac68
+vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so|fbff6357ee46dd6d62f490a942ff567b6ce955d1
+vendor/lib64/libdpmqmihal.so|30a170684219dd589d05ce5b446e73b7501f13e3
 
-# DRM
-vendor/bin/qseecomd
-vendor/lib/libGPreqcancel.so
-vendor/lib/libGPreqcancel_svc.so
-vendor/lib/libQSEEComAPI.so
-vendor/lib/libbase64.so
-vendor/lib/libcppf.so
-vendor/lib/libdrmfs.so
-vendor/lib/libdrmtime.so
-vendor/lib/libmm-hdcpmgr.so
-vendor/lib/libqisl.so
-vendor/lib/librmp.so
-vendor/lib/librpmb.so
-vendor/lib/libsdedrm.so
-vendor/lib/libsi.so
-vendor/lib/libssd.so
-vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
-vendor/lib64/libGPreqcancel.so
-vendor/lib64/libGPreqcancel_svc.so
-vendor/lib64/libQSEEComAPI.so
-vendor/lib64/libbase64.so
-vendor/lib64/libdrmfs.so
-vendor/lib64/libdrmtime.so
-vendor/lib64/libmm-hdcpmgr.so
-vendor/lib64/libqisl.so
-vendor/lib64/librmp.so
-vendor/lib64/librpmb.so
-vendor/lib64/libsdedrm.so
-vendor/lib64/libsi.so
-vendor/lib64/libssd.so
+# DRM - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/qseecomd|bb9dbf5c66a9d4383825a8e0c287d41f9f531a05
+vendor/lib/libGPreqcancel.so|0d4876f94aeaaa92608071d6f7246eec822bc12a
+vendor/lib/libGPreqcancel_svc.so|7d96ec19dc8dfa441547ff9c8077d2c1ccf3c5ba
+vendor/lib/libQSEEComAPI.so|1c134972d1629e7ec8e854f0fa43e2886556dbd7
+vendor/lib/libbase64.so|f2f4859d107fe43569967fdcec0c3ec3c911713e
+vendor/lib/libcppf.so|04d42e86256394f361560ca3038c055dc1df4b6a
+vendor/lib/libcpion.so|ef80c35b037cd68eeb24d16fc87b26549abeb50c
+vendor/lib/libdrmfs.so|72a2f462bf5bfa4e9db92275523d02d617ed82c2
+vendor/lib/libdrmtime.so|bd4ca50039356949fc1caa8e954649d6350569f9
+vendor/lib/liboemcrypto.so|ad286cf38f8b00a5c9b0b0f424e4a5bd1f47f046
+vendor/lib/libqisl.so|8f12caa1aff3309878f56647d9ce1bdfc5c32a7e
+vendor/lib/librmp.so|164d2c30a2a35167ce3160445f9f08e920b2c0b0
+vendor/lib/librpmb.so|688b867d652455f36620fb4dba99867e23750d31
+vendor/lib/libSecureUILib.so|54a5e4bdda35fb0c185dc4d5f02c51fc761ec933
+vendor/lib/libsecureui.so|317896d31fa0afaaff1a82da559fd9ec8023ea43
+vendor/lib/libsecureui_svcsock.so|d376d887cfdddb09d343742d5110b69a39bcc0fa
+vendor/lib/libsdedrm.so|b603b6beaa50d49604ab2ebe0977a9ef79252b20
+vendor/lib/libsi.so|a537a21eca1494454528cb330dd781bd73adacf7
+vendor/lib/libssd.so|3a346acc32b0c6c973eae448b73da3e8d35f75f8
+vendor/lib64/libGPreqcancel.so|76b35e76a85b333f46ab749b7865c26ba0ca7bc4
+vendor/lib64/libGPreqcancel_svc.so|610f0d55e3c3b31a5fdd590dcd6ec8c2cf258d9b
+vendor/lib64/libQSEEComAPI.so|1dfc70896af18264af46be4bf797680cdd6b018b
+vendor/lib64/libbase64.so|33822fa949deae67b3c5ab5e5835d670cfa5ffba
+vendor/lib64/libcpion.so|ff24ef248bb35fd3cc1081a63f33c2565dc6351f
+vendor/lib64/libdrmfs.so|d5847a27b74955a0ccfb2da499fa42902c5bf1df
+vendor/lib64/libdrmtime.so|9f1337004246fa7e6f726486bcab949fe5e2459f
+vendor/lib64/liboemcrypto.so|e44fa8bf9bed1541342390bf316c34fe9f29cc4e
+vendor/lib64/libqisl.so|f81d523e3e257e99bd055f6576521519a074e630
+vendor/lib64/librmp.so|e47e679f717a4abf962665a01a1fc0ea2ccff673
+vendor/lib64/librpmb.so|a6add4226a289242eb2e1ccef23a94d100a94064
+vendor/lib64/libSecureUILib.so|3a059d1fe3395eaefeb7817ad3af46987b6f4794
+vendor/lib64/libsecureui.so|4a9861e7887b0e03294f86009b7600369d113964
+vendor/lib64/libsecureui_svcsock.so|889d4a12c5dee56ed4b10548abbd7b9033cbdad2
+vendor/lib64/libsdedrm.so|2add69c575f5745d0db2bbe8dfb7f75f9dc03ce6
+vendor/lib64/libsi.so|6cc6ec1eca11bb4b8e7f8021a5760f425e203288
+vendor/lib64/libssd.so|a64337d8044607b81adcf7e8c5760cf8cdcf82b4
 
-# DRM (Widevine)
-vendor/bin/hw/android.hardware.drm@1.1-service.widevine
-vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
-vendor/lib64/mediadrm/libwvdrmengine.so
-vendor/lib/libhdcpsrm.so
-vendor/lib64/libhdcpsrm.so
-vendor/lib/libcpion.so
-vendor/lib64/libcpion.so
-vendor/lib/libwvhidl.so
-vendor/lib64/libwvhidl.so
-vendor/lib/liboemcrypto.so
-vendor/lib64/liboemcrypto.so
+# DRM - HDCP - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hdcp1prov|fdc348ed8d3ef86b93240c0add73a5aa21a7a8cd
+vendor/bin/hdcp2p2prov|d17c23f617109d96259ec9251518e8a4a11a3da4
+vendor/lib/libhdcpsrm.so|27cc3f35692060d3c7f3fae8553058e51e404e0e
+vendor/lib/libmm-hdcpmgr.so|4af112050d0a5a47980103b309a163a4415de7dd
+vendor/lib/libhdcp1prov.so|45357fab9b3c5bd8c2cd1a26fffc54164e384c54
+vendor/lib/libhdcp2p2prov.so|b229dcd295e317324702ec3583db5f49f733c208
+vendor/lib64/libhdcpsrm.so|ee8e7c29e2b716a8bb07c3cbb730e34d8af3c64e
+vendor/lib64/libmm-hdcpmgr.so|152c347caca4826a64737df11e181472553be446
+vendor/lib64/libhdcp1prov.so|de3c41b147b4617dcdf9a216199aa9364fa63731
+vendor/lib64/libhdcp2p2prov.so|7cbe9df99fc2dad1c4b170c5162442e533e19cba
 
-# ESE-Powermanager
-lib64/vendor.qti.esepowermanager@1.0.so
-vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
-vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
-vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
-vendor/lib64/vendor.qti.esepowermanager@1.0.so
+# DRM - Qualcomm Trusted Execution Enviornment - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service|aaa7d15a9ebb63c0152b8fb3bfd07af929e384d4
+vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc|c966350ee67d3a7c73ca7184e3725264025d16f5
+vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|6afd4ca7aa70f2a5a08538a71fc5858d894eec54
+vendor/lib/libQTEEConnector_vendor.so|8de6731779807901e731232de4b844f0b5df1abe
+vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so|5010f60bd1cf2a3b212b366cc4e46f28d5fbfa94
+vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|1fe6ce202398e0ae3afebd7625c59746e04413e8
+vendor/lib64/libQTEEConnector_vendor.so|48275dc35631062248c7d697478c58eb6793a92a
+vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so|3202c209bd8249e3f76dec1108788b1a85b53561
 
-# Factory
-framework/vendor.qti.hardware.factory-V1.0-java.jar
-lib/vendor.qti.hardware.factory@1.0.so
-lib64/vendor.qti.hardware.factory@1.0.so
-vendor/bin/hw/vendor.qti.hardware.factory@1.0-service
-vendor/etc/init/vendor.qti.hardware.factory@1.0-service.rc
-vendor/etc/permissions/vendor.qti.hardware.factory.xml
-vendor/lib/hw/vendor.qti.hardware.factory@1.0-impl.so
-vendor/lib64/hw/vendor.qti.hardware.factory@1.0-impl.so
+# DRM (Widevine) - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/android.hardware.drm@1.2-service.widevine|1aed116c6cd73ee0c89a5eec050afab5c64b9f87
+vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc|e3cb732c0bd519988100675edf385d947abf5f6c
+vendor/lib64/libwvhidl.so|8f494ed8801c8fdd3930907f17737c806274447e
+vendor/lib64/mediadrm/libwvdrmengine.so|af257b8f1db2671bb430d588fa1a78c5cacb1664
+
+# ESE-Powermanager - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/vendor.qti.esepowermanager@1.0-service|4191e27a3e97009789dfcd2c44fd202d152fa61b
+vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc|58a3866ad5a7613d9392c9adb671eaa7825578a2
+vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so|fd95cf6c9b36324fb5d0e5e8498721b65749ee94
+vendor/lib/vendor.qti.esepowermanager@1.0.so|12f57cdb3ea7f7e7a248f9a3d7de4f8e5755ac79
+vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so|b9a03bfc607fb74462346eecacf27a7afda8d114
+vendor/lib64/vendor.qti.esepowermanager@1.0.so|0dc949a16129a9d3d06429723641b6fba11ee1d2
+
+# Factory - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+product/framework/vendor.qti.hardware.factory-V1.0-java.jar|0ecc597e18701978179bd54d0d6f701a7a97fce2
+product/framework/vendor.qti.hardware.factory-V1.1-java.jar|d8fa470013d6a0eb2801c3ac556d62ec8bbf1136
+product/lib/vendor.qti.hardware.factory@1.0.so|67e6210bdb6631d440eca59dd200b04f61e5aa72
+product/lib/vendor.qti.hardware.factory@1.1.so|6d53ae40d6d1237ee1a94b53be1043aa20bea021
+product/lib64/vendor.qti.hardware.factory@1.0.so|9dcf75a4877324e4080ac2088e6ca9caed1c777c
+product/lib64/vendor.qti.hardware.factory@1.1.so|882f4c7eee1b8247d503b185c0240d66e974901a
+vendor/bin/hw/vendor.qti.hardware.factory@1.0-service|494ed416072a4a55abc4d93c92cb59a53cf1fca5
+vendor/etc/init/vendor.qti.hardware.factory@1.0-service.rc|daef65610527465889f078bb1c29e8a0996819dc
+vendor/etc/permissions/vendor.qti.hardware.factory.xml|bedb01aed43b95943ac60f80cf351742ccb4a072
+vendor/lib64/vendor.qti.hardware.factory@1.0.so|1347d5fb217b2a8801f19bea1f93016edb3ae93a
+vendor/lib64/vendor.qti.hardware.factory@1.1.so|00e090806194349ef6235f985f0bca9b1ed07284
 
 # Fingerprint sensor
 framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
@@ -878,65 +931,74 @@ vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
-# FM
-lib/fm_helium.so
-lib/libfm-hci.so
--lib/vendor.qti.hardware.fm@1.0.so
-lib64/fm_helium.so
-lib64/libfm-hci.so
--lib64/vendor.qti.hardware.fm@1.0.so
-vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
-vendor/lib/vendor.qti.hardware.fm@1.0.so
-vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.fm@1.0.so
+# FM - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+-product/lib/vendor.qti.hardware.fm@1.0.so|a090651122fcad265ae7562c88dca746f893ad36
+-product/lib64/vendor.qti.hardware.fm@1.0.so|fc7ad886f82089edf36509865fadac17a7340f32
+lib/fm_helium.so|feb4819f1898c67dfda4f965d7cc2711c74d1a99
+lib/libfm-hci.so|7700b02faa484ff682c618402f62b86bf8588db2
+lib64/fm_helium.so|bc9f6314528630c060b593cef4a8cec786b22467
+lib64/libfm-hci.so|589e9e290acfa18a49deba33606ed158d5e7f898
+vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so|2087fee60eb44c097ee9e6c93f4c873fff280866
+vendor/lib/vendor.qti.hardware.fm@1.0.so|89a7ec5cc673d13afc73116eccff2e58f218a34d
+vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so|506efd87250697bdae271f86ea472785a77b84ef
+vendor/lib64/vendor.qti.hardware.fm@1.0.so|073cace3aa8d0ffa025d9df67c45f8a907109339
 
-# Gatekeeper
-vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
-vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
-vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
-vendor/lib64/hw/gatekeeper.sdm660.so
+# Gatekeeper - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti|a189a50515831e6ac9a7e88a165ac979ae6ac077
+vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc|1b8d5f58fe0a57906acf72b862c16a2521daa97b
+vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so|eaf70216b4e53f409c22764b272b79cd60a4b714
+vendor/lib64/hw/gatekeeper.sdm660.so|e8f32651e4bfff88fcc02c34eca6cd5f04a444aa
 
-# GPS
-vendor/bin/hw/vendor.qti.gnss@2.0-service
-vendor/bin/loc_launcher
-vendor/bin/lowi-server
-vendor/bin/slim_daemon
-vendor/bin/xtra-daemon
-vendor/bin/xtwifi-client
-vendor/bin/xtwifi-inet-agent
-vendor/etc/cacert_location.pem
-vendor/etc/init/vendor.qti.gnss@2.0-service.rc
-vendor/etc/xtra_root_cert.pem
-vendor/lib64/hw/vendor.qti.gnss@2.0-impl.so
-vendor/lib64/lib_drplugin_server.so
-vendor/lib64/libDRPlugin.so
-vendor/lib64/libalarmservice_jni.so
-vendor/lib64/libdataitems.so
-vendor/lib64/libdrplugin_client.so
-vendor/lib64/libevent_observer.so
-vendor/lib64/libflp.so
-vendor/lib64/libgdtap.so
-vendor/lib64/libgeofence.so
-vendor/lib64/libizat_client_api.so
-vendor/lib64/libizat_core.so
-vendor/lib64/liblbs_core.so
-vendor/lib64/libloc_api_v02.so
-vendor/lib64/libloc_ds_api.so
-vendor/lib64/libloc_externalDr.so
-vendor/lib64/liblocationservice.so
-vendor/lib64/liblocationservice_glue.so
-vendor/lib64/liblowi_client.so
-vendor/lib64/liblowi_wifihal.so
-vendor/lib64/libquipc_os_api.so
-vendor/lib64/libslimclient.so
-vendor/lib64/libulp2.so
-vendor/lib64/libxtadapter.so
-vendor/lib64/libxtwifi_ulp_adaptor.so
-vendor/lib64/vendor.qti.gnss@1.0.so
-vendor/lib64/vendor.qti.gnss@1.1.so
-vendor/lib64/vendor.qti.gnss@1.2.so
-vendor/lib64/vendor.qti.gnss@2.0.so
-vendor/lib64/vendor.qti.gnss@2.1.so
+# GPS - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/android.hardware.gnss@2.0-service-qti|108fa375ea1f0fd62aa5302da75f971a562a1f79
+vendor/bin/garden_app|82ddd3e0888d8d0ee271c451f05047de0ed270f8
+vendor/bin/loc_launcher|d0d1465a7f8eb24c50b3c616dccaf68b3dc7888a
+vendor/bin/lowi-server|6f11d0315e49aff2d8b24759bf7b2ca12659ac10
+vendor/bin/slim_daemon|fc172268b0bb732dd3e3f81209bfa170935cc379
+vendor/bin/xtra-daemon|ebcb5645b3f1058f0775a145dc462dc27550919d
+vendor/bin/xtwifi-client|0e98f5366d10fa9d94733243cf8bd288c4eeee92
+vendor/bin/xtwifi-inet-agent|d4567265680ad9e4f22f93e38390adefdba1ee4b
+vendor/etc/cacert_location.pem|0789bf799c7e45d352a83e2f79ddb0cea86db85b
+vendor/etc/init/android.hardware.gnss@2.0-service-qti.rc|488262f63723c789ea9aaed1d63ce32ff8075a15
+vendor/etc/xtra_root_cert.pem|f55a31ec4d9cf8ce2724acadecf00c779f8767db
+vendor/etc/vintf/manifest/android.hardware.gnss@2.0-service-qti.xml|8d7eafd68db9bbe7ec7a5c4d547f026869766081
+vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml|9b2f6691d6c224bcb9ab9a0d57adfb9e52f1b53e
+vendor/lib/vendor.qti.gnss@1.0.so|a141c6a34744e69224d8c318d5fad06b67faf4d0
+vendor/lib/vendor.qti.gnss@1.1.so|d91ce1ea319499d2fa5388a430e8291febfd1d1e
+vendor/lib/vendor.qti.gnss@1.2.so|bf4b130181b0e610f5f0cb8ba7c0d31a555bdf6b
+vendor/lib/vendor.qti.gnss@2.0.so|e9278a70eda84684e9464034f6f03e5e63f29ff4
+vendor/lib/vendor.qti.gnss@2.1.so|9c1840bb947ab9151e98a0ce0e1b052da71fdc0a
+vendor/lib/vendor.qti.gnss@3.0-service.so|8745249564f5e6c26607c678364dc6d72980ed7d
+vendor/lib/vendor.qti.gnss@3.0.so|54ee1a47dfe484d4c404a627a84236b0a1b5c647
+vendor/lib64/hw/android.hardware.gnss@2.0-impl-qti.so|3a7aa4ba090f6e3ec7f1873a298930e710612226
+vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so|d3df6adb318a788a79eddb51645de62c25595c9b
+vendor/lib64/libbatching.so|4fc193dc971d0b89f262891c9d32fc23401491d5
+vendor/lib64/libdataitems.so|2043356a1e39dcb25c1b63fe93a64cebc14b4d3b
+vendor/lib64/libgdtap.so|e04f18737d839c00fa8542ba20961abee985d45b
+vendor/lib64/libgeofencing.so|ddfb01d6dddb8c079c31cfec9004807b26d0cdd4
+vendor/lib64/libgnsspps.so|b854526890bf64915fdb42731857f7e6756aaad7
+vendor/lib64/libgnss.so|e14260cac3d6854173dfa27e5572f6b363d9159a
+vendor/lib64/libgps.utils.so|21ab49e5532a9de009ee4497c53b9b178be94fae
+vendor/lib64/libizat_client_api.so|420b3a97a4ead9ee62798a8c909654605f8c85de
+vendor/lib64/libizat_core.so|93dbf5b5c2fc62baaecd7893f9a144da14eb1868
+vendor/lib64/liblbs_core.so|ca232e8257400661a1530531fb1ee4868e94da43
+vendor/lib64/libloc_api_v02.so|f938e9ef5e072e1ad5c155700137dff028fbeb08
+vendor/lib64/liblocation_api.so|9ef1282c77eb64ca1cdaa7ec2c2eafb3978ddb80
+vendor/lib64/liblocationservice_glue.so|7e78faca27d5c9c21bb0500df3c006ff1b62188d
+vendor/lib64/liblocationservice.so|95b86bf897dee40e6536621fba10d01fd9edfab2
+vendor/lib64/libloc_core.so|f2e2ad73c7d777c262049cc29a87340ec8a32c18
+vendor/lib64/liblowi_client.so|753dd774baf8a207b4816f8880d64654668213a5
+vendor/lib64/liblowi_wifihal.so|668425838cb21181b5fd49eff604fd937cc2e703
+vendor/lib64/libqdma_file_agent.so|db515f94ffe2d06eabe93311de54dd3966cc6a1e
+vendor/lib64/libslimclient.so|a3dc0ea3ca879426f57e63d3e2b05128b44f1e0c
+vendor/lib64/libxtadapter.so|5c4fbe5c6bb99a42bb80c39f983995e1056c3017
+vendor/lib64/vendor.qti.gnss@1.0.so|5b5a503d27a9eb6371941cbed71b160d67983dbb
+vendor/lib64/vendor.qti.gnss@1.1.so|f97415b13145e3a76e821d754650aa1a2696824d
+vendor/lib64/vendor.qti.gnss@1.2.so|fa5bf9caf30f72e6ca13b8edd85d06dd76a807f5
+vendor/lib64/vendor.qti.gnss@2.0.so|bbbfa8efc140ef3ee2594137e09f76212b732397
+vendor/lib64/vendor.qti.gnss@2.1.so|a395bb7d4df874c0e0efadf8ef51d3510afedad3
+vendor/lib64/vendor.qti.gnss@3.0-service.so|947bfafbf110d70656f434ab5845b6691b6b61c1
+vendor/lib64/vendor.qti.gnss@3.0.so|ff1733d10abd97fa4381c798ae74b4cc5dac39e8
 
 # GPU firmware
 vendor/firmware/a512_zap.b00
@@ -1009,25 +1071,34 @@ vendor/lib64/libtinyxml2_1.so|ba981e332895a053a67fc54a8190365a3ad37f2d
 vendor/lib/hw/vulkan.sdm660.so|87d87b2520d3a8adec7a24f5999a27b291edaeba
 vendor/lib64/hw/vulkan.sdm660.so|ad3a5d92c6c13ba0c937dd1b83f371e804a57c4e
 
-# Keymaster
-vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
-vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc
-vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so
-vendor/lib64/libkeymasterdeviceutils.so
-vendor/lib64/libkeymasterprovision.so
-vendor/lib64/libkeymasterutils.so
+# Keymaster - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/android.hardware.keymaster@3.0-service-qti|22838e26f4a645a351bec32405ccf54b2271e13d
+vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc|573b7392c8997008204081165cfe81a11080745d
+vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so|595ba927e28accdb5c5e6927a7bb5ef17ad455a1
+vendor/lib/libkeymasterdeviceutils.so|bc2aac023d99ec9e423d2f769019d187c99a8afb
+vendor/lib/libkeymasterprovision.so|ae6bbb9fec083307336b6191194d5c48b5dfd3a5
+vendor/lib/libkeymasterutils.so|599755dde51af5289f1f2776651bb2f93eb8507e
+vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so|69fd7a9f800da8cb74ae3a726188c028bc360d05
+vendor/lib64/libkeymasterdeviceutils.so|763a02841eb133e698180e0cacf309450a4ce0e0
+vendor/lib64/libkeymasterprovision.so|f7e215595c2f7e62a6575b23a109b6b18556fc3b
+vendor/lib64/libkeymasterutils.so|679491d7b415f45469990380e4fd61e4bfbc445e
 
 # Keystore
 vendor/lib64/hw/keystore.sdm660.so
 
-# Listen
-vendor/lib/hw/sound_trigger.primary.sdm660.so
-vendor/lib/libadpcmdec.so
-vendor/lib/libgcs-calwrapper.so
-vendor/lib/libgcs-ipc.so
-vendor/lib/libgcs-osal.so
-vendor/lib/libgcs.so
-vendor/lib/libsmwrapper.so
+# Listen - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/lib/hw/sound_trigger.primary.sdm660.so|4b987886ad21686783900e61bd2ee4d82f522934
+vendor/lib/libadpcmdec.so|6e9be864a1380e099a2d68237e13a724f3143314
+vendor/lib/libgcs-calwrapper.so|edcccf23d050944417e2902e32ca0513168791cb
+vendor/lib/libgcs-ipc.so|a4f1f1a848f3ed8634673ef463499bbc7facc445
+vendor/lib/libgcs-osal.so|dfae7d1bb15b7bd19fef7427f0a6f6df28d5d30a
+vendor/lib/libgcs.so|4fa806f2bb8708b341f0cfe3a9609387350ceefb
+vendor/lib/libsmwrapper.so|c12725b40bc853cccbf1f489481892aa5bfb629c
+vendor/lib64/hw/sound_trigger.primary.sdm660.so|1a9296f93430e78208410f3019462ad910f8ab1f
+vendor/lib64/libgcs-calwrapper.so|a899242a79a451dab37b7127726ecb3da705128b
+vendor/lib64/libgcs-ipc.so|6ad698d11a29fe3f139e6d1c30741e823cdb62be
+vendor/lib64/libgcs-osal.so|5eca0a8d8ea32505d5b8d69b3e13bf640b34976a
+vendor/lib64/libgcs.so|d8125159e811541a10f800b289dcdc2a7fcb28ad
 
 # Media - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
 vendor/lib/libAlacSwDec.so|bca4278cb74a63772a0fc369480b5d9814063d9b
@@ -1174,24 +1245,6 @@ vendor/lib64/libqmi_csi.so|659f04579502a012cbfdad63a90086db457fb986
 vendor/lib64/libqmi_encdec.so|5e536057be350651379b772aa1bba5f4735d11ee
 vendor/lib64/libqmi.so|2cd33f5b6cfb8769114e48788697371da5c5e02f
 vendor/lib64/libqmiservices.so|ce02c352542463b384b584d05c5f350203ae867c
-
-# QTEE
-lib/libGPTEE_system.so
-lib/libQTEEConnector_system.so
-lib/vendor.qti.hardware.qteeconnector@1.0.so
-lib64/libGPTEE_system.so
-lib64/libQTEEConnector_system.so
-lib64/vendor.qti.hardware.qteeconnector@1.0.so
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib/libGPTEE_vendor.so
-vendor/lib/libQTEEConnector_vendor.so
-vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so
-vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib64/libGPTEE_vendor.so
-vendor/lib64/libQTEEConnector_vendor.so
-vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Radio - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
 -product/app/datastatusnotification/datastatusnotification.apk|9468f412b65cb3fc6bffb64816998a668010b572
@@ -1365,15 +1418,12 @@ vendor/lib64/libsensor1.so
 vendor/lib64/sensors.native.so
 vendor/lib64/sensors.ssc.so
 
-# Sensors calibration
-framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
-vendor/etc/calmodule.cfg
-vendor/lib/libcalmodule_common.so
-vendor/lib/sensor_calibrate.so
-vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
-vendor/lib64/libcalmodule_common.so
-vendor/lib64/sensor_calibrate.so
-vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
+# Sensors calibration - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+product/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar|b6e036c7f03aa04b87e09e05c31d1e97d0f2cb25
+product/lib/vendor.qti.hardware.sensorscalibrate@1.0.so|f9fc5478ea958cbf6c0eb3ecb60bde45b09ca0ed
+product/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so|45fa1c6d3e292d1ca8c2d43f007654c30537debb
+vendor/lib/sensor_calibrate.so|22c442599a1550e3e9b47d3055c5ac7fabdb29d5
+vendor/lib64/sensor_calibrate.so|efbe09267ad7c1b32be0ebb2fa7b0beec4d27179
 
 # Signed graphics firmware
 vendor/firmware/cppf.b00
@@ -1386,13 +1436,13 @@ vendor/firmware/cppf.b06
 vendor/firmware/cppf.b07
 vendor/firmware/cppf.mdt
 
-# Soter
-framework/vendor.qti.hardware.soter-V1.0-java.jar
-lib64/vendor.qti.hardware.soter@1.0.so
-vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
-vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
-vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.soter@1.0.so
+# Soter - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+product/framework/vendor.qti.hardware.soter-V1.0-java.jar|e0a20a638cac4e369a29157ea4aa44b1e5d60f8f
+product/lib64/vendor.qti.hardware.soter@1.0.so|0cc653294e81fd394ccd9dcb368de6bfa0914619
+vendor/bin/hw/vendor.qti.hardware.soter@1.0-service|4f7e3c8a6cde9efefd8b9bf440fb1ed442e21fd3
+vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc|76447a61ad5529949365eeb7e8ca000e48bd28ae
+vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so|9cf774301dfb59173cc2a6871ff851ea6b546f39
+vendor/lib64/vendor.qti.hardware.soter@1.0.so|5815859dc07d3181901596d06612b379e86fe6fd
 
 # Thermal - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
 vendor/bin/thermal-engine|2734cd5aa3440b753cf62bf97875dea04119f1dc
@@ -1406,6 +1456,14 @@ vendor/bin/time_daemon|d5b056eeda44237d7511083b402b2747dbc707e1
 vendor/etc/init/init.time_daemon.rc|b253ca2a498757e14e1d7a051bf504ae09218f51
 -vendor/lib/libtime_genoff.so|e858cc52e829af0a9e4b5a4c39bddef8cece4bd9
 -vendor/lib64/libtime_genoff.so|c8e0bbc9c6b7b5beddba43bc4125a9eaeba7c79f
+
+# TUI - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+product/lib/vendor.qti.hardware.tui_comm@1.0.so|313677dd28de6f6b2a5cf8b136d8ce0723bb5a65
+product/lib64/vendor.qti.hardware.tui_comm@1.0.so|b478f9ba87abd265ac15a154ab7412fed5839664
+vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti|a0d692fe10ef9dc4479497fa666640612f06fbb4
+vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc|2cfc563d7e1579374f001c94588fae7835a12ffc
+vendor/lib/vendor.qti.hardware.tui_comm@1.0.so|f34f921b3e2a889cada5f9588009aae11af46a96
+vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|e47baed52f1c0637de34fa55e45a86b4b412a672
 
 # Universal Bandwidth Compression (UBWC)
 vendor/lib/libstreamparser.so
@@ -1427,55 +1485,55 @@ vendor/firmware/widevine.mdt
 # Wi-Fi - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
 vendor/bin/cnss-daemon|3f51988443047eb02ae1607b0d6bd05a4386c2b1
 
-# Wi-Fi Display
-bin/wfdservice
-etc/init/wfdservice.rc
-etc/wfdconfig.xml
-etc/wfdconfigsink.xml
--framework/WfdCommon.jar
-lib/com.qualcomm.qti.wifidisplayhal@1.0.so
-lib/extractors/libmmparser.so
-lib/libFileMux.so
-lib/libmmparser_lite.so
-lib/libmmosal.so
-lib/libmmrtpdecoder.so
-lib/libmmrtpencoder.so
-lib/libOmxMux.so
-lib/libwfdavenhancements.so
-lib/libwfdclient.so
-lib/libwfdcodecv4l2.so
-lib/libwfdcommonutils.so
-lib/libwfdconfigutils.so
-lib/libwfdmminterface.so
-lib/libwfdmmsink.so
-lib/libwfdmmsrc.so
-lib/libwfdnative.so
-lib/libwfdrtsp.so
-lib/libwfdservice.so
-lib/libwfdsm.so
-lib/libwfduibcinterface.so
-lib/libwfduibcsink.so
-lib/libwfduibcsinkinterface.so
-lib/libwfduibcsrc.so
-lib/libwfduibcsrcinterface.so
-lib64/extractors/libmmparser.so
-lib64/libFileMux.so
-lib64/libmmosal.so
-lib64/libmmparser_lite.so
-lib64/libwfdclient.so
-lib64/libwfdnative.so
-lib64/libwfds.so
--priv-app/WfdService/WfdService.apk
-vendor/bin/wifidisplayhalservice
-vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
-vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
-vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0.so
-vendor/lib/libmmosal_proprietary.so
-vendor/lib/libwfdcommonutils_proprietary.so
-vendor/lib/libwfdhaldsmanager.so
-vendor/lib/libwfdhdcpcp.so
-vendor/lib/libwfdmmservice.so
-vendor/lib/libwfdmodulehdcpsession.so
-vendor/lib64/libmmosal_proprietary.so
-vendor/lib64/libwfdhdcpcp.so
+# Wfd - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+bin/wfdservice|d9cccfd6ca14a1d83117533296d6cac2c139c310
+etc/init/wfdservice.rc|311bfdd1675e56499662f39455536b75b78477bb
+etc/wfdconfig.xml|d07f6b0441c0aa8913865100239490fa8687a020
+etc/wfdconfigsink.xml|5b4a96f251fd83c2eee520d06bea2b5b159fcd36
+-framework/WfdCommon.jar|3440607d29511e1a671e565a2acc4d262e38a9fb
+lib/com.qualcomm.qti.wifidisplayhal@1.0.so|47e7949bceaff2d4ef11c51073fa2a173b82eddd
+lib/libFileMux.so|79661e6dffc90234ad446641264fd0fa1a3fe6ab
+lib/libOmxMux.so|1ad1aa835a3dfb8bfea2a29291f82a173ba6a868
+lib/libmmosal.so|9464733295e192301b2577f52fab720e72c0d152
+lib/libmmparser_lite.so|b1b4161b7097f5feeff0f043e8b94cd94553e4ad
+lib/libmmrtpdecoder.so|ff871cfac4a4d9dac89a612f100ca9de9add9344
+lib/libmmrtpencoder.so|eb32452859323bdfdabcf3780bebad781b367ac4
+lib/libwfdavenhancements.so|94de9381e10e4cdac47cd379b7e883f717fa8439
+lib/libwfdclient.so|9c075928fa35c57863bd16a5571fe97d599a988a
+lib/libwfdcodecv4l2.so|bfaf6e18013d9cc4665c57c1f9f639b87da3e433
+lib/libwfdcommonutils.so|c02a5d6f5eb17a12ff79b08b77d07d99e3d54de5
+lib/libwfdconfigutils.so|223c6bfaf51057928bbe9b33ecd0d1dcab37a522
+lib/libwfdmminterface.so|c2914c60cb412732d45610e67e7e408f6ad7a45a
+lib/libwfdmmsink.so|987b4d5b40fb584763da477ea08b91c0146bb2b1
+lib/libwfdmmsrc.so|43ee8c98670c9395fd2a6edce1db929760fab1c2
+lib/libwfdnative.so|d94817bec27375411b9a54106851fa17f635edbf
+lib/libwfdrtsp.so|6194fed354ed8f26b813b39510d2ee8db729492d
+lib/libwfdservice.so|ba2e446ef8ad69123eaa49814d1fdff4946ff9f6
+lib/libwfdsm.so|2256010a75247f3b1638a31aac332a7ca4bc7364
+lib/libwfduibcinterface.so|6bfbcfaec293efb6029cb871558ccef8c74ce5bf
+lib/libwfduibcsink.so|78db2e13f03602d089160397ac494d35a5f4a1f3
+lib/libwfduibcsinkinterface.so|23b1a68bd56e9788c61a262a0350b0a0b8c5b031
+lib/libwfduibcsrc.so|f6f35ca89441967fcf3f6590f45b81d92311a81c
+lib/libwfduibcsrcinterface.so|bfe916d7d1a9395883417b4076a41a50d7cf83ad
+lib64/libFileMux.so|6489129fa0ac93f0c76d304c249ffc18d4fd8677
+lib64/libOmxMux.so|1f45d8ab66af19ddb8088bd3a316995378c290e7
+lib64/libmmosal.so|9ceff2581e86d32bc2795dffb96ebe4bdc88f2f7
+lib64/libmmparser_lite.so|a3bb2aefbcca59d845a55682a2bcc36b24433f54
+lib64/libmmrtpdecoder.so|680db93b68a30fef67268c5f8783371a0af22ed7
+lib64/libmmrtpencoder.so|8d03db323d3ee5efce386374769ecf6214d9a13c
+lib64/libwfdclient.so|884bfd6710f05d567eb0083a00ee4889f73d796d
+lib64/libwfdnative.so|581514ff2a731170275cba7117cda4dfc98ab46c
+-priv-app/WfdService/WfdService.apk|8d0a6720b98c52589e0b68df0bf4bc9f2da79549
+vendor/bin/wifidisplayhalservice|56ec79e39595e0c34baba8cb16ab5d1931d793db
+vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc|04e463342cbba4c0e9c311a18238f95dec9359fd
+vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so|f8d82d7e80e730c01fc0c84f4464762d273b4d62
+vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0.so|cf03926fce8af504ae3a36af6ea50ce066112ca1
+vendor/lib/libmmosal_proprietary.so|a339e7b1dcf86fbb3ee3262ebb15d93cbd5a1916
+vendor/lib/libwfdcommonutils_proprietary.so|14df45871041125273609b6ddc507fa6901cb44d
+vendor/lib/libwfdhaldsmanager.so|00a7bf5c76ef2b1ee72fcaf6d3af6d7f09f31fae
+vendor/lib/libwfdhdcpcp.so|ba051604d914847b862d78af70d02abf85d86d4b
+vendor/lib/libwfdmmservice.so|87f9c841031272e6a3713abd85326f84d2ae52e5
+vendor/lib/libwfdmodulehdcpsession.so|97ffe7c96970fc5605f4f6414fc31ab7cec78bdc
+vendor/lib64/libmmosal_proprietary.so|b8dbc765c15f30dec9f1c0907a25810df1bc9731
+vendor/lib64/libwfdhdcpcp.so|1987f0ab60d9905be6489fa6ca3720fe2d9c636b
 
