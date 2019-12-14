@@ -1029,36 +1029,44 @@ vendor/lib/libgcs-osal.so
 vendor/lib/libgcs.so
 vendor/lib/libsmwrapper.so
 
-# Media
-vendor/lib/libAlacSwDec.so
-vendor/lib/libApeSwDec.so
-vendor/lib/libFlacSwDec.so
-vendor/lib/libI420colorconvert.so
-vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxQcelp13Dec.so
-vendor/lib/libOmxVpp.so
-vendor/lib/libOmxAlacDec.so
-vendor/lib/libOmxAlacDecSw.so
-vendor/lib/libOmxAmrDec.so
-vendor/lib/libOmxAmrwbplusDec.so
-vendor/lib/libOmxApeDec.so
-vendor/lib/libOmxApeDecSw.so
-vendor/lib/libOmxDsdDec.so
-vendor/lib/libOmxG711Dec.so
-vendor/lib/libOmxVideoDSMode.so
-vendor/lib/libOmxWmaDec.so
-vendor/lib/libdsd2pcm.so
-vendor/lib/libgpustats.so
-vendor/lib/libmm-color-convertor.so
-vendor/lib/libmmsw_detail_enhancement.so
-vendor/lib/libmmsw_math.so
-vendor/lib/libmmsw_opencl.so
-vendor/lib/libmmsw_platform.so
-vendor/lib/libvpphvx.so
-vendor/lib/libvpplibrary.so
-vendor/lib/libvqzip.so
-vendor/lib64/libgpustats.so
+# Media - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/lib/libAlacSwDec.so|bca4278cb74a63772a0fc369480b5d9814063d9b
+vendor/lib/libApeSwDec.so|d175422c4b2e691dd5f2a3fe0c7dbc978084e838
+vendor/lib/libFlacSwDec.so|05013a9ca75ffe5ca7ec25747679b0addabdb0c1
+vendor/lib/libgpustats.so|51338b96a0a61b1062a11723c86faba3c1f1d58e
+vendor/lib/libI420colorconvert.so|3398b258f5454361e15c063798fe03974dc1cfd4
+vendor/lib/libmm-color-convertor.so|43d7d4ac5587ecf5a7e8428e0437f45254acd767
+vendor/lib/libOmxAacDec.so|fab86ea95c9448aa31a46521ac016edc895be746
+vendor/lib/libOmxAlacDec.so|13ec48ca1a2422f37b2e434a7c03cd1566d49cfb
+vendor/lib/libOmxAlacDecSw.so|195745033c16f74745ef7fb73834a1781618ff32
+vendor/lib/libOmxAmrDec.so|6001884d6005c1c5a23f8015dfee74a3eb1a7327
+vendor/lib/libOmxAmrwbplusDec.so|ef3d1c0e32f56c856ebeb14d07d9e4301613ed27
+vendor/lib/libOmxApeDec.so|d15cf17690354f04111e9d50a034d5f4256243e9
+vendor/lib/libOmxApeDecSw.so|50681d86957d6a6adc71967e67b24e2114fbf1ab
+vendor/lib/libOmxDsdDec.so|d81e103794648cf58a363cacbfa21a2ab96bda7b
+vendor/lib/libOmxEvrcDec.so|e16f0f94e91742f1aef16aad6f2438a12611a6b3
+vendor/lib/libOmxG711Dec.so|e512743fb640bc846b01cf470ba2bd706dc577f0
+vendor/lib/libOmxQcelp13Dec.so|2674324f46dfb77d2e586a04d380d6cea188e79e
+vendor/lib/libOmxVideoDSMode.so|a5a6bd8e1fe4ee4ceb11ba77fae441435a4ae207
+vendor/lib/libOmxWmaDec.so|d2aaae93ef8b9d737772a3fa17bde29a494026a5
+vendor/lib/libvqzip.so|d037d6e54f6cff1755acb5e1f04a43536bcb8acf
+vendor/lib64/libAlacSwDec.so|5dac99a5291cf37b191663f728a2feaa7aa7dc5c
+vendor/lib64/libApeSwDec.so|ef2dd074b2f59ef5f7c5095251f6743827ded20c
+vendor/lib64/libFlacSwDec.so|fe401c04a3d794e430c2d85a4f041500036e2b17
+vendor/lib64/libgpustats.so|b7f9e1ee3f0d86e87d96db55404f3507db8cac6f
+vendor/lib64/libI420colorconvert.so|528fbbd8908ed1fbb64277ec614ba8f7ce1dda6e
+vendor/lib64/libmm-color-convertor.so|e1d0ed0a02287c38410232c857bd967a9414eeb3
+vendor/lib64/libOmxAacDec.so|373051cea9e228556eec7920ed3a680b8b3ba642
+vendor/lib64/libOmxAlacDec.so|12e433311bc6ec1949a98ce47e93cf112e5c2fe1
+vendor/lib64/libOmxAlacDecSw.so|c83f56efb8e4ce29e21a1371f8ee10598f3fd30f
+vendor/lib64/libOmxAmrDec.so|2d34ae0b671cc6255cd698da4a8639eb18414761
+vendor/lib64/libOmxAmrwbplusDec.so|87836d489b81558dba14bf0c592936a7bdf62866
+vendor/lib64/libOmxApeDec.so|3adb0a2f27b1b899ce4ac23c8e78b142c52e97ed
+vendor/lib64/libOmxApeDecSw.so|9b72a8bfd4fd6a33fe9302e6b7eb88523f32a878
+vendor/lib64/libOmxEvrcDec.so|260f18fbed00fd69134f08227f382deaccfadb11
+vendor/lib64/libOmxG711Dec.so|49fe6b647bbffad318d293a35ecc520cc9531e61
+vendor/lib64/libOmxQcelp13Dec.so|ecbf4b4c086be98aff418726d7b6e0d55a6d142a
+vendor/lib64/libOmxWmaDec.so|c7d3f16a0ed1dae1af68e2a9057187b88a54f7b3
 
 # NFC
 vendor/firmware/libpn553_fw.so:vendor/lib/libpn553_fw.so
@@ -1067,29 +1075,55 @@ vendor/firmware/libpn553_fw.so:vendor/lib/libpn553_fw.so
 bin/nvram_btwifi:vendor/bin/nvram_btwifi
 lib64/libmmi.so:vendor/lib64/libmmi.so
 
-# Perf
-vendor/bin/energy-awareness
-vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
-vendor/bin/msm_irqbalance
-vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
-vendor/etc/perf/commonresourceconfigs.xml
-vendor/etc/perf/perfboostsconfig.xml
-vendor/etc/perf/targetconfig.xml
-vendor/etc/perf/targetresourceconfigs.xml
-vendor/lib/libqti-perfd-client.so
-vendor/lib/libqti-perfd.so
-vendor/lib/libqti-util.so
-vendor/lib/vendor.qti.hardware.perf@1.0.so
-vendor/lib64/libperfgluelayer.so
-vendor/lib64/libqti-perfd-client.so
-vendor/lib64/libqti-perfd.so
-vendor/lib64/libqti-util.so
-vendor/lib64/vendor.qti.hardware.perf@1.0.so
+# Perf - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+product/lib/vendor.qti.hardware.perf@1.0.so|d04786a723d766b9d22c88e8aec5f8036d1ac53e
+product/lib/vendor.qti.hardware.perf@2.0.so|0a08551185ac8626b832068ecb77997800050233
+product/lib64/vendor.qti.hardware.perf@1.0.so|9b411738cf2ca8319bacf1f859cc3679f576215a
+product/lib64/vendor.qti.hardware.perf@2.0.so|3131f461ecb897f68d02df0bf1027ca0a7d07c1d
+lib/libqti_performance.so|246ff5d8fd2df951ef07c9fea0f83c67a77e112b
+lib/libqti-perfd-client_system.so|1e7a094e11ca381e0b73e48a6971ce9fcb4e6470
+lib64/libqti_performance.so|84abd6c99ae4bc2eb1c13648d66cebb90bcf4796
+lib64/libqti-perfd-client_system.so|c5825782db277dcb7f581290325a4f68f0d26981
+vendor/bin/energy-awareness|6515fada09432a437d2ed591ce141bb70fb10a9e
+vendor/bin/hw/vendor.qti.hardware.perf@2.0-service|57b1e050c9300a72baff8a19872b5a32ae9122e9
+vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc|cc8658db5e19f8e5e575fb986e7d38147e675f8d
+vendor/etc/perf/commonresourceconfigs.xml|1db765e3a8fb902bdb648091178a709c34f3fb16
+vendor/etc/perf/perfconfigstore.xml|760248b82c4f1ad8b0e7ed1924d2b198229e118d
+vendor/etc/perf/perfboostsconfig.xml|0fd6a9951f22cfe9f0942629f9d20da433604f14
+vendor/etc/perf/targetconfig.xml|376ae331df9d6c30b6208f25d04ae4ea11c0e2ea
+vendor/etc/perf/targetresourceconfigs.xml|7132f1e9ce3bb21b4854b81d6e5d24409251f177
+vendor/lib/libperfconfig.so|9a26117e45e436804b08498c59d7779e494933a9
+vendor/lib/libperfgluelayer.so|569bc942fcd54c1a52d345178694917642707b47
+vendor/lib/libqti-perfd-client.so|3fa11449bc068278b7a87aa55e161b015cd780f3
+vendor/lib/libqti-perfd.so|f09adaadc93019827274d4eb7725d09412911d82
+vendor/lib/libqti-util.so|e7882172095bb0df546d4c358744761aba932b5a
+vendor/lib/libqti-utils.so|81cff03510772c85807b880103ff1428a562e7ad
+vendor/lib/vendor.qti.hardware.perf@1.0.so|5a5aaf8c75efdf5eef5f91dd3dfbd4e85e563fad
+vendor/lib/vendor.qti.hardware.perf@2.0.so|2bd82bb06e4651d59ecc7433680fabbde5173643
+vendor/lib64/libperfconfig.so|c8fcb783489abad1f1912c9a7fa52141d4281e22
+vendor/lib64/libperfgluelayer.so|bfb9706a184fca4163e5a7cb5fcad11674958761
+vendor/lib64/libqti-perfd-client.so|ac1ca3a6ba93feee4c977cb6e54ca91ab3ce3b23
+vendor/lib64/libqti-perfd.so|184e4a124ef4f509ce377ce3941353948917e605
+vendor/lib64/libqti-util.so|c78b855b3909b01071ced5fc898add769de4a5b6
+vendor/lib64/libqti-utils.so|3726d65486928bc014e657960dc023d920524922
+vendor/lib64/vendor.qti.hardware.perf@1.0.so|20ca4d33306f92791679071303021c1c752213f5
+vendor/lib64/vendor.qti.hardware.perf@2.0.so|3717b35807fd7b33dced6e311c3b609d57399363
 
-# Peripheral manager
-vendor/bin/pm-proxy
-vendor/bin/pm-service
-vendor/lib64/libperipheral_client.so
+# Perf - IOP - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/lib/vendor.qti.hardware.iop@1.0.so|8094748d325b8b71ba48ec07f3d8575b42e21754
+vendor/lib/vendor.qti.hardware.iop@2.0.so|e49a76a90d88b630c5f3f9640cb8996c89f1b851
+vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so|f78fd7791961c0ceea03dfae8154207820c61be9
+vendor/lib/libqti-iopd-client.so|ea48eb1e1d1f97ca9d2f53ffe635f9ab1925679c
+vendor/lib64/vendor.qti.hardware.iop@1.0.so|8ccdc1463dcb554297b0c96d768126f0ca42b83a
+vendor/lib64/vendor.qti.hardware.iop@2.0.so|d5bafc1daeb1b417bbad1160f92e330610f09b8a
+vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so|071fea53abd0423bf71af128770a83941386468c
+vendor/lib64/libqti-iopd-client.so|64dcd6acbc758ca4ba7eea3ae351c005e92e95d5
+
+# Peripheral manager - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/pm-proxy|bc4e972e3fe595b973197efe5114da8ff4339a59
+vendor/bin/pm-service|b0f77edfe04a3cc6284738196c0044e676d5eeb3
+vendor/lib/libperipheral_client.so|836411f7b88afe296b3f3090aab70fc5700ba434
+vendor/lib64/libperipheral_client.so|a0dd574c8af3135adae10ef49065fa765906db7a
 
 # Postprocessing - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
 vendor/bin/hw/vendor.display.color@1.0-service|b091c0d0f898959afedf8a3f83b5e97205fdfbc8
@@ -1360,16 +1394,18 @@ vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
 vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.soter@1.0.so
 
-# Thermal
-vendor/bin/thermal-engine
--vendor/lib/libthermalclient.so
--vendor/lib64/libthermalclient.so
-vendor/lib64/libthermalioctl.so
+# Thermal - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/thermal-engine|2734cd5aa3440b753cf62bf97875dea04119f1dc
+-vendor/lib/libthermalclient.so|c3aecc7610e8f5775a6f6af2ff7790bef74380a1
+-vendor/lib64/libthermalclient.so|84072e150722cc668320f07a75cb8695ce1a79b0
+vendor/lib64/libthermalioctl.so|d19db852b9885a5e7b8c8902e95a17d6f309916a
 
-# Time services
--vendor/app/TimeService/TimeService.apk
-vendor/bin/time_daemon
-vendor/lib64/libtime_genoff.so
+# Time services - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+-vendor/app/TimeService/TimeService.apk|4a37afd1395758d946580af184a738e3c657b1e2
+vendor/bin/time_daemon|d5b056eeda44237d7511083b402b2747dbc707e1
+vendor/etc/init/init.time_daemon.rc|b253ca2a498757e14e1d7a051bf504ae09218f51
+-vendor/lib/libtime_genoff.so|e858cc52e829af0a9e4b5a4c39bddef8cece4bd9
+-vendor/lib64/libtime_genoff.so|c8e0bbc9c6b7b5beddba43bc4125a9eaeba7c79f
 
 # Universal Bandwidth Compression (UBWC)
 vendor/lib/libstreamparser.so
@@ -1388,8 +1424,8 @@ vendor/firmware/widevine.b06
 vendor/firmware/widevine.b07
 vendor/firmware/widevine.mdt
 
-# Wi-Fi
-vendor/bin/cnss-daemon
+# Wi-Fi - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/cnss-daemon|3f51988443047eb02ae1607b0d6bd05a4386c2b1
 
 # Wi-Fi Display
 bin/wfdservice
