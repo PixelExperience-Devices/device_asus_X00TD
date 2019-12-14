@@ -440,7 +440,9 @@ PRODUCT_COPY_FILES += \
 
 # QMI
 PRODUCT_PACKAGES += \
-    libjson
+    libjson \
+    libqti_vndfwk_detect \
+    libvndfwk_detect_jni.qti
 
 # Seccomp
 PRODUCT_COPY_FILES += \
