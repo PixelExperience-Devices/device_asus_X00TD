@@ -947,69 +947,67 @@ vendor/firmware/a512_zap.mdt
 vendor/firmware/a530_pfp.fw
 vendor/firmware/a530_pm4.fw
 
-# Graphics (Adreno) - from chiron - PKQ1.190118.001 9.3.21
-vendor/lib/egl/eglSubDriverAndroid.so|2dc3ea90fd0e6c7ad1864a23cf736eedcfa4c985
-vendor/lib/egl/libEGL_adreno.so|adfa25a02996babb29fe6752ef01a25d9482f7d8
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so|5389e32a9ae4ba44a065f040918f0cd92d07d62a
-vendor/lib/egl/libQTapGLES.so
-vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/egl/libq3dtools_esx.so
-vendor/lib/libC2D2.so
-vendor/lib/libCB.so|322d998e2f84b50b0ee1c1d94b878dd5462844df
-vendor/lib/libOpenCL.so
-vendor/lib/libRSDriver_adreno.so|fcffcda22b58c3d4386c8bd516058867b15106f1
-vendor/lib/libadreno_utils.so|9930d4a99e10bdc821e3609695100248d36b3913
-vendor/lib/libbccQTI.so
-vendor/lib/libc2d30_bltlib.so
-vendor/lib/libgsl.so
-vendor/lib/libllvm-glnext.so|e146ac9ad1704a1a8fca08691d07de0581d04c65
-vendor/lib/libllvm-qcom.so|155abdaf29390e44b5d363c74ab47f6fb8109d23
-vendor/lib/libpvr.so|d73e0721160cc6e97d4abe268f7e346bed038b16
-vendor/lib/librs_adreno_sha1.so|722fc73504df7cb5433075eb40ae3d96d2db2d2d
-vendor/lib/librs_adreno.so|a55840ae19e21c81948e2cba576bbd58a1ca836e
-vendor/lib64/egl/eglSubDriverAndroid.so|2f3edc8062166bc55cdfbc27fc2e5dc0dd3c5cbc
-vendor/lib64/egl/libEGL_adreno.so|62929bf23ecea823418910defed80bad5fc3416c
-vendor/lib64/egl/libGLESv1_CM_adreno.so
-vendor/lib64/egl/libGLESv2_adreno.so|eac7d67b9b2c0155a2e9c0d36afc8cde1c496463
-vendor/lib64/egl/libQTapGLES.so
-vendor/lib64/egl/libq3dtools_adreno.so
-vendor/lib64/egl/libq3dtools_esx.so
-vendor/lib64/libC2D2.so
-vendor/lib64/libCB.so|0ba6fafb7cc62c08b9a9dd86f74418590e358998
-vendor/lib64/libOpenCL.so
-vendor/lib64/libRSDriver_adreno.so|38c235631783ad242bbfc791260b77fd363395dd
-vendor/lib64/libadreno_utils.so|c2a2afcee56cad745ad5444c3385fb74c0fb9ff2
-vendor/lib64/libbccQTI.so
-vendor/lib64/libc2d30_bltlib.so
-vendor/lib64/libgsl.so
-vendor/lib64/libllvm-glnext.so|72939cc5f8cf2840764f67bf5e40b820fbd212fc
-vendor/lib64/libllvm-qcom.so|0926cc1965f44273bf84d98a82bf8402e86750a7
-vendor/lib64/libpvr.so|e3b65544a96278e0f4374eab222429c8373d20da
-vendor/lib64/librs_adreno_sha1.so|37ce2f7dfdd316dce16279f1d303a6672a70afd5
-vendor/lib64/librs_adreno.so|58e697ffe5c4b76942118d4b3ca43464db7a4924
+# Graphics - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/lib/egl/eglSubDriverAndroid.so|6414deefe8f8454dfd8dfb33006b94789d124dab
+vendor/lib/egl/libEGL_adreno.so|f1a3fbf43ca5978ddaf99ed771b36b091ac0e7c9
+vendor/lib/egl/libGLESv1_CM_adreno.so|e897f460e00982ad9e34672e07110a9ca8edab17
+vendor/lib/egl/libGLESv2_adreno.so|1213ba4784efb9caff17ad462c0bbfa47ce05708
+vendor/lib/egl/libq3dtools_adreno.so|6276d79737358fe27836d41a4aca3d8e9f2b76df
+vendor/lib/egl/libq3dtools_esx.so|2c090867e06c588bd1422788fec03c6948890af2
+vendor/lib/egl/libQTapGLES.so|788a1833fd3e343a218c03b56b9569441ceb878a
+vendor/lib/libadreno_utils.so|de54930ce9fc6e13de930aa7a942967828fe4daf
+vendor/lib/libbccQTI.so|3e0a4fe0242a797a19a70b282fe0cf0bd1ce75da
+vendor/lib/libC2D2.so|a89c611c33d136ac335f8ab077a4dd9ab16722a6
+vendor/lib/libc2d30_bltlib.so|0ecaba6ce84154d88c0df57a235609ecd98d6f6d
+vendor/lib/libCB.so|0898dd259d51c3a1e3416a4d9e17151c9e23677e
+vendor/lib/libgsl.so|7b5c45f9015b6c369d7e00ce4c747bd8400d112c
+vendor/lib/libllvm-glnext.so|609928c7d06e2c5f0c1bec801e71d5b3cea67218
+vendor/lib/libllvm-qcom.so|d0758cdf45e32d41d7ccd8b18b853b35eecac281
+vendor/lib/libOpenCL.so|df83abbc452249d07b52bf67c1c9b537c76019af
+vendor/lib/librs_adreno_sha1.so|f4665879e0d9ef4e448f645f2b579b1ba6dc2eb5
+vendor/lib/librs_adreno.so|81ac0aaaf36c049113e1dec7640d962a07e07f7f
+vendor/lib/libRSDriver_adreno.so|9c596bbda0ce022143a037c9d0eddf9aadab8533
+vendor/lib64/egl/eglSubDriverAndroid.so|cd76c111254eaf809defcd40d4a1d6aa0f140c0e
+vendor/lib64/egl/libEGL_adreno.so|35c319854e143d7bcfacea9c499897ca846f1b3a
+vendor/lib64/egl/libGLESv1_CM_adreno.so|603accd676f859523e22f5043be216a8d4a8a937
+vendor/lib64/egl/libGLESv2_adreno.so|1e80594ddf0cd4341b3bd59f523073fd1e6feb0e
+vendor/lib64/egl/libq3dtools_adreno.so|ecf0fd2df00aa673373b9965c426e04bb30760d5
+vendor/lib64/egl/libq3dtools_esx.so|1ebe058338f24e1b701a3ff50c28812f90e6ebed
+vendor/lib64/egl/libQTapGLES.so|c6eb23a9bb8fb6c502101f1bd5eeddc2b80bdec6
+vendor/lib64/libadreno_utils.so|a732da174c5f9714e494882cc6a1984548492757
+vendor/lib64/libbccQTI.so|d4732f569f53d0152bcb824d94819c7b183a7a8b
+vendor/lib64/libC2D2.so|ce0aceb5116cea71454c5313f661c5d042eeb218
+vendor/lib64/libc2d30_bltlib.so|254b4b60fe1795188628ab4d156b9656af79c776
+vendor/lib64/libCB.so|a0fdbd4c992698a8eb7bdc75487ce16d390c70c2
+vendor/lib64/libgsl.so|f3916703f7b41cdff0e28666da86210522a63d50
+vendor/lib64/libllvm-glnext.so|263b552eb1572d248ef902a6bbd8f027d6feec9b
+vendor/lib64/libllvm-qcom.so|2643fe03a65fed6187e9e9104c4dff484ad7e095
+vendor/lib64/libOpenCL.so|21897637e702c4a97eb748934e9f1fc8880881c5
+vendor/lib64/librs_adreno_sha1.so|06535b728885e2bf161b1cca48e8e5928925310a
+vendor/lib64/librs_adreno.so|c84431c31efd21b30d95ebe9ea3dc4792f0de4ac
+vendor/lib64/libRSDriver_adreno.so|d6d85a5af4f82e3a64bda4929ab4ed8bde6b7a3d
 
-# Graphics (HDR) - from chiron - PKQ1.190118.001 9.3.21
-vendor/lib/libhdr_tm.so|17705b090e4e8b487a39071b2f46a45324d611a6
-vendor/lib64/libhdr_tm.so|a44d285a08aa30ef90e791c646b9c12a697a30b2
+# Graphics (HDR) - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/lib/libhdr_tm.so|8d253c28c1fd976ac009088e36d483c16566f9a5
+vendor/lib64/libhdr_tm.so|1e74de5b505c8f742f1fb0379725ec9f5fd53282
 
-# Graphics (SDM) - from chiron - PKQ1.190118.001 9.3.21
-vendor/lib/libqseed3.so
-vendor/lib/libsdm-color.so|8e083bb2a20ecf76bf96e303134cbaa9ce46be81
-vendor/lib/libsdm-diag.so|e0455e9dd0e2378a3f770eb914aa11e612d594eb
-vendor/lib/libsdm-disp-vndapis.so|f81628ddf7fff00f5e316956ed3b50941932c7de
-vendor/lib/libsdmextension.so|5eec37b5457ffb8ec5e82e6366cf7652eefc0a5e
-vendor/lib/libtinyxml2_1.so|0960b3c008d818be73774e345c2f0f1c1e5873cd
-vendor/lib64/libqseed3.so
-vendor/lib64/libsdm-color.so|1a9b68e5f2f09d37c2fa83907a6a70c7adb081f5
-vendor/lib64/libsdm-diag.so|25bab19a8c4453b3d20e3e1a71a0e8d3675b17b4
-vendor/lib64/libsdm-disp-vndapis.so|8ac59a32a2601a8a4b0d3b097ed02f1279f3c6b7
-vendor/lib64/libsdmextension.so|5a33c4cd669d745e47110ec81a71fd9df7ca0608
-vendor/lib64/libtinyxml2_1.so|a2d9661cf2bb426e72ba15fd1a6a4eec940418a5
+# Graphics (SDM) - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/lib/libqseed3.so|f1c5c5e2db7cf1bf1cd6782af3476ec721c525e7
+vendor/lib/libsdm-color.so|2856bf71af603076b23d4c206dacba7c82350387
+vendor/lib/libsdm-diag.so|b1813c5639553537ccda31b2e44b5d4a85eb2adc
+vendor/lib/libsdm-disp-vndapis.so|15a98ef885dbd29935b1107d7a2988ae495abb87
+vendor/lib/libsdmextension.so|37d5fca198c8e8526d6a4cb95f9c4bdf719e0efd
+vendor/lib/libtinyxml2_1.so|f54f81359c78715315bc24678c34c129413e6c92
+vendor/lib64/libqseed3.so|24ae4dfe5d9fa27a858b64dfafd1c713da6e6fde
+vendor/lib64/libsdm-color.so|ed022cfcc1546c11b82991986e0a938464400858
+vendor/lib64/libsdm-diag.so|6eb99b83036f917070393fa067eaebc50a5ff307
+vendor/lib64/libsdmextension.so|264c00a0920d291700b2948b9337037684986921
+vendor/lib64/libsdm-disp-vndapis.so|ba4978c373f9892d884d07c4cf25dba9d73fda1f
+vendor/lib64/libtinyxml2_1.so|ba981e332895a053a67fc54a8190365a3ad37f2d
 
-# Graphics (Vulkan)
-vendor/lib/hw/vulkan.sdm660.so
-vendor/lib64/hw/vulkan.sdm660.so
+# Graphics (Vulkan) - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/lib/hw/vulkan.sdm660.so|87d87b2520d3a8adec7a24f5999a27b291edaeba
+vendor/lib64/hw/vulkan.sdm660.so|ad3a5d92c6c13ba0c937dd1b83f371e804a57c4e
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
@@ -1093,16 +1091,19 @@ vendor/bin/pm-proxy
 vendor/bin/pm-service
 vendor/lib64/libperipheral_client.so
 
-# Postprocessing
-vendor/bin/hw/vendor.display.color@1.0-service
-vendor/bin/mm-pp-dpps
-vendor/etc/init/vendor.display.color@1.0-service.rc
-vendor/lib/libdisp-aba.so
-vendor/lib64/libdisp-aba.so
-vendor/lib64/vendor.display.color@1.0.so
-vendor/lib64/vendor.display.color@1.1.so
-vendor/lib64/vendor.display.color@1.2.so
-vendor/lib64/vendor.display.postproc@1.0.so
+# Postprocessing - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/vendor.display.color@1.0-service|b091c0d0f898959afedf8a3f83b5e97205fdfbc8
+vendor/bin/mm-pp-dpps|87650deb0e6df4afae33020b23af0d1cf33ec51c
+vendor/etc/init/vendor.display.color@1.0-service.rc|5ad673f879b3685a0e79b5633437e5499cb94f48
+vendor/lib/vendor.display.color@1.0.so|c11d6fc47fb8fa685241e6ec6142b8ea66f5e8e9
+vendor/lib/vendor.display.color@1.1.so|00100de13261d5a0bb0ff6488d9392f6b9de81ef
+vendor/lib/vendor.display.color@1.2.so|eede64266c6270e3c0a13ce6b888c2c6edc4bad1
+vendor/lib/vendor.display.postproc@1.0.so|5bb4ce086b76370dcec4489474dc7f00cc526dd4
+vendor/lib64/libdisp-aba.so|fcb06e36e31d741c92d189ad95bc2f69bbf1e17b
+vendor/lib64/vendor.display.color@1.0.so|3939e4d1ab4f74e6bbd04524a9e6211ade9c5d0b
+vendor/lib64/vendor.display.color@1.1.so|ce0030a7e6593236277962ffff290b834eaf1f25
+vendor/lib64/vendor.display.color@1.2.so|6adfa77494dbad3be8a34b259b25f8a4d9dd6a04
+vendor/lib64/vendor.display.postproc@1.0.so|0b578a42706c770c6c61eccdee8a9e4c89c08b10
 
 # QMI - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
 vendor/bin/irsc_util|4381ded94ac2775cf186c97c7ad6236eaa209eac
