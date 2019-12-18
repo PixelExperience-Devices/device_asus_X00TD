@@ -1038,6 +1038,7 @@ service charger /system/bin/charger
     user system
     group system graphics input
     seclabel u:r:charger:s0
+    capabilities SYS_BOOT
 
 service vendor.ssr_diag /system/vendor/bin/ssr_diag
     class late_start
