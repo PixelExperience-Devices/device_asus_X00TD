@@ -64,10 +64,6 @@ setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" ${KANG} --section "${SECTION}"
 
-DEVICE_BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
-
-patchelf --remove-needed libandroid.so "$DEVICE_BLOB_ROOT"/vendor/lib/libmpbase.so
-
 if [ "$DEVICE" = "X00T" ]; then
 patchelf --remove-needed libbacktrace.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
 patchelf --remove-needed libunwind.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
