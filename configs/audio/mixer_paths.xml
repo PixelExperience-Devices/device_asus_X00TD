@@ -512,6 +512,10 @@
     </path>
 
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 start -->
+    <path name="deep-buffer-playback headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
     <path name="deep-buffer-playback speaker-and-headphones">
         <path name="deep-buffer-playback headphones" />
         <path name="deep-buffer-playback speaker" />
@@ -521,6 +525,11 @@
     <path name="deep-buffer-playback speaker-safe-and-headphones">
         <path name="deep-buffer-playback headphones" />
         <path name="deep-buffer-playback" />
+    </path>
+
+    <path name="deep-buffer-playback speaker-and-headphones-hifi-filter">
+        <path name="deep-buffer-playback headphones-hifi-filter" />
+        <path name="deep-buffer-playback speaker" />
     </path>
 
     <path name="low-latency-playback">
@@ -620,6 +629,15 @@
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
 
+    <path name="low-latency-playback headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback speaker-and-headphones-hifi-filter">
+        <path name="low-latency-playback headphones-hifi-filter" />
+        <path name="low-latency-playback speaker" />
+    </path>
+
     <path name="low-latency-playback speaker-safe-and-headphones">
         <path name="low-latency-playback headphones" />
         <path name="low-latency-playback" />
@@ -657,6 +675,15 @@
         <path name="audio-ull-playback headphones" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="audio-ull-playback headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia8" value="1" />
+    </path>
+
+    <path name="audio-ull-playback speaker-and-headphones-hifi-filter">
+        <path name="audio-ull-playback speaker" />
+        <path name="audio-ull-playback headphones-hifi-filter" />
+    </path>
 
     <path name="audio-ull-playback speaker-safe-and-headphones">
         <path name="audio-ull-playback" />
@@ -829,6 +856,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
+    <path name="compress-offload-playback headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
     <path name="compress-offload-playback headphones-dsd">
     </path>
 
@@ -838,6 +869,11 @@
         <path name="compress-offload-playback speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback headphones-hifi-filter" />
+        <path name="compress-offload-playback speaker" />
+    </path>
 
     <path name="compress-offload-playback speaker-safe-and-headphones">
         <path name="compress-offload-playback headphones" />
@@ -932,6 +968,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
+    <path name="compress-offload-playback2 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
     <path name="compress-offload-playback2 headphones-dsd">
     </path>
 
@@ -941,6 +981,11 @@
         <path name="compress-offload-playback2 speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback2 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback2 headphones-hifi-filter" />
+        <path name="compress-offload-playback2 speaker" />
+    </path>
 
     <path name="compress-offload-playback2 speaker-safe-and-headphones">
         <path name="compress-offload-playback2 headphones" />
@@ -1035,6 +1080,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia10" value="1" />
     </path>
 
+    <path name="compress-offload-playback3 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia10" value="1" />
+    </path>
+
     <path name="compress-offload-playback3 headphones-dsd">
     </path>
 
@@ -1044,6 +1093,11 @@
         <path name="compress-offload-playback3 speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback3 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback3 headphones-hifi-filter" />
+        <path name="compress-offload-playback3 speaker" />
+    </path>
 
     <path name="compress-offload-playback3 speaker-safe-and-headphones">
         <path name="compress-offload-playback3 headphones" />
@@ -1137,6 +1191,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia11" value="1" />
     </path>
 
+    <path name="compress-offload-playback4 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia11" value="1" />
+    </path>
+
     <path name="compress-offload-playback4 headphones-dsd">
     </path>
 
@@ -1146,6 +1204,11 @@
         <path name="compress-offload-playback4 speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback4 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback4 headphones-hifi-filter" />
+        <path name="compress-offload-playback4 speaker" />
+    </path>
 
     <path name="compress-offload-playback4 speaker-safe-and-headphones">
         <path name="compress-offload-playback4 headphones" />
@@ -1240,6 +1303,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia12" value="1" />
     </path>
 
+    <path name="compress-offload-playback5 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia12" value="1" />
+    </path>
+
     <path name="compress-offload-playback5 headphones-dsd">
     </path>
 
@@ -1249,6 +1316,11 @@
         <path name="compress-offload-playback5 speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback5 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback5 headphones-hifi-filter" />
+        <path name="compress-offload-playback5 speaker" />
+    </path>
 
     <path name="compress-offload-playback5 speaker-safe-and-headphones">
         <path name="compress-offload-playback5 headphones" />
@@ -1343,6 +1415,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia13" value="1" />
     </path>
 
+    <path name="compress-offload-playback6 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia13" value="1" />
+    </path>
+
     <path name="compress-offload-playback6 headphones-dsd">
     </path>
 
@@ -1352,6 +1428,11 @@
         <path name="compress-offload-playback6 speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback6 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback6 headphones-hifi-filter" />
+        <path name="compress-offload-playback6 speaker" />
+    </path>
 
     <path name="compress-offload-playback6 speaker-safe-and-headphones">
         <path name="compress-offload-playback6 headphones" />
@@ -1446,6 +1527,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia14" value="1" />
     </path>
 
+    <path name="compress-offload-playback7 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia14" value="1" />
+    </path>
+
     <path name="compress-offload-playback7 headphones-dsd">
     </path>
 
@@ -1455,6 +1540,11 @@
         <path name="compress-offload-playback7 speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback7 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback7 headphones-hifi-filter" />
+        <path name="compress-offload-playback7 speaker" />
+    </path>
 
     <path name="compress-offload-playback7 speaker-safe-and-headphones">
         <path name="compress-offload-playback7 headphones" />
@@ -1549,6 +1639,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
+    <path name="compress-offload-playback8 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia15" value="1" />
+    </path>
+
     <path name="compress-offload-playback8 headphones-dsd">
     </path>
 
@@ -1558,6 +1652,11 @@
         <path name="compress-offload-playback8 speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback8 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback8 headphones-hifi-filter" />
+        <path name="compress-offload-playback8 speaker" />
+    </path>
 
     <path name="compress-offload-playback8 speaker-safe-and-headphones">
         <path name="compress-offload-playback8 headphones" />
@@ -1652,6 +1751,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia16" value="1" />
     </path>
 
+    <path name="compress-offload-playback9 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia16" value="1" />
+    </path>
+
     <path name="compress-offload-playback9 headphones-dsd">
     </path>
 
@@ -1661,6 +1764,11 @@
         <path name="compress-offload-playback9 speaker" />
     </path>
     <!-- Huaqin add for TT bug id 1165336 by xudayi at 2018/03/15 end -->
+
+    <path name="compress-offload-playback9 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback9 headphones-hifi-filter" />
+        <path name="compress-offload-playback9 speaker" />
+    </path>
 
     <path name="compress-offload-playback9 speaker-safe-and-headphones">
         <path name="compress-offload-playback9 headphones" />
@@ -2397,7 +2505,7 @@
     </path>
     
     <path name="speaker-and-headphones-hifi-filter">
-        <path name="headphones" />
+        <path name="headphones-hifi-filter" />
         <path name="speaker" />
     </path>
 
