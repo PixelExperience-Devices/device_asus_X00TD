@@ -102,4 +102,21 @@ $(WCNSS_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_INI_SYMLINK) $(WCNSS_MAC_SYMLINK)
 
+# libtinycompress symlink for audio hal
+TINYCOMPRESS_SYMLINK := $(TARGET_OUT_VENDOR)/lib/libtinycompress_vendor.so
+$(TINYCOMPRESS_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	@echo "libtinycompress shared object link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf libtinycompress.so $@
+
+TINYCOMPRESS64_SYMLINK := $(TARGET_OUT_VENDOR)/lib64/libtinycompress_vendor.so
+$(TINYCOMPRESS64_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	@echo "libtinycompress_64 shared object link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf libtinycompress.so $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(TINYCOMPRESS_SYMLINK) $(TINYCOMPRESS64_SYMLINK)
+
 endif
