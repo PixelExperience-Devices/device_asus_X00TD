@@ -20,3 +20,6 @@ ro.btmac                           u:object_r:nvram_btwifi_prop:s0
 ro.wifimac                         u:object_r:nvram_btwifi_prop:s0
 sys.nvram.btmac                    u:object_r:nvram_btwifi_prop:s0
 sys.nvram.wifimac                  u:object_r:nvram_btwifi_prop:s0
+
+# wifi
+wifi.active.interface              u:object_r:wifi_prop:s0
