@@ -121,6 +121,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.hw.fm.init=0 \
     vendor.fm.a2dp.conc.disabled=false
 
 # FRP
