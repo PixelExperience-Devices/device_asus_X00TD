@@ -710,6 +710,10 @@ vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcdsprpc.so
 vendor/lib64/libsysmon_cdsp_skel.so
 
+# Bluetooth (aptX) - from crosshatch-user 10 QP1A.190711.020 5800535 release-keys
+product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
+product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
+
 # Charger
 vendor/bin/hvdcp_opti
 
