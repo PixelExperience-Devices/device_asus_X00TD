@@ -4197,7 +4197,7 @@ int IPACM_Lan::handle_private_subnet_android(ipa_ip_type iptype)
 			if (mtu[i] > 0)
 				mtu_rule_cnt++;
 			else
-				IPACMERR("MTU is zero\n");
+				IPACMDBG_H("MTU is zero\n");
 		}
 		IPACMDBG_H("total %d MTU rules are needed\n", mtu_rule_cnt);
 
