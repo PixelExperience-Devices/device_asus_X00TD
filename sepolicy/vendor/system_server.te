@@ -9,3 +9,5 @@ allow system_server kcal_dev:dir r_dir_perms;
 
 # Vibrator
 allow system_server sysfs_vibrator:file read;
+
+allow system_server sysfs_kgsl:lnk_file read;

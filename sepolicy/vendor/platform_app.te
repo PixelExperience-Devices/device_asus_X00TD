@@ -1,1 +1,2 @@
 allow platform_app sysfs_leds:dir search;
+allow platform_app sysfs_kgsl:lnk_file read;

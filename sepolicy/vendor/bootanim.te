@@ -1,0 +1,1 @@
+allow bootanim sysfs_kgsl:lnk_file read;
