@@ -1,5 +1,3 @@
 dontaudit untrusted_app proc_vmstat:file { getattr open };
-allow untrusted_app hal_memtrack_default:binder call;
-allow untrusted_app sysfs_kgsl:dir search;
 
 dontaudit untrusted_app sysfs_kgsl:lnk_file read;
