@@ -174,6 +174,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.video.disable.ubwc=1
 
+# Time
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.delta_time.enable=true
+
 # VoLTE
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.ims_volte_enable=1 \
