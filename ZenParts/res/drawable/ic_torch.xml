@@ -1,9 +1,14 @@
-<!-- drawable/phone_text.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="24dp"
     android:width="24dp"
+    android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24"
     android:tint="?android:attr/colorControlNormal">
-    <path android:fillColor="#000" android:pathData="m8.88683,15.98232c-0.00052,-2.12342 -0.00052,-4.24737 -0.00104,-6.37079c-1.51479,-0.75349 -2.15312,-2.5528 -1.99055,-4.15982c0.05836,-0.2225 0.52213,-0.03387 0.7389,-0.0964l9.09137,0c0.13757,1.5544 -0.38612,3.29326 -1.79774,4.12387c-0.37466,0.10734 -0.12871,0.57111 -0.19905,0.85354l0,12.01935l-5.84032,0c-0.00052,-2.12238 0,-4.25049 -0.00156,-6.36974zm3.08274,-2.13593c1.10314,-0.06983 1.67842,-1.53981 0.94316,-2.34749c-0.63103,-0.83009 -2.08278,-0.60759 -2.43451,0.37518c-0.42729,0.96922 0.4325,2.12238 1.49135,1.97231zm-5.07433,-11.32318l0,-1.01961l9.83131,0l0,2.03921l-9.83131,0l0,-1.01961z" />
+
+    <path
+        android:pathData="M0 0h24v24H0z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M6 14l3 3v5h6v-5l3-3V9H6v5zm2-3h8v2.17l-3 3V20h-2v-3.83l-3-3V11zm3-9h2v3h-2zM3.502 5.874L4.916 4.46l2.122 2.12-1.414 1.415zm13.458 0.708 l2.123-2.12 1.413 1.416-2.123 2.12z" />
 </vector>
