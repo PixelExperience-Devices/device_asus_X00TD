@@ -12,4 +12,3 @@ allow system_app sysfs_touchpanel:dir search;
 allow system_app sysfs_dclicknode:file { getattr read write open };
 allow system_app sysfs_leds:dir search;
 allow system_app sysfs_leds:file { open getattr write };
-allow system_app sysfs_kgsl:lnk_file read;
