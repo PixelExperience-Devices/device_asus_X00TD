@@ -163,6 +163,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false \
     ro.ril.ecclist=112,911 \
     ro.telephony.iwlan_operation_mode=legacy \
+    ro.telephony.use_old_mnc_mcc_format=true \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
 
 # Power save functionality for modem
