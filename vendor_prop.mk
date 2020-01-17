@@ -89,6 +89,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.latch_unsignaled=0 \
     debug.hwui.use_buffer_age=false \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=420 \
