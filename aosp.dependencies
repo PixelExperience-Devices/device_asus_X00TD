@@ -8,7 +8,7 @@
   {
     "remote":"github",
     "branch":"ten",
-    "repository": "PixelExperience-Devices/vendor_asus_X00TD",
+    "repository": "PixelExperience-Devices/vendor_asus",
     "target_path": "vendor/asus"
   },
   {
