@@ -182,7 +182,6 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libvulkan \
     libtinyxml \
-    libgenlock \
     memtrack.sdm660 \
     vendor.display.config@1.3 \
     vendor.display.config@1.3.vendor
