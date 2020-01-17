@@ -183,9 +183,7 @@ PRODUCT_PACKAGES += \
     libvulkan \
     libtinyxml \
     libgenlock \
-    memtrack.sdm660 \
-    vendor.display.config@1.3 \
-    vendor.display.config@1.3.vendor
+    memtrack.sdm660
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
