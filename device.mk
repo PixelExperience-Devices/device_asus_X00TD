@@ -361,7 +361,8 @@ PRODUCT_PACKAGES += \
     init.qti.ims.sh \
     move_time_data.sh \
     move_wifi_data.sh \
-    fix_baseband.sh
+    fix_baseband.sh \
+    poop.sh
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
