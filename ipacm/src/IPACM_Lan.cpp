@@ -4201,7 +4201,7 @@ int IPACM_Lan::handle_private_subnet_android(ipa_ip_type iptype)
 		}
 		IPACMDBG_H("total %d MTU rules are needed\n", mtu_rule_cnt);
 
-		len = sizeof(struct ipa_ioc_mdfy_flt_rule) + (IPACM_Iface::ipacmcfg->ipa_num_private_subnet + mtu_rule_cnt) * sizeof(struct ipa_flt_rule_mdfy);
+		len = sizeof(struct ipa_ioc_mdfy_flt_rule) + (IPACM_Iface::ipacmcfg->ipa_num_private_subnet) * sizeof(struct ipa_flt_rule_mdfy);
 		pFilteringTable = (struct ipa_ioc_mdfy_flt_rule*)malloc(len);
 		if (!pFilteringTable)
 		{
@@ -4212,7 +4212,7 @@ int IPACM_Lan::handle_private_subnet_android(ipa_ip_type iptype)
 
 		pFilteringTable->commit = 1;
 		pFilteringTable->ip = iptype;
-		pFilteringTable->num_rules = (uint8_t)IPACM_Iface::ipacmcfg->ipa_num_private_subnet + mtu_rule_cnt;
+		pFilteringTable->num_rules = (uint8_t)IPACM_Iface::ipacmcfg->ipa_num_private_subnet;
 
 		/* Make LAN-traffic always go A5, use default IPA-RT table */
 		if (false == m_routing.GetRoutingTable(&IPACM_Iface::ipacmcfg->rt_tbl_default_v4))
@@ -4296,7 +4296,7 @@ int IPACM_Lan::install_ipv6_prefix_flt_rule(uint32_t* prefix)
 
 	if(rx_prop != NULL)
 	{
-		len = sizeof(struct ipa_ioc_add_flt_rule) + rule_cnt * sizeof(struct ipa_flt_rule_add);
+		len = sizeof(struct ipa_ioc_add_flt_rule) * sizeof(struct ipa_flt_rule_add);
 
 		flt_rule = (struct ipa_ioc_add_flt_rule *)calloc(rule_cnt, len);
 		if (!flt_rule)
@@ -4309,7 +4309,7 @@ int IPACM_Lan::install_ipv6_prefix_flt_rule(uint32_t* prefix)
 		flt_rule->ep = rx_prop->rx[0].src_pipe;
 		flt_rule->global = false;
 		flt_rule->ip = IPA_IP_v6;
-		flt_rule->num_rules = rule_cnt;
+		flt_rule->num_rules = 1;
 
 		memset(&flt_rule_entry, 0, sizeof(struct ipa_flt_rule_add));
 
