@@ -832,61 +832,52 @@ vendor/etc/init/dpmQmiMgr.rc|67569302d3a8828a9118c835e5b69c51b0c8ac68
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so|fbff6357ee46dd6d62f490a942ff567b6ce955d1
 vendor/lib64/libdpmqmihal.so|30a170684219dd589d05ce5b446e73b7501f13e3
 
-# DRM from Nokia Dragon QKQ1.190828.002-00WW_4_040-release-keys
-vendor/bin/qseecomd|bb9dbf5c66a9d4383825a8e0c287d41f9f531a05
-vendor/lib/libGPreqcancel.so|0d4876f94aeaaa92608071d6f7246eec822bc12a
-vendor/lib/libGPreqcancel_svc.so|7d96ec19dc8dfa441547ff9c8077d2c1ccf3c5ba
-vendor/lib/libQSEEComAPI.so|1c134972d1629e7ec8e854f0fa43e2886556dbd7
-vendor/lib/libbase64.so|f2f4859d107fe43569967fdcec0c3ec3c911713e
-vendor/lib/libcppf.so|04d42e86256394f361560ca3038c055dc1df4b6a
-vendor/lib/libcpion.so|ef80c35b037cd68eeb24d16fc87b26549abeb50c
-vendor/lib/libdrmfs.so|72a2f462bf5bfa4e9db92275523d02d617ed82c2
-vendor/lib/libdrmtime.so|bd4ca50039356949fc1caa8e954649d6350569f9
-vendor/lib/liboemcrypto.so|ad286cf38f8b00a5c9b0b0f424e4a5bd1f47f046
-vendor/lib/libqisl.so|8f12caa1aff3309878f56647d9ce1bdfc5c32a7e
-vendor/lib/librmp.so|164d2c30a2a35167ce3160445f9f08e920b2c0b0
-vendor/lib/librpmb.so|688b867d652455f36620fb4dba99867e23750d31
-vendor/lib/libSecureUILib.so|54a5e4bdda35fb0c185dc4d5f02c51fc761ec933
-vendor/lib/libsecureui.so|317896d31fa0afaaff1a82da559fd9ec8023ea43
-vendor/lib/libsecureui_svcsock.so|d376d887cfdddb09d343742d5110b69a39bcc0fa
-vendor/lib/libsdedrm.so|b603b6beaa50d49604ab2ebe0977a9ef79252b20
-vendor/lib/libsi.so|a537a21eca1494454528cb330dd781bd73adacf7
-vendor/lib/libssd.so|3a346acc32b0c6c973eae448b73da3e8d35f75f8
-vendor/lib64/libGPreqcancel.so|76b35e76a85b333f46ab749b7865c26ba0ca7bc4
-vendor/lib64/libGPreqcancel_svc.so|610f0d55e3c3b31a5fdd590dcd6ec8c2cf258d9b
-vendor/lib64/libQSEEComAPI.so|1dfc70896af18264af46be4bf797680cdd6b018b
-vendor/lib64/libbase64.so|33822fa949deae67b3c5ab5e5835d670cfa5ffba
-vendor/lib64/libcpion.so|ff24ef248bb35fd3cc1081a63f33c2565dc6351f
-vendor/lib64/libdrmfs.so|d5847a27b74955a0ccfb2da499fa42902c5bf1df
-vendor/lib64/libdrmtime.so|9f1337004246fa7e6f726486bcab949fe5e2459f
-vendor/lib64/liboemcrypto.so|e44fa8bf9bed1541342390bf316c34fe9f29cc4e
-vendor/lib64/libqisl.so|f81d523e3e257e99bd055f6576521519a074e630
-vendor/lib64/librmp.so|e47e679f717a4abf962665a01a1fc0ea2ccff673
-vendor/lib64/librpmb.so|a6add4226a289242eb2e1ccef23a94d100a94064
-vendor/lib64/libSecureUILib.so|3a059d1fe3395eaefeb7817ad3af46987b6f4794
-vendor/lib64/libsecureui.so|4a9861e7887b0e03294f86009b7600369d113964
-vendor/lib64/libsecureui_svcsock.so|889d4a12c5dee56ed4b10548abbd7b9033cbdad2
-vendor/lib64/libsdedrm.so|2add69c575f5745d0db2bbe8dfb7f75f9dc03ce6
-vendor/lib64/libsi.so|6cc6ec1eca11bb4b8e7f8021a5760f425e203288
-vendor/lib64/libssd.so|a64337d8044607b81adcf7e8c5760cf8cdcf82b4
+# DRM
+vendor/bin/qseecomd
+vendor/lib/libGPreqcancel.so
+vendor/lib/libGPreqcancel_svc.so
+vendor/lib/libQSEEComAPI.so
+vendor/lib/libbase64.so
+vendor/lib/libcppf.so
+vendor/lib/libdrmfs.so
+vendor/lib/libdrmtime.so
+vendor/lib/libmm-hdcpmgr.so
+vendor/lib/libqisl.so
+vendor/lib/librmp.so
+vendor/lib/librpmb.so
+vendor/lib/libsdedrm.so
+vendor/lib/libsi.so
+vendor/lib/libssd.so
+vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
+vendor/lib64/libGPreqcancel.so
+vendor/lib64/libGPreqcancel_svc.so
+vendor/lib64/libQSEEComAPI.so
+vendor/lib64/libbase64.so
+vendor/lib64/libdrmfs.so
+vendor/lib64/libdrmtime.so
+vendor/lib64/libmm-hdcpmgr.so
+vendor/lib64/libqisl.so
+vendor/lib64/librmp.so
+vendor/lib64/librpmb.so
+vendor/lib64/libsdedrm.so
+vendor/lib64/libsi.so
+vendor/lib64/libssd.so
 
-# DRM - HDCP from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
-vendor/bin/hdcp1prov|fdc348ed8d3ef86b93240c0add73a5aa21a7a8cd
-vendor/bin/hdcp2p2prov|d17c23f617109d96259ec9251518e8a4a11a3da4
-vendor/lib/libhdcpsrm.so|27cc3f35692060d3c7f3fae8553058e51e404e0e
-vendor/lib/libmm-hdcpmgr.so|4af112050d0a5a47980103b309a163a4415de7dd
-vendor/lib/libhdcp1prov.so|45357fab9b3c5bd8c2cd1a26fffc54164e384c54
-vendor/lib/libhdcp2p2prov.so|b229dcd295e317324702ec3583db5f49f733c208
-vendor/lib64/libhdcpsrm.so|ee8e7c29e2b716a8bb07c3cbb730e34d8af3c64e
-vendor/lib64/libmm-hdcpmgr.so|152c347caca4826a64737df11e181472553be446
-vendor/lib64/libhdcp1prov.so|de3c41b147b4617dcdf9a216199aa9364fa63731
-vendor/lib64/libhdcp2p2prov.so|7cbe9df99fc2dad1c4b170c5162442e533e19cba
-
-# DRM (Widevine) from Nokia Dragon QKQ1.190828.002-00WW_4_040-release-keys
-vendor/bin/hw/android.hardware.drm@1.2-service.widevine|1aed116c6cd73ee0c89a5eec050afab5c64b9f87
-vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc|e3cb732c0bd519988100675edf385d947abf5f6c
-vendor/lib64/libwvhidl.so|8f494ed8801c8fdd3930907f17737c806274447e
-vendor/lib64/mediadrm/libwvdrmengine.so|af257b8f1db2671bb430d588fa1a78c5cacb1664
+# DRM (Widevine)
+vendor/bin/hw/android.hardware.drm@1.1-service.widevine
+vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
+vendor/lib/libcpion.so
+vendor/lib/libhdcpsrm.so
+vendor/lib/liboemcrypto.so
+vendor/lib/libwvhidl.so
+vendor/lib64/mediadrm/libwvdrmengine.so
+vendor/lib64/libcpion.so
+vendor/lib64/libhdcpsrm.so
+vendor/lib64/liboemcrypto.so
+vendor/lib64/libwvhidl.so
 
 # ESE-Powermanager - from DRG - QKQ1.190828.002
 product/lib/vendor.qti.esepowermanager@1.0.so|07b5def050ef3200ed8946bf33be4f60049cd4aa
@@ -1205,15 +1196,23 @@ vendor/lib64/libqmiservices.so|1c147d33fe72d372c16e7b67dbd70706de9fcabb
 vendor/lib/libqmi_cci.so|c9875888360b5498af4c067464c7956bd140c8bb
 vendor/lib64/libqmi_cci.so|93902ee01db0ba6ad9c26287fd1aba0f37b134bf
 
-# Qteeconnector from Nokia Dragon QKQ1.190828.002-00WW_4_040-release-keys
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service|aaa7d15a9ebb63c0152b8fb3bfd07af929e384d4
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc|c966350ee67d3a7c73ca7184e3725264025d16f5
-vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|6afd4ca7aa70f2a5a08538a71fc5858d894eec54
-vendor/lib/libQTEEConnector_vendor.so|8de6731779807901e731232de4b844f0b5df1abe
-vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so|5010f60bd1cf2a3b212b366cc4e46f28d5fbfa94
-vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|1fe6ce202398e0ae3afebd7625c59746e04413e8
-vendor/lib64/libQTEEConnector_vendor.so|48275dc35631062248c7d697478c58eb6793a92a
-vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so|3202c209bd8249e3f76dec1108788b1a85b53561
+# QTEE
+lib/libGPTEE_system.so
+lib/libQTEEConnector_system.so
+lib/vendor.qti.hardware.qteeconnector@1.0.so
+lib64/libGPTEE_system.so
+lib64/libQTEEConnector_system.so
+lib64/vendor.qti.hardware.qteeconnector@1.0.so
+vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
+vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
+vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
+vendor/lib/libGPTEE_vendor.so
+vendor/lib/libQTEEConnector_vendor.so
+vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so
+vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
+vendor/lib64/libGPTEE_vendor.so
+vendor/lib64/libQTEEConnector_vendor.so
+vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Radio - from LA.UM.8.2.r1-04000-sdm660.0
 -product/app/datastatusnotification/datastatusnotification.apk|9d0bae96aa9f156534074b515c66126d13db5413
@@ -1410,6 +1409,17 @@ vendor/bin/hw/vendor.qti.hardware.soter@1.0-service|4f7e3c8a6cde9efefd8b9bf440fb
 vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc|76447a61ad5529949365eeb7e8ca000e48bd28ae
 vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so|9cf774301dfb59173cc2a6871ff851ea6b546f39
 vendor/lib64/vendor.qti.hardware.soter@1.0.so|5815859dc07d3181901596d06612b379e86fe6fd
+
+# Signed graphics firmware
+vendor/firmware/cppf.b00
+vendor/firmware/cppf.b01
+vendor/firmware/cppf.b02
+vendor/firmware/cppf.b03
+vendor/firmware/cppf.b04
+vendor/firmware/cppf.b05
+vendor/firmware/cppf.b06
+vendor/firmware/cppf.b07
+vendor/firmware/cppf.mdt
 
 # TUI - from Nokia Dragon QKQ1.190828.002-00WW_4_040-release-keys
 product/lib/vendor.qti.hardware.tui_comm@1.0.so|313677dd28de6f6b2a5cf8b136d8ce0723bb5a65
