@@ -645,8 +645,6 @@ private:
 
 	int add_dft_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset, ipa_ip_type iptype);
 
-	int add_tcpv6_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset);
-
 	int install_wan_filtering_rule(bool is_sw_routing);
 
 	void handle_wlan_SCC_MCC_switch(bool, ipa_ip_type);
