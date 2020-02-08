@@ -53,9 +53,9 @@ vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
 # ANT+
--lib/libantradio.so
 product/lib64/com.qualcomm.qti.ant@1.0.so
--lib64/libantradio.so
+-system/lib/libantradio.so
+-system/lib64/libantradio.so
 vendor/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
 
@@ -718,9 +718,9 @@ vendor/firmware/cpp_firmware_v1_12_0.fw
 vendor/bin/hvdcp_opti
 
 # CNE
-etc/cne/Nexus/ATT/ATT_profiles.xml
-etc/cne/Nexus/ROW/ROW_profiles.xml
-etc/cne/Nexus/VZW/VZW_profiles.xml
+system/etc/cne/Nexus/ATT/ATT_profiles.xml
+system/etc/cne/Nexus/ROW/ROW_profiles.xml
+system/etc/cne/Nexus/VZW/VZW_profiles.xml
 -vendor/app/CneApp/CneApp.apk
 -vendor/app/IWlanService/IWlanService.apk
 vendor/bin/cnd
@@ -857,10 +857,10 @@ vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 # FM
 -product/lib/vendor.qti.hardware.fm@1.0.so
 -product/lib64/vendor.qti.hardware.fm@1.0.so
-lib/fm_helium.so
-lib/libfm-hci.so
-lib64/fm_helium.so
-lib64/libfm-hci.so
+system/lib/fm_helium.so
+system/lib/libfm-hci.so
+system/lib64/fm_helium.so
+system/lib64/libfm-hci.so
 vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
 vendor/lib/vendor.qti.hardware.fm@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
@@ -995,11 +995,11 @@ vendor/lib/libgcs.so
 vendor/lib/libsmwrapper.so
 
 # Media
-lib/libFileMux.so
-lib/libmmosal.so
-lib/libmmparser_lite.so
-lib/libOmxMux.so
-lib64/libmmosal.so
+system/lib/libFileMux.so
+system/lib/libmmosal.so
+system/lib/libmmparser_lite.so
+system/lib/libOmxMux.so
+system/lib64/libmmosal.so
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
 vendor/lib/libdsd2pcm.so
@@ -1028,10 +1028,10 @@ vendor/lib64/libgpustats.so
 vendor/lib/libpn553_fw.so
 
 # NVRAM
-bin/nvram_btwifi
+system/bin/nvram_btwifi
 
 # NVRAM Deps - from cmi RKQ1.200512.002-V20.6.28
-system_ext/lib64/libmmi.so:lib64/libmmi.so|f2beb127814367f841758c4f0eeca3fbe8deecb5
+system_ext/lib64/libmmi.so:system/lib64/libmmi.so|f2beb127814367f841758c4f0eeca3fbe8deecb5
 
 # Perf
 vendor/bin/energy-awareness
@@ -1072,7 +1072,7 @@ vendor/lib64/vendor.display.color@1.2.so
 vendor/lib64/vendor.display.postproc@1.0.so
 
 # QMI
-etc/permissions/qti_permissions.xml
+system/etc/permissions/qti_permissions.xml
 product/lib64/libdiag_system.so
 vendor/bin/irsc_util
 vendor/bin/pd-mapper
@@ -1299,34 +1299,34 @@ vendor/firmware/widevine.mdt
 vendor/bin/cnss-daemon
 
 # WiFi Display
-bin/wfdservice
-etc/init/wfdservice.rc
-etc/wfdconfig.xml
-etc/wfdconfigsink.xml
--framework/WfdCommon.jar
-lib/com.qualcomm.qti.wifidisplayhal@1.0.so
-lib/libmmrtpdecoder.so
-lib/libmmrtpencoder.so
-lib/libwfdavenhancements.so
-lib/libwfdclient.so
-lib/libwfdcodecv4l2.so
-lib/libwfdcommonutils.so
-lib/libwfdconfigutils.so
-lib/libwfdmminterface.so
-lib/libwfdmmsink.so
-lib/libwfdmmsrc.so
-lib/libwfdnative.so
-lib/libwfdrtsp.so
-lib/libwfdservice.so
-lib/libwfdsm.so
-lib/libwfduibcinterface.so
-lib/libwfduibcsink.so
-lib/libwfduibcsinkinterface.so
-lib/libwfduibcsrc.so
-lib/libwfduibcsrcinterface.so
-lib64/libwfdclient.so
-lib64/libwfdnative.so
--priv-app/WfdService/WfdService.apk
+system/bin/wfdservice
+system/etc/init/wfdservice.rc
+system/etc/wfdconfig.xml
+system/etc/wfdconfigsink.xml
+-system/framework/WfdCommon.jar
+system/lib/com.qualcomm.qti.wifidisplayhal@1.0.so
+system/lib/libmmrtpdecoder.so
+system/lib/libmmrtpencoder.so
+system/lib/libwfdavenhancements.so
+system/lib/libwfdclient.so
+system/lib/libwfdcodecv4l2.so
+system/lib/libwfdcommonutils.so
+system/lib/libwfdconfigutils.so
+system/lib/libwfdmminterface.so
+system/lib/libwfdmmsink.so
+system/lib/libwfdmmsrc.so
+system/lib/libwfdnative.so
+system/lib/libwfdrtsp.so
+system/lib/libwfdservice.so
+system/lib/libwfdsm.so
+system/lib/libwfduibcinterface.so
+system/lib/libwfduibcsink.so
+system/lib/libwfduibcsinkinterface.so
+system/lib/libwfduibcsrc.so
+system/lib/libwfduibcsrcinterface.so
+system/lib64/libwfdclient.so
+system/lib64/libwfdnative.so
+-system/priv-app/WfdService/WfdService.apk
 vendor/bin/wifidisplayhalservice
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
