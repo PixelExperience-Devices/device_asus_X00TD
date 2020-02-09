@@ -11,5 +11,7 @@ allow init vendor_file:file execute;
 allow init system_file:file { execute_no_trans } ;
 allow init hwservicemanager:binder { call transfer };
 
+allow init sysfs_battery_supply:file { open write };
+
 dontaudit init nvram_btwifi:process noatsecure;
 dontaudit init domain:process noatsecure;
