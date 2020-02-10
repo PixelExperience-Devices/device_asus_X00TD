@@ -1396,16 +1396,16 @@ vendor/lib64/libcalmodule_common.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
-# Signed graphics firmware - from Nokia Dragon QKQ1.190828.002-00WW_4_040-release-keys
-vendor/firmware/cppf.b00|99fd8b6f1efddaecb31dab08d46746f0245f3dec
-vendor/firmware/cppf.b01|b65af3bed6c2bc2c2977fa30b17a38e7f76c60a8
-vendor/firmware/cppf.b02|6a7df9c0a69c4d3420240721e47c8f4a36f4d31e
-vendor/firmware/cppf.b03|689ef5feb5ba64d50a1413abe3e3c24c436ffc71
-vendor/firmware/cppf.b04|367eab8eb71e2f56683cd6e7316bcccad3b90a4e
-vendor/firmware/cppf.b05|08e4a9a58bcf5fccbae734a09b93c595e3e0067b
-vendor/firmware/cppf.b06|08e4a9a58bcf5fccbae734a09b93c595e3e0067b
-vendor/firmware/cppf.b07|2934295b3de8ea5e31fddd0e30ca81a0cdf6a954
-vendor/firmware/cppf.mdt|dd4317e49a672e834e720e75a95b0dfb568b7570
+# Signed graphics firmware
+vendor/firmware/cppf.b00
+vendor/firmware/cppf.b01
+vendor/firmware/cppf.b02
+vendor/firmware/cppf.b03
+vendor/firmware/cppf.b04
+vendor/firmware/cppf.b05
+vendor/firmware/cppf.b06
+vendor/firmware/cppf.b07
+vendor/firmware/cppf.mdt
 
 # Soter
 framework/vendor.qti.hardware.soter-V1.0-java.jar
@@ -1432,16 +1432,16 @@ vendor/lib/libUBWC.so
 vendor/lib64/libstreamparser.so
 vendor/lib64/libUBWC.so
 
-# Widevine firmware - from Nokia Dragon QKQ1.190828.002-00WW_4_040-release-keys
-vendor/firmware/widevine.b00|571f686f1e46c9ac6fcacbfd858477830072f389
-vendor/firmware/widevine.b01|b4a6e78f59539a1a50b34a9e917bca2916d5165e
-vendor/firmware/widevine.b02|dcceeec701cf4ff8aa4d4901033541f55b57440a
-vendor/firmware/widevine.b03|b4acbc90921ed2e59ba0bf49dc88ac82e3fcb0fd
-vendor/firmware/widevine.b04|2a85a6eb87a76e7860ed6009e1298e432377b70f
-vendor/firmware/widevine.b05|a1ae75240a6075768a0c5b06fc0f86cc5190aff3
-vendor/firmware/widevine.b06|a1ae75240a6075768a0c5b06fc0f86cc5190aff3
-vendor/firmware/widevine.b07|ea8cb8351c303345d95ca1de62ae0a3b302cb2ce
-vendor/firmware/widevine.mdt|0b4572ba4343b667f674d46410cb8151183c94ad
+# Widevine firmware
+vendor/firmware/widevine.b00
+vendor/firmware/widevine.b01
+vendor/firmware/widevine.b02
+vendor/firmware/widevine.b03
+vendor/firmware/widevine.b04
+vendor/firmware/widevine.b05
+vendor/firmware/widevine.b06
+vendor/firmware/widevine.b07
+vendor/firmware/widevine.mdt
 
 # Wi-Fi
 vendor/bin/cnss-daemon
