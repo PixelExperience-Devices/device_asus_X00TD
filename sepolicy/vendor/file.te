@@ -12,3 +12,12 @@ type proc_swappiness, proc_type, fs_type;
 
 # kcal
 type kcal_dev, sysfs_type, file_type;
+
+# FPS Info
+type sysfs_fps, sysfs_type, fs_type;
+
+# ZenParts
+type sysfs_backlight, sysfs_type, fs_type;
+type sysfs_hgain, sysfs_type, fs_type;
+type sysfs_mgain, sysfs_type, fs_type;
+type sysfs_tbrightness, sysfs_type, fs_type;

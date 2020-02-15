@@ -20,3 +20,8 @@ allow system_app apex_service:service_manager find;
 allow system_app system_suspend_control_service:service_manager find;
 
 get_prop(system_app, baseband_prop)
+
+allow system_app sysfs_backlight:file { open read getattr write };
+allow system_app sysfs_hgain:file { open read getattr write };
+allow system_app sysfs_mgain:file { open read getattr write };
+allow system_app sysfs_tbrightness:file { open getattr write };
