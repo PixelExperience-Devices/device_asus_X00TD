@@ -140,13 +140,12 @@ vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so|20464213b5f2cdb7d9c10f31b5b5
 product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
 product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
 
-# Camera
+# Camera - WW_Phone-17.2017.1911.407-20191223
 vendor/lib/hw/camera.sdm660.so
-vendor/lib/libarcsoft_arc3dnr_intf.so
-vendor/lib/libarcsoft_arcshdr_intf.so
 vendor/lib/libarcsoft_beautyshot.so
 vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_hdr.so
+vendor/lib/libarcsoft_hdr_detection.so
 vendor/lib/libarcsoft_night_shot.so
 vendor/lib/libarcsoft_picselfie_algorithm.so
 vendor/lib/libcdsprpc.so
@@ -277,6 +276,7 @@ vendor/lib/libmmcamera_qtech_f3l8yam_eeprom.so
 vendor/lib/libmmcamera_qtech_f5670bq_eeprom.so
 vendor/lib/libmmcamera_quadracfa.so
 vendor/lib/libmmcamera_rohm_brcg064gwz_3_eeprom.so
+vendor/lib/libmmcamera_stillmore_lib.so
 vendor/lib/libmmcamera_sunny_8865_eeprom.so
 vendor/lib/libmmcamera_sunny_ov13855_eeprom.so
 vendor/lib/libmmcamera_sunny_q13v06k_eeprom.so
@@ -294,18 +294,15 @@ vendor/lib/libmmjpeg_interface.so
 vendor/lib/libmmlib2d_interface.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/libmmqjpegdma.so
-vendor/lib/libmorpho_video_refiner.so
 vendor/lib/libmpbase.so
 vendor/lib/libqomx_core.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libremosaic_daemon.so
-vendor/lib/libts_detected_face_hal.so
-vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libvideoutils.so
 
-# Camera configs
+# Camera configs - WW_Phone-17.2017.1911.407-20191223
 vendor/etc/camera/camera_config.xml
 vendor/etc/camera/gc5025_ofilm_13m_chromatix.xml
 vendor/etc/camera/gc5025_ofilm_16m_chromatix.xml
@@ -323,7 +320,7 @@ vendor/etc/camera/ov16885_ofilm_16m_chromatix.xml
 vendor/etc/camera/ov8856_chicony_front_chromatix.xml
 vendor/etc/camera/ov8856_chromatix.xml
 
-# Camera actuators
+# Camera actuators - WW_Phone-17.2017.1911.407-20191223
 vendor/lib/libactuator_bu64297.so
 vendor/lib/libactuator_dw9714.so
 vendor/lib/libactuator_hi1333_ofilm_dw9714v.so
@@ -333,7 +330,7 @@ vendor/lib/libactuator_ov16880_qtech_rear_dw9714a.so
 vendor/lib/libactuator_ov16885_holitech_16m_fp5510a.so
 vendor/lib/libactuator_ov16885_ofilm_16m_dw9714v.so
 
-# Camera chromatix
+# Camera chromatix - WW_Phone-17.2017.1911.407-20191223
 vendor/lib/libchromatix_gc5025_ofilm_13m_common.so
 vendor/lib/libchromatix_gc5025_ofilm_13m_cpp_ds_chromatix.so
 vendor/lib/libchromatix_gc5025_ofilm_13m_cpp_hfr_60.so
@@ -680,7 +677,6 @@ vendor/lib/libchromatix_ov8856_a3_default_preview.so
 vendor/lib/libchromatix_ov8856_a3_default_video.so
 vendor/lib/libchromatix_ov8856_a3_hfr_60.so
 vendor/lib/libchromatix_ov8856_a3_hfr_90.so
-vendor/lib/libchromatix_ov8856_a3_hfr_120.so
 vendor/lib/libchromatix_ov8856_chicony_front_a3_default_preview.so
 vendor/lib/libchromatix_ov8856_chicony_front_a3_default_video.so
 vendor/lib/libchromatix_ov8856_chicony_front_a3_hfr_60.so
@@ -711,7 +707,6 @@ vendor/lib/libchromatix_ov8856_common.so
 vendor/lib/libchromatix_ov8856_cpp_ds_chromatix.so
 vendor/lib/libchromatix_ov8856_cpp_hfr_60.so
 vendor/lib/libchromatix_ov8856_cpp_hfr_90.so
-vendor/lib/libchromatix_ov8856_cpp_hfr_120.so
 vendor/lib/libchromatix_ov8856_cpp_liveshot.so
 vendor/lib/libchromatix_ov8856_cpp_preview.so
 vendor/lib/libchromatix_ov8856_cpp_snapshot.so
@@ -720,7 +715,6 @@ vendor/lib/libchromatix_ov8856_cpp_video.so
 vendor/lib/libchromatix_ov8856_default_video.so
 vendor/lib/libchromatix_ov8856_hfr_60.so
 vendor/lib/libchromatix_ov8856_hfr_90.so
-vendor/lib/libchromatix_ov8856_hfr_120.so
 vendor/lib/libchromatix_ov8856_liveshot.so
 vendor/lib/libchromatix_ov8856_postproc.so
 vendor/lib/libchromatix_ov8856_preview.so
@@ -728,7 +722,7 @@ vendor/lib/libchromatix_ov8856_snapshot.so
 vendor/lib/libchromatix_ov8856_zsl_preview.so
 vendor/lib/libchromatix_ov8856_zsl_video.so
 
-# Camera firmware
+# Camera firmware - WW_Phone-17.2017.1911.407-20191223
 vendor/firmware/cpp_firmware_v1_12_0.fw
 
 # Charger - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
