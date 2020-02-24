@@ -608,4 +608,8 @@
 
     <!-- Radius of the software rounded corners. -->
     <dimen name="rounded_corner_radius">14dp</dimen>
+
+    <!-- Smart Charging is available. -->
+    <bool name="config_smartChargingAvailable">true</bool>
+
 </resources>
