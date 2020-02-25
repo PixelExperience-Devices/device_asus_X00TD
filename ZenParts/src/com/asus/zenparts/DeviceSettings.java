@@ -84,8 +84,9 @@ public class DeviceSettings extends PreferenceFragment implements
 
         if (FileUtils.fileWritable(BACKLIGHT_DIMMER_PATH)) {
             mBacklightDimmer = (SecureSettingSwitchPreference) findPreference(PREF_BACKLIGHT_DIMMER);
-            mBacklightDimmer.setChecked(FileUtils.getFileValueAsBoolean(BACKLIGHT_DIMMER_PATH, false));
-            mBacklightDimmer.setOnPreferenceChangeListener(this);
+            mBacklightDimmer.setEnabled(BacklightDimmer.isSupported());
+            mBacklightDimmer.setChecked(BacklightDimmer.isCurrentlyEnabled(this.getContext()));
+            mBacklightDimmer.setOnPreferenceChangeListener(new BacklightDimmer(getContext()));
         } else {
             getPreferenceScreen().removePreference(findPreference(PREF_BACKLIGHT_DIMMER));
         }
@@ -114,10 +115,6 @@ public class DeviceSettings extends PreferenceFragment implements
 
             case PREF_MICROPHONE_GAIN:
                 FileUtils.setValue(MICROPHONE_GAIN_PATH, (int) value);
-                break;
-
-            case PREF_BACKLIGHT_DIMMER:
-                FileUtils.setValue(BACKLIGHT_DIMMER_PATH, (boolean) value);
                 break;
 
             default:
