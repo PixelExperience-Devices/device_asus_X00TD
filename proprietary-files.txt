@@ -920,17 +920,20 @@ vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
-# FM - from DRG - QKQ1.190828.002
--product/lib/vendor.qti.hardware.fm@1.0.so|a090651122fcad265ae7562c88dca746f893ad36
--product/lib64/vendor.qti.hardware.fm@1.0.so|fc7ad886f82089edf36509865fadac17a7340f32
-lib/fm_helium.so|feb4819f1898c67dfda4f965d7cc2711c74d1a99
-lib/libfm-hci.so|7700b02faa484ff682c618402f62b86bf8588db2
-lib64/fm_helium.so|bc9f6314528630c060b593cef4a8cec786b22467
-lib64/libfm-hci.so|589e9e290acfa18a49deba33606ed158d5e7f898
-vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so|2087fee60eb44c097ee9e6c93f4c873fff280866
-vendor/lib/vendor.qti.hardware.fm@1.0.so|89a7ec5cc673d13afc73116eccff2e58f218a34d
-vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so|506efd87250697bdae271f86ea472785a77b84ef
-vendor/lib64/vendor.qti.hardware.fm@1.0.so|073cace3aa8d0ffa025d9df67c45f8a907109339
+# FM - WW_Phone-17.2017.1911.407-20191223
+-product/lib/vendor.qti.hardware.fm@1.0.so
+-product/lib64/vendor.qti.hardware.fm@1.0.so
+lib/fm_helium.so
+lib/libfm-hci.so
+lib64/fm_helium.so
+lib64/libfm-hci.so
+vendor/bin/fm_qsoc_patches
+vendor/lib/ftm_fm_lib.so
+vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib/vendor.qti.hardware.fm@1.0.so
+vendor/lib64/ftm_fm_lib.so
+vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib64/vendor.qti.hardware.fm@1.0.so
 
 # Gatekeeper - from DRG - QKQ1.190828.002
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti|a189a50515831e6ac9a7e88a165ac979ae6ac077
@@ -1431,11 +1434,11 @@ vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc|2cfc563d7e157937
 vendor/lib/vendor.qti.hardware.tui_comm@1.0.so|f34f921b3e2a889cada5f9588009aae11af46a96
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|e47baed52f1c0637de34fa55e45a86b4b412a672
 
-# Thermal - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
-vendor/bin/thermal-engine|2734cd5aa3440b753cf62bf97875dea04119f1dc
--vendor/lib/libthermalclient.so|c3aecc7610e8f5775a6f6af2ff7790bef74380a1
--vendor/lib64/libthermalclient.so|84072e150722cc668320f07a75cb8695ce1a79b0
-vendor/lib64/libthermalioctl.so|d19db852b9885a5e7b8c8902e95a17d6f309916a
+# Thermal - WW_Phone-17.2017.1911.407-20191223
+vendor/bin/thermal-engine
+-vendor/lib/libthermalclient.so
+-vendor/lib64/libthermalclient.so
+vendor/lib64/libthermalioctl.so
 
 # Time services - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
 -vendor/app/TimeService/TimeService.apk|4a37afd1395758d946580af184a738e3c657b1e2
