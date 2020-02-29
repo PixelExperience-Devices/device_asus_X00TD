@@ -1,3 +1,7 @@
 dontaudit untrusted_app proc_vmstat:file { getattr open };
 allow untrusted_app sysfs_kgsl:dir { search };
 allow untrusted_app persist_camera_prop:file { read open };
+allow untrusted_app baseband_prop:file { read } ;
+allow untrusted_app proc:file { read } ;
+allow untrusted_app sysfs_net:dir { search } ;
+allow untrusted_app self:udp_socket { ioctl } ;
