@@ -33,6 +33,10 @@
 # Ipa
 /vendor/bin/init\.qcom\.ipastart\.sh                                    u:object_r:init-qcom-ipastart-sh_exec:s0
 
+# DRM
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.[0-2]-service\.clearkey				u:object_r:hal_drm_clearkey_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.[0-2]-service\.widevine				u:object_r:hal_drm_widevine_exec:s0
+
 # Firmware
 /bt_firmware(/.*)?                                                      u:object_r:bt_firmware_file:s0
 /firmware(/.*)?                                                         u:object_r:firmware_file:s0

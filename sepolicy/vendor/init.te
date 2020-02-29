@@ -8,6 +8,8 @@ allow init firmware_file:filesystem getattr;
 allow init bt_firmware_file:filesystem getattr;
 
 allow init vendor_file:file execute;
+allow init system_file:file { execute_no_trans } ;
+allow init hwservicemanager:binder { call transfer };
 
 dontaudit init nvram_btwifi:process noatsecure;
 dontaudit init domain:process noatsecure;
