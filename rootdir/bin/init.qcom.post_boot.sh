@@ -374,33 +374,17 @@ else
         set_almk_ppr_adj=$(((set_almk_ppr_adj * 6) + 6))
         echo $set_almk_ppr_adj > /sys/module/lowmemorykiller/parameters/adj_max_shift
 
-        # Calculate vmpressure_file_min as below & set for 64 bit:
-        # vmpressure_file_min = last_lmk_bin + (last_lmk_bin - last_but_one_lmk_bin)
-        if [ "$arch_type" == "aarch64" ]; then
-            minfree_series=`cat /sys/module/lowmemorykiller/parameters/minfree`
-            minfree_1="${minfree_series#*,}" ; rem_minfree_1="${minfree_1%%,*}"
-            minfree_2="${minfree_1#*,}" ; rem_minfree_2="${minfree_2%%,*}"
-            minfree_3="${minfree_2#*,}" ; rem_minfree_3="${minfree_3%%,*}"
-            minfree_4="${minfree_3#*,}" ; rem_minfree_4="${minfree_4%%,*}"
-            minfree_5="${minfree_4#*,}"
-
-            vmpres_file_min=$((minfree_5 + (minfree_5 - rem_minfree_4)))
-            echo $vmpres_file_min > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
-            if [ $MemTotal -gt 2097152 ]; then
-                # Huaqin add for ZQL1820-699 by shengzhong at 2018/09/19 start
-                echo "48432,63040,70648,95256,130296,145640" > /sys/module/lowmemorykiller/parameters/minfree
-                # Huaqin add for ZQL1820-699 by shengzhong at 2018/09/19 end
-            fi
+        # set parameters according to RAM size
+        echo "6400,12800,21760,38400,51200,89600" > /sys/module/lowmemorykiller/parameters/minfree
+        echo 89600 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+        echo 0 > /sys/module/vmpressure/parameters/allocstall_threshold
+        if [ $MemTotal -le 3145728 ]; then
+            echo 60 > /proc/sys/vm/swappiness
+            echo 60 > /proc/sys/vm/vfs_cache_pressure
         else
-            # Set LMK series, vmpressure_file_min for 32 bit non-go targets.
-            # Disable Core Control, enable KLMK for non-go 8909.
-            if [ "$ProductName" == "msm8909" ]; then
-                disable_core_ctl
-                echo 1 > /sys/module/lowmemorykiller/parameters/enable_lmk
-            fi
-        echo "15360,19200,23040,26880,34415,43737" > /sys/module/lowmemorykiller/parameters/minfree
-        echo 53059 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
-        fi
+            echo 20 > /proc/sys/vm/swappiness
+            echo 20 > /proc/sys/vm/vfs_cache_pressure
+        fi     
 
         # Enable adaptive LMK for all targets &
         # use Google default LMK series for all 64-bit targets >=2GB.
