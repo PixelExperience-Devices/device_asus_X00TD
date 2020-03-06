@@ -15,5 +15,8 @@ allow system_app sysfs_leds:dir search;
 allow system_app sysfs_leds:file { open getattr write };
 allow system_app baseband_prop:file { read };
 allow system_app fm_prop:property_service set;
+allow system_app wificond:binder call;
+allow system_app apex_service:service_manager find;
+allow system_app system_suspend_control_service:service_manager find;
 
 get_prop(system_app, baseband_prop)
