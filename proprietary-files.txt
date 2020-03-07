@@ -1077,6 +1077,13 @@ vendor/lib/libgcs-osal.so|5f0c6798dbeb9c806706b0cf217440662452364c
 vendor/lib/libgcs.so|ccb6ac9c27021cf4f2ec09994742c38b700c2583
 vendor/lib/libsmwrapper.so|7f7bd7045ced84928ec46b457ec5f21d5228ea3a
 
+# Listen - WW_Phone-17.2017.1911.407-20191223
+vendor/lib64/hw/sound_trigger.primary.sdm660.so
+vendor/lib64/libgcs-calwrapper.so
+vendor/lib64/libgcs-ipc.so
+vendor/lib64/libgcs-osal.so
+vendor/lib64/libgcs.so
+
 # Media - from LA.UM.8.2.r1-05100-sdm660.0
 lib/libFileMux.so|1c713da8d18f03deb33c3211761fc07dd57d6946
 lib/libmmosal.so|ebc0924623bc5cd5efdcfea984b555ee4855dae4
