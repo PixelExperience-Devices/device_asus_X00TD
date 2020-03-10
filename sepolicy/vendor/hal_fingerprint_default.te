@@ -1,3 +1,4 @@
+
 vndbinder_use(hal_fingerprint_default)
 
 binder_call(hal_fingerprint_default, hal_perf_default)
@@ -30,3 +31,4 @@ allow hal_fingerprint_default fingerprintd_data_file:dir rw_dir_perms;
 allow hal_fingerprint_default self:netlink_socket create_socket_perms_no_ioctl;
 
 dontaudit hal_fingerprint_default sysfs_usb_supply:dir { read search write };
+r_dir_file(hal_fingerprint_default, sysfs_usb_supply)
