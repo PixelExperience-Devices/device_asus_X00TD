@@ -1,7 +1,11 @@
 [
   {
-    "repository": "xtrymind/kernel_asus_X00T",
+    "repository": "android_kernel_asus_sdm660",
     "target_path": "kernel/asus/sdm660"
+  },
+  {
+    "repository": "vendor_asus_X00TD",
+    "target_path": "vendor/asus"
   },
   {
     "repository": "android_packages_resources_devicesettings",
