@@ -66,5 +66,3 @@
 /sys/kernel/touchpanel/dclicknode                                       u:object_r:sysfs:s0
 /sys/kernel/touchpanel/gesture_node                                     u:object_r:sysfs:s0
 
-# Touch HAL
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.X00T      u:object_r:hal_lineage_touch_default_exec:s0
