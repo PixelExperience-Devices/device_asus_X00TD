@@ -7,7 +7,6 @@ allow hal_camera_default mnt_vendor_file:dir search;
 # Allow hal_camera_default to read sys files
 allow hal_camera_default sysfs:file read;
 
-allow hal_camera_default system_file:file { read open getattr execute };
 allow hal_camera_default vendor_camera_data_file:dir rw_dir_perms;
 allow hal_camera_default vendor_camera_data_file:file rw_file_perms;
 allow hal_camera_default mnt_vendor_file:file rw_file_perms;

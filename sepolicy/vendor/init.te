@@ -8,7 +8,6 @@ allow init firmware_file:filesystem getattr;
 allow init bt_firmware_file:filesystem getattr;
 
 allow init vendor_file:file execute;
-allow init system_file:file { execute_no_trans } ;
 allow init hwservicemanager:binder { call transfer };
 
 allow init sysfs_battery_supply:file { open write };
