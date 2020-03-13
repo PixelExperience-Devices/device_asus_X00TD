@@ -1,10 +1,14 @@
 [
   {
-    "repository": "android_kernel_asus_sdm660",
+    "remote":"github",
+    "branch":"ten",
+    "repository": "alexmerecer09/kernel_asus_sdm660",
     "target_path": "kernel/asus/sdm660"
   },
   {
-    "repository": "vendor_asus_X00TD",
+    "remote":"github",
+    "branch":"ten",
+    "repository": "alexmercer09/proprietary_vendor_asus",
     "target_path": "vendor/asus"
   },
   {
