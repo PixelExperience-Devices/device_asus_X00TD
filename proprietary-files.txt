@@ -899,16 +899,14 @@ vendor/lib64/vendor.qti.hardware.factory@1.0.so|1347d5fb217b2a8801f19bea1f93016e
 vendor/lib64/vendor.qti.hardware.factory@1.1.so|00e090806194349ef6235f985f0bca9b1ed07284
 
 # Fingerprint sensor
-etc/permissions/asus.hardware.fingerprint_earlywakeup.xml
-product/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
-product/lib/vendor.qti.hardware.fingerprint@1.0.so
-product/lib64/vendor.qti.hardware.fingerprint@1.0.so
+framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
 -vendor/app/QFingerprintService/QFingerprintService.apk
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
 vendor/bin/qfp-daemon
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc|255cbdefc253ae3d8ef7d77aa429f20ff127b4fb
 vendor/etc/permissions/qti_fingerprint_interface.xml
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
+vendor/lib64/hw/cdfinger.default.so
 vendor/lib64/hw/cdfinger.fingerprint.default.so
 vendor/lib64/hw/fingerprint.default.so
 vendor/lib64/libgf_ca.so
@@ -917,8 +915,6 @@ vendor/lib64/libqfp-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
-vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
-vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 
 # FM - WW_Phone-17.2017.1911.407-20191223
 -product/lib/vendor.qti.hardware.fm@1.0.so
