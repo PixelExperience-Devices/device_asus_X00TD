@@ -38,10 +38,6 @@ on boot
     chmod 0660 /sys/class/power_supply/battery/device/smartchg_stop_charging
 
 on post-fs-data
-    # Create directory for cdfinger fingerprint
-    mkdir /data/system/cdfinger 0700 system system
-    restorecon /data/system/cdfinger
-
     # NFC local data and nfcee xml storage
     mkdir /data/vendor/nfc 0770 nfc nfc
     mkdir /data/vendor/nfc/param 0770 nfc nfc
