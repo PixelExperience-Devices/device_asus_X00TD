@@ -34,7 +34,7 @@
     <integer name="config_notificationsBatteryLowARGB">0xFFFF0000</integer>
 
     <!-- Default value for led color when battery is medium charged -->
-    <integer name="config_notificationsBatteryMediumARGB">0xFF50FF00</integer>
+    <integer name="config_notificationsBatteryMediumARGB">0xFF1E5000</integer> 
 
     <!-- Default value for led color when battery is fully charged -->
     <integer name="config_notificationsBatteryFullARGB">0xFF008000</integer>
@@ -189,6 +189,7 @@
          Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
          should be empty.  An example would be "softap.*" -->
     <string-array translatable="false" name="config_tether_wifi_regexs">
+        <item>"wigig0"</item>
         <item>"softap0"</item>
     </string-array>
 
@@ -196,13 +197,14 @@
          bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
          should be empty. -->
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
+        <item>"bnep\d"</item>
         <item>"bt-pan"</item>
     </string-array>
 
     <!-- When true, the tethering upstream network follows the current default
          Internet network (except when the current default network is mobile,
          in which case a DUN network will be used if required). -->
-    <bool translatable="false" name="config_tether_upstream_automatic">true</bool>
+     <bool translatable="false" name="config_tether_upstream_automatic">true</bool>
 
     <!-- Whether device ignores the RSSNR signal implementation -->
     <bool name="config_ignoreRssnrSignalLevel">true</bool>
@@ -223,7 +225,7 @@
     <string-array name="config_tether_dhcp_range">
         <item>192.168.42.2</item>
         <item>192.168.42.254</item>
-        <item>192.168.43.2</item>
+        <item>192.168.43.2</item> 
         <item>192.168.43.254</item>
         <item>192.168.44.2</item>
         <item>192.168.44.254</item>
@@ -305,7 +307,7 @@
     <bool name="config_wifiDisplaySupportsProtectedBuffers">true</bool>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
+    <bool translatable="false" name="config_wifi_dual_band_support">false</bool>
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
@@ -414,9 +416,9 @@
 
     <!-- Integer parameters of the wifi to cellular handover feature
          wifi should not stick to bad networks -->
-    <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-82</integer>
+    <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-80</integer>
     <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
-    <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-85</integer>
+    <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-83</integer>
     <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
 
     <!-- Flag indicating if the speed up audio on mt call code should be executed -->
@@ -425,15 +427,15 @@
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
-        <item>50</item>
-        <item>60</item>
-        <item>61</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
     </integer-array>
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
         <item>0</item>
-        <item>50</item>
+        <item>100</item>
         <item>20</item>
         <item>30</item>
     </integer-array>
@@ -608,4 +610,17 @@
 
     <!-- Radius of the software rounded corners. -->
     <dimen name="rounded_corner_radius">14dp</dimen>
+
+    <!-- Slow brightness animation ramp rate in brightness units per second-->
+    <integer translatable="false" name="config_brightness_ramp_rate_slow">10</integer>
+
+    <!-- Wifi driver supports Automatic channel selection (ACS) for softap -->
+    <bool translatable="false" name="config_wifi_softap_acs_supported">true</bool>
+
+    <!-- Wifi driver supports batched scan -->
+    <bool translatable="false" name="config_wifi_batched_scan_supported">true</bool>
+
+    <!-- Whether the Unprocessed audio source supports the required frequency range and level -->
+    <bool name="config_supportAudioSourceUnprocessed">true</bool>
+     
 </resources>
