@@ -21,5 +21,6 @@ ro.wifimac                         u:object_r:nvram_btwifi_prop:s0
 sys.nvram.btmac                    u:object_r:nvram_btwifi_prop:s0
 sys.nvram.wifimac                  u:object_r:nvram_btwifi_prop:s0
 
-# wifi
-wifi.active.interface              u:object_r:wifi_prop:s0
+# Fix for WLAN tethering offload
+# SELinux : avc:  denied  { set } for property=wifi.active.interface pid=2918 uid=1010 gid=1010 scontext=u:r::s0 tcontext=u:object_r:default_prop:s0 tclass=property_service
+wifi.active.interface               u:object_r:exported_wifi_prop:s0
