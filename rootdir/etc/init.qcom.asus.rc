@@ -48,7 +48,7 @@ on post-fs-data
 
 service nvram_btwifi /system/bin/nvram_btwifi
     user root
-    group system
+    group system oem_2901
     oneshot
     disabled
 
