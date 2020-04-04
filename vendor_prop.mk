@@ -6,7 +6,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.video=true \
     persist.vendor.audio.fluence.speaker=false \
     persist.vendor.audio.fluence.voicecall=true \
-    persist.vendor.audio.fluence.voicerec=true \
+    persist.vendor.audio.fluence.voicerec=false \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
     persist.vendor.audio.hifi.int_codec=true \
     persist.vendor.audio.ras.enabled=false \
@@ -58,10 +58,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     #persist.vendor.camera.ois.disable=1 \
     #persist.vendor.camera.is_type=4 \
     #vendor.camera.hal1.packagelist=com.whatsapp,com.instagram.android
-
-# Codec2 switch
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.media.codec2=2
 
 # Dalvik overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -184,11 +180,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Shutdown
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.vendor.shutdown.waittime=500
-
-# SurfaceFlinger
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
-    ro.surface_flinger.max_virtual_display_dimension=4096
 
 # System prop for UBWC
 PRODUCT_PROPERTY_OVERRIDES += \
