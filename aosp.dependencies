@@ -2,18 +2,14 @@
   {
     "remote":"github",
     "branch":"ten",
-    "repository": "alexmerecer09/kernel_asus_sdm660",
+    "repository": "PixelExperience-Devices/kernel_asus_sdm660",
     "target_path": "kernel/asus/sdm660"
   },
   {
     "remote":"github",
     "branch":"ten",
-    "repository": "alexmercer09/proprietary_vendor_asus",
+    "repository": "PixelExperience-Devices/vendor_asus",
     "target_path": "vendor/asus"
-  },
-  {
-    "repository": "android_packages_resources_devicesettings",
-    "target_path": "packages/resources/devicesettings"
   },
   {
     "repository": "packages_apps_PixelLiveWallpaper",
