@@ -16,7 +16,7 @@
  */
 
  /* 
- * Lights HAL for Asus X00T (RG led and LCD BACKLIGHT)
+ * Lights HAL for Asus X00TD (RG led and LCD BACKLIGHT)
  *    RG led scenarios:
  *       Battery:
  *           -red blink

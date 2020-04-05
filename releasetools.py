@@ -35,7 +35,7 @@ def AddModemAssertion(info):
     version_firmware = f.group(1).rstrip()
     if ((len(version_modem) and '*' not in version_modem) and \
     (len(version_firmware) and '*' not in version_firmware)):
-      cmd = 'assert(X00T.verify_modem("' + version_modem + '") == "1" || \
+      cmd = 'assert(X00TD.verify_modem("' + version_modem + '") == "1" || \
 abort("Error: This package requires firmware version ' + version_firmware + \
 ' or newer. Please upgrade firmware and retry!"););'
       info.script.AppendExtra(cmd)
