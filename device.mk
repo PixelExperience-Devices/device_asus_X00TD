@@ -79,7 +79,7 @@ PRODUCT_COPY_FILES += \
 
 # AR CONFIG
 PRODUCT_COPY_FILES += \
-   device/asus/X00T/configs/android.hardware.camera.ar.xml:vendor/etc/permissions/android.hardware.camera.ar.xml
+   device/asus/X00TD/configs/android.hardware.camera.ar.xml:vendor/etc/permissions/android.hardware.camera.ar.xml
 
 # APEX
 PRODUCT_COPY_FILES += \
@@ -282,7 +282,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.X00T
+    android.hardware.light@2.0-service.X00TD
 
 # LiveDisplay native
 PRODUCT_PACKAGES += \
@@ -394,7 +394,7 @@ PRODUCT_PACKAGES += \
 
 # Recovery
 PRODUCT_PACKAGES += \
-    librecovery_updater_X00T
+    librecovery_updater_X00TD
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -471,7 +471,7 @@ PRODUCT_PACKAGES += \
 
 # Touch HAL
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.X00T
+    vendor.lineage.touch@1.0-service.X00TD
 
 # Trust HAL
 PRODUCT_PACKAGES += \
@@ -479,7 +479,7 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-	android.hardware.usb@1.0-service.X00T
+	android.hardware.usb@1.0-service.X00TD
 
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
@@ -532,4 +532,4 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_PACKAGES += \
 #    ZenParts
 
-$(call inherit-product, vendor/asus/X00T/X00T-vendor.mk)
+$(call inherit-product, vendor/asus/X00TD/X00TD-vendor.mk)

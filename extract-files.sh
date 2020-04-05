@@ -18,7 +18,7 @@
 
 set -e
 
-DEVICE=X00T
+DEVICE=X00TD
 VENDOR=asus
 
 # Load extract_utils and do some sanity checks
@@ -64,7 +64,7 @@ setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" ${KANG} --section "${SECTION}"
 
-if [ "$DEVICE" = "X00T" ]; then
+if [ "$DEVICE" = "X00TD" ]; then
 patchelf --remove-needed libbacktrace.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
 patchelf --remove-needed libunwind.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
 patchelf --remove-needed libkeystore_binder.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
