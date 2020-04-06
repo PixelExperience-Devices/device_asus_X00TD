@@ -108,26 +108,28 @@ vendor/lib64/hw/audio.primary.sdm660.so
 vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libtinycompress_vendor.so
 
-# Bluetooth - WW_Phone-17.2017.1911.407-20191223
-vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
-vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
-vendor/lib64/hw/audio.bluetooth_qti.default.so
-vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
-vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
-vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
-vendor/lib64/libbluetooth_audio_session_qti.so
-vendor/lib64/libbtnv.so
-vendor/lib64/libbt-hidlclient.so
-vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
-vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
-vendor/lib/hw/audio.bluetooth_qti.default.so
-vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
-vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
-vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
-vendor/lib/libbluetooth_audio_session_qti.so
-vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
-vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so
+# Bluetooth - from DRG - QKQ1.190828.002
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|57a0a575a2b1b96176fda1bcb84ea8371c4070d1
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|a979981c55f3dcaf6cf2212e71b901ca4d58b959
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|15d5841dd4f2fc27a58fe5a71b80afefcaa1cf7d
+vendor/lib64/libbtnv.so|afa8f54b606c1c23ba598d8f85581c219a627eee
+vendor/lib64/libbt-hidlclient.so|4a4038013bf438627154899d3823c9346c3d84ec
+
+# Bluetooth Audio - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/lib64/hw/audio.bluetooth_qti.default.so|227b61f8b6851839d1a826b734c759361bab4e23
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|dacf9a625cc9f8829dd2ab8256d769291f33e98a
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|71ad8980142e7d8d754607accc0cffd8f5e68dbd
+vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|f9dcf9a19a0b601969bcd606bedb8a8419de9d81
+vendor/lib64/libbluetooth_audio_session_qti.so|124b2adcde969954bc2f2b8eab8e98b2694f7a59
+vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|9346946b110086a6b473c8226e072e9a0cdbb87e
+vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|c51214b092f7e47c2d21989a605c4a8c7e7b85eb
+vendor/lib/hw/audio.bluetooth_qti.default.so|ecc09bb4a84c964b50af91f73295e2cecdc1433d
+vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|3cc64b90af15016a3bbe21eb265805d0c3e35796
+vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|1360ae1d4f10d3762699d6ce82b456d8a0145a23
+vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|b2a644519ad0d890274c384f76269de76e706058
+vendor/lib/libbluetooth_audio_session_qti.so|4dca1e62a630f9ab9900f217a27f77a02e74767a
+vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so|5c24249adf85a30aa66f6a391bf697063d989a87
+vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so|20464213b5f2cdb7d9c10f31b5b53fc03526698f
 
 # Bluetooth aptX(HD) - from walleye QP1A.190711.020
 product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
@@ -724,8 +726,8 @@ vendor/lib/libchromatix_ov8856_zsl_video.so
 # Camera firmware
 vendor/firmware/cpp_firmware_v1_12_0.fw
 
-# Charger - WW_Phone-17.2017.1911.407-20191223
-vendor/bin/hvdcp_opti
+# Charger - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hvdcp_opti|120837d6d44abfd86515731dd26183be9cdd5596
 
 # CNE - from LA.UM.8.2.r1-05100-sdm660.0
 etc/cne/Nexus/ATT/ATT_profiles.xml|33e568627fd3f94dc45bca1c01ad10e6d8fb5b52
@@ -876,12 +878,15 @@ vendor/lib64/libwvhidl.so
 vendor/lib/liboemcrypto.so|8ad53c1e62751c731a1837c29985d5dd8fff0de2
 vendor/lib64/liboemcrypto.so|db41cb588065ad0d92ac2a59db409420c021413b
 
-# ESE-Powermanager - WW_Phone-17.2017.1911.407-20191223
-product/lib64/vendor.qti.esepowermanager@1.0.so
-vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
-vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
-vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
-vendor/lib64/vendor.qti.esepowermanager@1.0.so
+# ESE-Powermanager - from DRG - QKQ1.190828.002
+product/lib/vendor.qti.esepowermanager@1.0.so|07b5def050ef3200ed8946bf33be4f60049cd4aa
+product/lib64/vendor.qti.esepowermanager@1.0.so|165a6b6f6fec38055a178d2d5903de5756a44571
+vendor/bin/hw/vendor.qti.esepowermanager@1.0-service|4191e27a3e97009789dfcd2c44fd202d152fa61b
+vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc|58a3866ad5a7613d9392c9adb671eaa7825578a2
+vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so|fd95cf6c9b36324fb5d0e5e8498721b65749ee94
+vendor/lib/vendor.qti.esepowermanager@1.0.so|12f57cdb3ea7f7e7a248f9a3d7de4f8e5755ac79
+vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so|b9a03bfc607fb74462346eecacf27a7afda8d114
+vendor/lib64/vendor.qti.esepowermanager@1.0.so|0dc949a16129a9d3d06429723641b6fba11ee1d2
 
 # Factory - from DRG - QKQ1.190828.002
 product/framework/vendor.qti.data.factory-V1.0-java.jar|f0a14b08ab6c2fb85342383235be6b75d67806fb
@@ -926,11 +931,11 @@ vendor/lib64/ftm_fm_lib.so
 vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.fm@1.0.so
 
-# Gatekeeper - WW_Phone-17.2017.1911.407-20191223
-vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
-vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
-vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
-vendor/lib64/hw/gatekeeper.sdm660.so
+# Gatekeeper - from DRG - QKQ1.190828.002
+vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti|a189a50515831e6ac9a7e88a165ac979ae6ac077
+vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc|1b8d5f58fe0a57906acf72b862c16a2521daa97b
+vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so|eaf70216b4e53f409c22764b272b79cd60a4b714
+vendor/lib64/hw/gatekeeper.sdm660.so|e8f32651e4bfff88fcc02c34eca6cd5f04a444aa
 
 # GPS - from LA.UM.8.2.r1-05100-sdm660.0
 etc/permissions/com.qti.location.sdk.xml|cb68a566bd77dcc75bb7547199d528289fac01cb
@@ -1047,19 +1052,19 @@ vendor/lib64/libtinyxml2_1.so|70942325afdd14eedcf11b3fbbfbc3d98f42f8dc
 vendor/lib/hw/vulkan.sdm660.so|f78259ff9c113ca8ae16df5efd0a05d9a3cd4a29
 vendor/lib64/hw/vulkan.sdm660.so|2ddf11008f7fc0b32f151d83bf64f756c5879dd9
 
-# Keymaster - WW_Phone-17.2017.1911.407-20191223
-vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
-vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc
-vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so
-vendor/lib/libkeymasterdeviceutils.so
-vendor/lib/libkeymasterprovision.so
-vendor/lib/libkeymasterutils.so
-vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so
-vendor/lib64/libkeymasterdeviceutils.so
-vendor/lib64/libkeymasterprovision.so
-vendor/lib64/libkeymasterutils.so
+# Keymaster - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/hw/android.hardware.keymaster@3.0-service-qti|22838e26f4a645a351bec32405ccf54b2271e13d
+vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc|573b7392c8997008204081165cfe81a11080745d
+vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so|595ba927e28accdb5c5e6927a7bb5ef17ad455a1
+vendor/lib/libkeymasterdeviceutils.so|bc2aac023d99ec9e423d2f769019d187c99a8afb
+vendor/lib/libkeymasterprovision.so|ae6bbb9fec083307336b6191194d5c48b5dfd3a5
+vendor/lib/libkeymasterutils.so|599755dde51af5289f1f2776651bb2f93eb8507e
+vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so|69fd7a9f800da8cb74ae3a726188c028bc360d05
+vendor/lib64/libkeymasterdeviceutils.so|763a02841eb133e698180e0cacf309450a4ce0e0
+vendor/lib64/libkeymasterprovision.so|f7e215595c2f7e62a6575b23a109b6b18556fc3b
+vendor/lib64/libkeymasterutils.so|679491d7b415f45469990380e4fd61e4bfbc445e
 
-# Keystore - WW_Phone-17.2017.1911.407-20191223
+# Keystore
 vendor/lib/hw/keystore.sdm660.so
 vendor/lib64/hw/keystore.sdm660.so
 
@@ -1351,15 +1356,12 @@ vendor/lib64/libsensor1.so
 vendor/lib64/sensors.native.so
 vendor/lib64/sensors.ssc.so
 
-# Sensors calibration - WW_Phone-17.2017.1911.407-20191223
--product/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
-product/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
-product/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
-vendor/etc/calmodule.cfg
-vendor/lib/libcalmodule_common.so
-vendor/lib/sensor_calibrate.so
-vendor/lib64/libcalmodule_common.so
-vendor/lib64/sensor_calibrate.so
+# Sensors calibration - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+product/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar|b6e036c7f03aa04b87e09e05c31d1e97d0f2cb25
+product/lib/vendor.qti.hardware.sensorscalibrate@1.0.so|f9fc5478ea958cbf6c0eb3ecb60bde45b09ca0ed
+product/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so|45fa1c6d3e292d1ca8c2d43f007654c30537debb
+vendor/lib/sensor_calibrate.so|22c442599a1550e3e9b47d3055c5ac7fabdb29d5
+vendor/lib64/sensor_calibrate.so|efbe09267ad7c1b32be0ebb2fa7b0beec4d27179
 
 # Signed graphics firmware
 vendor/firmware/cppf.b00
@@ -1372,13 +1374,24 @@ vendor/firmware/cppf.b06
 vendor/firmware/cppf.b07
 vendor/firmware/cppf.mdt
 
-# Soter - WW_Phone-17.2017.1911.407-20191223
-product/framework/vendor.qti.hardware.soter-V1.0-java.jar
-product/lib64/vendor.qti.hardware.soter@1.0.so
-vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
-vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
-vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.soter@1.0.so
+# Soter - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+product/framework/vendor.qti.hardware.soter-V1.0-java.jar|e0a20a638cac4e369a29157ea4aa44b1e5d60f8f
+product/lib64/vendor.qti.hardware.soter@1.0.so|0cc653294e81fd394ccd9dcb368de6bfa0914619
+vendor/bin/hw/vendor.qti.hardware.soter@1.0-service|4f7e3c8a6cde9efefd8b9bf440fb1ed442e21fd3
+vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc|76447a61ad5529949365eeb7e8ca000e48bd28ae
+vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so|9cf774301dfb59173cc2a6871ff851ea6b546f39
+vendor/lib64/vendor.qti.hardware.soter@1.0.so|5815859dc07d3181901596d06612b379e86fe6fd
+
+# Signed graphics firmware
+vendor/firmware/cppf.b00
+vendor/firmware/cppf.b01
+vendor/firmware/cppf.b02
+vendor/firmware/cppf.b03
+vendor/firmware/cppf.b04
+vendor/firmware/cppf.b05
+vendor/firmware/cppf.b06
+vendor/firmware/cppf.b07
+vendor/firmware/cppf.mdt
 
 # TUI - from LA.UM.8.2.r1-05100-sdm660.0
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti|d4d025e0a12af87f65104fe07801517938733603
@@ -1414,8 +1427,8 @@ vendor/firmware/widevine.b06
 vendor/firmware/widevine.b07
 vendor/firmware/widevine.mdt
 
-# Wi-Fi - WW_Phone-17.2017.1911.407-20191223
-vendor/bin/cnss-daemon
+# Wi-Fi - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
+vendor/bin/cnss-daemon|3f51988443047eb02ae1607b0d6bd05a4386c2b1
 
 # WiFi Display - from LA.UM.8.2.r1-05100-sdm660.0
 bin/wfdservice|934817e5689fe6f8b54032902de58c203b8ec2e7
