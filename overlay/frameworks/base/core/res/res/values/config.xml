@@ -151,9 +151,6 @@
     <!-- Fast brightness animation ramp rate in brightness units per second-->
     <integer translatable="false" name="config_brightness_ramp_rate_fast">180</integer>
 
-    <!-- Slow brightness animation ramp rate in brightness units per second-->
-    <integer translatable="false" name="config_brightness_ramp_rate_slow">60</integer>
-
     <!-- Flashlight on power button -->
     <integer name="config_flashlightProximityTimeout">-1</integer>
 
