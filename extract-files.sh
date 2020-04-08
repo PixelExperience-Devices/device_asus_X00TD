@@ -27,7 +27,7 @@ if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
 LINEAGE_ROOT="${MY_DIR}/../../.."
 
-HELPER="${LINEAGE_ROOT}/vendor/lineage/build/tools/extract_utils.sh"
+HELPER="${LINEAGE_ROOT}/vendor/aosp/build/tools/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
     exit 1
@@ -63,43 +63,5 @@ fi
 setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" ${KANG} --section "${SECTION}"
-
-if [ "$DEVICE" = "X00TD" ]; then
-patchelf --remove-needed libbacktrace.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
-patchelf --remove-needed libunwind.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
-patchelf --remove-needed libkeystore_binder.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
-patchelf --remove-needed libsoftkeymasterdevice.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
-patchelf --remove-needed libsoftkeymaster.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
-patchelf --remove-needed libkeymaster_messages.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.default.so
-
-patchelf --remove-needed libbacktrace.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.fingerprint.default.so
-patchelf --remove-needed libunwind.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.fingerprint.default.so
-patchelf --remove-needed libkeystore_binder.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.fingerprint.default.so
-patchelf --remove-needed libsoftkeymasterdevice.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.fingerprint.default.so
-patchelf --remove-needed libsoftkeymaster.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.fingerprint.default.so
-patchelf --remove-needed libkeymaster_messages.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/cdfinger.fingerprint.default.so
-
-patchelf --remove-needed libbacktrace.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/fingerprint.default.so
-patchelf --remove-needed libunwind.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/fingerprint.default.so
-patchelf --remove-needed libkeystore_binder.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/fingerprint.default.so
-patchelf --remove-needed libsoftkeymasterdevice.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/fingerprint.default.so
-patchelf --remove-needed libsoftkeymaster.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/fingerprint.default.so
-patchelf --remove-needed libkeymaster_messages.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/fingerprint.default.so
-
-patchelf --remove-needed libbacktrace.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
-patchelf --remove-needed libunwind.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
-patchelf --remove-needed libkeystore_binder.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
-patchelf --remove-needed libsoftkeymasterdevice.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
-patchelf --remove-needed libsoftkeymaster.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
-patchelf --remove-needed libkeymaster_messages.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
-
-patchelf --remove-needed libbacktrace.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
-patchelf --remove-needed libunwind.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
-patchelf --remove-needed libkeystore_binder.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
-patchelf --remove-needed libsoftkeymasterdevice.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
-patchelf --remove-needed libsoftkeymaster.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
-patchelf --remove-needed libkeymaster_messages.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
-
-fi
 
 "${MY_DIR}/setup-makefiles.sh"
