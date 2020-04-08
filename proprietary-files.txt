@@ -108,28 +108,28 @@ vendor/lib64/hw/audio.primary.sdm660.so
 vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libtinycompress_vendor.so
 
-# Bluetooth - from DRG - QKQ1.190828.002
-vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|57a0a575a2b1b96176fda1bcb84ea8371c4070d1
+# Bluetooth - from Nokia ddv_sprout(m690-user 10 QKQ1.191014.001 00WW_2_250 release-keys)
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|dce7c7298b1801f6a037dc3e4597af56e3649bd0
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|a979981c55f3dcaf6cf2212e71b901ca4d58b959
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|15d5841dd4f2fc27a58fe5a71b80afefcaa1cf7d
-vendor/lib64/libbtnv.so|afa8f54b606c1c23ba598d8f85581c219a627eee
-vendor/lib64/libbt-hidlclient.so|4a4038013bf438627154899d3823c9346c3d84ec
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|115ea626b9feb2316b077ae342f2c5ae85afb1f2
+vendor/lib64/libbtnv.so|ccd806c4f994c803849fffb8cbed416766e56368
+vendor/lib64/libbt-hidlclient.so|9fefca0a83e677c36a1c47b2e834312afa2d99c6
 
-# Bluetooth Audio - from Nokia DRG_sprout 10 QKQ1.190828.002 00WW_4_040 release-keys
-vendor/lib64/hw/audio.bluetooth_qti.default.so|227b61f8b6851839d1a826b734c759361bab4e23
-vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|dacf9a625cc9f8829dd2ab8256d769291f33e98a
-vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|71ad8980142e7d8d754607accc0cffd8f5e68dbd
-vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|f9dcf9a19a0b601969bcd606bedb8a8419de9d81
-vendor/lib64/libbluetooth_audio_session_qti.so|124b2adcde969954bc2f2b8eab8e98b2694f7a59
-vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|9346946b110086a6b473c8226e072e9a0cdbb87e
-vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|c51214b092f7e47c2d21989a605c4a8c7e7b85eb
-vendor/lib/hw/audio.bluetooth_qti.default.so|ecc09bb4a84c964b50af91f73295e2cecdc1433d
-vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|3cc64b90af15016a3bbe21eb265805d0c3e35796
-vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|1360ae1d4f10d3762699d6ce82b456d8a0145a23
-vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|b2a644519ad0d890274c384f76269de76e706058
-vendor/lib/libbluetooth_audio_session_qti.so|4dca1e62a630f9ab9900f217a27f77a02e74767a
-vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so|5c24249adf85a30aa66f6a391bf697063d989a87
-vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so|20464213b5f2cdb7d9c10f31b5b53fc03526698f
+# Bluetooth Audio - from Nokia ddv_sprout(m690-user 10 QKQ1.191014.001 00WW_2_250 release-keys)
+vendor/lib64/hw/audio.bluetooth_qti.default.so|102539a0013edf06790215b21bed68c704437a96
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|7c525421896d79464717a03fdc61e87336f740c9
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|ebdfcc7064fc144acf6cba300486c6394af3d73b
+vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|5e06b7b33d084975d6326875268cb237ad6d8559
+vendor/lib64/libbluetooth_audio_session_qti.so|3a33edf9e597713879061e57db8cf4481e61ab87
+vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|d11a6abbaddbfee605c57a1a235c1da3011ee068
+vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|22e4ecfff33c62adae5f1a0e399d3affb8f31c38
+vendor/lib/hw/audio.bluetooth_qti.default.so|bbf5bed40ab75e0feed0753a40743dbf6979dfb9
+vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so|b32776d28ea0dc664e1a0fefe8adcd56248f68c7
+vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so|71644784c8f73573380004f1c69cf18b1e57964b
+vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|10bddb86ecd1c7e0b0d49fef80bc4ded29a05ce1
+vendor/lib/libbluetooth_audio_session_qti.so|fe156831851ea0ff999dcd6644e7284f7359ea7b
+vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so|2def3aabe15c39a7f4e5559dad8b4707bb7ced92
+vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so|7aa80f9b0e410861685fad695f17df9ad0240372
 
 # Bluetooth aptX(HD) - from walleye QP1A.190711.020
 product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
