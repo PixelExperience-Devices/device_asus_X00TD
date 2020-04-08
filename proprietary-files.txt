@@ -937,50 +937,50 @@ vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc|1b8d5f58fe0a57906
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so|eaf70216b4e53f409c22764b272b79cd60a4b714
 vendor/lib64/hw/gatekeeper.sdm660.so|e8f32651e4bfff88fcc02c34eca6cd5f04a444aa
 
-# GPS - from LA.UM.8.2.r1-05100-sdm660.0
+# GPS - from Nokia ddv_sprout(m690-user 10 QKQ1.191014.001 00WW_2_250 release-keys)
 etc/permissions/com.qti.location.sdk.xml|cb68a566bd77dcc75bb7547199d528289fac01cb
 etc/permissions/com.qualcomm.location.xml|1d36e7cf8e16813aa13ee6b3fca8d8687b543828
 etc/permissions/izat.xt.srv.xml|a0f460056f27b5495a4d6e959eecf0e429c42a57
 etc/permissions/privapp-permissions-com.qualcomm.location.xml|2dc7fba818bdf582bfea849a74f4b312d90745c9
 framework/com.qti.location.sdk.jar|5dcbf27bd7709a111985e9660b5b61b5fb7a22b1
 framework/izat.xt.srv.jar|98ffd12c789af16d186a4a04c0703a23dc27e347
-lib64/liblocationservice_jni.so|50361cb2daa46466a8af1f27eeb53e6cca2fa302
+lib64/liblocationservice_jni.so|71344b90faa40ec4b0a4c345a61dedb0368badf2
 lib64/libxt_native.so|d023ae9678d7954285ad61903d73cac14a86e3ce
--priv-app/com.qualcomm.location/com.qualcomm.location.apk|2e8d1439d4f12288f929e5c46a64a01c2b40b8b0
-product/lib64/vendor.qti.gnss@1.0.so|ce99dc24861514d3444bdaca9336c98227e3d951
-product/lib64/vendor.qti.gnss@1.1.so|bb56a726390e44e240f5daa26a34e08e87461734
-product/lib64/vendor.qti.gnss@1.2.so|788ec8d5730ed1201e941abd738dce212074feb3
-product/lib64/vendor.qti.gnss@2.0.so|dc370cbed727554a69ab283276d757e6597fdb4c
-product/lib64/vendor.qti.gnss@2.1.so|79d924c8006b33b358bf9e3d9a21ff2fe8a937df
-product/lib64/vendor.qti.gnss@3.0.so|48b718e175dbf6156ded10a056a47d4988319395
+-priv-app/com.qualcomm.location/com.qualcomm.location.apk|c614d7a410691e2e49df51a0dec7896ae762201f
+product/lib64/vendor.qti.gnss@1.0.so|0f9cd900de9144d3d77f13b7eee292d5c74fcf33
+product/lib64/vendor.qti.gnss@1.1.so|fa9bd02c0acf9a3bc694b9349cf19a88f0db57c1
+product/lib64/vendor.qti.gnss@1.2.so|f70035b17f3bad9f4c50a95930d928b5c6df6702
+product/lib64/vendor.qti.gnss@2.0.so|7f6717ddf0c82f56a16e7428df5f791a6ca52dd4
+product/lib64/vendor.qti.gnss@2.1.so|1420869a83af19215eeec765b32bbfd209bb05a6
+product/lib64/vendor.qti.gnss@3.0.so|8aed1c3bd1453ad3ca268008e9ec47e7e2afb5f5
 vendor/bin/loc_launcher|9623f5f96bd262abc5c883610feca43a5ab214b3
-vendor/bin/lowi-server|291abd4d7e0784b8607aba38b2aa295364936f73
-vendor/bin/slim_daemon|e4f028b422b9fb7bfd6ec2a107c61af2d285e946
-vendor/bin/xtra-daemon|4dd499ce761eca7c707d2eaa17393e35ed56682a
+vendor/bin/lowi-server|2b3c857d26fb7896ac08d1bacae79eb7d780cfd8
+vendor/bin/slim_daemon|434d870fbdbd996597fdc701748613fb2f19517e
+vendor/bin/xtra-daemon|a840d3899364a47922fc3a25484daf013b123d45
 vendor/etc/cacert_location.pem|0789bf799c7e45d352a83e2f79ddb0cea86db85b
 vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml|9b2f6691d6c224bcb9ab9a0d57adfb9e52f1b53e
 vendor/etc/xtra_root_cert.pem|f55a31ec4d9cf8ce2724acadecf00c779f8767db
-vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so|dc973c1e6a7d316ae7faa47b2b44213dbcc9b667
-vendor/lib64/libdataitems.so|92dd4aab8e002ebaa9dfe8c82e7aaa46b4307bf6
-vendor/lib64/libgdtap.so|499851c947dd5d6a209a93490ee0cf0f9929a99d
+vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so|14f5e9b88671b1b134cc8e059e71f8b46b0418d3
+vendor/lib64/libdataitems.so|0cb218aed2eb7a4f94d254974af3652f2b455f0e
+vendor/lib64/libgdtap.so|cfcb2d8c3a79c3c152be800bc1f45ac44816ea91
 vendor/lib64/libizat_client_api.so|f7b08f61c2db7c95679361d1fbfd7d731781d6fe
-vendor/lib64/libizat_core.so|e266eb42be5021bdde0faf6d6f438b17604a2173
-vendor/lib64/liblbs_core.so|de7940680d1b4ae7a9472c4ff4b4a85971a5bac8
-vendor/lib64/libloc_api_v02.so|4a366e623b6dfeb86f219ea8b37f6182159b389e
-vendor/lib64/liblocationservice.so|086fffb88ab68ab7f01c551e1def6f0dca5b54ec
-vendor/lib64/liblocationservice_glue.so|a08943e0f399520ad2cbdf5792dbfa8c6999d480
-vendor/lib64/liblowi_client.so|e32c1c0d6ca9e25b4ff8ad876021947acdc2b88a
+vendor/lib64/libizat_core.so|b4b494fde2c6b64eb0705478debc225084cb8ab3
+vendor/lib64/liblbs_core.so|b0fe30acc380642a989c572261b1d57bc4176453
+vendor/lib64/libloc_api_v02.so|35bee3bebca4c51908a38c249beaa8adbdf8dcf0
+vendor/lib64/liblocationservice.so|d0cb74596b881ebf5352f11b20ca6d659b73bd55
+vendor/lib64/liblocationservice_glue.so|f864dd933f19dd7bfca7cc08d2fc76e75092724a
+vendor/lib64/liblowi_client.so|cc5a58e2887f1b00dc689c8b8a8f7265fa6a4788
 vendor/lib64/liblowi_wifihal.so|676dea705848f87074e9b399ad4a25892327ba07
 vendor/lib64/libqdma_file_agent.so|bb7b35dae09848f2fceddaac17344d2b7ef4e944
-vendor/lib64/libslimclient.so|8e0671fa8d4fbcfe79e9b358133186d9dd909841
-vendor/lib64/libxtadapter.so|00b79ffff6504fe4db1d62fa08c167eef59ccf9a
-vendor/lib64/vendor.qti.gnss@1.0.so|1cce445261939c7a1eace33742e16c09dffe5c0e
-vendor/lib64/vendor.qti.gnss@1.1.so|e9371f32bd2c463e8a9b0197263a96f8f7cc50bb
-vendor/lib64/vendor.qti.gnss@1.2.so|6a2d413eebe1189c361b1c18215c6d90783a65b2
-vendor/lib64/vendor.qti.gnss@2.0.so|2c81cc50f3996553d26d608ca55a273e1d8e75cc
-vendor/lib64/vendor.qti.gnss@2.1.so|0a58c7da5a628e563228587652763dff18c6e3da
+vendor/lib64/libslimclient.so|62cc175c38efe559452d272216bf5f108e448b9f
+vendor/lib64/libxtadapter.so|d54811fd319a35c8e904749590b85b11c97ed3e5
+vendor/lib64/vendor.qti.gnss@1.0.so|cab0039ed66d87772a5ba6617c39c5ccd0e3f1b2
+vendor/lib64/vendor.qti.gnss@1.1.so|f42d12f0787564b0b80f505d36429004714ef893
+vendor/lib64/vendor.qti.gnss@1.2.so|28d3dadb2b02fd99829062caece8e56c113027d9
+vendor/lib64/vendor.qti.gnss@2.0.so|d567ea796a3f8758365ce5fd2a7294db1a7e1544
+vendor/lib64/vendor.qti.gnss@2.1.so|96c599aeef751258262a5480e69d78a3476062a8
 vendor/lib64/vendor.qti.gnss@3.0-service.so|e799172a7113a35b1f17a8c5999713286c104d11
-vendor/lib64/vendor.qti.gnss@3.0.so|168e121b29c34b8940438caad9fd52423a1ceba8
+vendor/lib64/vendor.qti.gnss@3.0.so|07ae1f9907a85d9adfb99be04b8c4d1497dbece0
 
 # GPU firmware
 vendor/firmware/a512_zap.b00
@@ -1405,7 +1405,7 @@ vendor/bin/thermal-engine
 vendor/lib64/libthermalioctl.so
 
 # Time services - from LA.UM.8.2.r1-05100-sdm660.0
-#-vendor/app/TimeService/TimeService.apk;:timeservice_app_cert-legacy-um|4a37afd1395758d946580af184a738e3c657b1e2
+-vendor/app/TimeService/TimeService.apk;:timeservice_app_cert-legacy-um|4a37afd1395758d946580af184a738e3c657b1e2
 vendor/bin/time_daemon|68a23e99ef662dd6117267b1a0e87c42ace88837
 vendor/etc/init/init.time_daemon.rc|b253ca2a498757e14e1d7a051bf504ae09218f51
 vendor/lib64/libtime_genoff.so|2c052df0d8c69e351ab59a434ae8c1405fedd689
