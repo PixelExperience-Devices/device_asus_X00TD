@@ -810,21 +810,21 @@ vendor/firmware/novatek_ts_fw_txd.bin
 # Display firmware (Synaptics)
 vendor/firmware/startup_fw_update.img
 
-# DPM - from LA.UM.8.2.r1-05100-sdm660.0
-product/bin/dpmd|fc5f8692c9710aae101b450bd0fc418e58be6552
+# DPM - from Nokia ddv_sprout(m690-user 10 QKQ1.191014.001 00WW_2_250 release-keys)
+product/bin/dpmd|cac8f3eadeeec202f56d5b5f7a8c75e82e376d9f
 product/etc/dpm/dpm.conf|95e27da8c989e96c6faea6f0697bce11955b62a5
 product/etc/init/dpmd.rc|7f95195a89fddce06b93006a737701270e91f669
 product/etc/permissions/com.qti.dpmframework.xml|4613f8b8629d0b823e6aaab45d399ac30da06c09
 product/etc/permissions/dpmapi.xml|0991b3069308620cfcad53873e9f09af181b981d
-product/framework/com.qti.dpmframework.jar|7adf5e0e96c155acfe66c7256e06e48c1ee35d13
+product/framework/com.qti.dpmframework.jar|e39a7e06af2d1e95a3724c19c36b8716277f53a1
 product/framework/dpmapi.jar|4696df9793ad676b305d53b5d7ce65ecf74771ad
 product/lib64/com.qualcomm.qti.dpm.api@1.0.so|a70cfc1be3e06cde6318d6969e114429fe1950bb
-product/lib64/libdpmctmgr.so|0683504b994d92ff70ffed0fb8d2a00b51e63658
+product/lib64/libdpmctmgr.so|990b9337e843608e696602bcc1b5130a30ba5683
 product/lib64/libdpmfdmgr.so|8842a72eb0e2bf12d2a458ab9916a84d76faf49d
-product/lib64/libdpmframework.so|bc99ab636229e785c0b0e0fba83a894a0ce31032
+product/lib64/libdpmframework.so|8b638affa3a7ce5ccdd435abc45e291ec39124ec
 product/lib64/libdpmtcm.so|8bea3d6b2160476075a00b6604caaf0933a48bf3
--product/priv-app/dpmserviceapp/dpmserviceapp.apk|cd3fc5c9f5dade06083cfbb2ff3443b668ae4a29
-vendor/bin/dpmQmiMgr|9a7e38d4d418fff8f2baca09b763f1215ed3ade1
+-product/priv-app/dpmserviceapp/dpmserviceapp.apk|3c2db9edf786b5b4b9605c22efcd0cb07536525f
+vendor/bin/dpmQmiMgr|0e2cd158664dcc7987887ae05a5d2506fb9d0921
 vendor/etc/init/dpmQmiMgr.rc|67569302d3a8828a9118c835e5b69c51b0c8ac68
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so|ab5d46cbf14ce90ab44aaab4dc1520378c568033
 vendor/lib64/libdpmqmihal.so|d5b8330b56d7e0c036b00a817754748bf3137774
@@ -1405,7 +1405,7 @@ vendor/bin/thermal-engine
 vendor/lib64/libthermalioctl.so
 
 # Time services - from LA.UM.8.2.r1-05100-sdm660.0
--vendor/app/TimeService/TimeService.apk;:timeservice_app_cert-legacy-um|4a37afd1395758d946580af184a738e3c657b1e2
+#-vendor/app/TimeService/TimeService.apk;:timeservice_app_cert-legacy-um|4a37afd1395758d946580af184a738e3c657b1e2
 vendor/bin/time_daemon|68a23e99ef662dd6117267b1a0e87c42ace88837
 vendor/etc/init/init.time_daemon.rc|b253ca2a498757e14e1d7a051bf504ae09218f51
 vendor/lib64/libtime_genoff.so|2c052df0d8c69e351ab59a434ae8c1405fedd689
