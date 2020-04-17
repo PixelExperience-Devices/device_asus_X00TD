@@ -76,6 +76,7 @@ vendor.audio.tunnel.encode=false
 vendor.voice.path.for.pcm.voip=false
 
 # Bluetooth
+persist.vendor.service.bdroid.sibs=false
 persist.vendor.bt.aac_frm_ctl.enabled=true
 vendor.qcom.bluetooth.soc=cherokee
 
