@@ -39,17 +39,6 @@ vendor.display.enable_default_color_mode=0
 vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_skip_validate=1
 
-# Graphics
-debug.sf.early_app_phase_offset_ns=1500000
-debug.sf.early_gl_app_phase_offset_ns=15000000
-debug.sf.early_gl_phase_offset_ns=3000000
-debug.sf.early_phase_offset_ns=1500000
-debug.sf.high_fps_early_phase_offset_ns=6100000
-debug.sf.high_fps_early_gl_phase_offset_ns=9000000
-debug.sf.phase_offset_threshold_for_next_vsync_ns=6100000
-ro.surface_flinger.vsync_event_phase_offset_ns=2000000
-ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
-
 #ro.hdmi.enable=true
 #
 # system props for the cne module
