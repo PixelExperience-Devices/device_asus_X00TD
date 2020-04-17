@@ -43,6 +43,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.service.bdroid.sibs=false \
     persist.bluetooth.disableabsvol=true \
     persist.bt.enable.multicast=0 \
     persist.bt.max.a2dp.connections=1 \
