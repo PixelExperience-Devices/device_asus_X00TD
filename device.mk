@@ -109,6 +109,10 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5 \
     vendor.qti.hardware.camera.device@1.0
 
+# Charger
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.charger.enable_suspend=true
+
 # CNE
 PRODUCT_PACKAGES += \
     libcnefeatureconfig
