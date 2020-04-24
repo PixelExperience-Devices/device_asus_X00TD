@@ -8,6 +8,7 @@
                 android:key="screen_gestures"
                 android:fragment="com.asus.zenmotions.settings.ScreenOffGestureSettings"
                 android:summary="@string/gestures_dashboard_summary"
+                android:icon="@drawable/ic_gesture"
                 android:title="@string/screen_off_gestures" />
 
     </PreferenceCategory>
@@ -20,6 +21,7 @@
                 android:key="ambient_display_gestures"
                 android:fragment="com.asus.zemotions.gestures.AmbientGesturePreferenceActivity"
                 android:summary="@string/ambient_display_gestures_summary"
+                android:icon="@drawable/ic_doze"
                 android:title="@string/ambient_display_gestures_title" />
 
     </PreferenceCategory>
