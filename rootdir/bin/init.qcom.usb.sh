@@ -106,7 +106,11 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a \
 			      fi
 		      ;;
 	              "msm8998" | "sdm660" | "apq8098_latv")
-		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
+			    if [ -d /config/usb_gadget ]; then
+				    setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
+			    else
+				    setprop persist.vendor.usb.config diag,serial_smd,rmnet_qti_bam,adb
+			    fi
 		      ;;
 	              "sdm845" | "sdm710")
 		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
