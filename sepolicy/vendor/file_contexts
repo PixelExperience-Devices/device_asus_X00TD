@@ -62,3 +62,6 @@
 # Gestures
 /sys/kernel/touchpanel/dclicknode                                       u:object_r:sysfs:s0
 /sys/kernel/touchpanel/gesture_node                                     u:object_r:sysfs:s0
+
+# Gestures
+/sys/kernel/touchpanel(/.*)?         u:object_r:sysfs_gesture:s0
