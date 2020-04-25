@@ -69,6 +69,9 @@ on init
     chown system system /dev/cpuset/camera-daemon/tasks
     chmod 0664 /dev/cpuset/camera-daemon/tasks
 
+    # Hack for camera hal
+    mount none /system/lib/libprocessgroup.so /system/lib/vndk-29/libprocessgroup.so bind
+
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
     # Allow writing to the kernel trace log.
