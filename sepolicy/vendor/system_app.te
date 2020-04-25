@@ -17,9 +17,5 @@ allow system_app wificond:binder call;
 
 get_prop(system_app, baseband_prop)
 
-allow system_app sysfs_backlight:file { open read getattr write };
-allow system_app sysfs_hgain:file { open read getattr write };
-allow system_app sysfs_mgain:file { open read getattr write };
-allow system_app sysfs_tbrightness:file { open getattr write };
 allow system_app sysfs_gesture:file rw_file_perms;
 allow system_app sysfs_gesture:dir search;

@@ -51,13 +51,6 @@
 /sys/devices/soc/780000.qcom,msm-core/uio/uio1(/.*)?                    u:object_r:sysfs_uio_file:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.thermal@2\.0-service\.mock            u:object_r:hal_thermal_default_exec:s0
 
-# Backlight
-/sys/module/mdss_fb/parameters/backlight_dimmer                               u:object_r:sysfs_backlight:s0
-
-# Torch brightness control
-/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-03/800f000.qcom,spmi:qcom,pm660l@3:qcom,leds@d300/leds/led:torch_0/max_brightness   u:object_r:sysfs_tbrightness:s0
-/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-03/800f000.qcom,spmi:qcom,pm660l@3:qcom,leds@d300/leds/led:torch_1/max_brightness   u:object_r:sysfs_tbrightness:s0
-
 # Kcal
 /sys/devices/platform/kcal_ctrl\.0(/.*)?                                 u:object_r:kcal_dev:s0
 /sys/bus/platform/drivers/kcal_ctrl(/.*)?                               u:object_r:kcal_dev:s0
