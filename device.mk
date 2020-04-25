@@ -420,6 +420,10 @@ PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor
 
+# QNS
+PRODUCT_PACKAGES += \
+    libstdc++.vendor
+
 # Seccomp
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
