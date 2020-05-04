@@ -122,7 +122,7 @@ vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|e08969ef1897ec5958894323f7
 product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
 product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
 
-# Camera
+# Camera - WW_Phone-17.2017.2004.424-20200414 
 vendor/lib/hw/camera.sdm660.so
 vendor/lib/libarcsoft_arc3dnr_intf.so
 vendor/lib/libarcsoft_arcshdr_intf.so
@@ -287,7 +287,7 @@ vendor/lib/libts_detected_face_hal.so
 vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libvideoutils.so
 
-# Camera configs
+# Camera configs - WW_Phone-17.2017.2004.424-20200414
 vendor/etc/camera/camera_config.xml
 vendor/etc/camera/gc5025_ofilm_13m_chromatix.xml
 vendor/etc/camera/gc5025_ofilm_16m_chromatix.xml
@@ -305,7 +305,7 @@ vendor/etc/camera/ov16885_ofilm_16m_chromatix.xml
 vendor/etc/camera/ov8856_chicony_front_chromatix.xml
 vendor/etc/camera/ov8856_chromatix.xml
 
-# Camera actuators
+# Camera actuators - WW_Phone-17.2017.2004.424-20200414
 vendor/lib/libactuator_bu64297.so
 vendor/lib/libactuator_dw9714.so
 vendor/lib/libactuator_hi1333_ofilm_dw9714v.so
@@ -315,7 +315,7 @@ vendor/lib/libactuator_ov16880_qtech_rear_dw9714a.so
 vendor/lib/libactuator_ov16885_holitech_16m_fp5510a.so
 vendor/lib/libactuator_ov16885_ofilm_16m_dw9714v.so
 
-# Camera chromatix
+# Camera chromatix - WW_Phone-17.2017.2004.424-20200414
 vendor/lib/libchromatix_gc5025_ofilm_13m_common.so
 vendor/lib/libchromatix_gc5025_ofilm_13m_cpp_ds_chromatix.so
 vendor/lib/libchromatix_gc5025_ofilm_13m_cpp_hfr_60.so
@@ -383,6 +383,9 @@ vendor/lib/libchromatix_hi1333_ofilm_13m_default_preview_bu64297.so
 vendor/lib/libchromatix_hi1333_ofilm_13m_default_video.so
 vendor/lib/libchromatix_hi1333_ofilm_13m_default_video_bu64297.so
 vendor/lib/libchromatix_hi1333_ofilm_13m_eis_video_bu64297.so
+vendor/lib/libchromatix_hi1333_ofilm_13m_hdr.so
+vendor/lib/libchromatix_hi1333_ofilm_13m_hdr_cpp.so
+vendor/lib/libchromatix_hi1333_ofilm_13m_hdr_video_3a.so
 vendor/lib/libchromatix_hi1333_ofilm_13m_hfr_60.so
 vendor/lib/libchromatix_hi1333_ofilm_13m_hfr_60_bu64297.so
 vendor/lib/libchromatix_hi1333_ofilm_13m_hfr_90.so
@@ -559,6 +562,9 @@ vendor/lib/libchromatix_ov13855_holitech_13m_default_preview_bu64297.so
 vendor/lib/libchromatix_ov13855_holitech_13m_default_video.so
 vendor/lib/libchromatix_ov13855_holitech_13m_default_video_bu64297.so
 vendor/lib/libchromatix_ov13855_holitech_13m_eis_video_bu64297.so
+vendor/lib/libchromatix_ov13855_holitech_13m_hdr.so
+vendor/lib/libchromatix_ov13855_holitech_13m_hdr_3a.so
+vendor/lib/libchromatix_ov13855_holitech_13m_hdr_cpp.so
 vendor/lib/libchromatix_ov13855_holitech_13m_hfr_60.so
 vendor/lib/libchromatix_ov13855_holitech_13m_hfr_60_bu64297.so
 vendor/lib/libchromatix_ov13855_holitech_13m_hfr_90.so
@@ -619,6 +625,9 @@ vendor/lib/libchromatix_ov16885_holitech_16m_default_preview_bu64297.so
 vendor/lib/libchromatix_ov16885_holitech_16m_default_video.so
 vendor/lib/libchromatix_ov16885_holitech_16m_default_video_bu64297.so
 vendor/lib/libchromatix_ov16885_holitech_16m_eis_video_bu64297.so
+vendor/lib/libchromatix_ov16885_holitech_16m_hdr.so
+vendor/lib/libchromatix_ov16885_holitech_16m_hdr_3a.so
+vendor/lib/libchromatix_ov16885_holitech_16m_hdr_cpp.so
 vendor/lib/libchromatix_ov16885_holitech_16m_hfr_60.so
 vendor/lib/libchromatix_ov16885_holitech_16m_hfr_60_bu64297.so
 vendor/lib/libchromatix_ov16885_holitech_16m_hfr_90.so
@@ -646,6 +655,9 @@ vendor/lib/libchromatix_ov16885_ofilm_16m_default_preview_bu64297.so
 vendor/lib/libchromatix_ov16885_ofilm_16m_default_video.so
 vendor/lib/libchromatix_ov16885_ofilm_16m_default_video_bu64297.so
 vendor/lib/libchromatix_ov16885_ofilm_16m_eis_video_bu64297.so
+vendor/lib/libchromatix_ov16885_ofilm_16m_hdr.so
+vendor/lib/libchromatix_ov16885_ofilm_16m_hdr_3a.so
+vendor/lib/libchromatix_ov16885_ofilm_16m_hdr_cpp.so
 vendor/lib/libchromatix_ov16885_ofilm_16m_hfr_60.so
 vendor/lib/libchromatix_ov16885_ofilm_16m_hfr_60_bu64297.so
 vendor/lib/libchromatix_ov16885_ofilm_16m_hfr_90.so
@@ -710,7 +722,8 @@ vendor/lib/libchromatix_ov8856_snapshot.so
 vendor/lib/libchromatix_ov8856_zsl_preview.so
 vendor/lib/libchromatix_ov8856_zsl_video.so
 
-# Camera firmware
+
+# Camera firmware - WW_Phone-17.2017.2004.424-20200414
 vendor/firmware/cpp_firmware_v1_12_0.fw
 
 # Charger - from LA.UM.8.2.r1-06200-sdm660.0
