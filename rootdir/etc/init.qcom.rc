@@ -96,13 +96,8 @@ on early-boot
     chown system system /persist/sensors/registry/config
     chmod 0664 /persist/sensors/sensors_settings
 
-    # Huaqin modify for ZQL1820P1-98 by wobo at 2018/11/19 start
-    # stk3x3x-light
-    chown root system /dev/input/event3
-
-    # stk3x3x-proximity
-    chown root system /dev/input/event4
-    # Huaqin modify for ZQL1820P1-98 by wobo at 2018/11/19 end
+    chown system system /dev/input/event4  # stk3x3x-light
+    chown system system /dev/input/event5  # stk3x3x-proximity
 
     chown system system /mnt/vendor/persist/sensors
     chown system system /mnt/vendor/persist/sensors/sns.reg
