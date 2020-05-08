@@ -257,4 +257,4 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # inherit from the proprietary version
--include vendor/asus/X00TD/BoardConfigVendor.mk
+-include vendor/asus/X00T/BoardConfigVendor.mk
