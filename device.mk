@@ -93,6 +93,7 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
+    libaudioroute \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
@@ -100,9 +101,11 @@ PRODUCT_PACKAGES += \
     tinymix.vendor
 
 PRODUCT_PACKAGES += \
-    libsndmonitor \
     libhdmiedid \
-    libhfp
+    libhfp \
+    libsndmonitor \
+    libspkrprot \
+    libssrec
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
