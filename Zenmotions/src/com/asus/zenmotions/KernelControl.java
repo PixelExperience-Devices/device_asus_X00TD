@@ -31,7 +31,7 @@ import java.io.File;
 
 public final class KernelControl {
 
-    private static String GESTURE_PATH = "/sys/kernel/touchpanel/dclicknode";
+    private static String GESTURE_PATH = "/sys/kernel/touchpanel/gesture_node";
 
     private KernelControl() {
         // this class is not supposed to be instantiated
