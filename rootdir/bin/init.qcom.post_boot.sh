@@ -2752,9 +2752,6 @@ case "$target" in
             # Set Memory parameters
             configure_memory_parameters
 
-            # Start cdsprpcd only for sdm660 and disable for sdm630
-            start vendor.cdsprpcd
-
             # Start Host based Touch processing
                 case "$hw_platform" in
                         "MTP" | "Surf" | "RCM" | "QRD" )
@@ -2763,6 +2760,13 @@ case "$target" in
                 esac
             ;;
         esac
+
+        # Start cdsprpcd only for sdm660 and disable for sdm630 and sdm636
+        case "$soc_id" in
+            "317" | "324" | "325" | "326" )
+            start vendor.cdsprpcd
+        esac
+
         #Apply settings for sdm630 and Tahaa
         case "$soc_id" in
             "318" | "327" | "385" )
