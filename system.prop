@@ -46,6 +46,7 @@ vendor.display.disable_skip_validate=1
 persist.vendor.cne.feature=1
 #
 # system props for dpm
+persist.vendor.dpm.feature=1
 persist.vendor.dpm.nsrm.bkg.evt=3955
 
 #system props for the MM modules
