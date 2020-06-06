@@ -52,6 +52,10 @@ TARGET_USES_QTI_CAMERA_DEVICE := true
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_sdm660
+TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
+
 # Kernel
 TARGET_KERNEL_CONFIG := X00TD_defconfig
 
