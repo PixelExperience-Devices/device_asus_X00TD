@@ -563,16 +563,6 @@
     <string name="config_SmartChargingSupspendValue" translatable="false">1</string>
     <string name="config_SmartChargingResumeValue" translatable="false">0</string>
 
-    <!-- Paths to the libraries that contain device specific key handlers -->
-    <string-array name="config_deviceKeyHandlerLibs" translatable="false">
-       <item>/system/priv-app/Zenmotions/Zenmotions.apk</item>
-    </string-array>
-
-    <!-- Names of the key handler classes -->
-     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
-       <item>com.asus.zenmotions.KeyHandler</item>
-    </string-array>
-
     <!-- reference volume index for music stream to limit headphone volume and display warning -->
     <integer name="config_safe_media_volume_index">15</integer>
 
@@ -621,5 +611,15 @@
 
     <!-- Whether or not we should show vendor mismatch message -->
     <bool name="config_show_vendor_mismatch_message">false</bool>
+
+    <!-- Paths to the libraries that contain device specific key handlers -->
+    <string-array name="config_deviceKeyHandlerLibs" translatable="false">
+       <item>/system/priv-app/TouchGestures/TouchGestures.apk</item>
+    </string-array>
+
+    <!-- Names of the key handler classes -->
+     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
+       <item>com.android.touch.gestures.KeyHandler</item>
+    </string-array>
 
 </resources>
