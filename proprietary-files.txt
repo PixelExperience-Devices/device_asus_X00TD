@@ -763,7 +763,7 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml|f76c894f3c6d5b6ed35113a088dc3174c9
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml|14d136e7fcc682311757d3edc0b9d3eaeba11815
 vendor/etc/init/cnd.rc|3a5183df3479500fb729493bc56c71166fc10bce
 vendor/lib64/libcne.so|0530f93f0141b35172d48a8e55d1d5fec82400e0
-vendor/lib64/libcneapiclient.so|7bb109c43e2f135032859187150e800f336dca5d
+vendor/lib64/libcneapiclient.so|00465d29c6e4ea19fc3f3787f9869b2c830a4eea
 vendor/lib64/libcneoplookup.so|475f3a0d30caab2c5d62c8aaf75908e741528648
 vendor/lib64/libcneqmiutils.so|be80bfeaaa2bdc6c94d7130be2ea13887fe62b49
 vendor/lib64/libwms.so|b3454324b2c81c48684c7234d0e86db7b7fef8a5
@@ -1033,12 +1033,12 @@ vendor/lib/libtinyxml2_1.so|89e1b1af10209dbb8d341cd314750cc64fc33852
 vendor/lib64/libqseed3.so|6779aaf96283e244122f4cc76cd3cb750ff14ed5
 vendor/lib64/libsdm-diag.so|db4c495e3e64ea0cbc0d079a2aa16862a9b02192
 vendor/lib64/libsdm-disp-vndapis.so|92fe3602eaaae1847965e8886d2cbef3d0a801f8
-vendor/lib64/libsdmextension.so|0397497f0ff65b624acaa197f05a15fbe67cc525
+vendor/lib64/libsdmextension.so|1578d885acc4cc0a1dc941363c61cb95052c4d32
 vendor/lib64/libtinyxml2_1.so|70942325afdd14eedcf11b3fbbfbc3d98f42f8dc
 
 # Graphics (SDM) - from LA.UM.8.2.r1-05700-sdm660.0
 vendor/lib/libsdm-color.so|325c5b6cff3cf3d7d5d8e479a1c37f7255cbf748
-vendor/lib64/libsdm-color.so|b5e5ec9f5cdad2094891197fd00f8ccdc8340c06
+vendor/lib64/libsdm-color.so|fef2b577d7aa5e69122f49b45c3f5185e41b3d9d
 
 # Graphics (Vulkan) - from LA.UM.8.2.r1-06500-sdm660.0
 vendor/lib/hw/vulkan.sdm660.so|6e9d88699794d4d0276df7a9c72dfc111990c1d3
@@ -1118,8 +1118,8 @@ vendor/bin/energy-awareness|d30082c491a02582ee281fe7fe9e71eba9708858
 vendor/bin/hw/vendor.qti.hardware.perf@2.0-service|3478f1a1de33d39b239f54e47b85dde6f01578c5
 vendor/bin/msm_irqbalance|0e967f5c7eaf8d863a50996459101be47adf96a2
 vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc|cc8658db5e19f8e5e575fb986e7d38147e675f8d
-vendor/etc/perf/commonresourceconfigs.xml|42005b8a9ec8a527d22800e3aaa9215e6d58c8a9
-vendor/etc/perf/perfboostsconfig.xml|0fd6a9951f22cfe9f0942629f9d20da433604f14
+vendor/etc/perf/commonresourceconfigs.xml|e567fd3f0d9d9bcc8ef63de374e9942695d9407d
+vendor/etc/perf/perfboostsconfig.xml|32b24f6e73a93fb55485cfebc19994a96298c105
 vendor/etc/perf/targetconfig.xml|376ae331df9d6c30b6208f25d04ae4ea11c0e2ea
 vendor/etc/perf/targetresourceconfigs.xml|ed14a691b5aeba9782f4261d974bd245cadbfa01
 vendor/lib/libperfconfig.so|3fabe6d587329cbb619514cc36896cd97c94a113
