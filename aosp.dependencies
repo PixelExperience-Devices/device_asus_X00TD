@@ -6,10 +6,10 @@
     "target_path": "kernel/asus/sdm660"
   },
   {
-    "remote":"github",
+    "remote":"pixel-devices-bitbucket",
     "branch":"ten",
-    "repository": "PixelExperience-Devices/vendor_asus",
-    "target_path": "vendor/asus"
+    "repository": "vendor_asus_x00t",
+    "target_path": "vendor/asus/X00T"
   },
   {
     "repository": "packages_apps_PixelLiveWallpaper",
