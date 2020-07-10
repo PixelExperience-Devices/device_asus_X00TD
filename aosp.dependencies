@@ -52,5 +52,11 @@
       "target_path":"vendor/nxp/opensource/sn100x/hidlimpl",
       "branch":"lineage-17.1-sn100x",
       "remote":"github"
+  },
+  {
+    "repository":"kdrag0n/proton-clang",
+    "target_path":"prebuilts/clang/host/linux-x86/clang-proton",
+    "branch": "master",
+    "remote":"github"
   }
 ]
