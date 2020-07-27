@@ -84,5 +84,8 @@ BOARD_USES_QCOM_HARDWARE := true
 # Sepolicy
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
 
+# Vendor Security patch level
+VENDOR_SECURITY_PATCH := 2020-04-05
+
 # Inherit the proprietary files
 -include vendor/asus/X00TD/BoardConfigVendor.mk
