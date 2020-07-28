@@ -15,7 +15,6 @@ vendor.bluetooth.soc=cherokee
 # Camera
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam
 persist.camera.privapp.list=org.codeaurora.snapcam
-persist.vendor.camera.preview.ubwc=0
 vendor.camera.aux.packagelist=org.codeaurora.snapcam
 
 # CNE
@@ -59,7 +58,6 @@ persist.backup.ntpServer="0.pool.ntp.org"
 # RIL
 DEVICE_PROVISIONED=1
 persist.radio.VT_CAM_INTERFACE=2
-rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
 
