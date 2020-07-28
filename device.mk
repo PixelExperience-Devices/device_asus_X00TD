@@ -91,6 +91,17 @@ PRODUCT_PACKAGES += \
 TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
 
+# Camera
+PRODUCT_PACKAGES += \
+    Snap
+
+PRODUCT_PACKAGES += \
+    android.hardware.camera.common@1.0 \
+    android.hardware.camera.device@3.4 \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    android.hardware.camera.provider@2.5
+
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-service
