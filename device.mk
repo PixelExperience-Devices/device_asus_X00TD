@@ -166,6 +166,15 @@ PRODUCT_PACKAGES += \
     libsensorndkbridge \
     libwifi-hal-ctrl
 
+PRODUCT_PACKAGES += \
+    apdr.conf \
+    gps.conf \
+    flp.conf \
+    izat.conf \
+    lowi.conf \
+    sap.conf \
+    xtwifi.conf
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
