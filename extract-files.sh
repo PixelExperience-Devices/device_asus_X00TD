@@ -53,6 +53,32 @@ if [ -z "${SRC}" ]; then
     SRC="adb"
 fi
 
+function blob_fixup() {
+    case "${1}" in
+
+    # Fix jar path
+    product/etc/permissions/qti_fingerprint_interface.xml)
+        sed -i 's|/system/framework/|/system/product/framework/|g' "${2}"
+        ;;
+
+    # Rename to fp service avoid conflicts
+    vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service_asus.rc)
+        sed -i 's|android.hardware.biometrics.fingerprint@2.1-service|android.hardware.biometrics.fingerprint@2.1-service_asus|g' "${2}"
+        ;;
+
+    # remove android.hidl.base dependency
+    vendor/lib/hw/camera.sdm660.so)
+        patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
+        ;;
+
+    # remove android.hidl.base dependency
+    lib64/libfm-hci.so | lib64/libwfdnative.so | lib/libfm-hci.so | lib/libwfdnative.so)
+        patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
+        ;;
+
+    esac
+}
+
 # Initialize the helper
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 
