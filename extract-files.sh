@@ -26,6 +26,11 @@ function blob_fixup() {
         patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
 
+    # remove android.hidl.base dependency
+    lib64/libfm-hci.so | lib64/libwfdnative.so | lib/libfm-hci.so | lib/libwfdnative.so)
+        patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
+        ;;
+
     esac
 }
 
