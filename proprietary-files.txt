@@ -81,10 +81,6 @@ vendor/lib/libadm.so
 vendor/lib/libaudcal.so
 vendor/lib/libqtigef.so
 vendor/lib/soundfx/libasphere.so
-vendor/lib/soundfx/libicepower.so
-vendor/lib/soundfx/libqcbassboost.so
-vendor/lib/soundfx/libqcreverb.so
-vendor/lib/soundfx/libqcvirt.so
 
 # Bluetooth Audio (A2dp)
 vendor/lib/hw/audio.bluetooth_qti.default.so
