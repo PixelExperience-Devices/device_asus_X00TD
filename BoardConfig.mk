@@ -137,6 +137,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno512
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
+TARGET_TAP_TO_WAKE_NODE := "/proc/tpd_gesture"
 
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop

@@ -46,6 +46,11 @@ on post-fs-data
     mkdir /data/vendor/nfc 0770 nfc nfc
     mkdir /data/vendor/nfc/param 0770 nfc nfc
 
+on boot
+    # Tap to wake node
+    chown system system /proc/tpd_gesture
+    chmod 0660 /proc/tpd_gesture
+
 service nvram_btwifi /system/bin/nvram_btwifi
     user root
     group system oem_2901
