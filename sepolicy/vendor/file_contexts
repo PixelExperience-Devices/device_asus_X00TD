@@ -6,3 +6,9 @@
 
 # Scripts
 /(vendor|system/vendor)/bin/init\.btmac\.sh                                   u:object_r:init-btmac-sh_exec:s0
+
+# Sensors
+/sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-light(/.*)?                    u:object_r:sysfs_sensors:s0
+/sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-proximity(/.*)?                u:object_r:sysfs_sensors:s0
+
+/sys/module/stk3x[0-9]x/parameters/call_status_flag                               u:object_r:sysfs_call_status:s0
