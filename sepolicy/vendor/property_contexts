@@ -1,0 +1,3 @@
+# Fingerprint
+property.cdfinger.enablesave                  u:object_r:vendor_fingerprint_prop:s0
+persist.vendor.runin.fp                       u:object_r:vendor_fingerprint_prop:s0
