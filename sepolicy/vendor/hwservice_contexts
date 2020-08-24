@@ -1,0 +1,2 @@
+# Biometrics
+vendor.focaltech.fingerprint::IFocalFingerprintService                                 u:object_r:focaltech_hwservice:s0
