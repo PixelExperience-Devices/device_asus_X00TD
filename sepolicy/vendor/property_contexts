@@ -8,3 +8,6 @@ persist.vendor.camera.pickres.prop_hdr        u:object_r:vendor_camera_prop:s0
 # Fingerprint
 property.cdfinger.enablesave                  u:object_r:vendor_fingerprint_prop:s0
 persist.vendor.runin.fp                       u:object_r:vendor_fingerprint_prop:s0
+
+# NFC
+ro.hq.support.nfc                             u:object_r:nfc_sensors_prop:s0
