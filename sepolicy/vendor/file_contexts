@@ -1,6 +1,7 @@
 # Fingerprint
 /dev/focaltech_fp                                                             u:object_r:focaltech_device:s0
 /dev/fpsdev0                                                                  u:object_r:cdfinger_device:s0
+/dev/goodix_fp                                                                u:object_r:fingerprintd_device:s0
 /data/system/cdfinger(/.*)?                                                   u:object_r:cdfinger_data_file:s0
 /data/vendor/focaltech(/.*)?                                                  u:object_r:fingerprint_vendor_data_file:s0
 

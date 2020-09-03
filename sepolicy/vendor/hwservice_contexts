@@ -1,5 +1,6 @@
 # Biometrics
 vendor.focaltech.fingerprint::IFocalFingerprintService                                 u:object_r:focaltech_hwservice:s0
+vendor.goodix.hardware.fingerprint::IGoodixBiometricsFingerprint                       u:object_r:hal_fingerprint_hwservice:s0
 
 # NFC
 vendor.nxp.nxpese::INxpEse                                                             u:object_r:nxpese_hwservice:s0
