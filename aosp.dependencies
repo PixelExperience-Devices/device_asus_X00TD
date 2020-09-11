@@ -6,7 +6,7 @@
     "target_path": "kernel/asus/sdm660"
   },
   {
-    "remote":"pixel-devices-bitbucket",
+    "remote":"pixel-devices-blobs",
     "branch":"ten",
     "repository": "vendor_asus_x00t",
     "target_path": "vendor/asus/X00T"
