@@ -1124,6 +1124,9 @@ vendor/lib64/libqmi_csi.so
 vendor/lib64/libqmi_encdec.so
 vendor/lib64/libqmiservices.so
 
+# Radio - from jasmine V11.0.12.0.QDIMIXM
+product/framework/qti-telephony-common.jar|5b1c23ce0d42e1b666d387eedde3444dd07e61bc
+
 # Radio
 -product/app/datastatusnotification/datastatusnotification.apk
 -product/app/QtiTelephonyService/QtiTelephonyService.apk
@@ -1131,7 +1134,6 @@ product/etc/permissions/qcrilhook.xml
 product/etc/permissions/telephony_product_privapp-permissions-qti.xml
 product/etc/permissions/telephonyservice.xml
 product/framework/qcrilhook.jar
-product/framework/qti-telephony-common.jar
 product/framework/QtiTelephonyServicelibrary.jar
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/adpl
