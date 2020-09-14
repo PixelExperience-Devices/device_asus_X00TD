@@ -58,7 +58,6 @@ public:
     void gnssUpdateCallbacks(const sp<V1_0::IGnssCallback>& gpsCb,
             const sp<V1_0::IGnssNiCallback>& niCb);
     void gnssUpdateCallbacks_2_0(const sp<V2_0::IGnssCallback>& gpsCb);
-    void gnssUpdateFlpCallbacks();
     bool gnssStart();
     bool gnssStop();
     bool gnssSetPositionMode(V1_0::IGnss::GnssPositionMode mode,
@@ -95,7 +94,6 @@ public:
 
 private:
     void setCallbacks();
-    void setFlpCallbacks();
     void initLocationOptions();
     sp<V1_0::IGnssCallback> mGnssCbIface;
     sp<V1_0::IGnssNiCallback> mGnssNiCbIface;
