@@ -37,11 +37,6 @@ on boot
     chown system system /sys/class/power_supply/battery/device/smartchg_stop_charging
     chmod 0660 /sys/class/power_supply/battery/device/smartchg_stop_charging
 
-on post-fs-data
-    # NFC local data and nfcee xml storage
-    mkdir /data/vendor/nfc 0770 nfc nfc
-    mkdir /data/vendor/nfc/param 0770 nfc nfc
-
 on boot
     # Tap to wake node
     chown system system /proc/tpd_gesture
