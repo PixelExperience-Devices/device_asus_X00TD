@@ -18,6 +18,9 @@
 # Nvram
 /system/bin/nvram_btwifi                                                      u:object_r:nvram_btwifi_exec:s0
 
+# Persist
+/persist(/.*)?                                                                u:object_r:mnt_vendor_file:s0
+
 # Scripts
 /(vendor|system/vendor)/bin/init\.btmac\.sh                                   u:object_r:init-btmac-sh_exec:s0
 
