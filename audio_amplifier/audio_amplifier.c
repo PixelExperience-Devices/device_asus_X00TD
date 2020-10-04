@@ -16,11 +16,9 @@
  */
 
 #define LOG_TAG "amplifier_sdm660"
-#define LOG_NDEBUG 0
 
 #include <log/log.h>
 
-/* clang-format off */
 #include "audio_hw.h"
 #include "platform.h"
 #include "platform_api.h"
@@ -34,7 +32,6 @@
   ((x) == SND_DEVICE_OUT_SPEAKER_AND_USB_HEADSET) || \
   ((x) == SND_DEVICE_OUT_VOICE_SPEAKER) || \
   ((x) == SND_DEVICE_OUT_VOICE_SPEAKER_2))
-/* clang-format on */
 
 typedef struct amp_device {
     amplifier_device_t amp_dev;
