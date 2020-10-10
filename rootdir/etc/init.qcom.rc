@@ -539,6 +539,9 @@ on property:sys.boot_completed=1
     #Reset read ahead for dm-0 and dm-1 to 512kb
     write /sys/block/dm-0/queue/read_ahead_kb 512
     write /sys/block/dm-1/queue/read_ahead_kb 512
+    #Start Dt2w Node
+    write /sys/kernel/touchpanel/dclicknode 1
+    write /sys/kernel/touchpanel/gesture_node 1
     #  shengzhong  add for pcmark  2018/11/26 start
     write /sys/devices/virtual/block/dm-2/queue/write_cache "write through"
     #  shengzhong add for pcmark 2018/11/26 end
