@@ -28,12 +28,12 @@ function blob_fixup() {
 
     # remove android.hidl.base dependency
     lib64/libfm-hci.so | lib64/libwfdnative.so | lib/libfm-hci.so | lib/libwfdnative.so)
-        patchelf --remove-needed "android.hidl.base@1.0.so" "${2}"
+        "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
 
     product/lib64/libdpmframework.so)
-        patchelf --replace-needed "libcutils.so" "libcutils-v29.so" "${2}"
-        patchelf --add-needed "libcutils.so" "${2}"
+        "${PATCHELF}" --replace-needed "libcutils.so" "libcutils-v29.so" "${2}"
+        "${PATCHELF}" --add-needed "libcutils.so" "${2}"
         ;;
     esac
 }
