@@ -1035,7 +1035,9 @@ vendor/lib/libpn553_fw.so
 
 # NVRAM
 bin/nvram_btwifi
-lib64/libmmi.so
+
+# NVRAM Deps - from cmi RKQ1.200512.002-V20.6.28
+system_ext/lib64/libmmi.so:lib64/libmmi.so|f2beb127814367f841758c4f0eeca3fbe8deecb5
 
 # Perf
 vendor/bin/energy-awareness
