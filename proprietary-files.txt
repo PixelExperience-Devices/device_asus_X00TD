@@ -1,4 +1,4 @@
-# Proprietary files - from UL-ASUS_X00T-WW-17.2017.2006.429-user build, unless pinned
+# Proprietary files - from UL-ASUS_X00T-WW-17.2017.2012.438-user build, unless pinned
 
 # ADSP
 vendor/bin/adsprpcd
