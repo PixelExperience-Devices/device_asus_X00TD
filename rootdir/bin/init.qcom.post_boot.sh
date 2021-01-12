@@ -2895,6 +2895,9 @@ case "$target" in
                 echo -n enable > $mode
             done
 
+            # Turn off scheduler boost at the end
+            echo 0 > /proc/sys/kernel/sched_boost
+
             # Set Memory parameters
             configure_memory_parameters
 
