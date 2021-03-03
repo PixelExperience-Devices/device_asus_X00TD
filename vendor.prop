@@ -159,6 +159,10 @@ ro.vendor.sensors.facing=false
 # Shutdown time
 sys.vendor.shutdown.waittime=500
 
+# SoC
+ro.soc.manufacturer=Qualcomm
+ro.soc.model=SDM660
+
 # Surfaceflinger
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
