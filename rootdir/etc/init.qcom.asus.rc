@@ -42,28 +42,6 @@ on boot
     chown system system /proc/tpd_gesture
     chmod 0660 /proc/tpd_gesture
 
-service nvram_btwifi /system/bin/nvram_btwifi
-    user root
-    group system oem_2901
-    oneshot
-    disabled
-
-on property:sys.boot_completed=1
-    start nvram_btwifi
-
-on property:sys.nvram.btmac=*
-    start vendor-btmac-sh
-    restart vendor.bluetooth-1-0-qti
-
-on property:sys.nvram.wifimac=*
-    setprop ro.wifimac ${sys.nvram.wifimac}
-
-service vendor-btmac-sh  /vendor/bin/init.btmac.sh
-    class core
-    user root
-    oneshot
-    disabled
-
 service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
     override
     class hal

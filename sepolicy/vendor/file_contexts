@@ -13,14 +13,8 @@
 # Light HAL
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.X00TD                u:object_r:hal_light_default_exec:s0
 
-# Nvram
-/system/bin/nvram_btwifi                                                      u:object_r:nvram_btwifi_exec:s0
-
 # Persist
 /persist(/.*)?                                                                u:object_r:mnt_vendor_file:s0
-
-# Scripts
-/(vendor|system/vendor)/bin/init\.btmac\.sh                                   u:object_r:init-btmac-sh_exec:s0
 
 # Sensors
 /sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-light(/.*)?                    u:object_r:sysfs_sensors:s0

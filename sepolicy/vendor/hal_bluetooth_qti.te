@@ -1,1 +1,1 @@
-set_prop(hal_bluetooth_qti, btmac_prop)
+allow hal_bluetooth_qti diag_device:chr_file { read write open ioctl };
