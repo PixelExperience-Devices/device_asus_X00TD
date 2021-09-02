@@ -17,6 +17,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
+        android:icon="@drawable/ic_doze_wake"
         android:key="wake_on_gesture"
         android:defaultValue="false"
         android:title="@string/wake_on_gesture_title"
@@ -27,6 +28,7 @@
         android:title="@string/tilt_sensor_title">
 
         <SwitchPreference
+            android:icon="@drawable/ic_doze_pickup"
             android:defaultValue="false"
             android:key="gesture_pick_up"
             android:summary="@string/pick_up_gesture_summary"
@@ -39,12 +41,14 @@
         android:title="@string/proximity_sensor_title">
 
         <SwitchPreference
+            android:icon="@drawable/ic_doze_hand"
             android:defaultValue="false"
             android:key="gesture_hand_wave"
             android:summary="@string/hand_wave_gesture_summary"
             android:title="@string/hand_wave_gesture_title" />
 
         <SwitchPreference
+            android:icon="@drawable/ic_doze_pocket"
             android:defaultValue="false"
             android:key="gesture_pocket"
             android:summary="@string/pocket_gesture_summary"
