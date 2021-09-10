@@ -471,8 +471,5 @@ PRODUCT_PACKAGES += \
     libmediaextractorservice \
     libnl
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
-
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/asus/X00TD/X00TD-vendor.mk)
