@@ -47,6 +47,7 @@ service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
     class hal
     user nfc
     group nfc
+    task_profiles ServiceCapacityLow
     disabled
 
 on property:ro.hq.support.nfc=1
