@@ -175,13 +175,6 @@ service vendor.cdsprpcd /vendor/bin/cdsprpcd
    task_profiles ServiceCapacityLow
    disabled
 
-service energy-awareness /system/vendor/bin/energy-awareness
-    class main
-    user system
-    group system
-    oneshot
-    task_profiles ServiceCapacityLow
-
 service vendor.pd_mapper /system/vendor/bin/pd-mapper
      class core
 
