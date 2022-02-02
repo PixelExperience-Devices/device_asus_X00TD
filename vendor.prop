@@ -126,6 +126,8 @@ debug.sf.early_gl_app_phase_offset_ns=15000000
 
 # Graphics
 debug.cpurend.vsync=false
+ro.hardware.egl=adreno
+ro.hardware.vulkan=sdm660
 
 # NTP Server
 persist.backup.ntpServer=0.pool.ntp.org
