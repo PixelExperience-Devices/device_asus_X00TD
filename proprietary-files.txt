@@ -714,8 +714,8 @@ vendor/lib/libchromatix_ov8856_zsl_video.so
 # Camera firmware
 vendor/firmware/cpp_firmware_v1_12_0.fw
 
-# Charger
-vendor/bin/hvdcp_opti
+# Charger - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+vendor/bin/hvdcp_opti|cfee9d4b5c2a842173aefe573344b2d3366f7d17
 
 # CNE
 system/etc/cne/Nexus/ATT/ATT_profiles.xml
@@ -830,13 +830,15 @@ vendor/bin/hw/android.hardware.drm@1.2-service.widevine
 vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
 vendor/lib64/libwvhidl.so
 
-# ESE-Powermanager
-vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
-vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
-vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
-vendor/lib/vendor.qti.esepowermanager@1.0.so
-vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
-vendor/lib64/vendor.qti.esepowermanager@1.0.so
+# ESE-Powermanager - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+vendor/bin/hw/vendor.qti.esepowermanager@1.1-service|040212c2c39ca3f2090291dd3a7f49979e5003df
+vendor/etc/init/vendor.qti.esepowermanager@1.1-service.rc|3c024c7135ec3dd8658624509ee61396a74f1ede
+vendor/lib/hw/vendor.qti.esepowermanager@1.1-impl.so|8f040162d31397f3851d5507cf4118b41db3b46a
+vendor/lib/vendor.qti.esepowermanager@1.0.so|f0d2030ddc5ba93404e09821ec485bb228dbc937
+vendor/lib/vendor.qti.esepowermanager@1.1.so|8de052fa33317db94247e74dfe6b8db93a378bec
+vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so|7b67b47030f00af1c2e207995eea05f05fb91b23
+vendor/lib64/vendor.qti.esepowermanager@1.0.so|6585b5976a98053fb4d2b51c32337ebe8960d427
+vendor/lib64/vendor.qti.esepowermanager@1.1.so|61d7c35edb403f8de4be2e483431cb26109ef0ae
 
 # Fingerprint sensor
 product/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
