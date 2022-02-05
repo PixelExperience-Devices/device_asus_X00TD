@@ -715,8 +715,8 @@ vendor/lib/libchromatix_ov8856_zsl_video.so
 # Camera firmware
 vendor/firmware/cpp_firmware_v1_12_0.fw
 
-# Charger - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
-vendor/bin/hvdcp_opti|cfee9d4b5c2a842173aefe573344b2d3366f7d17
+# Charger
+vendor/bin/hvdcp_opti
 
 # CNE - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
 -vendor/app/CneApp/CneApp.apk|13bdf6ba5637d3df3d6d9fb0017f9f56ddc620e7
