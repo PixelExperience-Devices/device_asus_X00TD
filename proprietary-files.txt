@@ -1261,12 +1261,12 @@ vendor/firmware/cppf.b06
 vendor/firmware/cppf.b07
 vendor/firmware/cppf.mdt
 
-# Soter
-product/framework/vendor.qti.hardware.soter-V1.0-java.jar
-vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
-vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
-vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.soter@1.0.so
+# Soter - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+system_ext/framework/vendor.qti.hardware.soter-V1.0-java.jar|83227d66df8f047d69f5b90fe16339794fa75ce3
+vendor/bin/hw/vendor.qti.hardware.soter@1.0-service|8e315a85eeeb94a51f1533c80212d2fc0ec88760
+vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc|76447a61ad5529949365eeb7e8ca000e48bd28ae
+vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so|7d4c9a9e2a91c0a675b5f30108fb288b98d6ddc0
+vendor/lib64/vendor.qti.hardware.soter@1.0.so|5496f7816036ef71aec0116864032f8a6078aee7
 
 # Thermal - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
 vendor/bin/thermal-engine|6ee391c0b9f8d4ceea57521f584b75c60d2ffa09
@@ -1274,10 +1274,10 @@ vendor/lib/libthermalclient.so|b2d69a3a3589eb0387c2f13cc10ff91072c27c9a
 vendor/lib64/libthermalclient.so|26475ef0d6b80fcf40c9490f795d21e46d3d9054
 vendor/lib64/libthermalfeature.so|a1d99d33946d99ca620c6f5a8f4759d600a89086
 
-# TUI
-vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
-vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc
-vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
+# TUI - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti|15378114c18fd1b1c8f9671f656396285ad1de48
+vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc|2cfc563d7e1579374f001c94588fae7835a12ffc
+vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|4ba792ee3234dca4cd7ebbd7b3f9003c800f51b4
 
 # Time services - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
 -vendor/app/TimeService/TimeService.apk|aacffbb597e40db705171966174f7242a5a5b4b4
