@@ -222,7 +222,9 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
-    android.hardware.media.omx@1.0-impl
+    android.hardware.media.omx@1.0-impl \
+    libavservices_minijail \
+    libavservices_minijail.vendor
 
 # Media configs
 PRODUCT_COPY_FILES += \
