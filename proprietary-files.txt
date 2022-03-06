@@ -804,38 +804,39 @@ vendor/etc/init/dpmQmiMgr.rc|1538743661a5c48c15cd105beaad20f72953885a
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so|d9f1aa7f93b928f42499d613d20ccbc60f279097
 vendor/lib64/libdpmqmihal.so|41eb89e66ba065c43a5eb79cd3c72cef0ee167aa
 
-# DRM
-vendor/bin/qseecomd
-vendor/lib/libQSEEComAPI.so
-vendor/lib/libsdedrm.so
-vendor/lib64/libcpion.so
-vendor/lib64/libdrmfs.so
-vendor/lib64/libdrmtime.so
-vendor/lib64/libGPreqcancel.so
-vendor/lib64/libGPreqcancel_svc.so
-vendor/lib64/libhdcpsrm.so
-vendor/lib64/liboemcrypto.so
-vendor/lib64/libqisl.so
-vendor/lib64/libQSEEComAPI.so
-vendor/lib64/librpmb.so
-vendor/lib64/libsdedrm.so
-vendor/lib64/libsecureui.so
-vendor/lib64/libSecureUILib.so
-vendor/lib64/libssd.so
-vendor/lib64/libStDrvInt.so
+# DRM - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+vendor/bin/qseecomd|1aa84570b97468e3e6d0a1266396db7d087d8f87
+vendor/lib/libQSEEComAPI.so|b88a74220b7082c4e066ab98664e653b9f0e76ea
+vendor/lib/libsdedrm.so|9bfbcb30a2d91a18c54111b403df91dee07c82ab
+vendor/lib64/libcpion.so|b412ee0d83184dd35d3e8044c37be90543e4a5f4
+vendor/lib64/libdrmfs.so|11a6e61c2d1e66d0ed89848bb56d4c9852379a12
+vendor/lib64/libdrmtime.so|d1e84e6bc6545ecc8dea1c648de0b691c2de7e6c
+vendor/lib64/libGPreqcancel.so|b9efbc8623981e1249ad0a0f8964b2b655d2b334
+vendor/lib64/libGPreqcancel_svc.so|088a77c5369aeb03062199731ec883c1ad048f8e
+vendor/lib64/libhdcpsrm.so|1cb91cbaad3c0a44df4f244f8fb462a9f0ebb0b2
+vendor/lib64/liboemcrypto.so|d8581db5b66835a89489c394f334cfb9d01b7d7f
+vendor/lib64/libqisl.so|c79719eebc094c2af9561e8df2c158638b111b70
+vendor/lib64/libQSEEComAPI.so|56ddcf0b5d7396377828db98d8705b89e48a930f
+vendor/lib64/librpmb.so|085a3a79b627d1210654ad50902b36a0ba3ee99c
+vendor/lib64/libsdedrm.so|a6af861a2db5721e0ef1d9606713e967c3d39b1c
+vendor/lib64/libsecureui.so|6cd84092ab2d70bf17fff025376d50294c935439
+vendor/lib64/libSecureUILib.so|06c34dde058a9d83b78167ecd6bf2f2565dd406b
+vendor/lib64/libssd.so|08566fd544144a9fef6d53eb297df091f1f611af
+vendor/lib64/libStDrvInt.so|6091f1f496b87730f9a77e9ede504c4fa99c608a
 
-# DRM - Qualcomm Trusted Execution Enviornment
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so
-vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
+# DRM - Qualcomm Trusted Execution Enviornment - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service|a12cd8a3d326609ee0f0a0cdb5cfc69bd2085f1e
+vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc|c966350ee67d3a7c73ca7184e3725264025d16f5
+vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|ac3a9b0235f7355f7b113abdd5836223cd40719d
+vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so|98fbae4add3d6edc096aed3634831a50328491e5
+vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|507fd5e46600374369fe822e339859f1d86716ee
+vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so|4e08dcd830d319c1a56d108c037b1f76eb5060d4
 
-# DRM (Widevine)
-vendor/bin/hw/android.hardware.drm@1.2-service.widevine
-vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
-vendor/lib64/libwvhidl.so
+# DRM (Widevine) - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+vendor/bin/hw/android.hardware.drm@1.3-service.widevine|2158f47423c723a9da29bb81bb16987a1e715c21
+vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc|c35e1a6f9a6faff19064a81e07c4be82ceaf4bb5
+-vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml|ebebcf8f367641480cf7d512fc06e6ab777527be
+vendor/lib64/libwvhidl.so|acf4870a0b10af74a40a4c6180f2c10a1706ddbd
 
 # ESE-Powermanager - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
 vendor/bin/hw/vendor.qti.esepowermanager@1.1-service|040212c2c39ca3f2090291dd3a7f49979e5003df
