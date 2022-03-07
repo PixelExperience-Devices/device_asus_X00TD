@@ -864,17 +864,17 @@ vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
-# FM
--product/lib/vendor.qti.hardware.fm@1.0.so
--product/lib64/vendor.qti.hardware.fm@1.0.so
-system/lib/fm_helium.so
-system/lib/libfm-hci.so
-system/lib64/fm_helium.so
-system/lib64/libfm-hci.so
-vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
-vendor/lib/vendor.qti.hardware.fm@1.0.so
-vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.fm@1.0.so
+# FM - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+system_ext/lib/fm_helium.so|89b1d540475352172eac7265c97aba55d93c150e
+system_ext/lib/libfm-hci.so|b42ec9573f38587857ef01e7bdd88dd9bb6ae584
+-system_ext/lib/vendor.qti.hardware.fm@1.0.so|af23f9986a1836a2f937320946a1267563a82e22
+system_ext/lib64/fm_helium.so|b2440e4feaae8a7f5e2269525520f9774b6962fc
+system_ext/lib64/libfm-hci.so|758c6e7cfafc964b5cd9d71806ec5455e0d78716
+-system_ext/lib64/vendor.qti.hardware.fm@1.0.so|5eaf6d5d67361ff6236c1ec4f5225c6185a904a6
+vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so|b711f2b21eae6dda60c1066cc7f09f2fdbbba05a
+vendor/lib/vendor.qti.hardware.fm@1.0.so|aad3ef11a2fa41bb5a2bf25f8960c53ac3e0f8a4
+vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so|c828f2be5415f779bbd9113ed944f981a5fa1f2c
+vendor/lib64/vendor.qti.hardware.fm@1.0.so|f6e23f902b7e15232b20af55161a24da93ffe25f
 
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
@@ -993,14 +993,14 @@ vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
 
-# Listen
-vendor/lib/hw/sound_trigger.primary.sdm660.so
-vendor/lib/libadpcmdec.so
-vendor/lib/libgcs-calwrapper.so
-vendor/lib/libgcs-ipc.so
-vendor/lib/libgcs-osal.so
-vendor/lib/libgcs.so
-vendor/lib/libsmwrapper.so
+# Listen - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+vendor/lib/hw/sound_trigger.primary.sdm660.so|f9fc90dd0ffaff3df5873d9536bb7a2b7d60450c
+vendor/lib/libadpcmdec.so|b3ec2cc197b682aa6ae7e1da9c8f25cc1aa75750
+vendor/lib/libgcs-calwrapper.so|7bbad068766b970e3fa576f372ed36b87e6d7898
+vendor/lib/libgcs-ipc.so|dd9c0e6e25b4b1c8a80cec843a7eec990111447f
+vendor/lib/libgcs-osal.so|413c0b9b767d8aa1da477f89b162d5b13604e0cf
+vendor/lib/libgcs.so|16dd5d2893062e717921674f92338d12a6a823fc
+vendor/lib/libsmwrapper.so|0fbf611c9a597f7c70bfd2363dfc7f465d1dafd5
 
 # Media
 system/lib/libFileMux.so
