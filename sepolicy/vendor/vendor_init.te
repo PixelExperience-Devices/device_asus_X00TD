@@ -1,1 +1,3 @@
 allow init adsprpcd_file:file mounton;
+
+allow vendor_init nfc_sensors_prop:file { read };
