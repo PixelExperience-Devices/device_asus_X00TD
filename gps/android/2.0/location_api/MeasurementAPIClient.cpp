@@ -1,4 +1,4 @@
-/* Copyright (c) 2017-2019, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2017-2020, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -32,9 +32,11 @@
 
 #include <log_util.h>
 #include <loc_cfg.h>
+#include <inttypes.h>
 
 #include "LocationUtil.h"
 #include "MeasurementAPIClient.h"
+#include <loc_misc_utils.h>
 
 namespace android {
 namespace hardware {
@@ -56,6 +58,8 @@ static void convertGnssMeasurement(GnssMeasurementsData& in,
 static void convertGnssClock(GnssMeasurementsClock& in, IGnssMeasurementCallback::GnssClock& out);
 static void convertGnssMeasurementsCodeType(GnssMeasurementsCodeType& in,
         ::android::hardware::hidl_string& out);
+static void convertElapsedRealtimeNanos(GnssMeasurementsNotification& in,
+        ::android::hardware::gnss::V2_0::ElapsedRealtime& elapsedRealtimeNanos);
 
 MeasurementAPIClient::MeasurementAPIClient() :
     mGnssMeasurementCbIface(nullptr),
@@ -71,6 +75,13 @@ MeasurementAPIClient::~MeasurementAPIClient()
     LOC_LOGD("%s]: ()", __FUNCTION__);
 }
 
+void MeasurementAPIClient::clearInterfaces()
+{
+    mGnssMeasurementCbIface = nullptr;
+    mGnssMeasurementCbIface_1_1 = nullptr;
+    mGnssMeasurementCbIface_2_0 = nullptr;
+}
+
 // for GpsInterface
 Return<IGnssMeasurement::GnssMeasurementStatus>
 MeasurementAPIClient::measurementSetCallback(const sp<V1_0::IGnssMeasurementCallback>& callback)
@@ -78,6 +89,7 @@ MeasurementAPIClient::measurementSetCallback(const sp<V1_0::IGnssMeasurementCall
     LOC_LOGD("%s]: (%p)", __FUNCTION__, &callback);
 
     mMutex.lock();
+    clearInterfaces();
     mGnssMeasurementCbIface = callback;
     mMutex.unlock();
 
@@ -93,6 +105,7 @@ MeasurementAPIClient::measurementSetCallback_1_1(
             __FUNCTION__, &callback, (int)powerMode, timeBetweenMeasurement);
 
     mMutex.lock();
+    clearInterfaces();
     mGnssMeasurementCbIface_1_1 = callback;
     mMutex.unlock();
 
@@ -108,6 +121,7 @@ MeasurementAPIClient::measurementSetCallback_2_0(
         __FUNCTION__, &callback, (int)powerMode, timeBetweenMeasurement);
 
     mMutex.lock();
+    clearInterfaces();
     mGnssMeasurementCbIface_2_0 = callback;
     mMutex.unlock();
 
@@ -230,7 +244,7 @@ static void convertGnssMeasurement(GnssMeasurementsData& in,
         out.flags |= IGnssMeasurementCallback::GnssMeasurementFlags::HAS_CARRIER_PHASE_UNCERTAINTY;
     if (in.flags & GNSS_MEASUREMENTS_DATA_AUTOMATIC_GAIN_CONTROL_BIT)
         out.flags |= IGnssMeasurementCallback::GnssMeasurementFlags::HAS_AUTOMATIC_GAIN_CONTROL;
-    out.svid = in.svId;
+    convertGnssSvid(in, out.svid);
     convertGnssConstellationType(in.svType, out.constellation);
     out.timeOffsetNs = in.timeOffsetNs;
     if (in.stateMask & GNSS_MEASUREMENTS_STATE_CODE_LOCK_BIT)
@@ -295,7 +309,7 @@ static void convertGnssMeasurement(GnssMeasurementsData& in,
 
 static void convertGnssClock(GnssMeasurementsClock& in, IGnssMeasurementCallback::GnssClock& out)
 {
-    memset(&out, 0, sizeof(IGnssMeasurementCallback::GnssClock));
+    memset(&out, 0, sizeof(out));
     if (in.flags & GNSS_MEASUREMENTS_CLOCK_FLAGS_LEAP_SECOND_BIT)
         out.gnssClockFlags |= IGnssMeasurementCallback::GnssClockFlags::HAS_LEAP_SECOND;
     if (in.flags & GNSS_MEASUREMENTS_CLOCK_FLAGS_TIME_UNCERTAINTY_BIT)
@@ -324,6 +338,7 @@ static void convertGnssClock(GnssMeasurementsClock& in, IGnssMeasurementCallback
 static void convertGnssData(GnssMeasurementsNotification& in,
         V1_0::IGnssMeasurementCallback::GnssData& out)
 {
+    memset(&out, 0, sizeof(out));
     out.measurementCount = in.count;
     if (out.measurementCount > static_cast<uint32_t>(V1_0::GnssMax::SVS_COUNT)) {
         LOC_LOGW("%s]: Too many measurement %u. Clamps to %d.",
@@ -339,6 +354,7 @@ static void convertGnssData(GnssMeasurementsNotification& in,
 static void convertGnssData_1_1(GnssMeasurementsNotification& in,
         V1_1::IGnssMeasurementCallback::GnssData& out)
 {
+    memset(&out, 0, sizeof(out));
     out.measurements.resize(in.count);
     for (size_t i = 0; i < in.count; i++) {
         convertGnssMeasurement(in.measurements[i], out.measurements[i].v1_0);
@@ -361,6 +377,7 @@ static void convertGnssData_1_1(GnssMeasurementsNotification& in,
 static void convertGnssData_2_0(GnssMeasurementsNotification& in,
         V2_0::IGnssMeasurementCallback::GnssData& out)
 {
+    memset(&out, 0, sizeof(out));
     out.measurements.resize(in.count);
     for (size_t i = 0; i < in.count; i++) {
         convertGnssMeasurement(in.measurements[i], out.measurements[i].v1_1.v1_0);
@@ -414,6 +431,22 @@ static void convertGnssData_2_0(GnssMeasurementsNotification& in,
             out.measurements[i].state |= IGnssMeasurementCallback::GnssMeasurementState::STATE_2ND_CODE_LOCK;
     }
     convertGnssClock(in.clock, out.clock);
+    convertElapsedRealtimeNanos(in, out.elapsedRealtime);
+}
+
+static void convertElapsedRealtimeNanos(GnssMeasurementsNotification& in,
+        ::android::hardware::gnss::V2_0::ElapsedRealtime& elapsedRealtime)
+{
+    if (in.clock.flags & GNSS_MEASUREMENTS_CLOCK_FLAGS_ELAPSED_REAL_TIME_BIT) {
+        elapsedRealtime.flags |= V2_0::ElapsedRealtimeFlags::HAS_TIMESTAMP_NS;
+        elapsedRealtime.timestampNs = in.clock.elapsedRealTime;
+        elapsedRealtime.flags |= V2_0::ElapsedRealtimeFlags::HAS_TIME_UNCERTAINTY_NS;
+        elapsedRealtime.timeUncertaintyNs = in.clock.elapsedRealTimeUnc;
+        LOC_LOGd("elapsedRealtime.timestampNs=%" PRIi64 ""
+                 " elapsedRealtime.timeUncertaintyNs=%" PRIi64 " elapsedRealtime.flags=0x%X",
+                 elapsedRealtime.timestampNs,
+                 elapsedRealtime.timeUncertaintyNs, elapsedRealtime.flags);
+    }
 }
 
 static void convertGnssMeasurementsCodeType(GnssMeasurementsCodeType& in,

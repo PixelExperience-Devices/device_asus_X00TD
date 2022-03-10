@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2014, 2016-2019 The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2014, 2016-2020 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -43,13 +43,20 @@ namespace loc_core {
 // the right locApi should get created.
 LocAdapterBase::LocAdapterBase(const LOC_API_ADAPTER_EVENT_MASK_T mask,
                                ContextBase* context, bool isMaster,
-                               LocAdapterProxyBase *adapterProxyBase) :
+                               LocAdapterProxyBase *adapterProxyBase,
+                               bool waitForDoneInit) :
     mIsMaster(isMaster), mEvtMask(mask), mContext(context),
     mLocApi(context->getLocApi()), mLocAdapterProxyBase(adapterProxyBase),
     mMsgTask(context->getMsgTask()),
     mIsEngineCapabilitiesKnown(ContextBase::sIsEngineCapabilitiesKnown)
 {
-    mLocApi->addAdapter(this);
+    LOC_LOGd("waitForDoneInit: %d", waitForDoneInit);
+    if (!waitForDoneInit) {
+        mLocApi->addAdapter(this);
+        mAdapterAdded = true;
+    } else {
+        mAdapterAdded = false;
+    }
 }
 
 uint32_t LocAdapterBase::mSessionIdCounter(1);
@@ -178,6 +185,10 @@ DEFAULT_IMPL()
 void LocAdapterBase::reportGnssSvTypeConfigEvent(const GnssSvTypeConfig& /*config*/)
 DEFAULT_IMPL()
 
+void LocAdapterBase::reportGnssConfigEvent(uint32_t,  /* session id*/
+            const GnssConfig& /*gnssConfig*/)
+DEFAULT_IMPL()
+
 bool LocAdapterBase::
     requestOdcpiEvent(OdcpiRequestInfo& /*request*/)
 DEFAULT_IMPL(false)
@@ -302,6 +313,15 @@ LocAdapterBase::getCapabilities()
         if (ContextBase::isFeatureSupported(LOC_SUPPORTED_FEATURE_LOCATION_PRIVACY)) {
             mask |= LOCATION_CAPABILITIES_PRIVACY_BIT;
         }
+        if (ContextBase::isFeatureSupported(LOC_SUPPORTED_FEATURE_MEASUREMENTS_CORRECTION)) {
+            mask |= LOCATION_CAPABILITIES_MEASUREMENTS_CORRECTION_BIT;
+        }
+        if (ContextBase::isFeatureSupported(LOC_SUPPORTED_FEATURE_ROBUST_LOCATION)) {
+            mask |= LOCATION_CAPABILITIES_CONFORMITY_INDEX_BIT;
+        }
+        if (ContextBase::isFeatureSupported(LOC_SUPPORTED_FEATURE_EDGNSS)) {
+            mask |= LOCATION_CAPABILITIES_EDGNSS_BIT;
+        }
     } else {
         LOC_LOGE("%s]: attempt to get capabilities before they are known.", __func__);
     }
@@ -407,5 +427,13 @@ LocAdapterBase::requestCapabilitiesCommand(LocationAPI* client)
 
     sendMsg(new MsgRequestCapabilities(*this, client));
 }
+
+void
+LocAdapterBase::reportLatencyInfoEvent(const GnssLatencyInfo& /*gnssLatencyInfo*/)
+DEFAULT_IMPL()
+
+bool LocAdapterBase::
+    reportQwesCapabilities(const std::unordered_map<LocationQwesFeatureType, bool> &featureMap)
+DEFAULT_IMPL(false)
 
 } // namespace loc_core

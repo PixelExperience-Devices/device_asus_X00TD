@@ -1,4 +1,4 @@
-/* Copyright (c) 2017, 2019, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2017-2021, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -158,6 +158,7 @@ private:
         eAgcGlo = 20,
         eAgcBds = 21,
         eAgcGal = 22,
+        eMax0 = eAgcGal,
         eLeapSeconds = 23,
         eLeapSecUnc = 24,
         eGloBpAmpI = 25,
@@ -166,7 +167,6 @@ private:
         eBdsBpAmpQ = 28,
         eGalBpAmpI = 29,
         eGalBpAmpQ = 30,
-        eMax0 = eGalBpAmpQ,
         eTimeUncNs = 31,
         eMax
     };
@@ -1287,6 +1287,14 @@ void SystemStatus::destroyInstance()
     mInstance = NULL;
 }
 
+void SystemStatus::resetNetworkInfo() {
+    for (int i=0; i<mCache.mNetworkInfo.size(); ++i) {
+        // Reset all the cached NetworkInfo Items as disconnected
+        eventConnectionStatus(false, mCache.mNetworkInfo[i].mType, mCache.mNetworkInfo[i].mRoaming,
+                mCache.mNetworkInfo[i].mNetworkHandle, mCache.mNetworkInfo[i].mApn);
+    }
+}
+
 IOsObserver* SystemStatus::getOsObserver()
 {
     return &mSysStatusObsvr;
@@ -1346,6 +1354,9 @@ SystemStatus::SystemStatus(const MsgTask* msgTask) :
 template <typename TYPE_REPORT, typename TYPE_ITEM>
 bool SystemStatus::setIteminReport(TYPE_REPORT& report, TYPE_ITEM&& s)
 {
+    if (s.ignore()) {
+        return false;
+    }
     if (!report.empty() && report.back().equals(static_cast<TYPE_ITEM&>(s.collate(report.back())))) {
         // there is no change - just update reported timestamp
         report.back().mUtcReported = s.mUtcReported;
@@ -1575,6 +1586,7 @@ bool SystemStatus::eventDataItemNotify(IDataItemCore* dataitem)
             break;
     }
     pthread_mutex_unlock(&mMutexSystemStatus);
+    LOC_LOGv("DataItemId: %d, whether to record dateitem in cache: %d", dataitem->getId(), ret);
     return ret;
 }
 
@@ -1721,11 +1733,12 @@ bool SystemStatus::setDefaultGnssEngineStates(void)
 @return     true when successfully done
 ******************************************************************************/
 bool SystemStatus::eventConnectionStatus(bool connected, int8_t type,
-                                         bool roaming, NetworkHandle networkHandle)
+                                         bool roaming, NetworkHandle networkHandle,
+                                         string& apn)
 {
     // send networkinof dataitem to systemstatus observer clients
     SystemStatusNetworkInfo s(type, "", "", connected, roaming,
-                              (uint64_t) networkHandle);
+                              (uint64_t) networkHandle, apn);
     mSysStatusObsvr.notify({&s});
 
     return true;
