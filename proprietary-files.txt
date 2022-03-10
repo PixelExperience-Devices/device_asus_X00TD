@@ -881,37 +881,38 @@ vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 
-# GPS
-vendor/bin/loc_launcher
-vendor/bin/lowi-server
-vendor/bin/slim_daemon
-vendor/bin/xtra-daemon
-vendor/bin/xtwifi-client
-vendor/bin/xtwifi-inet-agent
-vendor/etc/cacert_location.pem
--vendor/etc/vintf/manifest/vendor.qti.gnss@3.0-service.xml
-vendor/etc/xtra_root_cert.pem
-vendor/lib64/hw/vendor.qti.gnss@3.0-impl.so
-vendor/lib64/libdataitems.so
-vendor/lib64/libgdtap.so
-vendor/lib64/libizat_client_api.so
-vendor/lib64/libizat_core.so
-vendor/lib64/liblbs_core.so
-vendor/lib64/libloc_api_v02.so
-vendor/lib64/liblocationservice.so
-vendor/lib64/liblocationservice_glue.so
-vendor/lib64/liblowi_client.so
-vendor/lib64/liblowi_wifihal.so
-vendor/lib64/libqdma_file_agent.so
-vendor/lib64/libslimclient.so
-vendor/lib64/libxtadapter.so
-vendor/lib64/vendor.qti.gnss@1.0.so
-vendor/lib64/vendor.qti.gnss@1.1.so
-vendor/lib64/vendor.qti.gnss@1.2.so
-vendor/lib64/vendor.qti.gnss@2.0.so
-vendor/lib64/vendor.qti.gnss@2.1.so
-vendor/lib64/vendor.qti.gnss@3.0-service.so
-vendor/lib64/vendor.qti.gnss@3.0.so
+# GPS - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+vendor/bin/loc_launcher|f170dc02d9046fcde1fc58656b0387773a85e78d
+vendor/bin/lowi-server|6c66e4c543d67af692ff7c78f12fc90cc4bd0bcd
+vendor/bin/mlid|a36c293c13e1929f8943ac8518e27065c0f51ae3
+vendor/bin/slim_daemon|8b83f55aace84b0519d73a16c64ed38152cc7805
+vendor/bin/xtra-daemon|cd0305e252493d65780b5ff188f937f84c64675a
+vendor/etc/gpfspath_oem_config.xml|7aeade35b0bbe27530f6aca8c1ed5192a7acf59d
+-vendor/etc/vintf/manifest/vendor.qti.gnss@4.0-service.xml|6514b13f55abc0acc28e004c35ff93fb972d61a9
+-vendor/lib/libqsocket.so|50079ff493b17465ff8f44d8210d26e3c7279065
+vendor/lib64/hw/vendor.qti.gnss@4.0-impl.so|244050e4081a6bec273d5481916754b77a52890d
+vendor/lib64/libcdfw_remote_api.so|558636f4fa4c17f29cb644c8c6e07766b7240005
+vendor/lib64/libdataitems.so|90379d3b3d036ed26bdad94a52a1cdf406f6b562
+vendor/lib64/libizat_client_api.so|810bc49f9b8d2f798552b2ccb10f413757412264
+vendor/lib64/libizat_core.so|d45b75be3e4e6bcd26793cb4325b696165b68c2a
+vendor/lib64/liblbs_core.so|c4715331c44968ebe1195c1128a60260db045b94
+vendor/lib64/libloc_api_v02.so|2b2e8cda6bdf0344a625af3e8a33ef0a60b1801e
+vendor/lib64/liblocationservice.so|138238cf930ce8843d81df7b554364c3aa6f7412
+vendor/lib64/liblocationservice_glue.so|95f05d44ea815d85e8f0e024dd8e7b045813d488
+vendor/lib64/liblowi_client.so|5eac232760999dd3338969f4c4255dd4d06ba440
+vendor/lib64/libmmosal.so|595faff0767dc2bd0a344a98ab65a239bed14826
+vendor/lib64/libqcc_file_agent.so|3707206276c3f8a37d0ab6ee7b2360b5bffe2b3e
+vendor/lib64/libqdma_file_agent.so|c199c2a1d73411558db9b1c0e1bc6f4af19d881a
+-vendor/lib64/libqsocket.so|3fa01c9aff6ed96a5ea9886c7696a046c929e339
+vendor/lib64/libxtadapter.so|495af82c252ccca8257c5281ba699da214fd1539
+vendor/lib64/vendor.qti.gnss@1.0.so|5cc0d0c8e7a8083f5892eb303ab1e6d4c9d66639
+vendor/lib64/vendor.qti.gnss@1.1.so|9a516f4b1b55798f0ec1ebead0c653ad65546517
+vendor/lib64/vendor.qti.gnss@1.2.so|1266128a166aed91804aebc1513524eb09424f64
+vendor/lib64/vendor.qti.gnss@2.0.so|8dc78f86e141c05f5b404cb3236910896c10d941
+vendor/lib64/vendor.qti.gnss@2.1.so|81142c88b15688a671bd372f013dfb2e77d1998d
+vendor/lib64/vendor.qti.gnss@3.0.so|1c0b41eddcc4789e1ea842be02d511afad123a8e
+vendor/lib64/vendor.qti.gnss@4.0-service.so|04233086636be1aeaaedf88d3126803b0c40c11d
+vendor/lib64/vendor.qti.gnss@4.0.so|e38ae43982dc62bf48193a6c3eb2ae385adb37aa
 
 # GPU firmware
 vendor/firmware/a512_zap.b00
@@ -1155,7 +1156,6 @@ vendor/lib64/libpdnotifier.so|8e7b07e2b16c3931b93605deb38f2452ff57037b
 vendor/lib64/libqcmaputils.so|6880f1d1c27a2ec801543dbfea68205252db2fd8
 vendor/lib64/libqcrilFramework.so|dc62bd4f3685c420d43f4f5f4141d5908212df86
 vendor/lib64/libqrtr.so|b22ee7df87b35ba88b518f0b821cc601cd612183
-vendor/lib64/libqsocket.so|3fa01c9aff6ed96a5ea9886c7696a046c929e339
 vendor/lib64/libril-qc-hal-qmi.so|09865dc82b52325949511f856bab308a791e9e68
 vendor/lib64/libril-qc-logger.so|39fd61a8d9ed802aea046d17204ef88434522980
 vendor/lib64/libril-qc-ltedirectdisc.so|5b8a00483247f743cf92fb93f9a8234f72728dec
