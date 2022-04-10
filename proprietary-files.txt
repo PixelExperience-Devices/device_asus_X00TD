@@ -89,6 +89,13 @@ vendor/lib/libaudcal.so
 vendor/lib/libqtigef.so
 vendor/lib/soundfx/libasphere.so
 
+# Audio libraries - from UL-ASUS_X00T-WW-16.2017.2009.087-user
+vendor/lib/soundfx/libqcbassboost.so|9327128a592d24def9a6e323c9a85541a2052c1a
+vendor/lib/soundfx/libqcreverb.so|bf57090dbba900b6a3325513b4b6d4bdc6eaf2cd
+vendor/lib/soundfx/libqcvirt.so|050274cac0a518494d0bc12d288722a50670ed95
+vendor/lib64/soundfx/libqcbassboost.so|353a8b27d979025605aa5ff947d784af4fa857ee
+vendor/lib64/soundfx/libqcvirt.so|2edef3ddea74a51666354d8c45fbc1634f92cfbe
+
 # Bluetooth - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|07d96d0d3c4a500b14ea3c97e02b9eb5ee2bbc4d
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|f4ee3b2da2b08647447869ade86ec63f7340accc
