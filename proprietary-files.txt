@@ -995,7 +995,6 @@ vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
 
 # Listen - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
-vendor/lib/hw/sound_trigger.primary.sdm660.so|f9fc90dd0ffaff3df5873d9536bb7a2b7d60450c
 vendor/lib/libadpcmdec.so|b3ec2cc197b682aa6ae7e1da9c8f25cc1aa75750
 vendor/lib/libgcs-calwrapper.so|7bbad068766b970e3fa576f372ed36b87e6d7898
 vendor/lib/libgcs-ipc.so|dd9c0e6e25b4b1c8a80cec843a7eec990111447f
