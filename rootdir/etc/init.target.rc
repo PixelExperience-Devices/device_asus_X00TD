@@ -103,6 +103,12 @@ on boot
 
     chown radio radio sys/module/stk3x1x/parameters/call_status_flag
 
+    # Fingerprint permissions
+    chmod 0666 /dev/fpsdev0
+    chown system system /dev/fpsdev0
+    chmod 0666 /dev/goodix_fp
+    chown system system /dev/goodix_fp
+
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 

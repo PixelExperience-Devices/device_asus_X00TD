@@ -318,9 +318,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/ramdump*             0640   system     system
 
 # Fingerprint device
-/dev/focaltech_fp         0660   system     system
-/dev/fpsdev0              0660   system     system
-/dev/goodix_fp            0660   system     system
 /dev/qbt*                 0660   system     system
 /sys/class/fts/touch_aoi aoi_set 0660 root system
 /sys/class/fts/touch_aoi power_set 0660 root system
