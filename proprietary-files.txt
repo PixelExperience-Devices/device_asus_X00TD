@@ -1053,7 +1053,7 @@ vendor/lib64/libgpustats.so
 # NFC
 vendor/lib/libpn553_fw.so
 
-# Perf - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# Perf - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 system_ext/etc/perf/wlc_model.tflite|83cf4df067bc14c78f31943f32bcaf6f32419125
 system_ext/lib/libqti-perfd-client_system.so|e7efdcc9a641b5058d92ce94a3e352123da22571
 system_ext/lib/libqti-util_system.so|54b769e9e9d922b7394b0009545c68d3a5b162c7
@@ -1067,6 +1067,7 @@ vendor/etc/init/vendor.qti.hardware.perf@2.2-service.rc|459b4c23550a56ac545f78c6
 vendor/etc/perf/commonresourceconfigs.xml|c80efdafc6c5ef4fe0602f4ffe3137092513db38
 vendor/etc/perf/commonsysnodesconfigs.xml|63d293adfd5aa82551aa8fc0d30b38bffdcc497e
 vendor/etc/perf/perfboostsconfig.xml|17fb67ef843aaebe07903bec13dc0555c10612fa
+vendor/etc/perf/perfconfigstore.xml|7aed790478c9796246ea7c4b3bb6f7d31172ecb3
 vendor/etc/perf/targetconfig.xml|376ae331df9d6c30b6208f25d04ae4ea11c0e2ea
 vendor/etc/perf/targetresourceconfigs.xml|c1e64eae221f714bc5bf97e83c69c37352311fab
 vendor/lib/libperfconfig.so|a7927edfdddafe90ea53bede0629ebc8a686152d
