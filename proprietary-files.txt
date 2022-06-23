@@ -777,12 +777,12 @@ vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
 vendor/lib64/vendor.qti.latency@2.0.so
 
-# Display firmware (Novatek)
-vendor/firmware/novatek_ts_fw_dj.bin
-vendor/firmware/novatek_ts_fw_txd.bin
+# Display firmware (Novatek) - from UL-ASUS_X00T-WW-16.2017.2007.084
+vendor/firmware/novatek_ts_fw_dj.bin|fd3d12c6abd1a77766ab1d1a0a60ce4256001614
+vendor/firmware/novatek_ts_fw_txd.bin|3841353c8f050a81178f9a5667b1e7cd5bdcc514
 
-# Display firmware (Synaptics)
-vendor/firmware/startup_fw_update.img
+# Display firmware (Synaptics) - from UL-ASUS_X00T-WW-16.2017.2007.084
+vendor/firmware/startup_fw_update.img|24ce9ee6defe4dc2861f27c1087fc13a44212b9d
 
 # DPM
 product/bin/dpmd
