@@ -458,5 +458,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
-# Inherit proprietary files
-$(call inherit-product-if-exists, vendor/asus/X00TD/X00TD-vendor.mk)
+# Inherit the proprietary files
+$(call inherit-product, vendor/asus/X00TD/X00TD-vendor.mk)

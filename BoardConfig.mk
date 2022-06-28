@@ -173,4 +173,4 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Inherit the proprietary files
--include vendor/asus/X00TD/BoardConfigVendor.mk
+include vendor/asus/X00TD/BoardConfigVendor.mk
