@@ -45,15 +45,15 @@ vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
 vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
 
-# Alarm - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
--product/app/PowerOffAlarm/PowerOffAlarm.apk|f0cc40c9080ae5784f7728067ad9b2c7d0de6907
+# Alarm - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
+-product/app/PowerOffAlarm/PowerOffAlarm.apk|1700001b0a54c29c9ce114ef9829f861c5edc6e9
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|586b142f9bc4bf3098b4962682c4de1c13810f9b
 vendor/bin/power_off_alarm|b8c7ddc1bed336753c3746925fd0f4a9925aa36c
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|a03a9a1c818595b19272ea6ffb466e23a7fc3b05
 vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|4129558506dc078c03679ba362acda4755457742
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so|dcfdc04b4e0c6e6a4ffa60e1694268bd0327e65c
 
-# ANT+ - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# ANT+ - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/lib/hw/com.dsi.ant@1.0-impl.so|079573a7412736b6f2da827d16cdd12d34a4f6a6
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so|87dc1a131534659173e71e108e7a3ffe6325845f
 
@@ -96,7 +96,7 @@ vendor/lib/soundfx/libqcvirt.so|050274cac0a518494d0bc12d288722a50670ed95
 vendor/lib64/soundfx/libqcbassboost.so|353a8b27d979025605aa5ff947d784af4fa857ee
 vendor/lib64/soundfx/libqcvirt.so|2edef3ddea74a51666354d8c45fbc1634f92cfbe
 
-# Bluetooth - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# Bluetooth - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|07d96d0d3c4a500b14ea3c97e02b9eb5ee2bbc4d
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|f4ee3b2da2b08647447869ade86ec63f7340accc
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|14d44c77a6f0b305ec7e03e679d7692884a3985d
@@ -725,9 +725,9 @@ vendor/firmware/cpp_firmware_v1_12_0.fw
 # Charger - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/hvdcp_opti|cfee9d4b5c2a842173aefe573344b2d3366f7d17
 
-# CNE - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
--vendor/app/CneApp/CneApp.apk|13bdf6ba5637d3df3d6d9fb0017f9f56ddc620e7
--vendor/app/IWlanService/IWlanService.apk|a189d8879b4cf5026db2d6a80abb3a1319e38f0c
+# CNE - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
+-vendor/app/CneApp/CneApp.apk|39144b727c1897cb52edf6c725c2eed6ca83eb4f
+-vendor/app/IWlanService/IWlanService.apk|74779cb40af74d7689c5e63162490506034b8550
 vendor/bin/cnd|07829b294562037b779a6e7244972d7c24e758a5
 vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml|578f3f8f56059bfdbef926bcc68d01c15e06951f
 vendor/etc/cne/wqeclient/ATT/ATT_profile2.xml|1fb42c672a12b6660bdce3ea94e0c43719dd9de8
@@ -791,7 +791,7 @@ vendor/firmware/novatek_ts_fw_txd.bin|3841353c8f050a81178f9a5667b1e7cd5bdcc514
 # Display firmware (Synaptics) - from UL-ASUS_X00T-WW-16.2017.2007.084
 vendor/firmware/startup_fw_update.img|24ce9ee6defe4dc2861f27c1087fc13a44212b9d
 
-# DPM - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# DPM - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 system_ext/bin/dpmd|4662a11c5331919cc08d541a298444ffce18cc1b
 system_ext/etc/dpm/dpm.conf|95e27da8c989e96c6faea6f0697bce11955b62a5
 system_ext/etc/init/dpmd.rc|738b638ff04cda368e22c03e16baf90ba157a6fc
@@ -805,13 +805,13 @@ system_ext/lib64/libdpmfdmgr.so|bf3666db17e77da3a303c10579baec0bd018089f
 system_ext/lib64/libdpmframework.so|235fbb48b47baebd48dbe56f72c77d97ca12c07c
 system_ext/lib64/libdpmtcm.so|dff3d3dbacd18ed55b5758a174f5016ef9e7a896
 system_ext/lib64/vendor.qti.diaghal@1.0.so|abe51fdbdcbf3449012395cf0ade8aa8d267dbe6
--system_ext/priv-app/dpmserviceapp/dpmserviceapp.apk|61a4e791ebd5c3bc4025fd0242b029b388530b98
+-system_ext/priv-app/dpmserviceapp/dpmserviceapp.apk|b404ff23a51f505ecf2a61a1b0f4e569eedcd3c9
 vendor/bin/dpmQmiMgr|3c553042d4257161adb75c0979c829b0cb050639
 vendor/etc/init/dpmQmiMgr.rc|1538743661a5c48c15cd105beaad20f72953885a
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so|d9f1aa7f93b928f42499d613d20ccbc60f279097
 vendor/lib64/libdpmqmihal.so|41eb89e66ba065c43a5eb79cd3c72cef0ee167aa
 
-# DRM - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# DRM - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/qseecomd|1aa84570b97468e3e6d0a1266396db7d087d8f87
 vendor/lib/libQSEEComAPI.so|b88a74220b7082c4e066ab98664e653b9f0e76ea
 vendor/lib/libsdedrm.so|9bfbcb30a2d91a18c54111b403df91dee07c82ab
@@ -831,7 +831,7 @@ vendor/lib64/libSecureUILib.so|06c34dde058a9d83b78167ecd6bf2f2565dd406b
 vendor/lib64/libssd.so|08566fd544144a9fef6d53eb297df091f1f611af
 vendor/lib64/libStDrvInt.so|6091f1f496b87730f9a77e9ede504c4fa99c608a
 
-# DRM - Qualcomm Trusted Execution Enviornment - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# DRM - Qualcomm Trusted Execution Enviornment - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service|a12cd8a3d326609ee0f0a0cdb5cfc69bd2085f1e
 vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc|c966350ee67d3a7c73ca7184e3725264025d16f5
 vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|ac3a9b0235f7355f7b113abdd5836223cd40719d
@@ -839,13 +839,13 @@ vendor/lib/vendor.qti.hardware.qteeconnector@1.0.so|98fbae4add3d6edc096aed363483
 vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|507fd5e46600374369fe822e339859f1d86716ee
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so|4e08dcd830d319c1a56d108c037b1f76eb5060d4
 
-# DRM (Widevine) - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# DRM (Widevine) - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/hw/android.hardware.drm@1.3-service.widevine|2158f47423c723a9da29bb81bb16987a1e715c21
 vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc|c35e1a6f9a6faff19064a81e07c4be82ceaf4bb5
 -vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml|ebebcf8f367641480cf7d512fc06e6ab777527be
 vendor/lib64/libwvhidl.so|acf4870a0b10af74a40a4c6180f2c10a1706ddbd
 
-# ESE-Powermanager - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# ESE-Powermanager - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/hw/vendor.qti.esepowermanager@1.1-service|040212c2c39ca3f2090291dd3a7f49979e5003df
 vendor/etc/init/vendor.qti.esepowermanager@1.1-service.rc|3c024c7135ec3dd8658624509ee61396a74f1ede
 vendor/lib/hw/vendor.qti.esepowermanager@1.1-impl.so|8f040162d31397f3851d5507cf4118b41db3b46a
@@ -871,7 +871,7 @@ vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
-# FM - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# FM - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 system_ext/lib/fm_helium.so|89b1d540475352172eac7265c97aba55d93c150e
 system_ext/lib/libfm-hci.so|b42ec9573f38587857ef01e7bdd88dd9bb6ae584
 -system_ext/lib/vendor.qti.hardware.fm@1.0.so|af23f9986a1836a2f937320946a1267563a82e22
@@ -1012,7 +1012,7 @@ vendor/lib64/libkeymasterdeviceutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
 
-# Listen - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# Listen - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/lib/libadpcmdec.so|b3ec2cc197b682aa6ae7e1da9c8f25cc1aa75750
 vendor/lib/libgcs-calwrapper.so|7bbad068766b970e3fa576f372ed36b87e6d7898
 vendor/lib/libgcs-ipc.so|dd9c0e6e25b4b1c8a80cec843a7eec990111447f
@@ -1083,13 +1083,13 @@ vendor/lib64/libqti-perfd.so|3dbd50a777b7db759d289da7f85f1361b27849f6
 vendor/lib64/libqti-util.so|6c1f2bdc6e663a913c3090cf9880101a61c5cad5
 vendor/lib64/libqti-utils.so|851798783cd77f7f847a67f1fff65ff727c9522b
 
-# Peripheral manager - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# Peripheral manager - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/pm-proxy|42383b9163716d8e6d81f0516e9cf09f22ea8b06
 vendor/bin/pm-service|b0a5d3491615ef9a237d93a393082105e3c0097c
 vendor/lib/libperipheral_client.so|8f7e9ebd1a8dc6afc878b97c078a3deb97963d68
 vendor/lib64/libperipheral_client.so|9bfd41e276e16b8f7c6808f3d87531fc5be4cdd5
 
-# Postprocessing - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# Postprocessing - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/hw/vendor.display.color@1.0-service|815cc36f3722fbfb5fdd52f6678309d207888038
 vendor/bin/mm-pp-dpps|0aa22b96ee8de5f17386f992ba9f20bc5051261f
 vendor/etc/init/vendor.display.color@1.0-service.rc|5ad673f879b3685a0e79b5633437e5499cb94f48
@@ -1107,7 +1107,7 @@ vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so|3ff445db2dd2db1a1068fe70a54a6c
 vendor/lib64/vendor.qti.hardware.qccvndhal@1.0-halimpl.so|6f587a9a2889a75559539b06c167960f06b01c42
 vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so|01b1d11316f5dcd8c1012a55ff01399081c79940
 
-# QMI - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# QMI - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 system_ext/etc/permissions/qti_permissions.xml|e6ff4572352b1a4f91b6b9d7cbb1cad9924410a0
 system_ext/lib64/libdiag_system.so|0581aa56cdf6041388bca51e60b5792345f02736
 vendor/bin/irsc_util|121deb2d6fd21b122c6a8ca8b30ef167f6b90f61
@@ -1141,14 +1141,14 @@ vendor/lib64/libqmi_csi.so|7e19c2266b7f63f3f9e69c039b1446acd460231b
 vendor/lib64/libqmi_encdec.so|a18bb21e5b9b53e3dc8dc45f6e7e65e32a467607
 vendor/lib64/libqmiservices.so|52770edf3e35f5376f3d0a131636f3213c9e59fa
 
-# Radio - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
--system_ext/app/QtiTelephonyService/QtiTelephonyService.apk|712ba653c60066e815b62cd54589e8511bcdb8f9
+# Radio - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
+-system_ext/app/QtiTelephonyService/QtiTelephonyService.apk|692d3d439cdee075729799e571113f6f8fe3e786
 system_ext/etc/permissions/qcrilhook.xml|30397e293b2c40e6b7a1d11c2a615cdd05de625a
 system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml|4ba0680d04581d8bd9acba3ddb8ea22f85747910
 system_ext/etc/permissions/telephonyservice.xml|b7831598d3c19c6ce4ef431d1cc44d94c3c35a8d
 system_ext/framework/qcrilhook.jar|f2888f922b8347417dfa86741feb8348795fce6f
 system_ext/framework/qti-telephony-common.jar|0db037785928aae043e9be7f49bddbefad43fbc3
--system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|a268324fd64b178fbcc8293a58e656e4dcd82ffa
+-system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|26b725924d62c7fbd0ed72fe1f0786b18b2f8f36
 vendor/bin/adpl|6bbc42cea3f882498e9bae6563659dc6538340e7
 vendor/bin/ATFWD-daemon|e1d493d251232dc7787e8f9fe76c027830c63855
 vendor/bin/hw/qcrild|77d0168fbad7db01eec8abd9df25f19c05411eb4
@@ -1214,9 +1214,9 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.2.so|3ffb7301b6c185b1
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0.so|75a58827c0b4e06e2ca8163b6a904dab2af3be6a
 vendor/radio/qcril_database/qcril.db|86286c24a227cb968dac1f7ccfe0ad26fe4fd462
 
-# Radio - IMS - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
--system_ext/app/imssettings/imssettings.apk|8e27882a4ecd10d69a5774b2834781cc60628a3f
--system_ext/app/uceShimService/uceShimService.apk|3b5b6fb89581e92eb151fcc9ddffe53609e6dd4c
+# Radio - IMS - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
+-system_ext/app/imssettings/imssettings.apk|516d8be0f869e1733d0287722897420c57c73be5
+-system_ext/app/uceShimService/uceShimService.apk|cdffe76fca53131f68eb996005a35304b924206e
 system_ext/lib64/lib-imscamera.so|49ead972646b09d700556d63676673b3e8af2036
 system_ext/lib64/lib-imsvideocodec.so|47512183b3330ad566d241149c4e16f33122dab1
 system_ext/lib64/lib-imsvt.so|4f96cc5f27551d0b6cb11ad6447d9ce8829dde47
@@ -1225,7 +1225,7 @@ system_ext/lib64/lib-imsvtutils.so|b4a39a247f767723ce67182ee92f526c029a019d
 system_ext/lib64/libimscamera_jni.so|486abdb09a82ccee5e49307a17ba3dc9efdf5e9d
 system_ext/lib64/libimsmedia_jni.so|f8be2575f8eaef8bb89a4bc049381ebffe857831
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so|4cf9e97f526c6278c5e2136e00d1fb800fb941aa
--system_ext/priv-app/ims/ims.apk|a7efccc4a143b36493cc7f0226fecde61c93c4ec
+-system_ext/priv-app/ims/ims.apk|bed959752f39386d6a7045f8cf96226a14e31dfd
 vendor/bin/ims_rtp_daemon|ed5c13c758080d79a9371061d53127d406475614
 vendor/bin/imsdatadaemon|701f9a2eaa2674bcaa7e69817bdcb656e99fcac9
 vendor/bin/imsqmidaemon|5fde955e71392479b2f3e6aaf6005fa54b618678
@@ -1301,7 +1301,7 @@ vendor/firmware/cppf.b06
 vendor/firmware/cppf.b07
 vendor/firmware/cppf.mdt
 
-# Soter - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# Soter - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 system_ext/framework/vendor.qti.hardware.soter-V1.0-java.jar|83227d66df8f047d69f5b90fe16339794fa75ce3
 vendor/bin/hw/vendor.qti.hardware.soter@1.0-service|8e315a85eeeb94a51f1533c80212d2fc0ec88760
 vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc|76447a61ad5529949365eeb7e8ca000e48bd28ae
@@ -1314,13 +1314,13 @@ vendor/lib/libthermalclient.so
 vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
 
-# TUI - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# TUI - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti|15378114c18fd1b1c8f9671f656396285ad1de48
 vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc|2cfc563d7e1579374f001c94588fae7835a12ffc
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|4ba792ee3234dca4cd7ebbd7b3f9003c800f51b4
 
-# Time services - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
--vendor/app/TimeService/TimeService.apk|aacffbb597e40db705171966174f7242a5a5b4b4
+# Time services - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
+-vendor/app/TimeService/TimeService.apk|aae6864069e8117bb8e899fe4b45c1865f76d682
 vendor/bin/time_daemon|48401d7f85c87aa3e12ce7b4a969a50cbf59c293
 vendor/etc/init/init.time_daemon.rc|b253ca2a498757e14e1d7a051bf504ae09218f51
 vendor/lib64/libtime_genoff.so|8bb116ad297a5e4a94da2f10509509cb6e863a5f
@@ -1336,5 +1336,5 @@ vendor/firmware/widevine.b06
 vendor/firmware/widevine.b07
 vendor/firmware/widevine.mdt
 
-# Wi-Fi - from ddv_sprout 11-RKQ1.210607.001-00WW_3_440-release-keys
+# Wi-Fi - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/cnss-daemon|1c63b8f94ba601b76edb0ee2fa1d1880de8d0ea3
