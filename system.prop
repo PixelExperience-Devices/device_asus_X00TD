@@ -28,7 +28,6 @@ vendor.display.disable_skip_validate=1
 persist.vendor.overlay.izat.optin=rro
 
 # Graphics
-debug.sf.latch_unsignaled=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_skip_validate=1
