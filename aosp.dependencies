@@ -1,0 +1,13 @@
+[
+  {
+    "repository": "kernel_asus_sdm660",
+    "target_path": "kernel/asus/sdm660",
+    "branch": "twelve-x00td"
+  },
+  {
+    "repository": "vendor_asus_X00TD",
+    "target_path": "vendor/asus/X00TD",
+    "branch": "twelve",
+    "remote": "pixel-devices-blobs"
+  }
+]
