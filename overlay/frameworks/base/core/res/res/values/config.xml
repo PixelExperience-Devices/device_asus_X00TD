@@ -355,6 +355,12 @@
     <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
     <bool name="config_zramWriteback">true</bool>
 
+    <!-- Flag indicating whether the surface flinger has limited
+         alpha compositing functionality in hardware.  If set, the window
+         manager will disable alpha trasformation in animations where not
+         strictly needed. -->
+    <bool name="config_sf_limitedAlpha">true</bool>
+
     <!-- SQLite -->
     <string name="db_default_journal_mode">MEMORY</string>
     <string name="db_default_sync_mode">OFF</string>
