@@ -54,6 +54,16 @@ void property_override(string prop, string value)
         __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
 }
 
+void set_avoid_gfxaccel_config() {
+    struct sysinfo sys;
+    sysinfo(&sys);
+
+    if (sys.totalram <= 3072ull * 1024 * 1024) {
+        // Reduce memory footprint
+        property_override("ro.config.avoid_gfx_accel", "true");
+    }
+}
+
 void NFC_check()
 {
     // Check NFC
@@ -70,5 +80,6 @@ void NFC_check()
 
 void vendor_load_properties()
 {
+    set_avoid_gfxaccel_config();
     NFC_check();
 }
