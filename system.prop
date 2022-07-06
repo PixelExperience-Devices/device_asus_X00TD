@@ -53,6 +53,7 @@ ro.nfc.port=I2C
 persist.backup.ntpServer="0.pool.ntp.org"
 
 # Perf
+ro.vendor.qti.sys.fw.bg_apps_limit=32
 vendor.perf.gestureflingboost.enable=true
 
 # QC framework value-adds
