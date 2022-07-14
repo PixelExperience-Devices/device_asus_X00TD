@@ -94,6 +94,9 @@ persist.vendor.camera.HAL3.enabled=1
 debug.stagefright.omx_default_rank.sw-audio=1
 debug.stagefright.omx_default_rank=0
 
+# Dalvik dex2oat
+dalvik.vm.dex2oat64.enabled=true
+
 # Dalvik overrides
 dalvik.vm.heapgrowthlimit=256m
 dalvik.vm.heapstartsize=8m
