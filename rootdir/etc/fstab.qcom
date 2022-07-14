@@ -23,4 +23,4 @@
 /dev/block/bootdevice/by-name/persist    /mnt/vendor/persist    ext4   noatime,nosuid,nodev,barrier=1                   wait
 
 # ZRAM
-/dev/block/zram0                         none        swap   defaults    zramsize=2147483648,zram_loopback_path=/data/per_boot/zram_swap,zram_loopback_size=512M
+/dev/block/zram0                         none        swap   defaults    zramsize=2147483648,zram_backingdev_size=512M
