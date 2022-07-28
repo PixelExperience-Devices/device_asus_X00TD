@@ -1,2 +1,2 @@
-allow hal_lineage_touch_default proc_tpd_gesture:dir search;
-allow hal_lineage_touch_default proc_tpd_gesture:file rw_file_perms;
+allow hal_lineage_touch_default proc_touchpanel:dir search;
+allow hal_lineage_touch_default proc_touchpanel:file rw_file_perms;
