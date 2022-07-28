@@ -1,2 +1,3 @@
 # Allow powerhal to read/write to dt2w node
-allow hal_power_default proc_tpd_gesture:file rw_file_perms;
+allow hal_power_default proc_touchpanel:dir r_dir_perms;
+allow hal_power_default proc_touchpanel:file rw_file_perms;

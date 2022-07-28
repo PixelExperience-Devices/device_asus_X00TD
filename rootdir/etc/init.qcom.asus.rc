@@ -38,10 +38,6 @@ on boot
     chmod 0660 /sys/class/power_supply/battery/device/smartchg_stop_charging
 
 on boot
-    # Tap to wake node
-    chown system system /proc/tpd_gesture
-    chmod 0660 /proc/tpd_gesture
-
 service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
     override
     class hal
