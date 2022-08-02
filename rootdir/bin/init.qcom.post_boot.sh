@@ -2740,6 +2740,11 @@ case "$target" in
             #echo 0-3 > /dev/cpuset/background/cpus
             #echo 0-3 > /dev/cpuset/system-background/cpus
 
+            # schedtune.boost settings
+            echo 8 > /dev/stune/schedtune.boost
+            echo 12 > /dev/stune/foreground/schedtune.boost
+            echo 25 > /dev/stune/top-app/schedtune.boost
+
             #if the kernel version >=4.14,use the schedutil governor
             KernelVersionStr=`cat /proc/sys/kernel/osrelease`
             KernelVersionS=${KernelVersionStr:2:2}
