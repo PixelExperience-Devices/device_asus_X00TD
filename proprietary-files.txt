@@ -1074,6 +1074,16 @@ vendor/lib64/libqti-perfd.so|3dbd50a777b7db759d289da7f85f1361b27849f6
 vendor/lib64/libqti-util.so|6c1f2bdc6e663a913c3090cf9880101a61c5cad5
 vendor/lib64/libqti-utils.so|851798783cd77f7f847a67f1fff65ff727c9522b
 
+# Perf-IOP - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
+system_ext/lib/vendor.qti.hardware.iop@2.0.so|56bc16299ff42c8e21f2595df29ec99f1cbc6f8c
+system_ext/lib64/vendor.qti.hardware.iop@2.0.so|fa4836e76c4b27840184fb097c9d38df9450e0a5
+vendor/lib/libqti-iopd-client.so|3a68a0efb8e31df21a00a864e6a4c8644c92bfc2
+vendor/lib/vendor.qti.hardware.iop@1.0.so|c1ef9e7b57c78b87776d4236a35776b2b84a6741
+vendor/lib/vendor.qti.hardware.iop@2.0.so|d93690b489da65e3203080054a51f72b0b3b67ba
+vendor/lib64/libqti-iopd-client.so|9f644b46e1c9cae11b6131cee099d47ff8d4e730
+vendor/lib64/vendor.qti.hardware.iop@1.0.so|23d85063dc470a2eee35a21e41a431a78f37c0b4
+vendor/lib64/vendor.qti.hardware.iop@2.0.so|2f56757d0cbb082bcf7a4432243374ce53b2e6ec
+
 # Peripheral manager - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/pm-proxy|42383b9163716d8e6d81f0516e9cf09f22ea8b06
 vendor/bin/pm-service|b0a5d3491615ef9a237d93a393082105e3c0097c
