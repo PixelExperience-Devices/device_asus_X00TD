@@ -32,9 +32,6 @@ dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_skip_validate=1
 
-# IORap app launch prefetching using Perfetto traces and madvise
-iorapd.readahead.enable=true
-
 # Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 media.stagefright.thumbnail.prefer_hw_codecs=true
