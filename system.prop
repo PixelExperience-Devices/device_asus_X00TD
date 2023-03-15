@@ -59,7 +59,6 @@ ro.vendor.qti.va_aosp.support=1
 # RIL
 DEVICE_PROVISIONED=1
 persist.radio.VT_CAM_INTERFACE=2
-persist.sys.fflag.override.settings_network_and_internet_v2=true
 ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
 
