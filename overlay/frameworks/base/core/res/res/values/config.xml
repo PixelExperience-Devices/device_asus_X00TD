@@ -351,9 +351,6 @@
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </string-array>
 
-    <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
-    <bool name="config_zramWriteback">true</bool>
-
     <!-- Flag indicating whether the surface flinger has limited
          alpha compositing functionality in hardware.  If set, the window
          manager will disable alpha trasformation in animations where not
