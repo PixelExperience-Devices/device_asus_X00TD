@@ -134,6 +134,8 @@ ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y9
 
 # Graphics
 debug.cpurend.vsync=false
+debug.hwui.renderer=skiagl
+debug.hwui.skia_atrace_enabled=false
 debug.renderengine.backend=skiaglthreaded
 ro.hardware.egl=adreno
 ro.hardware.vulkan=sdm660
