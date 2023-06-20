@@ -9,7 +9,7 @@
     Many entries other than HALs are zero-filled and
     require human attention.
 -->
-<compatibility-matrix version="1.0" type="device">
+<compatibility-matrix version="2.0" type="device">
     <hal format="hidl" optional="false">
         <name>android.frameworks.displayservice</name>
         <version>1.0</version>
