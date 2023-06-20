@@ -137,7 +137,7 @@ debug.hwui.renderer=vulkan
 debug.hwui.skia_atrace_enabled=false
 debug.renderengine.backend=skiaglthreaded
 ro.hardware.egl=adreno
-ro.hardware.vulkan=sdm660
+ro.hardware.vulkan=adreno
 
 # HEH filename encryption is being dropped
 ro.crypto.volume.filenames_mode=aes-256-cts
