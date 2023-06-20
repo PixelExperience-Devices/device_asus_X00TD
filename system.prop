@@ -4,7 +4,6 @@
 
 # Bluetooth
 bt.max.hfpclient.connections=1
-vendor.bluetooth.soc=cherokee
 
 # Camera
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam
