@@ -1,31 +1,7 @@
 /*
- * Copyright (C) 2019 Vyacheslav Vidanov (aka Anomalchik)
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2023 The LineageOS Project
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/*
- * Lights HAL for Asus X00T (RG led and LCD BACKLIGHT)
- *    RG led scenarios:
- *       Battery:
- *           -red blink
- *           -red light
- *           -orange light
- *           -green light
- *       Notifications:
- *           -green blink
- *           -green light
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 //#define HAL_DEBUG
@@ -60,12 +36,12 @@ namespace light {
 namespace V2_0 {
 namespace implementation {
 
-Light::Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight, std::ofstream&& red_blink,
-             std::ofstream&& red_led, std::ofstream&& green_blink, std::ofstream&& green_led)
+Light::Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight, std::ofstream&& red_breath,
+             std::ofstream&& red_led, std::ofstream&& green_breath, std::ofstream&& green_led)
     : mLcdBacklight(std::move(lcd_backlight)),
-      mRedBlink(std::move(red_blink)),
+      mRedBreath(std::move(red_breath)),
       mRedLed(std::move(red_led)),
-      mGreenBlink(std::move(green_blink)),
+      mGreenBreath(std::move(green_breath)),
       mGreenLed(std::move(green_led)) {
     auto attnFn(std::bind(&Light::setAttentionLight, this, std::placeholders::_1));
     auto backlightFn(std::bind(&Light::setLcdBacklight, this, std::placeholders::_1));
@@ -157,20 +133,14 @@ void Light::setSpeakerBatteryLightLocked() {
     } else if (isLit(mBatteryState)) {
         setSpeakerLightLocked(mBatteryState);
     } else {
-        // Lights off
-#ifdef HAL_DEBUG
-        LOG(VERBOSE) << "Light::setSpeakerBatteryLightLocked: Lights off";
-#endif
-        mRedLed << 0 << std::endl;
-        mGreenLed << 0 << std::endl;
-        mRedBlink << 0 << std::endl;
-        mGreenBlink << 0 << std::endl;
+        // No active LED scenarios, turn off the LEDs
+        setSpeakerLightLocked(LightState{}); // Set an empty LightState to turn off the LEDs
     }
 }
 
 void Light::setSpeakerLightLocked(const LightState& state) {
     int red, green;
-    int blink;
+    int breath;
     int onMs, offMs;
     uint32_t colorARGB = state.color;
 
@@ -179,8 +149,8 @@ void Light::setSpeakerLightLocked(const LightState& state) {
 #endif
 
     // Disable previous active light
-    mRedBlink << 0 << std::endl;
-    mGreenBlink << 0 << std::endl;
+    mRedBreath << 0 << std::endl;
+    mGreenBreath << 0 << std::endl;
 
     switch (state.flashMode) {
         case Flash::TIMED:
@@ -204,16 +174,16 @@ void Light::setSpeakerLightLocked(const LightState& state) {
     green = (colorARGB >> 8) & 0xff;
 
     if (onMs > 0 && offMs > 0)
-        blink = 1;
+        breath = 1;
     else
-        blink = 0;
+        breath = 0;
 
     // Use only 255(0xFF) for base colors
     if (colorARGB > 0xFF000000 && state == mBatteryState) {
         if (red >= green) {
             green = 0;
             red = 0xFF;
-        } else if (!blink && red >= 0x50 && green > red) {  // try make orange
+        } else if (!breath && red >= 0x50 && green > red) {  // try make orange
             green = 0xFF;
             red = 0x08;
         } else {
@@ -239,15 +209,15 @@ void Light::setSpeakerLightLocked(const LightState& state) {
 
     LOG(VERBOSE) << "Light::setSpeakerLightLocked: mode=" << stateMode << " ledState=" << ledState
                  << " colorARGB=" << colorARGB << " onMS=" << onMs << " offMS=" << offMs
-                 << " blink=" << blink << " red=" << red << " green" << green;
+                 << " breath=" << breath << " red=" << red << " green" << green;
 #endif
 
-    if (blink) {
+    if (breath) {
         if (green) {
-            mGreenBlink << blink << std::endl;  // green blink for notifications only
+            mGreenBreath << breath << std::endl;  // green breath for notifications only
         }
         if (red) {
-            mRedBlink << blink << std::endl;  // red blink for battery only
+            mRedBreath << breath << std::endl;  // red breath for battery only
         }
     } else {
         mRedLed << red << std::endl;

@@ -1,18 +1,7 @@
 /*
- * Copyright (C) 2019 Vyacheslav Vidanov (aka Anomalchik)
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2023 The LineageOS Project
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #define LOG_TAG "android.hardware.light@2.0-service.X00TD"
@@ -39,11 +28,11 @@ const static std::string kLcdBacklightPath = "/sys/class/leds/lcd-backlight/brig
 const static std::string kLcdMaxBacklightPath = "/sys/class/leds/lcd-backlight/max_brightness";
 
 // Red led
-const static std::string kRedBlinkPath = "/sys/class/leds/red/blink";
+const static std::string kRedBreathPath = "/sys/class/leds/red/breath";
 const static std::string kRedLedPath = "/sys/class/leds/red/brightness";
 
 // Green led
-const static std::string kGreenBlinkPath = "/sys/class/leds/green/blink";
+const static std::string kGreenBreathPath = "/sys/class/leds/green/breath";
 const static std::string kGreenLedPath = "/sys/class/leds/green/brightness";
 
 int main() {
@@ -65,9 +54,9 @@ int main() {
         lcdMaxBacklight >> lcdMaxBrightness;
     }
 
-    std::ofstream redBlink(kRedBlinkPath);
-    if (!redBlink) {
-        LOG(ERROR) << "Failed to open " << kRedBlinkPath << ", error=" << errno << " ("
+    std::ofstream redBreath(kRedBreathPath);
+    if (!redBreath) {
+        LOG(ERROR) << "Failed to open " << kRedBreathPath << ", error=" << errno << " ("
                    << strerror(errno) << ")";
         return -errno;
     }
@@ -79,9 +68,9 @@ int main() {
         return -errno;
     }
 
-    std::ofstream greenBlink(kGreenBlinkPath);
-    if (!greenBlink) {
-        LOG(ERROR) << "Failed to open " << kGreenBlinkPath << ", error=" << errno << " ("
+    std::ofstream greenBreath(kGreenBreathPath);
+    if (!greenBreath) {
+        LOG(ERROR) << "Failed to open " << kGreenBreathPath << ", error=" << errno << " ("
                    << strerror(errno) << ")";
         return -errno;
     }
@@ -94,8 +83,8 @@ int main() {
     }
 
     android::sp<ILight> service =
-        new Light({std::move(lcdBacklight), lcdMaxBrightness}, std::move(redBlink),
-                  std::move(redLed), std::move(greenBlink), std::move(greenLed));
+        new Light({std::move(lcdBacklight), lcdMaxBrightness}, std::move(redBreath),
+                  std::move(redLed), std::move(greenBreath), std::move(greenLed));
 
     configureRpcThreadpool(1, true);
 
