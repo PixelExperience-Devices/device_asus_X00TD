@@ -154,14 +154,14 @@ service vendor.qseecomd /vendor/bin/qseecomd
    user root
    group root
 
-service thermal-engine /system/vendor/bin/thermal-engine
+service thermal-engine /vendor/bin/thermal-engine
    class main
    user root
-   socket thermal-send-client stream 0666 system system
-   socket thermal-recv-client stream 0660 system system
-   socket thermal-recv-passive-client stream 0666 system system
-   socket thermal-send-rule stream 0660 system system
    group root
+   socket thermal-send-client stream 0660 system oem_2907
+   socket thermal-recv-client stream 0660 system oem_2907
+   socket thermal-recv-passive-client stream 0660 system oem_2907
+   socket thermal-send-rule stream 0660 system oem_2907g
 
 service vendor.pd_mapper /system/vendor/bin/pd-mapper
      class core
