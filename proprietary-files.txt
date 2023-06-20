@@ -44,15 +44,15 @@ vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so|d2174a2a4a680e93ee4262b5e
 vendor/lib/rfsa/adsp/libscveT2T_skel.so|e8083e551a17e880acb9d72ceb725b762cadf0d2
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so|2da97f61c1d14f1f9a38aecd8ab89a1f6fa8d991
 
-# Alarm - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
--product/app/PowerOffAlarm/PowerOffAlarm.apk|1700001b0a54c29c9ce114ef9829f861c5edc6e9
+# Alarm - from Cat S62Pro sdm660_64-user 11 RKQ1.210406.002 1.015.00
+-product/app/PowerOffAlarm/PowerOffAlarm.apk|52e403ee5944bbb6c6952efa2814d98bd5bb8b17
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service|586b142f9bc4bf3098b4962682c4de1c13810f9b
 vendor/bin/power_off_alarm|b8c7ddc1bed336753c3746925fd0f4a9925aa36c
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|a03a9a1c818595b19272ea6ffb466e23a7fc3b05
 vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so|4129558506dc078c03679ba362acda4755457742
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so|dcfdc04b4e0c6e6a4ffa60e1694268bd0327e65c
 
-# ANT+ - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
+# ANT+ - from Cat S62Pro sdm660_64-user 11 RKQ1.210406.002 1.015.00
 vendor/lib/hw/com.dsi.ant@1.0-impl.so|079573a7412736b6f2da827d16cdd12d34a4f6a6
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so|87dc1a131534659173e71e108e7a3ffe6325845f
 
