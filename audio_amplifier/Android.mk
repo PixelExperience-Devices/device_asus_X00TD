@@ -42,7 +42,8 @@ LOCAL_C_INCLUDES += \
     $(call project-path-for,qcom-audio)/hal \
     $(call project-path-for,qcom-audio)/hal/msm8974 \
     $(call project-path-for,qcom-audio)/hal/audio_extn \
-    $(call project-path-for,qcom-audio)/hal/voice_extn
+    $(call project-path-for,qcom-audio)/hal/voice_extn \
+    $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include
 
 LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 LOCAL_SRC_FILES := audio_amplifier.c
