@@ -3,3 +3,6 @@ genfscon proc /touchpanel               u:object_r:proc_touchpanel:s0
 
 # LED
 genfscon sysfs /devices/platform/soc/800f000.qcom,spmi/spmi-0/spmi0-03/800f000.qcom,spmi:qcom,pm660l@3:qcom,leds@d000/leds                 u:object_r:sysfs_graphics:s0
+
+# Vibrator
+genfscon sysfs /devices/platform/soc/800f000.qcom,spmi/spmi-0/spmi0-01/800f000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator u:object_r:sysfs_leds:s0
