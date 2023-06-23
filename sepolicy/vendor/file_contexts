@@ -16,6 +16,9 @@
 # Persist
 /persist(/.*)?                                                                u:object_r:mnt_vendor_file:s0
 
+# Power
+/vendor/bin/hw/android\.hardware\.power-service\.X00TD-libperfmgr        u:object_r:hal_power_default_exec:s0
+
 # Sensors
 /sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-light(/.*)?                    u:object_r:sysfs_sensors:s0
 /sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-proximity(/.*)?                u:object_r:sysfs_sensors:s0

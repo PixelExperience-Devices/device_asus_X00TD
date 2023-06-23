@@ -6,6 +6,9 @@ genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,came
 # Double tap to wake
 genfscon proc /touchpanel               u:object_r:proc_touchpanel:s0
 
+# Graphics
+genfscon sysfs /devices/virtual/graphics/fb0/idle_state         u:object_r:sysfs_graphics:s0
+
 # IIO device
 genfscon sysfs /devices/platform/soc/800f000.qcom,spmi/spmi-0/spmi0-00/800f000.qcom,spmi:qcom,pm660@0:rradc@4500/iio:device1/name                 u:object_r:sysfs_iio_devices:s0
 
@@ -16,8 +19,25 @@ genfscon sysfs /devices/platform/soc/soc:qcom,kgsl-hyp/subsys3/restart_level    
 # LED
 genfscon sysfs /devices/platform/soc/800f000.qcom,spmi/spmi-0/spmi0-03/800f000.qcom,spmi:qcom,pm660l@3:qcom,leds@d000/leds                 u:object_r:sysfs_graphics:s0
 
+# Power
+genfscon debugfs /sched_features                                u:object_r:debugfs_sched_features:s0
+genfscon proc /sys/kernel/sched_boost                           u:object_r:proc_sysctl_schedboost:s0
+genfscon sysfs /power/rpmh_stats/master_stats                   u:object_r:sysfs_rpm:s0
+genfscon sysfs /power/system_sleep/stats                        u:object_r:sysfs_system_sleep_stats:s0
+
+# Subsystem
+genfscon sysfs /devices/platform/soc/soc:qcom,cpubw             u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,gpubw             u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,l3-cpu0           u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,l3-cpu4           u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,llccbw            u:object_r:sysfs_msm_subsys:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,mincpubw          u:object_r:sysfs_msm_subsys:s0
+
 # Vibrator
 genfscon sysfs /devices/platform/soc/800f000.qcom,spmi/spmi-0/spmi0-01/800f000.qcom,spmi:qcom,pm660@1:qcom,haptics@c000/leds/vibrator u:object_r:sysfs_leds:s0
 
 # Wakeup
 genfscon sysfs /devices/platform/soc/c1b7000.i2c/i2c-7/7-0048/wakeup                                                                                                                       u:object_r:sysfs_wakeup:s0
+
+# Wi-Fi
+genfscon debugfs /wlan0                                         u:object_r:debugfs_wlan:s0
