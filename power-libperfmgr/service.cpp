@@ -61,7 +61,7 @@ int main() {
     CHECK(status == STATUS_OK);
     LOG(INFO) << "Power HAL AIDL Service for X00TD is started.";
 
-    if (::android::base::GetIntProperty("vendor.powerhal.adpf.rate", -1) != -1) {
+    if (HintManager::GetInstance()->GetAdpfProfile()) {
         PowerHintMonitor::getInstance()->start();
     }
 
