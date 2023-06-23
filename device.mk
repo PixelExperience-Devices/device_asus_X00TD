@@ -319,8 +319,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service-qti \
-    vendor.qti.hardware.perf@2.2.vendor
+    android.hardware.power-service-qti
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
@@ -344,10 +343,6 @@ PRODUCT_COPY_FILES += \
 # QNS
 PRODUCT_PACKAGES += \
     libstdc++.vendor
-
-# QTI Performance
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perf/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf
 
 # Radio
 PRODUCT_PACKAGES += \
