@@ -109,25 +109,6 @@ on enable-low-power
     # to one of the CPU from the default IRQ affinity mask.
     write /proc/irq/default_smp_affinity f
 
-    # sched_load_boost as -6 is equivalent to target load as 85. It is per cpu tunable.
-    write /sys/devices/system/cpu/cpu0/sched_load_boost -6
-    write /sys/devices/system/cpu/cpu1/sched_load_boost -6
-    write /sys/devices/system/cpu/cpu2/sched_load_boost -6
-    write /sys/devices/system/cpu/cpu3/sched_load_boost -6
-    write /sys/devices/system/cpu/cpu4/sched_load_boost -6
-    write /sys/devices/system/cpu/cpu5/sched_load_boost -6
-    write /sys/devices/system/cpu/cpu6/sched_load_boost -6
-    write /sys/devices/system/cpu/cpu7/sched_load_boost -6
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 85
-    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 85
-
-    # Setting b.L scheduler parameters
-    write /proc/sys/kernel/sched_upmigrate 96
-    write /proc/sys/kernel/sched_downmigrate 90
-    write /proc/sys/kernel/sched_group_upmigrate 140
-    write /proc/sys/kernel/sched_group_downmigrate 120
-    write /proc/sys/kernel/sched_walt_rotate_big_tasks 1
-
     # Enable bus-dcvs
     write /sys/devices/platform/soc/soc:qcom,cpu-cpu-ddr-bw/devfreq/soc:qcom,cpu-cpu-ddr-bw/governor "bw_hwmon"
     write /sys/devices/platform/soc/soc:qcom,cpu-cpu-ddr-bw/devfreq/soc:qcom,cpu-cpu-ddr-bw/polling_interval 50
