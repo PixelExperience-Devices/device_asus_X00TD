@@ -34,8 +34,6 @@ on early-boot
 on boot
     chown system system /sys/class/power_supply/battery/charging_enabled
     chmod 0660 /sys/class/power_supply/battery/charging_enabled
-    chown system system /sys/class/power_supply/battery/device/smartchg_stop_charging
-    chmod 0660 /sys/class/power_supply/battery/device/smartchg_stop_charging
 
 on boot
 service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
