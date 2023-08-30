@@ -120,7 +120,6 @@ debug.sf.predict_hwc_composition_strategy=0
 persist.hwc.mdpcomp.enable=true
 ro.opengles.version=196610
 vendor.display.disable_rotator_downscale=1
-vendor.display.disable_scaler=1
 
 # DRM
 drm.service.enabled=true
