@@ -32,8 +32,8 @@ on early-boot
      chown system system /dev/input/event4  # stk3xXx-proximity
 
 on boot
-    chown system system /sys/class/power_supply/battery/charging_enabled
-    chmod 0660 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0660 /sys/class/power_supply/battery/input_suspend
 
 on boot
 service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
