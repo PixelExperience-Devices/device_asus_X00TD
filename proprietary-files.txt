@@ -1160,7 +1160,6 @@ vendor/etc/data/dsi_config.xml|6b7260635ce43e26f2abce9d14a060ebafae1813
 vendor/etc/data/netmgr_config.xml|2df0b0bfb4a90b77cf83339332a04a0e41ed8fba
 vendor/etc/init/dataadpl.rc|cd4907d9bfd438fe5f5c86f5d6cec590ac0bac2a
 vendor/etc/init/dataqti.rc|6abfd1a850d782adbbb6f42c9d8ca870036b2ad1
-vendor/etc/init/init-qcril-data.rc|890ac72fa49d0e52a263175a7b5b550539287800
 vendor/etc/init/netmgrd.rc|5c592bd2cf775462e147d3def97e99abbac4631e
 vendor/etc/init/port-bridge.rc|e52d61a0de5e8a3b21bfbfca929e862422645377
 vendor/etc/init/qcrild.rc|17cf4934bf443cf6469d8b3ff622eeb0e4a0aac6
